@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L01 — Welcome to Canada | YSP Learn & Shine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B2A4A;--beige:#F5F0E8;--gold:#C4A265;--copper:#B8835A;--bg:#FAF8F4;--surface:#fff;--text:#1B2A4A;--muted:#7A7568;--border:#E8E3D8;
+--c1:#C4856C;--c2:#B89B5E;--c3:#7B8EB8;--c4:#5B9E8F;--practice-bg:#F9F7F2;}
+@media(prefers-color-scheme:dark){:root{--bg:#0F1623;--surface:#1A2236;--text:#F0EDE6;--muted:#9A9488;--border:#2D3548;--practice-bg:#151E30;--beige:#2A2520;}}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Open Sans','Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);max-width:1400px;margin:0 auto;}
+
+/* Header */
+.hdr{text-align:center;padding:28px 20px 18px;border-bottom:2px solid var(--gold);}
+.hdr-brand{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+.hdr h1{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;margin:4px 0;}
+.hdr-sub{font-family:'Montserrat',sans-serif;font-size:.8rem;color:var(--muted);}
+.hdr-level{font-family:'Montserrat',sans-serif;font-size:.68rem;color:var(--gold);margin-top:6px;letter-spacing:1px;}
+
+/* Tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:0;border-bottom:2px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:20;padding:0 12px;}
+.tab{padding:10px 14px;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.3px;cursor:pointer;border-bottom:3px solid transparent;color:var(--muted);transition:.2s;white-space:nowrap;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.panel{display:none;padding:20px;}
+.panel.active{display:block;}
+
+/* Vocab cards */
+.vfilter{display:flex;flex-wrap:wrap;gap:6px;padding:12px 0;justify-content:center;}
+.vbtn{padding:5px 12px;border-radius:20px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:600;color:var(--text);transition:.2s;}
+.vbtn:hover{transform:translateY(-1px);}
+.vbtn.active{color:#fff;border-color:transparent;background:var(--navy);}
+.search{display:block;width:100%;max-width:380px;margin:8px auto 14px;padding:9px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:.85rem;}
+.search:focus{outline:none;border-color:var(--gold);}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
+@media(max-width:740px){.vgrid{grid-template-columns:1fr;}}
+.vc{background:var(--surface);border-radius:12px;border:1px solid var(--border);overflow:hidden;display:flex;transition:.2s;}
+.vc:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(27,42,74,.06);}
+.vc-a{width:5px;flex-shrink:0;}
+.vc-b{padding:14px 16px;flex:1;min-width:0;}
+.vc-top{display:flex;justify-content:space-between;align-items:flex-start;}
+.vc-cat{font-family:'Montserrat',sans-serif;font-size:.6rem;text-transform:uppercase;letter-spacing:.8px;}
+.vc-num{font-family:'Montserrat',sans-serif;font-size:.56rem;color:var(--muted);}
+.vc-type{display:inline-block;padding:1px 6px;border-radius:3px;font-family:'Montserrat',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.5px;}
+.vc-type-core{background:#D5F5E3;color:#1E8449;}
+.vc-type-ext{background:#D6EAF8;color:#2471A3;}
+.vc-en{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--navy);margin:4px 0 1px;}
+.vc-pron{font-size:.74rem;color:var(--muted);}
+.vc-m{font-size:.8rem;color:var(--muted);line-height:1.55;margin:8px 0;padding:8px 10px;background:var(--practice-bg);border-radius:6px;border-left:3px solid var(--border);}
+.vc-div{height:1px;background:var(--border);margin:8px 0;}
+.vc-zh{font-size:1rem;font-weight:600;margin-bottom:6px;}
+.vc-ex{font-size:.8rem;line-height:1.5;margin-bottom:3px;padding-left:8px;border-left:2px solid var(--border);}
+.vc-pr{background:var(--practice-bg);border-radius:8px;padding:10px 12px;margin-top:10px;border:1px solid var(--border);}
+.vc-pr-lbl{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px;color:var(--gold);}
+.vc-pr-item{font-size:.8rem;line-height:1.6;color:var(--muted);}
+
+/* Content sections */
+.sec{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin:14px 0;}
+.sec-title{font-family:'Montserrat','Noto Sans TC',sans-serif;font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.phrase{padding:12px 0;border-bottom:1px solid var(--border);}
+.phrase:last-child{border-bottom:none;}
+.phrase-en{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--navy);}
+.phrase-zh{font-size:.85rem;color:var(--gold);margin:2px 0;}
+.phrase-ctx{font-size:.82rem;color:var(--muted);font-style:italic;}
+.phrase-ex{font-size:.82rem;margin-top:4px;padding-left:10px;border-left:2px solid var(--border);}
+
+.dlg{padding:16px 0;border-bottom:1px solid var(--border);}
+.dlg:last-child{border-bottom:none;}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.dlg-title{font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:700;color:var(--navy);}
+.dlg-tag{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;}
+.dlg-req{background:#D5F5E3;color:#1E8449;}
+.dlg-choice{background:#FCF3CF;color:#B7950B;}
+.dlg-scene{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:8px;padding:6px 10px;background:var(--practice-bg);border-radius:6px;}
+.dlg-line{font-size:.85rem;margin:4px 0;line-height:1.6;}
+.dlg-a{color:var(--c1);font-weight:600;}
+.dlg-b{color:var(--c3);font-weight:600;}
+.dlg-note{font-size:.76rem;color:var(--gold);margin-top:6px;font-style:italic;}
+
+.sq{padding:12px 0;border-bottom:1px solid var(--border);}
+.sq:last-child{border-bottom:none;}
+.sq-lvl{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;display:inline-block;margin-bottom:4px;}
+.sq-l1{background:#D5F5E3;color:#1E8449;}
+.sq-l2{background:#FCF3CF;color:#B7950B;}
+.sq-l3{background:#FADBD8;color:#C0392B;}
+.sq-q{font-size:.9rem;font-weight:600;margin-bottom:4px;}
+.sq-hint{font-size:.78rem;color:var(--muted);font-style:italic;}
+
+.culture{padding:16px 0;border-bottom:1px solid var(--border);}
+.culture:last-child{border-bottom:none;}
+.culture-tag{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:4px;background:#E8DAEF;color:#6C3483;text-transform:uppercase;letter-spacing:.5px;}
+.culture-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin:6px 0;}
+.culture-note{font-size:.85rem;line-height:1.7;margin:8px 0;}
+.culture-discuss{background:var(--practice-bg);border-radius:8px;padding:10px 14px;margin-top:8px;}
+.culture-discuss-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:var(--gold);margin-bottom:4px;}
+
+.pron-box{background:var(--practice-bg);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:12px 0;}
+.pron-pair{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 12px;margin:4px;font-size:.88rem;}
+.pron-vs{font-size:.7rem;color:var(--muted);font-weight:600;}
+
+.footer{text-align:center;padding:18px;color:var(--muted);font-family:'Montserrat',sans-serif;font-size:.72rem;border-top:1px solid var(--border);}
+.footer .g{color:var(--gold);font-weight:600;letter-spacing:1px;}
+.count{text-align:center;color:var(--muted);font-size:.78rem;margin:4px 0;}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-brand">YSP Learn & Shine</div>
+  <h1>Lesson 01 — Welcome to Canada</h1>
+  <div class="hdr-sub">Canada Life & Career English · Complete Lesson Materials</div>
+  <div class="hdr-level">CEFR A2–B1 · 50 Vocabulary (20★ + 30◇) · 5 Phrases · 5 Dialogues · 5 Speaking Qs · 2 Culture Topics · Pronunciation</div>
+</div>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" onclick="showTab('vocab')">📚 Vocabulary (50)</div>
+  <div class="tab" onclick="showTab('phrases')">💬 Phrases (5)</div>
+  <div class="tab" onclick="showTab('dialogues')">🎭 Dialogues (5)</div>
+  <div class="tab" onclick="showTab('speaking')">🗣️ Speaking (5)</div>
+  <div class="tab" onclick="showTab('culture')">🍁 Culture (2)</div>
+  <div class="tab" onclick="showTab('pronunciation')">🔊 Pronunciation</div>
+</div>
+
+<!-- ========== VOCABULARY ========== -->
+<div class="panel active" id="vocab">
+<div class="vfilter">
+  <button class="vbtn active" onclick="vf('all',this)">All (50)</button>
+  <button class="vbtn" onclick="vf('core',this)">★ Core (20)</button>
+  <button class="vbtn" onclick="vf('ext',this)">◇ Extended (30)</button>
+  <button class="vbtn" onclick="vf('arrival',this)">🛬 Arrival (13)</button>
+  <button class="vbtn" onclick="vf('whv',this)">📋 WHV (12)</button>
+  <button class="vbtn" onclick="vf('canada',this)">🍁 Canada (13)</button>
+  <button class="vbtn" onclick="vf('convo',this)">💬 Conversations (12)</button>
+</div>
+<input class="search" type="text" placeholder="Search English or 中文..." oninput="vs(this.value)">
+<div class="vgrid" id="vgrid"></div>
+<div class="count" id="vcount"></div>
+</div>
+
+<!-- ========== PHRASES ========== -->
+<div class="panel" id="phrases">
+<div class="sec">
+<div class="sec-title">💬 5 Useful Phrases — 實用句型</div>
+
+<div class="phrase">
+<div class="phrase-en">1. "I'm here on a working holiday visa."</div>
+<div class="phrase-zh">我持打工度假簽證來這裡的。</div>
+<div class="phrase-ctx">🎯 Use at: Immigration counter when the officer asks your purpose of visit.</div>
+<div class="phrase-ex"><strong>A:</strong> What is your purpose of visit?<br><strong>B:</strong> I'm here on a working holiday visa. I plan to work and travel in Canada.</div>
+</div>
+
+<div class="phrase">
+<div class="phrase-en">2. "Could you speak more slowly, please?"</div>
+<div class="phrase-zh">可以請你說慢一點嗎？</div>
+<div class="phrase-ctx">🎯 Use: Anytime someone speaks too fast. Canadians will happily slow down.</div>
+<div class="phrase-ex"><strong>A:</strong> YouneedtogodowntothesecondfloortofindtheCarouselB.<br><strong>B:</strong> Sorry, could you speak more slowly, please?</div>
+</div>
+
+<div class="phrase">
+<div class="phrase-en">3. "Where can I find...?"</div>
+<div class="phrase-zh">我可以在哪裡找到……？</div>
+<div class="phrase-ctx">🎯 Use: Asking for locations at the airport, in a store, or anywhere new.</div>
+<div class="phrase-ex"><strong>B:</strong> Excuse me, where can I find the SkyTrain station?<br><strong>A:</strong> Go straight and follow the signs. It's on the lower level.</div>
+</div>
+
+<div class="phrase">
+<div class="phrase-en">4. "I just arrived in Canada."</div>
+<div class="phrase-zh">我剛到加拿大。</div>
+<div class="phrase-ctx">📖 Reference: Great conversation opener when meeting anyone new.</div>
+<div class="phrase-ex"><strong>B:</strong> I just arrived in Canada yesterday. Everything feels so new!<br><strong>A:</strong> Welcome! Where are you from?</div>
+</div>
+
+<div class="phrase">
+<div class="phrase-en">5. "Nice to meet you. I'm [name] from Taiwan."</div>
+<div class="phrase-zh">很高興認識你。我是來自台灣的[名字]。</div>
+<div class="phrase-ctx">📖 Reference: Standard self-introduction. Simple and friendly.</div>
+<div class="phrase-ex"><strong>B:</strong> Hi! Nice to meet you. I'm Wei from Taiwan.<br><strong>A:</strong> Nice to meet you too, Wei! Welcome to Vancouver!</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========== DIALOGUES ========== -->
+<div class="panel" id="dialogues">
+<div class="sec">
+<div class="sec-title">🎭 5 Dialogue Practices — 對話練習</div>
+
+<div class="dlg">
+<div class="dlg-head">
+  <div class="dlg-title">1. At Immigration — 入境審查</div>
+  <span class="dlg-tag dlg-req">Required 必練</span>
+</div>
+<div class="dlg-scene">📍 You just landed at Vancouver International Airport. You are at the immigration counter with your passport, letter of introduction, and proof of funds.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> Good afternoon. Passport, please.</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Here you go.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> What is the purpose of your visit to Canada?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> I'm here on a working holiday visa. Here is my letter of introduction.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> How long do you plan to stay?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> About one year. My visa is valid until May 2028.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> Do you have proof of funds?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Yes, here is my bank statement.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> Do you have travel insurance?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Yes, it covers my entire stay.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> Great. Welcome to Canada. Please go to the next counter to get your work permit.</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Thank you very much!</div>
+<div class="dlg-note">💡 Teacher Note: Practice the full dialogue first, then cover the student's lines and let them respond naturally to the officer's questions.</div>
+</div>
+
+<div class="dlg">
+<div class="dlg-head">
+  <div class="dlg-title">2. At Customs — 海關申報</div>
+  <span class="dlg-tag dlg-req">Required 必練</span>
+</div>
+<div class="dlg-scene">📍 You collected your luggage and are now going through customs. The officer checks your declaration card.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> Do you have anything to declare?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Yes, I have some dried fruit and tea from Taiwan.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> Can I see them, please?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Sure, they're in this bag.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> These are fine. How much cash are you carrying?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> About 3,000 Canadian dollars.</div>
+<div class="dlg-line"><span class="dlg-a">Officer:</span> That's under the limit. You're good to go. Welcome to Canada.</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Thank you! Have a good day.</div>
+<div class="dlg-note">💡 Teacher Note: After practice, create variations — what if the student has nothing to declare? What if an item is confiscated?</div>
+</div>
+
+<div class="dlg">
+<div class="dlg-head">
+  <div class="dlg-title">3. Meeting Someone New — 認識新朋友</div>
+  <span class="dlg-tag dlg-req">Required 必練</span>
+</div>
+<div class="dlg-scene">📍 You just checked into your hostel. Another traveler starts talking to you in the common area.</div>
+<div class="dlg-line"><span class="dlg-a">Traveler:</span> Hey! Did you just arrive today?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Yes, I just arrived this afternoon. I'm from Taiwan.</div>
+<div class="dlg-line"><span class="dlg-a">Traveler:</span> Cool! I'm Sarah from Brazil. Nice to meet you!</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Nice to meet you too! I'm Wei. Are you here on a working holiday too?</div>
+<div class="dlg-line"><span class="dlg-a">Traveler:</span> Yeah! I've been here for three months. What do you do back home?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> I work as a rehabilitation specialist. I also have experience as a lifeguard.</div>
+<div class="dlg-line"><span class="dlg-a">Traveler:</span> Oh nice! There are lots of fitness jobs here. Are you nervous about living in Canada?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> A little nervous, but also very excited. My English isn't perfect yet, but I'm working on it!</div>
+<div class="dlg-line"><span class="dlg-a">Traveler:</span> Don't worry, everyone here is really friendly. You'll be fine!</div>
+<div class="dlg-note">💡 Teacher Note: This is the most important dialogue for building confidence. Let the student personalize the answers with their own real information.</div>
+</div>
+
+<div class="dlg">
+<div class="dlg-head">
+  <div class="dlg-title">4. Taking a Taxi from the Airport — 從機場搭計程車</div>
+  <span class="dlg-tag dlg-choice">Choice 選練 A</span>
+</div>
+<div class="dlg-scene">📍 You exit the airport and get into a taxi to go to your hostel in downtown Vancouver.</div>
+<div class="dlg-line"><span class="dlg-a">Driver:</span> Where to?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Hi, can you take me to 123 Main Street, please?</div>
+<div class="dlg-line"><span class="dlg-a">Driver:</span> Sure. That's downtown. It'll take about 30 minutes.</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Sounds good. How much will it cost?</div>
+<div class="dlg-line"><span class="dlg-a">Driver:</span> About 35 to 40 dollars, depending on traffic.</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Okay, no problem. Can I pay by credit card?</div>
+<div class="dlg-line"><span class="dlg-a">Driver:</span> Yes, we accept cards. Is this your first time in Vancouver?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Yes! I just arrived from Taiwan. I'm here on a working holiday.</div>
+<div class="dlg-line"><span class="dlg-a">Driver:</span> Welcome! Vancouver is a great city. You'll love it.</div>
+<div class="dlg-note">💡 Teacher Note: Practice tipping etiquette — should you tip a taxi driver? (Yes, 10–15%)</div>
+</div>
+
+<div class="dlg">
+<div class="dlg-head">
+  <div class="dlg-title">5. Checking into a Hostel — 辦理入住</div>
+  <span class="dlg-tag dlg-choice">Choice 選練 B</span>
+</div>
+<div class="dlg-scene">📍 You arrive at your hostel and need to check in at the front desk.</div>
+<div class="dlg-line"><span class="dlg-a">Staff:</span> Hi there! Welcome. Do you have a reservation?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Yes, I booked online. My name is Wei Chen.</div>
+<div class="dlg-line"><span class="dlg-a">Staff:</span> Let me check... Yes, I found it. You're staying for five nights, correct?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> That's right.</div>
+<div class="dlg-line"><span class="dlg-a">Staff:</span> Can I see your passport, please?</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Sure, here you go.</div>
+<div class="dlg-line"><span class="dlg-a">Staff:</span> Great. Your room is on the second floor. The Wi-Fi password is on this card. Breakfast is from 7 to 9.</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Thank you! Where can I do laundry?</div>
+<div class="dlg-line"><span class="dlg-a">Staff:</span> The laundry room is in the basement. It's $2 per load.</div>
+<div class="dlg-line"><span class="dlg-b">You:</span> Perfect. Thank you for your help!</div>
+<div class="dlg-note">💡 Teacher Note: After practice, ask the student to role-reverse — they play the staff and you play the guest.</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========== SPEAKING ========== -->
+<div class="panel" id="speaking">
+<div class="sec">
+<div class="sec-title">🗣️ 5 Speaking Questions — 口說問題（3 級難度，學生選 3 題回答）</div>
+
+<div class="sq">
+<div class="sq-lvl sq-l1">Level 1 · Closed 封閉式</div>
+<div class="sq-q">1. Is this your first time living in another country?</div>
+<div class="sq-hint">Hint: Answer yes or no, then add 1 sentence to explain.</div>
+</div>
+
+<div class="sq">
+<div class="sq-lvl sq-l1">Level 1 · Closed 封閉式</div>
+<div class="sq-q">2. Would you prefer to live in Vancouver or Toronto? Why?</div>
+<div class="sq-hint">Hint: Pick one city and give 1–2 reasons.</div>
+</div>
+
+<div class="sq">
+<div class="sq-lvl sq-l2">Level 2 · Short Answer 短答</div>
+<div class="sq-q">3. Why did you choose Canada for your working holiday?</div>
+<div class="sq-hint">Hint: Talk about 2–3 reasons. Try to speak for at least 30 seconds.</div>
+</div>
+
+<div class="sq">
+<div class="sq-lvl sq-l2">Level 2 · Short Answer 短答</div>
+<div class="sq-q">4. What are three things you want to do in your first week in Canada?</div>
+<div class="sq-hint">Hint: Use "First, I want to... Second, I plan to... Third, I hope to..."</div>
+</div>
+
+<div class="sq">
+<div class="sq-lvl sq-l3">Level 3 · Open 開放式</div>
+<div class="sq-q">5. Imagine it's one year from now. You are back in Taiwan talking to a friend. Describe your life in Canada — what did you do, where did you work, and what did you learn?</div>
+<div class="sq-hint">Hint: This is a challenge! Try to speak for 1–2 minutes without stopping. Use past tense. It's okay to make mistakes.</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========== CULTURE ========== -->
+<div class="panel" id="culture">
+<div class="sec">
+<div class="sec-title">🍁 2 Canadian Culture Topics</div>
+
+<div class="culture">
+<span class="culture-tag">☀️ Warm-Up Culture (課堂開頭)</span>
+<div class="culture-title">Tim Hortons — Canada's Coffee Culture</div>
+<div class="culture-note">
+Tim Hortons (often called "Timmies") is the most famous coffee chain in Canada. There are over 5,000 locations across the country — you can find one on almost every street corner. It was founded in 1964 by a hockey player named Tim Horton.<br><br>
+The most popular order is a <strong>"double-double"</strong> — coffee with two creams and two sugars. Other popular items include Timbits (small donut holes), iced cappuccinos, and breakfast sandwiches.<br><br>
+For Canadians, Tim Hortons is more than just a coffee shop — it's a cultural symbol. Many people start their day with a Timmies run. Saying "Let's grab a Timmies" is a casual way to invite someone for coffee. It's also one of the cheapest coffee options in Canada, making it perfect for WHV budgets!
+</div>
+<div class="culture-discuss">
+<div class="culture-discuss-label">☕ Discussion Questions</div>
+<p style="font-size:.84rem;">1. Do you have a favourite coffee chain in Taiwan? How often do you drink coffee?<br>
+2. In Canada, people say "Let's grab a coffee" to mean "Let's hang out." Do people in Taiwan use food or drinks to invite friends to socialize?<br>
+3. Would you order a "double-double"? Why or why not?</p>
+</div>
+</div>
+
+<div class="culture">
+<span class="culture-tag">🌙 End-of-Class Culture (課堂結尾)</span>
+<div class="culture-title">The Canadian "Sorry" Culture</div>
+<div class="culture-note">
+Canadians are famous for saying "sorry" — even when it's not their fault! If someone bumps into YOU on the street, they will often say "sorry." If you step on someone's foot, THEY might apologize first.<br><br>
+In 2009, the province of Ontario even passed the <strong>Apology Act</strong>, which says that saying "sorry" cannot be used as an admission of guilt in court. That's how much Canadians say sorry!<br><br>
+For newcomers from Taiwan, this might feel strange at first. In Canadian culture, "sorry" is not just an apology — it's a social lubricant. It means "I notice you" and "I respect your space." You'll start saying "sorry" constantly after a few weeks in Canada. It's contagious!
+</div>
+<div class="culture-discuss">
+<div class="culture-discuss-label">🇨🇦 Discussion Questions</div>
+<p style="font-size:.84rem;">1. How often do people say "sorry" in Taiwan? Is it similar or different from Canada?<br>
+2. Can you think of a situation where saying "sorry" is important even if it's not your fault?</p>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- ========== PRONUNCIATION ========== -->
+<div class="panel" id="pronunciation">
+<div class="sec">
+<div class="sec-title">🔊 Pronunciation Spotlight — /θ/ and /ð/ (the "th" sounds)</div>
+
+<p style="font-size:.88rem;margin:12px 0;">The "th" sound is one of the hardest sounds for Chinese speakers because it doesn't exist in Mandarin. There are two "th" sounds in English:</p>
+
+<div class="pron-box">
+<p style="margin-bottom:10px;"><strong>/θ/ — voiceless "th"</strong> (no vibration in your throat)</p>
+<p style="font-size:.85rem;">🗣️ How to make this sound: Put the tip of your tongue between your teeth. Blow air out gently. Your throat does NOT vibrate.</p>
+<p style="font-size:.85rem;margin-top:6px;">Words from this lesson:</p>
+<div class="pron-pair"><strong>think</strong> /θɪŋk/ <span class="pron-vs">NOT</span> "sink"</div>
+<div class="pron-pair"><strong>three</strong> /θriː/ <span class="pron-vs">NOT</span> "sree"</div>
+<div class="pron-pair"><strong>thank you</strong> /θæŋk juː/ <span class="pron-vs">NOT</span> "sank you"</div>
+</div>
+
+<div class="pron-box" style="margin-top:12px;">
+<p style="margin-bottom:10px;"><strong>/ð/ — voiced "th"</strong> (your throat vibrates)</p>
+<p style="font-size:.85rem;">🗣️ How to make this sound: Same tongue position, but this time your throat vibrates. Touch your throat to feel it.</p>
+<p style="font-size:.85rem;margin-top:6px;">Words from this lesson:</p>
+<div class="pron-pair"><strong>this</strong> /ðɪs/ <span class="pron-vs">NOT</span> "dis"</div>
+<div class="pron-pair"><strong>the</strong> /ðə/ <span class="pron-vs">NOT</span> "da"</div>
+<div class="pron-pair"><strong>there</strong> /ðɛr/ <span class="pron-vs">NOT</span> "dare"</div>
+</div>
+
+<div class="pron-box" style="margin-top:12px;">
+<p style="margin-bottom:10px;"><strong>🎯 Practice Exercise (3 minutes)</strong></p>
+<p style="font-size:.85rem;">Read these sentences aloud. Focus on every "th" sound:</p>
+<p style="font-size:.88rem;margin:8px 0;line-height:2;">
+1. "<strong>Th</strong>ank you for <strong>th</strong>e information."<br>
+2. "I <strong>th</strong>ink <strong>th</strong>is is <strong>th</strong>e right terminal."<br>
+3. "Is <strong>th</strong>ere a washroom near <strong>th</strong>e gate?"<br>
+4. "<strong>Th</strong>e wea<strong>th</strong>er in Canada is different <strong>th</strong>an Taiwan."<br>
+5. "I'm <strong>th</strong>inking about <strong>th</strong>ree things I want to do <strong>th</strong>is week."
+</p>
+<p style="font-size:.82rem;color:var(--muted);font-style:italic;margin-top:8px;">💡 Teacher Tip: Have the student hold a small piece of paper in front of their mouth. When they say /θ/ correctly, the paper should move slightly from the air flow.</p>
+</div>
+
+</div>
+</div>
+
+<div class="footer">
+  <span id="footerNote"></span><br>
+  <span class="g">YSP LEARN & SHINE</span> · Learn with Purpose. Shine with Confidence.
+</div>
+
+<script>
+const V=[
+// ===== CORE ★ — ARRIVAL (5) =====
+{n:1,t:"core",cat:"arrival",en:"airport",pron:"/ˈɛrpɔːrt/",m:"An airport is the place where planes take off and land. You go to the airport to fly to another country.",zh:"機場",ex1:"I arrived at Vancouver International Airport at 3 PM.",ex2:"The airport was bigger than I expected.",p1:"Which _______ does your flight land at?",p2:"We need to be at the _______ three hours early."},
+{n:2,t:"core",cat:"arrival",en:"immigration",pron:"/ˌɪmɪˈɡreɪʃən/",m:"Immigration is the checkpoint where officers check your passport and visa after you land.",zh:"入境審查",ex1:"The immigration line was very long today.",ex2:"Go to immigration right after you leave the plane.",p1:"Prepare your documents before you reach _______.",p2:"The _______ officer asked about my travel plans."},
+{n:3,t:"core",cat:"arrival",en:"passport",pron:"/ˈpæspɔːrt/",m:"A passport is an official document that proves who you are and what country you are from.",zh:"護照",ex1:"Keep your passport in a safe place at all times.",ex2:"The officer asked to see my passport.",p1:"Please show your _______ at the counter.",p2:"Make sure your _______ is valid for at least six months."},
+{n:4,t:"core",cat:"arrival",en:"customs",pron:"/ˈkʌstəmz/",m:"Customs is the area where officers check what items you are bringing into the country.",zh:"海關",ex1:"The customs officer asked if I had any food.",ex2:"We went through customs after collecting our bags.",p1:"Do I need to pay tax at _______?",p2:"_______ is the last step before you exit the airport."},
+{n:5,t:"core",cat:"arrival",en:"arrive",pron:"/əˈraɪv/",m:"To arrive means to reach the place you were traveling to.",zh:"抵達",ex1:"I arrived in Vancouver on a Sunday afternoon.",ex2:"What time will your flight arrive?",p1:"When did you _______ in Canada?",p2:"I will _______ at the hostel around 6 PM."},
+// ===== CORE ★ — WHV (5) =====
+{n:6,t:"core",cat:"whv",en:"working holiday visa",pron:"/ˈwɜːrkɪŋ ˈhɒlɪdeɪ ˈviːzə/",m:"A working holiday visa (WHV) lets you work and travel in Canada for up to one or two years.",zh:"打工度假簽證",ex1:"I received my working holiday visa for Canada.",ex2:"The WHV allows me to work for any employer.",p1:"My _______ lets me stay for 12 months.",p2:"You must be under 36 to apply for a _______."},
+{n:7,t:"core",cat:"whv",en:"work permit",pron:"/wɜːrk ˈpɜːrmɪt/",m:"A work permit is a document that allows you to work legally in another country.",zh:"工作許可",ex1:"The officer issued my work permit at the airport.",ex2:"Always carry your work permit when you go to work.",p1:"Show your _______ to your new employer.",p2:"My _______ is valid until March 2028."},
+{n:8,t:"core",cat:"whv",en:"apply",pron:"/əˈplaɪ/",m:"To apply means to formally request something by filling out forms and providing documents.",zh:"申請",ex1:"I applied for ten jobs in my first week.",ex2:"You can apply for a SIN number at Service Canada.",p1:"How do I _______ for a bank account?",p2:"I want to _______ for a lifeguard position."},
+{n:9,t:"core",cat:"whv",en:"valid",pron:"/ˈvælɪd/",m:"Valid means officially accepted and not expired.",zh:"有效的",ex1:"Is your passport still valid?",ex2:"My work permit is valid for one year.",p1:"Make sure all your documents are _______ before traveling.",p2:"This bus ticket is not _______ — it expired yesterday."},
+{n:10,t:"core",cat:"whv",en:"employer",pron:"/ɪmˈplɔɪər/",m:"An employer is a person or company that hires you and pays you for your work.",zh:"雇主",ex1:"My employer is a fitness centre in Vancouver.",ex2:"A good employer treats workers fairly.",p1:"Who is your _______ in Canada?",p2:"Give your _______ a copy of your work permit."},
+// ===== CORE ★ — CANADA (5) =====
+{n:11,t:"core",cat:"canada",en:"province",pron:"/ˈprɒvɪns/",m:"A province is a large area within Canada, similar to a state. Canada has ten provinces.",zh:"省",ex1:"British Columbia is a province on the west coast.",ex2:"Which province are you going to live in?",p1:"There are ten _______ in Canada.",p2:"Ontario is the most populated _______ in Canada."},
+{n:12,t:"core",cat:"canada",en:"Canadian dollar",pron:"/kəˈneɪdiən ˈdɒlər/",m:"The Canadian dollar (CAD) is the money used in Canada. One CAD is about 23 New Taiwan dollars.",zh:"加幣",ex1:"I exchanged my money for Canadian dollars.",ex2:"Prices in Canada are shown in Canadian dollars.",p1:"How much is this in _______?",p2:"I need to get some _______ before I arrive."},
+{n:13,t:"core",cat:"canada",en:"tax",pron:"/tæks/",m:"Tax is extra money added to the price of things you buy. In Canada, tax is NOT included in the price tag.",zh:"稅",ex1:"The price says $10 but tax is extra.",ex2:"Sales tax in BC is 12 percent.",p1:"Don't forget — _______ is added at the cash register.",p2:"I was surprised that _______ is not included in the price."},
+{n:14,t:"core",cat:"canada",en:"tipping",pron:"/ˈtɪpɪŋ/",m:"Tipping means giving extra money to someone who served you, like a waiter or taxi driver.",zh:"給小費",ex1:"Tipping 15 to 20 percent is normal in Canadian restaurants.",ex2:"I'm still getting used to the tipping culture here.",p1:"_______ is expected at restaurants in Canada.",p2:"How much _______ should I leave for the server?"},
+{n:15,t:"core",cat:"canada",en:"public transit",pron:"/ˈpʌblɪk ˈtrænzɪt/",m:"Public transit means shared transportation systems like buses and trains.",zh:"大眾運輸",ex1:"I take public transit to work every day.",ex2:"Public transit is cheaper than driving in the city.",p1:"How do I use _______ in Vancouver?",p2:"Download the _______ app to check bus times."},
+// ===== CORE ★ — CONVERSATIONS (5) =====
+{n:16,t:"core",cat:"convo",en:"introduce",pron:"/ˌɪntrəˈdjuːs/",m:"To introduce means to tell someone your name and basic information about yourself.",zh:"介紹",ex1:"Let me introduce myself — I'm from Taiwan.",ex2:"Can you introduce me to your friend?",p1:"Please _______ yourself to the class.",p2:"I'd like to _______ myself — my name is Wei."},
+{n:17,t:"core",cat:"convo",en:"excuse me",pron:"/ɪkˈskjuːz miː/",m:"'Excuse me' is a polite phrase to get someone's attention or say sorry for a small interruption.",zh:"不好意思",ex1:"Excuse me, where is the nearest washroom?",ex2:"Excuse me, could you help me with my bags?",p1:"_______, is this seat taken?",p2:"_______, do you know which bus goes downtown?"},
+{n:18,t:"core",cat:"convo",en:"understand",pron:"/ˌʌndərˈstænd/",m:"To understand means to know the meaning of what someone is saying to you.",zh:"理解；明白",ex1:"Sorry, I don't understand. Can you say that again?",ex2:"I understand most of what people say now.",p1:"Do you _______ what the officer is asking?",p2:"I didn't _______ the announcement — it was too fast."},
+{n:19,t:"core",cat:"convo",en:"repeat",pron:"/rɪˈpiːt/",m:"To repeat means to say something again so the other person can understand it.",zh:"重複",ex1:"Could you repeat that, please?",ex2:"Can you repeat it more slowly?",p1:"Sorry, could you _______ the question?",p2:"I asked the officer to _______ the instructions."},
+{n:20,t:"core",cat:"convo",en:"nervous",pron:"/ˈnɜːrvəs/",m:"Nervous means feeling worried or anxious. It's normal to feel nervous when speaking a new language.",zh:"緊張的",ex1:"I felt nervous at the immigration counter.",ex2:"Don't be nervous — everyone makes mistakes!",p1:"It's normal to feel _______ on your first day.",p2:"I was _______ but people here are very patient."},
+
+// ===== EXTENDED ◇ — ARRIVAL (8) =====
+{n:21,t:"ext",cat:"arrival",en:"terminal",pron:"/ˈtɜːrmɪnəl/",m:"A terminal is a building at the airport where passengers arrive and depart.",zh:"航廈",ex1:"International flights arrive at the main terminal."},
+{n:22,t:"ext",cat:"arrival",en:"gate",pron:"/ɡeɪt/",m:"A gate is the area in an airport where you wait to board your plane.",zh:"登機門",ex1:"Our flight departs from Gate B24."},
+{n:23,t:"ext",cat:"arrival",en:"boarding pass",pron:"/ˈbɔːrdɪŋ pæs/",m:"A boarding pass is a document that lets you get on a plane.",zh:"登機證",ex1:"Show your boarding pass at the gate."},
+{n:24,t:"ext",cat:"arrival",en:"luggage",pron:"/ˈlʌɡɪdʒ/",m:"Luggage means the bags and suitcases you travel with.",zh:"行李",ex1:"I have two pieces of luggage."},
+{n:25,t:"ext",cat:"arrival",en:"carry-on",pron:"/ˈkæri ɒn/",m:"A carry-on is a small bag you take with you on the plane.",zh:"隨身行李",ex1:"Keep your passport in your carry-on bag."},
+{n:26,t:"ext",cat:"arrival",en:"security",pron:"/sɪˈkjʊrəti/",m:"Security is the checkpoint where your bags are scanned before boarding.",zh:"安檢",ex1:"Remove your laptop at security."},
+{n:27,t:"ext",cat:"arrival",en:"flight",pron:"/flaɪt/",m:"A flight is a journey by airplane from one place to another.",zh:"航班",ex1:"My flight from Taipei to Vancouver is 11 hours."},
+{n:28,t:"ext",cat:"arrival",en:"delay",pron:"/dɪˈleɪ/",m:"A delay means something happens later than expected.",zh:"延誤",ex1:"Our flight had a two-hour delay because of snow."},
+
+// ===== EXTENDED ◇ — WHV (7) =====
+{n:29,t:"ext",cat:"whv",en:"letter of introduction",pron:"/ˈlɛtər əv ˌɪntrəˈdʌkʃən/",m:"An official letter from IRCC you show at the border to get your work permit.",zh:"介紹信",ex1:"Print your letter of introduction before your flight."},
+{n:30,t:"ext",cat:"whv",en:"proof of funds",pron:"/pruːf əv fʌndz/",m:"Documents showing you have enough money to support yourself in Canada.",zh:"財力證明",ex1:"I showed my bank statement as proof of funds."},
+{n:31,t:"ext",cat:"whv",en:"biometrics",pron:"/ˌbaɪoʊˈmɛtrɪks/",m:"Your fingerprints and photo taken for identification when applying for a visa.",zh:"生物辨識資料",ex1:"I submitted my biometrics at the visa centre."},
+{n:32,t:"ext",cat:"whv",en:"IRCC",pron:"/aɪ ɑːr siː siː/",m:"Immigration, Refugees and Citizenship Canada — the department that processes visas.",zh:"加拿大移民部",ex1:"Check the IRCC website for application updates."},
+{n:33,t:"ext",cat:"whv",en:"expire",pron:"/ɪkˈspaɪər/",m:"To expire means a document reaches the end of its validity and can no longer be used.",zh:"到期",ex1:"My work permit will expire in December 2028."},
+{n:34,t:"ext",cat:"whv",en:"experience",pron:"/ɪkˈspɪriəns/",m:"Experience is knowledge and skills gained from doing something.",zh:"經驗",ex1:"I have experience as a rehabilitation specialist."},
+{n:35,t:"ext",cat:"whv",en:"prepare",pron:"/prɪˈpɛr/",m:"To prepare means to get ready for something in advance.",zh:"準備",ex1:"I prepared all my documents before the trip."},
+
+// ===== EXTENDED ◇ — CANADA (8) =====
+{n:36,t:"ext",cat:"canada",en:"Vancouver",pron:"/vænˈkuːvər/",m:"A major city in British Columbia on the Pacific coast, known for mountains and diversity.",zh:"溫哥華",ex1:"Vancouver is surrounded by mountains and ocean."},
+{n:37,t:"ext",cat:"canada",en:"Toronto",pron:"/təˈrɒntoʊ/",m:"The largest city in Canada, located in Ontario. A major business and cultural centre.",zh:"多倫多",ex1:"Toronto is the biggest city in Canada."},
+{n:38,t:"ext",cat:"canada",en:"maple leaf",pron:"/ˈmeɪpəl liːf/",m:"The maple leaf is the national symbol of Canada, shown on the Canadian flag.",zh:"楓葉",ex1:"The Canadian flag has a red maple leaf."},
+{n:39,t:"ext",cat:"canada",en:"winter",pron:"/ˈwɪntər/",m:"The coldest season in Canada, from December to March. Temperatures can be very low.",zh:"冬天",ex1:"Canadian winters can be minus 20 degrees."},
+{n:40,t:"ext",cat:"canada",en:"temperature",pron:"/ˈtɛmpərətʃər/",m:"A measurement of how hot or cold it is. Canada uses Celsius.",zh:"溫度",ex1:"The temperature today is minus 5 degrees Celsius."},
+{n:41,t:"ext",cat:"canada",en:"diversity",pron:"/daɪˈvɜːrsɪti/",m:"Having people from many different backgrounds and cultures in one place.",zh:"多元性",ex1:"I love the diversity in Vancouver."},
+{n:42,t:"ext",cat:"canada",en:"multicultural",pron:"/ˌmʌltiˈkʌltʃərəl/",m:"Including people from many different cultures. Canada is officially multicultural.",zh:"多元文化的",ex1:"Vancouver is a very multicultural city."},
+{n:43,t:"ext",cat:"canada",en:"downtown",pron:"/ˈdaʊntaʊn/",m:"The central business area of a city with offices, shops, and restaurants.",zh:"市中心",ex1:"I work downtown near the SkyTrain station."},
+
+// ===== EXTENDED ◇ — CONVERSATIONS (7) =====
+{n:44,t:"ext",cat:"convo",en:"greet",pron:"/ɡriːt/",m:"To greet means to say hello or welcome someone when you meet them.",zh:"打招呼",ex1:"She greeted me with a warm smile."},
+{n:45,t:"ext",cat:"convo",en:"handshake",pron:"/ˈhændʃeɪk/",m:"When two people hold and shake each other's hand as a greeting.",zh:"握手",ex1:"He gave me a firm handshake at the interview."},
+{n:46,t:"ext",cat:"convo",en:"nationality",pron:"/ˌnæʃəˈnælɪti/",m:"The country you belong to or where you are a citizen.",zh:"國籍",ex1:"My nationality is Taiwanese."},
+{n:47,t:"ext",cat:"convo",en:"hometown",pron:"/ˈhoʊmtaʊn/",m:"The city or town where you grew up.",zh:"家鄉",ex1:"My hometown is Taichung in central Taiwan."},
+{n:48,t:"ext",cat:"convo",en:"fluent",pron:"/ˈfluːənt/",m:"Able to speak a language smoothly and confidently.",zh:"流利的",ex1:"I want to become fluent in English."},
+{n:49,t:"ext",cat:"convo",en:"confident",pron:"/ˈkɒnfɪdənt/",m:"Feeling sure about your ability to do something well.",zh:"有自信的",ex1:"I feel more confident when I use phrases I've practiced."},
+{n:50,t:"ext",cat:"convo",en:"polite",pron:"/pəˈlaɪt/",m:"Having good manners and showing respect. Canadians are known for being polite.",zh:"有禮貌的",ex1:"Canadians are very polite — they always say please and thank you."}
+];
+
+let curFilter='all',searchVal='';
+const catColor=c=>({arrival:'#C4856C',whv:'#B89B5E',canada:'#7B8EB8',convo:'#5B9E8F'}[c]||'#999');
+const catName=c=>({arrival:'Arrival & Immigration',whv:'Working Holiday',canada:'Canada Knowledge',convo:'First Conversations'}[c]||'');
+
+function renderV(){
+  const f=V.filter(w=>{
+    if(curFilter==='core'&&w.t!=='core')return false;
+    if(curFilter==='ext'&&w.t!=='ext')return false;
+    if(['arrival','whv','canada','convo'].includes(curFilter)&&w.cat!==curFilter)return false;
+    if(searchVal){const s=searchVal.toLowerCase();return w.en.toLowerCase().includes(s)||w.zh.includes(s);}
+    return true;
+  });
+  const g=document.getElementById('vgrid');
+  g.innerHTML=f.map(w=>{
+    const isCore=w.t==='core';
+    const typeLbl=isCore?'<span class="vc-type vc-type-core">★ CORE</span>':'<span class="vc-type vc-type-ext">◇ EXTENDED</span>';
+    let card=`<div class="vc"><div class="vc-a" style="background:${catColor(w.cat)}"></div><div class="vc-b">
+      <div class="vc-top"><div>${typeLbl} <span class="vc-cat" style="color:${catColor(w.cat)};margin-left:6px;">${catName(w.cat)}</span></div><span class="vc-num">#${String(w.n).padStart(2,'0')}</span></div>
+      <div class="vc-en">${w.en}</div><div class="vc-pron">${w.pron}</div>
+      <div class="vc-m">${w.m}</div><div class="vc-div"></div>
+      <div class="vc-zh" style="color:${catColor(w.cat)}">${w.zh}</div>
+      <div class="vc-ex">${w.ex1}</div>`;
+    if(isCore){
+      card+=`<div class="vc-ex">${w.ex2}</div>
+      <div class="vc-pr"><div class="vc-pr-lbl">✏ Practice</div>
+      <div class="vc-pr-item">1. ${w.p1}</div><div class="vc-pr-item">2. ${w.p2}</div></div>`;
+    }
+    card+=`</div></div>`;
+    return card;
+  }).join('');
+  document.getElementById('vcount').textContent=`Showing ${f.length} of ${V.length} words · ${V.filter(w=>w.t==='core').length} Core ★ · ${V.filter(w=>w.t==='ext').length} Extended ◇`;
+}
+
+function vf(f,btn){curFilter=f;document.querySelectorAll('.vbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderV();}
+function vs(val){searchVal=val;renderV();}
+
+function showTab(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+renderV();
+</script>
+</body>
+</html>
