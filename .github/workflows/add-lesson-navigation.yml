@@ -1,0 +1,186 @@
+name: Add Lesson Navigation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  add-lesson-navigation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Add shared navigation to lesson pages
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path.cwd()
+
+          LESSON_GLOBS = [
+              "lessons/ca-life/*.html",
+              "lessons/travel/*.html",
+              "lessons/business/*.html",
+          ]
+
+          HEADER = '''<!-- YSP_LESSON_NAV_START -->
+          <header class="site-header lesson-page-header">
+            <a class="brand" href="../../" aria-label="YSP Learn and Shine Home">
+              <img class="header-icon" src="../../assets/img/ysp-header-icon.png" alt="YSP mountain sunrise icon">
+              <span class="brand-text">
+                <span class="brand-name">YSP Learn &amp; Shine</span>
+                <span class="brand-tagline">Learn with Purpose. Shine with Confidence.</span>
+              </span>
+            </a>
+
+            <nav class="site-nav" aria-label="Lesson navigation">
+              <a href="../../">Home</a>
+              <a href="../">Lessons</a>
+              <a href="../../#about">About</a>
+            </nav>
+          </header>
+
+          <div class="lesson-top-actions">
+            <a class="back-to-lessons" href="../">← Back to Lessons</a>
+          </div>
+          <!-- YSP_LESSON_NAV_END -->'''
+
+          FOOTER = '''<!-- YSP_LESSON_FOOTER_START -->
+          <footer class="site-footer lesson-page-footer">
+            <div class="footer-brand">
+              <img class="footer-signature-logo" src="../../assets/img/ysp-logo-script-overlay.png" alt="YSP signature logo">
+              <span>YSP Learn &amp; Shine</span>
+            </div>
+            <p>Learn with Purpose. Shine with Confidence.</p>
+          </footer>
+          <!-- YSP_LESSON_FOOTER_END -->'''
+
+          EXTRA_CSS = r'''
+          /* Lesson page shared navigation */
+          .lesson-page-header {
+            position: sticky;
+            top: 0;
+          }
+
+          .lesson-top-actions {
+            max-width: 1160px;
+            margin: 22px auto 0;
+            padding: 0 24px;
+          }
+
+          .back-to-lessons {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.76);
+            border: 1px solid #e7dccd;
+            color: #1f1d1b;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            box-shadow: 0 10px 24px rgba(60, 43, 25, 0.06);
+          }
+
+          .back-to-lessons:hover {
+            transform: translateY(-1px);
+            transition: 180ms ease;
+          }
+
+          .lesson-page-footer {
+            margin-top: 72px;
+          }
+          '''
+
+          def ensure_stylesheet(html: str) -> str:
+              link = '<link rel="stylesheet" href="../../assets/css/site.css">'
+              if 'assets/css/site.css' in html:
+                  return html
+
+              if '</head>' in html:
+                  return html.replace('</head>', f'  {link}\n</head>', 1)
+
+              return html
+
+          def remove_old_blocks(html: str) -> str:
+              html = re.sub(r'\s*<!-- YSP_LESSON_NAV_START -->.*?<!-- YSP_LESSON_NAV_END -->\s*', '\n', html, flags=re.S)
+              html = re.sub(r'\s*<!-- YSP_LESSON_FOOTER_START -->.*?<!-- YSP_LESSON_FOOTER_END -->\s*', '\n', html, flags=re.S)
+              return html
+
+          def add_header(html: str) -> str:
+              if '<body' not in html.lower():
+                  return HEADER + "\n" + html
+
+              match = re.search(r'<body[^>]*>', html, flags=re.I)
+              if not match:
+                  return HEADER + "\n" + html
+
+              insert_at = match.end()
+              return html[:insert_at] + "\n" + HEADER + "\n" + html[insert_at:]
+
+          def add_footer(html: str) -> str:
+              if '</body>' in html.lower():
+                  return re.sub(r'</body>', FOOTER + '\n</body>', html, count=1, flags=re.I)
+              return html + "\n" + FOOTER + "\n"
+
+          changed_files = []
+
+          for pattern in LESSON_GLOBS:
+              for path in ROOT.glob(pattern):
+                  if path.name == "index.html":
+                      continue
+
+                  original = path.read_text(encoding="utf-8", errors="ignore")
+                  updated = remove_old_blocks(original)
+                  updated = ensure_stylesheet(updated)
+                  updated = add_header(updated)
+                  updated = add_footer(updated)
+
+                  if updated != original:
+                      path.write_text(updated, encoding="utf-8")
+                      changed_files.append(str(path.relative_to(ROOT)))
+
+          css_path = ROOT / "assets/css/site.css"
+          css_path.parent.mkdir(parents=True, exist_ok=True)
+
+          if css_path.exists():
+              css = css_path.read_text(encoding="utf-8", errors="ignore")
+          else:
+              css = ""
+
+          if "Lesson page shared navigation" not in css:
+              css = css.rstrip() + "\n\n" + EXTRA_CSS.strip() + "\n"
+              css_path.write_text(css, encoding="utf-8")
+              changed_files.append("assets/css/site.css")
+
+          print("Updated files:")
+          for item in changed_files:
+              print("-", item)
+
+          if not changed_files:
+              print("No lesson files needed updates.")
+          PY
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Add shared lesson navigation"
+            git push
+          fi
