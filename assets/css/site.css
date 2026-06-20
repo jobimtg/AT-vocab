@@ -1,0 +1,73 @@
+:root {
+  --bg: #f8f3ea;
+  --card: #ffffff;
+  --ink: #1f1d1b;
+  --muted: #756b5f;
+  --gold: #cfa15b;
+  --line: #e7dccd;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Noto Sans TC", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 7%;
+  background: rgba(248, 243, 234, 0.96);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-logo {
+  height: 54px;
+  width: auto;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 36px 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.footer-signature-logo {
+  height: 24px;
+  width: auto;
+  vertical-align: middle;
+}
+
+.site-footer p {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
