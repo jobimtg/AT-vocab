@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting｜YSP Learn & Shine</title>
+  <script>
+    const path = decodeURIComponent(window.location.pathname);
+    const redirects = [
+      { old: "/AT-vocab/CA Life/U1-L1/", next: "/AT-vocab/lessons/ca-life/u1-l1.html" },
+      { old: "/AT-vocab/CA Life/U1-L1/index.html", next: "/AT-vocab/lessons/ca-life/u1-l1.html" },
+      { old: "/AT-vocab/L1/", next: "/AT-vocab/lessons/travel/u1-l1.html" },
+      { old: "/AT-vocab/L1/index.html", next: "/AT-vocab/lessons/travel/u1-l1.html" },
+      { old: "/AT-vocab/L2/", next: "/AT-vocab/lessons/travel/u1-l2.html" },
+      { old: "/AT-vocab/L2/index.html", next: "/AT-vocab/lessons/travel/u1-l2.html" },
+      { old: "/AT-vocab/L6/", next: "/AT-vocab/lessons/travel/u1-l6.html" },
+      { old: "/AT-vocab/L6/index.html", next: "/AT-vocab/lessons/travel/u1-l6.html" },
+      { old: "/AT-vocab/BU1-L1/", next: "/AT-vocab/lessons/business/u1-l1.html" },
+      { old: "/AT-vocab/BU1-L1/index.html", next: "/AT-vocab/lessons/business/u1-l1.html" }
+    ];
+    const match = redirects.find(item => path === item.old);
+    if (match) {
+      window.location.replace(match.next);
+    }
+  </script>
+  <link rel="stylesheet" href="/AT-vocab/assets/css/site.css">
+</head>
+<body>
+  <main class="simple-page">
+    <h1>Page not found</h1>
+    <p>This page may have moved to the new Lessons structure.</p>
+    <a class="btn-primary" href="/AT-vocab/lessons/">Go to Lessons</a>
+  </main>
+</body>
+</html>
