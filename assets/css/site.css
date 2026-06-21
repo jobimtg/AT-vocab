@@ -450,3 +450,43 @@ html {
     font-size: 10px;
   }
 }
+
+/* Course image cards */
+.course-card.has-image {
+  padding: 0;
+  overflow: hidden;
+}
+
+.course-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #f8f3ea;
+  border-bottom: 1px solid #e7dccd;
+}
+
+.course-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.01);
+}
+
+.course-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 250, 242, 0.02) 0%, rgba(31, 29, 27, 0.08) 100%);
+  pointer-events: none;
+}
+
+.course-card-body {
+  padding: 24px 26px 26px;
+}
+
+.course-card.has-image:hover .course-card-media img {
+  transform: scale(1.045);
+  transition: 260ms ease;
+}
