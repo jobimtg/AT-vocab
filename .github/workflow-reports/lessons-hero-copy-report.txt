@@ -1,0 +1,13 @@
+Lessons Hero Copy Report
+========================
+
+New copy:
+
+LESSONS
+
+Explore Your English Path and Find the Right Lesson for Your Next Step.
+
+Choose a lesson path that matches your goal. Whether you want to build everyday confidence, prepare for travel, or improve workplace communication, each lesson is designed to help you use English in real situations.
+
+Changes:
+- Updated lessons/index.html hero copy.
