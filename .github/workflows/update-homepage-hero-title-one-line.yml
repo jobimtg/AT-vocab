@@ -1,0 +1,124 @@
+name: Update Homepage Hero Title One Line
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-homepage-hero-title:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update hero title text and one-line style
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path.cwd()
+          index_path = ROOT / "index.html"
+          css_path = ROOT / "assets/css/site.css"
+          report_dir = ROOT / ".github/workflow-reports"
+          report_dir.mkdir(parents=True, exist_ok=True)
+          report_path = report_dir / "homepage-hero-title-report.txt"
+
+          if not index_path.exists():
+              raise SystemExit("index.html not found.")
+
+          html = index_path.read_text(encoding="utf-8", errors="ignore")
+          original_html = html
+          changes = []
+
+          new_title = "Turn everyday moments into English practice"
+
+          pattern = re.compile(
+              r'(<section\b[^>]*class="[^"]*\bhero\b[^"]*"[^>]*>.*?<h1>)(.*?)(</h1>)',
+              flags=re.I | re.S
+          )
+          html, count = pattern.subn(r'\1' + new_title + r'\3', html, count=1)
+
+          if count:
+              changes.append("Updated homepage hero heading text.")
+          else:
+              changes.append("WARNING: Could not find homepage hero heading.")
+
+          if html != original_html:
+              index_path.write_text(html, encoding="utf-8")
+
+          css_path.parent.mkdir(parents=True, exist_ok=True)
+          css = css_path.read_text(encoding="utf-8", errors="ignore") if css_path.exists() else ""
+          original_css = css
+
+          css = re.sub(
+              r'/\* Homepage hero title one-line override \*/.*?(?=\n/\*|\Z)',
+              '',
+              css,
+              flags=re.S
+          ).rstrip()
+
+          hero_css = "\n".join([
+              "/* Homepage hero title one-line override */",
+              ".hero h1 {",
+              "  font-size: clamp(30px, 5vw, 82px);",
+              "  line-height: 1.05;",
+              "  letter-spacing: -0.045em;",
+              "  white-space: nowrap;",
+              "  text-wrap: nowrap;",
+              "}",
+              "",
+              "@media (max-width: 900px) {",
+              "  .hero h1 {",
+              "    font-size: clamp(24px, 4.2vw, 54px);",
+              "  }",
+              "}",
+              "",
+              "@media (max-width: 640px) {",
+              "  .hero h1 {",
+              "    font-size: clamp(18px, 3.8vw, 32px);",
+              "  }",
+              "}",
+          ])
+
+          css = css + "\n\n" + hero_css.strip() + "\n"
+
+          if css != original_css:
+              css_path.write_text(css, encoding="utf-8")
+              changes.append("Updated assets/css/site.css for one-line hero title.")
+
+          report = [
+              "Homepage Hero Title One Line Report",
+              "===================================",
+              "",
+              "New hero title:",
+              "- Turn everyday moments into English practice",
+              "",
+              "Changes:",
+          ]
+          report.extend([f"- {item}" for item in changes])
+
+          report_path.write_text("\n".join(report) + "\n", encoding="utf-8")
+          print("\n".join(report))
+          PY
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update homepage hero title to one-line version"
+            git push
+          fi
