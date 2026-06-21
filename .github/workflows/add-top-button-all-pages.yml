@@ -1,4 +1,4 @@
-name: Add Top Button To All Pages
+name: Add Top Button To All Pages V2
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -35,22 +35,22 @@ jobs:
           BUTTON_START = "<!-- YSP_TOP_BUTTON_START -->"
           BUTTON_END = "<!-- YSP_TOP_BUTTON_END -->"
 
-          TOP_STYLE = f'''{STYLE_START}
+          TOP_STYLE = """<!-- YSP_TOP_BUTTON_STYLE_START -->
           <style>
-            html {{
+            html {
               scroll-behavior: smooth;
-            }}
+            }
 
-            .ysp-page-top-anchor {{
+            .ysp-page-top-anchor {
               position: absolute;
               top: 0;
               left: 0;
               width: 1px;
               height: 1px;
               pointer-events: none;
-            }}
+            }
 
-            .ysp-page-top-button {{
+            .ysp-page-top-button {
               position: fixed;
               right: 24px;
               bottom: 24px;
@@ -70,57 +70,57 @@ jobs:
               box-shadow: 0 14px 34px rgba(60, 43, 25, 0.22);
               opacity: 0.92;
               font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
-            }}
+            }
 
-            .ysp-page-top-button:hover {{
+            .ysp-page-top-button:hover {
               transform: translateY(-2px);
               opacity: 1;
               transition: 180ms ease;
-            }}
+            }
 
-            .ysp-page-top-arrow {{
+            .ysp-page-top-arrow {
               font-size: 22px;
               line-height: 1;
               font-weight: 900;
-            }}
+            }
 
-            .ysp-page-top-label {{
+            .ysp-page-top-label {
               font-size: 11px;
               line-height: 1;
               font-weight: 900;
               letter-spacing: 0.08em;
               text-transform: uppercase;
-            }}
+            }
 
-            @media (max-width: 700px) {{
-              .ysp-page-top-button {{
+            @media (max-width: 700px) {
+              .ysp-page-top-button {
                 right: 16px;
                 bottom: 16px;
                 width: 52px;
                 height: 52px;
-              }}
+              }
 
-              .ysp-page-top-arrow {{
+              .ysp-page-top-arrow {
                 font-size: 20px;
-              }}
+              }
 
-              .ysp-page-top-label {{
+              .ysp-page-top-label {
                 font-size: 10px;
-              }}
-            }}
+              }
+            }
           </style>
-          {STYLE_END}'''
+          <!-- YSP_TOP_BUTTON_STYLE_END -->"""
 
-          TOP_ANCHOR = f'''{ANCHOR_START}
+          TOP_ANCHOR = """<!-- YSP_TOP_ANCHOR_START -->
           <div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
-          {ANCHOR_END}'''
+          <!-- YSP_TOP_ANCHOR_END -->"""
 
-          TOP_BUTTON = f'''{BUTTON_START}
+          TOP_BUTTON = """<!-- YSP_TOP_BUTTON_START -->
           <a class="ysp-page-top-button" href="#top" aria-label="Back to top">
             <span class="ysp-page-top-arrow">↑</span>
             <span class="ysp-page-top-label">Top</span>
           </a>
-          {BUTTON_END}'''
+          <!-- YSP_TOP_BUTTON_END -->"""
 
           def strip_block(text, start, end):
               pattern = re.escape(start) + r".*?" + re.escape(end)
@@ -128,28 +128,43 @@ jobs:
 
           def add_style(html):
               html = strip_block(html, STYLE_START, STYLE_END)
+
               if re.search(r"</head\s*>", html, flags=re.I):
                   return re.sub(r"</head\s*>", TOP_STYLE + "\n</head>", html, count=1, flags=re.I)
+
               return TOP_STYLE + "\n" + html
 
           def add_anchor(html):
               html = strip_block(html, ANCHOR_START, ANCHOR_END)
 
-              if re.search(r'id=["\\']top["\\']', html, flags=re.I):
+              if re.search("id=[\\\"']top[\\\"']", html, flags=re.I):
                   return html
 
               match = re.search(r"<body[^>]*>", html, flags=re.I)
+
               if match:
                   return html[:match.end()] + "\n" + TOP_ANCHOR + "\n" + html[match.end():]
+
               return TOP_ANCHOR + "\n" + html
 
           def add_button(html):
               html = strip_block(html, BUTTON_START, BUTTON_END)
+
+              # Remove the older homepage-only top button block to prevent duplicate buttons.
+              html = re.sub(
+                  r"\s*<!-- YSP_BACK_TO_TOP_START -->.*?<!-- YSP_BACK_TO_TOP_END -->\s*",
+                  "\n",
+                  html,
+                  flags=re.S,
+              )
+
               if re.search(r"</body\s*>", html, flags=re.I):
                   return re.sub(r"</body\s*>", TOP_BUTTON + "\n</body>", html, count=1, flags=re.I)
+
               return html + "\n" + TOP_BUTTON + "\n"
 
           html_files = []
+
           for path in ROOT.glob("**/*.html"):
               if ".git" in path.parts:
                   continue
@@ -170,8 +185,8 @@ jobs:
                   changed.append(path.relative_to(ROOT).as_posix())
 
           report = [
-              "YSP Top Button All Pages Report",
-              "===============================",
+              "YSP Top Button All Pages V2 Report",
+              "==================================",
               "",
               f"HTML files scanned: {len(html_files)}",
               f"Files updated: {len(changed)}",
