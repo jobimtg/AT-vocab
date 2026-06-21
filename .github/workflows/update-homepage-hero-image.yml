@@ -25,8 +25,8 @@ jobs:
 
           ROOT = Path.cwd()
           index_path = ROOT / "index.html"
-          css_path = ROOT / "assets" / "css" / "site.css"
-          report_dir = ROOT / ".github" / "workflow-reports"
+          css_path = ROOT / "assets/css/site.css"
+          report_dir = ROOT / ".github/workflow-reports"
           report_dir.mkdir(parents=True, exist_ok=True)
           report_path = report_dir / "homepage-hero-image-report.txt"
 
@@ -52,14 +52,14 @@ jobs:
               flags=re.S,
           )
 
-          hero_section = re.search(
+          pattern = re.compile(
               r"(<section\b[^>]*class=\"[^\"]*\bhero\b[^\"]*\"[^>]*>)",
-              html,
               flags=re.I,
           )
+          match = pattern.search(html)
 
-          if hero_section:
-              insert_at = hero_section.end()
+          if match:
+              insert_at = match.end()
               html = html[:insert_at] + "\n" + hero_block + "\n" + html[insert_at:]
               changes.append("Inserted hero image into homepage hero section.")
           else:
@@ -69,7 +69,12 @@ jobs:
               index_path.write_text(html, encoding="utf-8")
 
           css_path.parent.mkdir(parents=True, exist_ok=True)
-          css = css_path.read_text(encoding="utf-8", errors="ignore") if css_path.exists() else ""
+
+          if css_path.exists():
+              css = css_path.read_text(encoding="utf-8", errors="ignore")
+          else:
+              css = ""
+
           original_css = css
 
           css = re.sub(
@@ -79,31 +84,31 @@ jobs:
               flags=re.S,
           ).rstrip()
 
-          hero_css = """
-          /* Homepage hero image */
-          .home-hero-image-wrap {
-            max-width: 1180px;
-            margin: -48px auto 46px;
-            border-radius: 34px;
-            overflow: hidden;
-            border: 1px solid #e7dccd;
-            background: #fffaf2;
-            box-shadow: 0 22px 54px rgba(60, 43, 25, 0.12);
-          }
-
-          .home-hero-image {
-            width: 100%;
-            height: auto;
-            display: block;
-          }
-
-          @media (max-width: 820px) {
-            .home-hero-image-wrap {
-              margin: -28px auto 34px;
-              border-radius: 22px;
-            }
-          }
-          """
+          hero_css = "\n".join([
+              "/* Homepage hero image */",
+              ".home-hero-image-wrap {",
+              "  max-width: 1180px;",
+              "  margin: -48px auto 46px;",
+              "  border-radius: 34px;",
+              "  overflow: hidden;",
+              "  border: 1px solid #e7dccd;",
+              "  background: #fffaf2;",
+              "  box-shadow: 0 22px 54px rgba(60, 43, 25, 0.12);",
+              "}",
+              "",
+              ".home-hero-image {",
+              "  width: 100%;",
+              "  height: auto;",
+              "  display: block;",
+              "}",
+              "",
+              "@media (max-width: 820px) {",
+              "  .home-hero-image-wrap {",
+              "    margin: -28px auto 34px;",
+              "    border-radius: 22px;",
+              "  }",
+              "}",
+          ])
 
           css = css + "\n\n" + hero_css.strip() + "\n"
 
@@ -120,7 +125,9 @@ jobs:
               "",
               "Changes:",
           ]
-          report.extend([f"- {c}" for c in changes])
+
+          report.extend([f"- {item}" for item in changes])
+
           report_path.write_text("\n".join(report) + "\n", encoding="utf-8")
           print("\n".join(report))
           PY
