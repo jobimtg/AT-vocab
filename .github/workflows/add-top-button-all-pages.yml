@@ -1,0 +1,204 @@
+name: Add Top Button To All Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  add-top-button:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add floating Top button to every HTML page
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path.cwd()
+          REPORT_DIR = ROOT / ".github" / "workflow-reports"
+          REPORT_DIR.mkdir(parents=True, exist_ok=True)
+          REPORT_FILE = REPORT_DIR / "top-button-all-pages-report.txt"
+
+          STYLE_START = "<!-- YSP_TOP_BUTTON_STYLE_START -->"
+          STYLE_END = "<!-- YSP_TOP_BUTTON_STYLE_END -->"
+          ANCHOR_START = "<!-- YSP_TOP_ANCHOR_START -->"
+          ANCHOR_END = "<!-- YSP_TOP_ANCHOR_END -->"
+          BUTTON_START = "<!-- YSP_TOP_BUTTON_START -->"
+          BUTTON_END = "<!-- YSP_TOP_BUTTON_END -->"
+
+          TOP_STYLE = f'''{STYLE_START}
+          <style>
+            html {{
+              scroll-behavior: smooth;
+            }}
+
+            .ysp-page-top-anchor {{
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 1px;
+              height: 1px;
+              pointer-events: none;
+            }}
+
+            .ysp-page-top-button {{
+              position: fixed;
+              right: 24px;
+              bottom: 24px;
+              z-index: 99999;
+              width: 58px;
+              height: 58px;
+              border-radius: 999px;
+              display: inline-flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 1px;
+              background: #1f1d1b;
+              color: #ffffff;
+              text-decoration: none;
+              border: 1px solid rgba(255, 255, 255, 0.28);
+              box-shadow: 0 14px 34px rgba(60, 43, 25, 0.22);
+              opacity: 0.92;
+              font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+            }}
+
+            .ysp-page-top-button:hover {{
+              transform: translateY(-2px);
+              opacity: 1;
+              transition: 180ms ease;
+            }}
+
+            .ysp-page-top-arrow {{
+              font-size: 22px;
+              line-height: 1;
+              font-weight: 900;
+            }}
+
+            .ysp-page-top-label {{
+              font-size: 11px;
+              line-height: 1;
+              font-weight: 900;
+              letter-spacing: 0.08em;
+              text-transform: uppercase;
+            }}
+
+            @media (max-width: 700px) {{
+              .ysp-page-top-button {{
+                right: 16px;
+                bottom: 16px;
+                width: 52px;
+                height: 52px;
+              }}
+
+              .ysp-page-top-arrow {{
+                font-size: 20px;
+              }}
+
+              .ysp-page-top-label {{
+                font-size: 10px;
+              }}
+            }}
+          </style>
+          {STYLE_END}'''
+
+          TOP_ANCHOR = f'''{ANCHOR_START}
+          <div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
+          {ANCHOR_END}'''
+
+          TOP_BUTTON = f'''{BUTTON_START}
+          <a class="ysp-page-top-button" href="#top" aria-label="Back to top">
+            <span class="ysp-page-top-arrow">↑</span>
+            <span class="ysp-page-top-label">Top</span>
+          </a>
+          {BUTTON_END}'''
+
+          def strip_block(text, start, end):
+              pattern = re.escape(start) + r".*?" + re.escape(end)
+              return re.sub(pattern, "", text, flags=re.S)
+
+          def add_style(html):
+              html = strip_block(html, STYLE_START, STYLE_END)
+              if re.search(r"</head\s*>", html, flags=re.I):
+                  return re.sub(r"</head\s*>", TOP_STYLE + "\n</head>", html, count=1, flags=re.I)
+              return TOP_STYLE + "\n" + html
+
+          def add_anchor(html):
+              html = strip_block(html, ANCHOR_START, ANCHOR_END)
+
+              if re.search(r'id=["\\']top["\\']', html, flags=re.I):
+                  return html
+
+              match = re.search(r"<body[^>]*>", html, flags=re.I)
+              if match:
+                  return html[:match.end()] + "\n" + TOP_ANCHOR + "\n" + html[match.end():]
+              return TOP_ANCHOR + "\n" + html
+
+          def add_button(html):
+              html = strip_block(html, BUTTON_START, BUTTON_END)
+              if re.search(r"</body\s*>", html, flags=re.I):
+                  return re.sub(r"</body\s*>", TOP_BUTTON + "\n</body>", html, count=1, flags=re.I)
+              return html + "\n" + TOP_BUTTON + "\n"
+
+          html_files = []
+          for path in ROOT.glob("**/*.html"):
+              if ".git" in path.parts:
+                  continue
+              if "node_modules" in path.parts:
+                  continue
+              html_files.append(path)
+
+          changed = []
+
+          for path in sorted(html_files):
+              original = path.read_text(encoding="utf-8", errors="ignore")
+              updated = add_style(original)
+              updated = add_anchor(updated)
+              updated = add_button(updated)
+
+              if updated != original:
+                  path.write_text(updated, encoding="utf-8")
+                  changed.append(path.relative_to(ROOT).as_posix())
+
+          report = [
+              "YSP Top Button All Pages Report",
+              "===============================",
+              "",
+              f"HTML files scanned: {len(html_files)}",
+              f"Files updated: {len(changed)}",
+              "",
+              "Updated files:",
+          ]
+
+          if changed:
+              report.extend([f"- {item}" for item in changed])
+          else:
+              report.append("- None")
+
+          REPORT_FILE.write_text("\n".join(report) + "\n", encoding="utf-8")
+          print("\n".join(report))
+          PY
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Add floating top button to all pages"
+            git push
+          fi
