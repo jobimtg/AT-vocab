@@ -24,45 +24,62 @@ jobs:
           import re
 
           ROOT = Path.cwd()
-          index_path = ROOT / 'index.html'
-          css_path = ROOT / 'assets/css/site.css'
-          report_dir = ROOT / '.github/workflow-reports'
+          index_path = ROOT / "index.html"
+          css_path = ROOT / "assets" / "css" / "site.css"
+          report_dir = ROOT / ".github" / "workflow-reports"
           report_dir.mkdir(parents=True, exist_ok=True)
-          report_path = report_dir / 'homepage-hero-image-report.txt'
+          report_path = report_dir / "homepage-hero-image-report.txt"
 
           if not index_path.exists():
-              raise SystemExit('index.html not found.')
+              raise SystemExit("index.html not found.")
 
-          html = index_path.read_text(encoding='utf-8', errors='ignore')
+          html = index_path.read_text(encoding="utf-8", errors="ignore")
           original_html = html
           changes = []
 
-          hero_block = '''      <!-- YSP_HOME_HERO_IMAGE_START -->
-      <div class="home-hero-image-wrap">
-        <img class="home-hero-image" src="assets/img/home-hero-ysp.png" alt="YSP Learn and Shine English journey hero image">
-      </div>
-      <!-- YSP_HOME_HERO_IMAGE_END -->'''
+          hero_block = "\n".join([
+              "      <!-- YSP_HOME_HERO_IMAGE_START -->",
+              "      <div class=\"home-hero-image-wrap\">",
+              "        <img class=\"home-hero-image\" src=\"assets/img/home-hero-ysp.png\" alt=\"YSP Learn and Shine English journey hero image\">",
+              "      </div>",
+              "      <!-- YSP_HOME_HERO_IMAGE_END -->",
+          ])
 
-          html = re.sub(r'\s*<!-- YSP_HOME_HERO_IMAGE_START -->.*?<!-- YSP_HOME_HERO_IMAGE_END -->\s*', '\n', html, flags=re.S)
-          pattern = re.compile(r'(<section\b[^>]*class="[^"]*\bhero\b[^"]*"[^>]*>)', flags=re.I)
-          match = pattern.search(html)
+          html = re.sub(
+              r"\s*<!-- YSP_HOME_HERO_IMAGE_START -->.*?<!-- YSP_HOME_HERO_IMAGE_END -->\s*",
+              "\n",
+              html,
+              flags=re.S,
+          )
 
-          if match:
-              insert_at = match.end()
-              html = html[:insert_at] + '\n' + hero_block + '\n' + html[insert_at:]
-              changes.append('Inserted hero image into homepage hero section.')
+          hero_section = re.search(
+              r"(<section\b[^>]*class=\"[^\"]*\bhero\b[^\"]*\"[^>]*>)",
+              html,
+              flags=re.I,
+          )
+
+          if hero_section:
+              insert_at = hero_section.end()
+              html = html[:insert_at] + "\n" + hero_block + "\n" + html[insert_at:]
+              changes.append("Inserted hero image into homepage hero section.")
           else:
-              changes.append('WARNING: Could not find homepage hero section.')
+              changes.append("WARNING: Could not find homepage hero section.")
 
           if html != original_html:
-              index_path.write_text(html, encoding='utf-8')
+              index_path.write_text(html, encoding="utf-8")
 
           css_path.parent.mkdir(parents=True, exist_ok=True)
-          css = css_path.read_text(encoding='utf-8', errors='ignore') if css_path.exists() else ''
+          css = css_path.read_text(encoding="utf-8", errors="ignore") if css_path.exists() else ""
           original_css = css
-          css = re.sub(r'/\* Homepage hero image \*/.*?(?=\n/\*|\Z)', '', css, flags=re.S).rstrip()
 
-          hero_css = '''
+          css = re.sub(
+              r"/\* Homepage hero image \*/.*?(?=\n/\*|\Z)",
+              "",
+              css,
+              flags=re.S,
+          ).rstrip()
+
+          hero_css = """
           /* Homepage hero image */
           .home-hero-image-wrap {
             max-width: 1180px;
@@ -86,27 +103,26 @@ jobs:
               border-radius: 22px;
             }
           }
-          '''
+          """
 
-          css = css + '\n\n' + hero_css.strip() + '\n'
+          css = css + "\n\n" + hero_css.strip() + "\n"
 
           if css != original_css:
-              css_path.write_text(css, encoding='utf-8')
-              changes.append('Updated assets/css/site.css for homepage hero image.')
+              css_path.write_text(css, encoding="utf-8")
+              changes.append("Updated assets/css/site.css for homepage hero image.")
 
           report = [
-              'Homepage Hero Image Report',
-              '==========================',
-              '',
-              'Expected image path:',
-              '- assets/img/home-hero-ysp.png',
-              '',
-              'Changes:',
-              *[f'- {c}' for c in changes],
+              "Homepage Hero Image Report",
+              "==========================",
+              "",
+              "Expected image path:",
+              "- assets/img/home-hero-ysp.png",
+              "",
+              "Changes:",
           ]
-
-          report_path.write_text('\n'.join(report) + '\n', encoding='utf-8')
-          print('\n'.join(report))
+          report.extend([f"- {c}" for c in changes])
+          report_path.write_text("\n".join(report) + "\n", encoding="utf-8")
+          print("\n".join(report))
           PY
 
       - name: Commit and push changes
