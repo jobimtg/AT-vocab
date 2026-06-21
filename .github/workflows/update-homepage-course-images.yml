@@ -1,0 +1,179 @@
+name: Update Homepage Course Images
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-homepage-course-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add course images to homepage cards
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path.cwd()
+          index_path = ROOT / "index.html"
+          css_path = ROOT / "assets/css/site.css"
+          report_dir = ROOT / ".github/workflow-reports"
+          report_dir.mkdir(parents=True, exist_ok=True)
+          report_path = report_dir / "homepage-course-images-report.txt"
+
+          if not index_path.exists():
+              raise SystemExit("index.html not found.")
+
+          html = index_path.read_text(encoding="utf-8", errors="ignore")
+          original_html = html
+          changes = []
+
+          cards = [
+              ("lessons/#ca-life", "assets/img/course-canada-life.png", "Canada Life and Career English course image"),
+              ("lessons/#travel", "assets/img/course-travel.png", "Travel English course image"),
+              ("lessons/#business", "assets/img/course-business.png", "Business English course image"),
+          ]
+
+          def clean_inner(inner: str) -> str:
+              inner = re.sub(r'\s*<div\s+class="course-card-media">.*?</div>\s*', '\n', inner, flags=re.I | re.S)
+              m = re.search(r'^\s*<div\s+class="course-card-body">\s*(.*?)\s*</div>\s*$', inner, flags=re.I | re.S)
+              if m:
+                  inner = m.group(1)
+              return inner.strip()
+
+          def update_card(html: str, href: str, img: str, alt: str):
+              pattern = re.compile(
+                  r'(<a\b(?=[^>]*\bclass="[^"]*\bcourse-card\b[^"]*")(?=[^>]*\bhref="' + re.escape(href) + r'")[^>]*>)(.*?)(</a>)',
+                  flags=re.I | re.S
+              )
+              m = pattern.search(html)
+              if not m:
+                  return html, False
+
+              start, inner, end = m.group(1), m.group(2), m.group(3)
+
+              def add_has_image(match):
+                  classes = match.group(1)
+                  if "has-image" in classes.split():
+                      return f'class="{classes}"'
+                  return f'class="{classes} has-image"'
+
+              start = re.sub(r'class="([^"]*)"', add_has_image, start, count=1, flags=re.I)
+
+              inner = clean_inner(inner)
+              new_inner = f"""
+                <div class="course-card-media">
+                  <img src="{img}" alt="{alt}" loading="lazy">
+                </div>
+                <div class="course-card-body">
+                  {inner}
+                </div>
+              """
+              new_card = start + new_inner + "\n      " + end
+              return html[:m.start()] + new_card + html[m.end():], True
+
+          for href, img, alt in cards:
+              if not (ROOT / img).exists():
+                  changes.append(f'WARNING: image not found yet: {img}')
+
+              html, ok = update_card(html, href, img, alt)
+              if ok:
+                  changes.append(f'Updated homepage card: {href}')
+              else:
+                  changes.append(f'WARNING: could not find homepage card: {href}')
+
+          if html != original_html:
+              index_path.write_text(html, encoding="utf-8")
+
+          css_path.parent.mkdir(parents=True, exist_ok=True)
+          css = css_path.read_text(encoding="utf-8", errors="ignore") if css_path.exists() else ""
+          original_css = css
+
+          css = re.sub(r'/\* Course image cards \*/.*?(?=\n/\*|\Z)', '', css, flags=re.S).rstrip()
+
+          image_card_css = """
+          /* Course image cards */
+          .course-card.has-image {
+            padding: 0;
+            overflow: hidden;
+          }
+
+          .course-card-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #f8f3ea;
+            border-bottom: 1px solid #e7dccd;
+          }
+
+          .course-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.01);
+          }
+
+          .course-card-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255, 250, 242, 0.02) 0%, rgba(31, 29, 27, 0.08) 100%);
+            pointer-events: none;
+          }
+
+          .course-card-body {
+            padding: 24px 26px 26px;
+          }
+
+          .course-card.has-image:hover .course-card-media img {
+            transform: scale(1.045);
+            transition: 260ms ease;
+          }
+          """
+          css = css + "\n\n" + image_card_css.strip() + "\n"
+
+          if css != original_css:
+              css_path.write_text(css, encoding="utf-8")
+              changes.append("Updated assets/css/site.css for course image cards.")
+
+          report = [
+              "Homepage Course Images Report",
+              "=============================",
+              "",
+              "Expected image paths:",
+              "- assets/img/course-canada-life.png",
+              "- assets/img/course-travel.png",
+              "- assets/img/course-business.png",
+              "",
+              "Changes:",
+              *[f"- {c}" for c in changes],
+          ]
+          report_path.write_text("\n".join(report) + "\n", encoding="utf-8")
+          print("\n".join(report))
+          PY
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Add course images to homepage"
+            git push
+          fi

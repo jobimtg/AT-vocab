@@ -1,0 +1,176 @@
+name: Check Site Links
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-site-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check internal HTML links and assets
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from urllib.parse import urlparse, unquote
+          import sys
+
+          ROOT = Path.cwd()
+          REPORT_DIR = ROOT / ".github" / "workflow-reports"
+          REPORT_DIR.mkdir(parents=True, exist_ok=True)
+          REPORT_FILE = REPORT_DIR / "link-check-report.md"
+
+          IGNORE_SCHEMES = {"http", "https", "mailto", "tel", "javascript", "data"}
+
+          class LinkParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links = []
+                  self.ids = set()
+
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+
+                  if "id" in attrs:
+                      self.ids.add(attrs["id"])
+                  if "name" in attrs:
+                      self.ids.add(attrs["name"])
+
+                  if tag == "a" and attrs.get("href"):
+                      self.links.append(("href", attrs["href"]))
+                  if tag in {"img", "script", "iframe", "source"} and attrs.get("src"):
+                      self.links.append(("src", attrs["src"]))
+                  if tag == "link" and attrs.get("href"):
+                      self.links.append(("asset", attrs["href"]))
+
+          def parse_html(path):
+              parser = LinkParser()
+              parser.feed(path.read_text(encoding="utf-8", errors="ignore"))
+              return parser
+
+          html_files = sorted(ROOT.glob("**/*.html"))
+          html_files = [
+              p for p in html_files
+              if ".git" not in p.parts
+              and "node_modules" not in p.parts
+          ]
+
+          ids_by_file = {}
+          links_by_file = {}
+
+          for html_file in html_files:
+              parser = parse_html(html_file)
+              ids_by_file[html_file.resolve()] = parser.ids
+              links_by_file[html_file] = parser.links
+
+          missing_files = []
+          missing_anchors = []
+          checked = 0
+
+          def resolve_target(base_file: Path, raw_url: str):
+              raw_url = raw_url.strip()
+              if not raw_url:
+                  return None, None, "empty"
+
+              parsed = urlparse(raw_url)
+              if parsed.scheme in IGNORE_SCHEMES:
+                  return None, None, "external"
+              if raw_url.startswith("//"):
+                  return None, None, "external"
+
+              path_part = unquote(parsed.path)
+              anchor = unquote(parsed.fragment) if parsed.fragment else None
+
+              if path_part == "":
+                  target = base_file
+              elif path_part.startswith("/"):
+                  clean = path_part.lstrip("/")
+                  if clean.startswith("AT-vocab/"):
+                      clean = clean[len("AT-vocab/"):]
+                  target = ROOT / clean
+              else:
+                  target = base_file.parent / path_part
+
+              if raw_url.endswith("/") or (path_part and not Path(path_part).suffix):
+                  if target.is_dir():
+                      target = target / "index.html"
+                  elif not target.exists() and (target / "index.html").exists():
+                      target = target / "index.html"
+
+              return target.resolve(), anchor, "internal"
+
+          for base_file, links in links_by_file.items():
+              for kind, url in links:
+                  target, anchor, status = resolve_target(base_file, url)
+                  if status != "internal":
+                      continue
+
+                  checked += 1
+                  rel_base = base_file.relative_to(ROOT).as_posix()
+
+                  if target is None:
+                      continue
+
+                  if not target.exists():
+                      missing_files.append((rel_base, kind, url))
+                      continue
+
+                  if anchor and target.suffix.lower() in {".html", ".htm"}:
+                      ids = ids_by_file.get(target)
+                      if ids is None:
+                          try:
+                              ids = parse_html(target).ids
+                          except Exception:
+                              ids = set()
+
+                      if anchor not in ids:
+                          missing_anchors.append((rel_base, kind, url, target.relative_to(ROOT).as_posix(), anchor))
+
+          report = []
+          report.append("# Site Link Check Report")
+          report.append("")
+          report.append(f"- HTML files scanned: **{len(html_files)}**")
+          report.append(f"- Internal links/assets checked: **{checked}**")
+          report.append(f"- Missing files: **{len(missing_files)}**")
+          report.append(f"- Missing anchors: **{len(missing_anchors)}**")
+          report.append("")
+
+          if missing_files:
+              report.append("## Missing Files")
+              report.append("")
+              for base_file, kind, url in missing_files:
+                  report.append(f"- `{base_file}` -> `{kind}` -> `{url}`")
+              report.append("")
+
+          if missing_anchors:
+              report.append("## Missing Anchors")
+              report.append("")
+              for base_file, kind, url, target, anchor in missing_anchors:
+                  report.append(f"- `{base_file}` -> `{url}` -> target `{target}` does not contain id/name `{anchor}`")
+              report.append("")
+
+          if not missing_files and not missing_anchors:
+              report.append("✅ No broken internal links found.")
+              report.append("")
+
+          REPORT_FILE.write_text("\n".join(report), encoding="utf-8")
+          print("\n".join(report))
+
+          if missing_files or missing_anchors:
+              sys.exit(1)
+          PY
+
+      - name: Upload link check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-report
+          path: .github/workflow-reports/link-check-report.md
