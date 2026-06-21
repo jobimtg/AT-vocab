@@ -515,23 +515,63 @@ html {
   }
 }
 
-/* Homepage hero title one-line override */
+/* Homepage hero banner title fix */
+body {
+  overflow-x: hidden;
+}
+
+.hero {
+  max-width: 1180px;
+  width: min(100%, calc(100vw - 48px));
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.home-hero-image-wrap {
+  width: min(100%, 980px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hero h1 {
-  font-size: clamp(30px, 5vw, 82px);
-  line-height: 1.05;
-  letter-spacing: -0.045em;
-  white-space: nowrap;
-  text-wrap: nowrap;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(30px, 3.35vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  text-align: center;
+  white-space: normal;
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+
+.hero-subtitle {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 @media (max-width: 900px) {
+  .hero {
+    width: min(100%, calc(100vw - 32px));
+  }
+
   .hero h1 {
-    font-size: clamp(24px, 4.2vw, 54px);
+    max-width: 100%;
+    font-size: clamp(27px, 7.2vw, 42px);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 560px) {
+  .hero {
+    width: min(100%, calc(100vw - 24px));
+  }
+
   .hero h1 {
-    font-size: clamp(18px, 3.8vw, 32px);
+    font-size: clamp(24px, 7vw, 34px);
   }
 }

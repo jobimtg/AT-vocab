@@ -1,0 +1,11 @@
+Hero Banner Title Fix Report
+============================
+
+Fix goal:
+- Make hero title smaller and centered with the image.
+- Prevent horizontal scrolling.
+- Keep the title looking like a banner heading.
+
+Changes:
+- Removed old one-line hero title override.
+- Added new centered banner-style hero title CSS.
