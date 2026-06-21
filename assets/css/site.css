@@ -344,3 +344,41 @@ a {
     flex-direction: column;
   }
 }
+
+/* Lesson page shared navigation */
+.lesson-page-header {
+  position: sticky;
+  top: 0;
+}
+
+.lesson-top-actions {
+  max-width: 1160px;
+  margin: 22px auto 0;
+  padding: 0 24px;
+}
+
+.back-to-lessons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid #e7dccd;
+  color: #1f1d1b;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 24px rgba(60, 43, 25, 0.06);
+}
+
+.back-to-lessons:hover {
+  transform: translateY(-1px);
+  transition: 180ms ease;
+}
+
+.lesson-page-footer {
+  margin-top: 72px;
+}
