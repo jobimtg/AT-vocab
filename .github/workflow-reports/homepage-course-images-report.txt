@@ -10,4 +10,3 @@ Changes:
 - Updated homepage card: lessons/#ca-life
 - Updated homepage card: lessons/#travel
 - Updated homepage card: lessons/#business
-- Updated assets/css/site.css for course image cards.
