@@ -1,0 +1,166 @@
+name: Fix Homepage Hero Banner Title
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-hero-banner-title:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Fix hero title size and alignment
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path.cwd()
+          css_path = ROOT / "assets/css/site.css"
+          index_path = ROOT / "index.html"
+          report_dir = ROOT / ".github/workflow-reports"
+          report_dir.mkdir(parents=True, exist_ok=True)
+          report_path = report_dir / "hero-banner-title-fix-report.txt"
+
+          if not css_path.exists():
+              raise SystemExit("assets/css/site.css not found.")
+
+          css = css_path.read_text(encoding="utf-8", errors="ignore")
+          original_css = css
+          changes = []
+
+          # Remove previous one-line override that caused horizontal scrolling.
+          css, removed_count = re.subn(
+              r"/\* Homepage hero title one-line override \*/.*?(?=\n/\*|\Z)",
+              "",
+              css,
+              flags=re.S,
+          )
+          if removed_count:
+              changes.append("Removed old one-line hero title override.")
+
+          # Remove older banner-title fix block if rerun.
+          css = re.sub(
+              r"/\* Homepage hero banner title fix \*/.*?(?=\n/\*|\Z)",
+              "",
+              css,
+              flags=re.S,
+          ).rstrip()
+
+          hero_fix_css = "\n".join([
+              "/* Homepage hero banner title fix */",
+              "body {",
+              "  overflow-x: hidden;",
+              "}",
+              "",
+              ".hero {",
+              "  max-width: 1180px;",
+              "  width: min(100%, calc(100vw - 48px));",
+              "  padding-left: 0;",
+              "  padding-right: 0;",
+              "}",
+              "",
+              ".home-hero-image-wrap {",
+              "  width: min(100%, 980px);",
+              "  margin-left: auto;",
+              "  margin-right: auto;",
+              "}",
+              "",
+              ".hero h1 {",
+              "  max-width: 980px;",
+              "  margin-left: auto;",
+              "  margin-right: auto;",
+              "  font-size: clamp(30px, 3.35vw, 48px);",
+              "  line-height: 1.08;",
+              "  letter-spacing: -0.035em;",
+              "  text-align: center;",
+              "  white-space: normal;",
+              "  text-wrap: balance;",
+              "  overflow-wrap: normal;",
+              "}",
+              "",
+              ".hero-subtitle {",
+              "  max-width: 720px;",
+              "  margin-left: auto;",
+              "  margin-right: auto;",
+              "  text-align: center;",
+              "}",
+              "",
+              "@media (max-width: 900px) {",
+              "  .hero {",
+              "    width: min(100%, calc(100vw - 32px));",
+              "  }",
+              "",
+              "  .hero h1 {",
+              "    max-width: 100%;",
+              "    font-size: clamp(27px, 7.2vw, 42px);",
+              "    line-height: 1.12;",
+              "    letter-spacing: -0.025em;",
+              "  }",
+              "}",
+              "",
+              "@media (max-width: 560px) {",
+              "  .hero {",
+              "    width: min(100%, calc(100vw - 24px));",
+              "  }",
+              "",
+              "  .hero h1 {",
+              "    font-size: clamp(24px, 7vw, 34px);",
+              "  }",
+              "}",
+          ])
+
+          css = css + "\n\n" + hero_fix_css.strip() + "\n"
+          css_path.write_text(css, encoding="utf-8")
+          changes.append("Added new centered banner-style hero title CSS.")
+
+          # Optional: make sure viewport tag exists correctly.
+          if index_path.exists():
+              html = index_path.read_text(encoding="utf-8", errors="ignore")
+              if 'name="viewport"' not in html:
+                  html = html.replace(
+                      "<head>",
+                      '<head>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">',
+                      1
+                  )
+                  index_path.write_text(html, encoding="utf-8")
+                  changes.append("Added missing viewport meta tag.")
+
+          report = [
+              "Hero Banner Title Fix Report",
+              "============================",
+              "",
+              "Fix goal:",
+              "- Make hero title smaller and centered with the image.",
+              "- Prevent horizontal scrolling.",
+              "- Keep the title looking like a banner heading.",
+              "",
+              "Changes:",
+          ]
+          report.extend([f"- {item}" for item in changes])
+          report_path.write_text("\n".join(report) + "\n", encoding="utf-8")
+          print("\n".join(report))
+          PY
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Fix homepage hero title banner layout"
+            git push
+          fi
