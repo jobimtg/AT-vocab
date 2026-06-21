@@ -1,0 +1,95 @@
+name: Update Lessons Hero Copy
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-lessons-hero-copy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Update Lessons page hero copy
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path.cwd()
+          lessons_path = ROOT / "lessons" / "index.html"
+          report_dir = ROOT / ".github" / "workflow-reports"
+          report_dir.mkdir(parents=True, exist_ok=True)
+          report_path = report_dir / "lessons-hero-copy-report.txt"
+
+          if not lessons_path.exists():
+              raise SystemExit("lessons/index.html not found.")
+
+          html = lessons_path.read_text(encoding="utf-8", errors="ignore")
+          original_html = html
+
+          new_hero = '''    <section class="hero hero-lessons">
+      <p class="eyebrow">LESSONS</p>
+      <h1>Explore Your English Path and Find the Right Lesson for Your Next Step.</h1>
+      <p class="hero-subtitle">
+        Choose a lesson path that matches your goal. Whether you want to build everyday confidence, prepare for travel, or improve workplace communication, each lesson is designed to help you use English in real situations.
+      </p>
+    </section>'''
+
+          pattern = re.compile(
+              r'\s*<section\b(?=[^>]*class="[^"]*\bhero\b)(?=[^>]*class="[^"]*\bhero-lessons\b)[^>]*>.*?</section>',
+              flags=re.I | re.S
+          )
+
+          html, count = pattern.subn("\n" + new_hero, html, count=1)
+
+          changes = []
+          if count:
+              changes.append("Updated lessons/index.html hero copy.")
+          else:
+              changes.append("WARNING: Could not find hero hero-lessons section.")
+
+          if html != original_html:
+              lessons_path.write_text(html, encoding="utf-8")
+
+          report = [
+              "Lessons Hero Copy Report",
+              "========================",
+              "",
+              "New copy:",
+              "",
+              "LESSONS",
+              "",
+              "Explore Your English Path and Find the Right Lesson for Your Next Step.",
+              "",
+              "Choose a lesson path that matches your goal. Whether you want to build everyday confidence, prepare for travel, or improve workplace communication, each lesson is designed to help you use English in real situations.",
+              "",
+              "Changes:",
+          ]
+          report.extend([f"- {item}" for item in changes])
+
+          report_path.write_text("\n".join(report) + "\n", encoding="utf-8")
+          print("\n".join(report))
+          PY
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update Lessons page hero copy"
+            git push
+          fi
