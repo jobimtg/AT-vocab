@@ -1,0 +1,14 @@
+Homepage Update Report
+======================
+
+Changes:
+- Added id="top" to body.
+- Changed primary button from View Lessons to View Courses.
+- Changed secondary button from Start Canada Life to Featured Lessons.
+- Added id="courses" to Courses section.
+- Added id="featured-lessons" to Featured Lessons section.
+- Added floating Top button.
+- Updated assets/css/site.css for smooth scroll and Top button.
+
+Next step reminder:
+- Start building the file link checker workflow.
