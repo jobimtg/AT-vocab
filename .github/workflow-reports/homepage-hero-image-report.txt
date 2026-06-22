@@ -1,9 +1,0 @@
-Homepage Hero Image Report
-==========================
-
-Expected image path:
-- assets/img/home-hero-ysp.png
-
-Changes:
-- Inserted hero image into homepage hero section.
-- Updated assets/css/site.css for homepage hero image.

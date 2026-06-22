@@ -1,9 +1,0 @@
-Homepage Hero Title One Line Report
-===================================
-
-New hero title:
-- Turn everyday moments into English practice
-
-Changes:
-- Updated homepage hero heading text.
-- Updated assets/css/site.css for one-line hero title.

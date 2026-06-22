@@ -83,14 +83,19 @@
   </style>
 
 
-<!-- YSP_AUTO_NAV_STYLE_START -->
+
+<!-- YSP_CLEAN_TOP_STYLE_START -->
 <style>
   html { scroll-behavior: smooth; }
   body { overflow-x: hidden; }
   .ysp-page-top-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
+  .ysp-page-top-button { position: fixed; right: 24px; bottom: 24px; z-index: 99999; width: 58px; height: 58px; border-radius: 999px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #1f1d1b; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,.28); box-shadow: 0 14px 34px rgba(60,43,25,.22); opacity: .92; font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; }
+  .ysp-page-top-button:hover { transform: translateY(-2px); opacity: 1; }
+  .ysp-page-top-arrow { font-size: 22px; line-height: 1; font-weight: 900; }
+  .ysp-page-top-label { font-size: 11px; line-height: 1; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
   .ysp-auto-lesson-library { max-width: 1180px; margin: 48px auto 70px; padding: 0 24px; font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; }
   .ysp-auto-library-heading { text-align: center; margin-bottom: 28px; }
-  .ysp-auto-library-heading .eyebrow { color: #c4935d; letter-spacing: 0.28em; font-size: 12px; font-weight: 900; text-transform: uppercase; }
+  .ysp-auto-library-heading .eyebrow { color: #c4935d; letter-spacing: .28em; font-size: 12px; font-weight: 900; text-transform: uppercase; }
   .ysp-auto-library-heading h2 { margin: 8px 0 10px; color: #13213b; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; }
   .ysp-auto-library-heading p { max-width: 760px; margin: 0 auto; color: #6f6257; font-size: 16px; line-height: 1.75; }
   .ysp-auto-course-section { margin-top: 34px; }
@@ -103,19 +108,9 @@
   .ysp-auto-lesson-card:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(60,43,25,.12); }
   .ysp-auto-lesson-card strong { display: block; font-size: 17px; line-height: 1.35; margin-bottom: 8px; }
   .ysp-auto-lesson-card span { display: block; color: #77695e; font-size: 13px; line-height: 1.55; }
-  .ysp-lesson-site-nav { position: relative; z-index: 9999; width: 100%; background: rgba(255,250,241,.96); border-bottom: 1px solid rgba(196,147,93,.28); box-shadow: 0 8px 24px rgba(52,39,22,.06); font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; }
-  .ysp-lesson-site-nav-inner { max-width: 1180px; margin: 0 auto; padding: 12px 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
-  .ysp-lesson-site-brand { display: inline-flex; align-items: center; gap: 10px; color: #13213b; text-decoration: none; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; font-size: 13px; white-space: nowrap; }
-  .ysp-lesson-site-brand img { width: 34px; height: 34px; object-fit: contain; display: block; }
-  .ysp-lesson-site-links { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 10px; }
-  .ysp-lesson-site-links a { display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 8px 13px; border-radius: 999px; background: #fff; border: 1px solid rgba(196,147,93,.34); color: #1d2c4c; text-decoration: none; font-size: 13px; font-weight: 800; box-shadow: 0 6px 16px rgba(60,43,25,.07); }
-  .ysp-lesson-site-links .primary-link { background: #162849; color: #fff; border-color: #162849; }
-  .ysp-page-top-button { position: fixed; right: 24px; bottom: 24px; z-index: 99999; width: 58px; height: 58px; border-radius: 999px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #1f1d1b; color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.28); box-shadow: 0 14px 34px rgba(60,43,25,.22); opacity: .92; font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; }
-  .ysp-page-top-arrow { font-size: 22px; line-height: 1; font-weight: 900; }
-  .ysp-page-top-label { font-size: 11px; line-height: 1; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
-  @media (max-width: 760px) { .ysp-lesson-site-nav-inner { align-items: flex-start; flex-direction: column; padding: 12px 16px; } .ysp-lesson-site-links { justify-content: flex-start; } .ysp-page-top-button { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
+  @media (max-width: 760px) { .ysp-page-top-button { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
 </style>
-<!-- YSP_AUTO_NAV_STYLE_END -->
+<!-- YSP_CLEAN_TOP_STYLE_END -->
 </head>
 <body>
 <!-- YSP_AUTO_TOP_ANCHOR_START -->
@@ -148,68 +143,7 @@
         Choose a lesson path that matches your goal. Whether you want to build everyday confidence, prepare for travel, or improve workplace communication, each lesson is designed to help you use English in real situations.
       </p>
     </section>
-<!-- YSP_AUTO_LESSON_LIBRARY_START -->
-<section class="ysp-auto-lesson-library" id="lesson-library">
-  <div class="ysp-auto-library-heading">
-    <p class="eyebrow">LESSON LIBRARY</p>
-    <h2>Choose Your Next Lesson</h2>
-    <p>This section is automatically updated from the HTML lesson files inside the lessons folder.</p>
-  </div>
-  <section class="ysp-auto-course-section" id="life-career">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>🏔️ Life &amp; Career English</h3>
-        <p>Practical English for daily life, settling in, and career confidence.</p>
-      </div>
-      <span class="ysp-auto-count">1 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="ca-life/u1-l1.html">
-        <strong>L01 — Welcome to Canada 歡迎來到加拿大</strong>
-        <span>ca-life/u1-l1.html</span>
-      </a>
-    </div>
-  </section>
-  <section class="ysp-auto-course-section" id="travel">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>✈️ Travel English</h3>
-        <p>Useful English for airports, hotels, directions, food, and travel situations.</p>
-      </div>
-      <span class="ysp-auto-count">3 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="travel/u1-l1.html">
-        <strong>Lesson 01 — Welcome to Canada</strong>
-        <span>travel/u1-l1.html</span>
-      </a>
-      <a class="ysp-auto-lesson-card" href="travel/u1-l2.html">
-        <strong>Redirecting...</strong>
-        <span>travel/u1-l2.html</span>
-      </a>
-      <a class="ysp-auto-lesson-card" href="travel/u1-l6.html">
-        <strong>Redirecting...</strong>
-        <span>travel/u1-l6.html</span>
-      </a>
-    </div>
-  </section>
-  <section class="ysp-auto-course-section" id="business">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>💼 Business English</h3>
-        <p>Workplace English for meetings, reception, colleagues, email, and communication.</p>
-      </div>
-      <span class="ysp-auto-count">1 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="business/u1-l1.html">
-        <strong>Redirecting...</strong>
-        <span>business/u1-l1.html</span>
-      </a>
-    </div>
-  </section>
-</section>
-<!-- YSP_AUTO_LESSON_LIBRARY_END -->
+
 
     <div class="course-jump">
       <a href="#ca-life">Canada Life &amp; Career English</a>
@@ -698,5 +632,73 @@
   <span class="ysp-page-top-label">Top</span>
 </a>
 <!-- YSP_AUTO_TOP_BUTTON_END -->
+<!-- YSP_AUTO_LESSON_LIBRARY_START -->
+<section class="ysp-auto-lesson-library" id="lesson-library">
+  <div class="ysp-auto-library-heading">
+    <p class="eyebrow">LESSON LIBRARY</p>
+    <h2>Choose Your Next Lesson</h2>
+    <p>This section is automatically updated from the HTML lesson files inside the lessons folder.</p>
+  </div>
+  <section class="ysp-auto-course-section" id="life-career">
+    <div class="ysp-auto-course-title">
+      <div>
+        <h3>🏔️ Life &amp; Career English</h3>
+        <p>Practical English for daily life, settling in, and career confidence.</p>
+      </div>
+      <span class="ysp-auto-count">1 lessons</span>
+    </div>
+    <div class="ysp-auto-lesson-grid">
+      <a class="ysp-auto-lesson-card" href="ca-life/u1-l1.html">
+        <strong>L01 — Welcome to Canada 歡迎來到加拿大</strong>
+        <span>ca-life/u1-l1.html</span>
+      </a>
+    </div>
+  </section>
+  <section class="ysp-auto-course-section" id="travel">
+    <div class="ysp-auto-course-title">
+      <div>
+        <h3>✈️ Travel English</h3>
+        <p>Useful English for airports, hotels, directions, food, and travel situations.</p>
+      </div>
+      <span class="ysp-auto-count">3 lessons</span>
+    </div>
+    <div class="ysp-auto-lesson-grid">
+      <a class="ysp-auto-lesson-card" href="travel/u1-l1.html">
+        <strong>Lesson 01 — Welcome to Canada</strong>
+        <span>travel/u1-l1.html</span>
+      </a>
+      <a class="ysp-auto-lesson-card" href="travel/u1-l2.html">
+        <strong>Redirecting...</strong>
+        <span>travel/u1-l2.html</span>
+      </a>
+      <a class="ysp-auto-lesson-card" href="travel/u1-l6.html">
+        <strong>Redirecting...</strong>
+        <span>travel/u1-l6.html</span>
+      </a>
+    </div>
+  </section>
+  <section class="ysp-auto-course-section" id="business">
+    <div class="ysp-auto-course-title">
+      <div>
+        <h3>💼 Business English</h3>
+        <p>Workplace English for meetings, reception, colleagues, email, and communication.</p>
+      </div>
+      <span class="ysp-auto-count">1 lessons</span>
+    </div>
+    <div class="ysp-auto-lesson-grid">
+      <a class="ysp-auto-lesson-card" href="business/u1-l1.html">
+        <strong>Redirecting...</strong>
+        <span>business/u1-l1.html</span>
+      </a>
+    </div>
+  </section>
+</section>
+<!-- YSP_AUTO_LESSON_LIBRARY_END -->
+<!-- YSP_CLEAN_TOP_BUTTON_START -->
+<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
+  <span class="ysp-page-top-arrow">↑</span>
+  <span class="ysp-page-top-label">Top</span>
+</a>
+<!-- YSP_CLEAN_TOP_BUTTON_END -->
 </body>
 </html>
