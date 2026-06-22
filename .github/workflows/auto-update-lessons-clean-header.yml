@@ -362,6 +362,8 @@ jobs:
               width: 100%;
               box-sizing: border-box;
               z-index: 100000;
+              position: relative !important;
+              top: auto !important;
             }
 
             .lesson-page-header .brand {
@@ -457,6 +459,31 @@ jobs:
               max-width: none;
               width: 100%;
               margin-top: 34px;
+            }
+
+            /*
+              Keep lesson inner tabs visible while browsing a long lesson.
+              Canada Life pages use .nav.
+              Travel / Business pages may use .tabs.
+            */
+            .nav,
+            .tabs,
+            #nav,
+            #tabs {
+              position: sticky !important;
+              top: 0 !important;
+              z-index: 99998 !important;
+            }
+
+            .nav a,
+            .tabs .tab {
+              scroll-margin-top: 86px;
+            }
+
+            .section,
+            .panel,
+            [id^="sec-"] {
+              scroll-margin-top: 86px;
             }
 
             @media (max-width: 760px) {
