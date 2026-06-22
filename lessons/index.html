@@ -1,873 +1,627 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lessons｜YSP Learn & Shine</title>
-  <meta name="description" content="All YSP Learn & Shine course lessons.">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <meta name="description" content="Choose your English learning path: Life & Career English, Travel English, and Business English preview lessons by YSP Learn & Shine.">
+  <link rel="icon" href="../assets/img/ysp-header-icon.png">
   <style>
-    .course-jump {
-      max-width: 1160px;
-      margin: -28px auto 24px;
-      padding: 0 24px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
+    :root {
+      --bg: #fff8ed;
+      --card: rgba(255, 255, 255, 0.88);
+      --ink: #13213b;
+      --muted: #6f6257;
+      --gold: #c4935d;
+      --gold-soft: rgba(196, 147, 93, 0.24);
+      --navy: #162849;
+      --shadow: 0 18px 50px rgba(60, 43, 25, 0.09);
+      --radius-lg: 30px;
+      --radius-md: 22px;
     }
 
-    .course-jump a {
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(230, 198, 145, 0.24), transparent 34%),
+        linear-gradient(180deg, #fff8ed 0%, #fffdf8 48%, #fff8ed 100%);
+      color: var(--ink);
+      font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 248, 237, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gold-soft);
+    }
+
+    .nav-wrap {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 74px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 17px;
+      letter-spacing: 0.02em;
+    }
+
+    .brand span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a,
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 16px;
+      min-height: 42px;
+      padding: 11px 16px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid #e7dccd;
-      color: #1f1d1b;
+      border: 1px solid var(--gold-soft);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--ink);
       text-decoration: none;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 0.04em;
+      font-size: 14px;
+      font-weight: 850;
+      box-shadow: 0 8px 18px rgba(60, 43, 25, 0.06);
     }
 
-    .phase-group {
+    .btn.primary,
+    .nav-links a.primary {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #ffffff;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    section {
+      margin: 72px 0;
+    }
+
+    .hero {
+      margin-top: 34px;
+      padding: clamp(38px, 7vw, 78px) clamp(22px, 5vw, 70px);
+      border: 1px solid var(--gold-soft);
+      border-radius: 36px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.94), rgba(255,246,229,0.86)),
+        radial-gradient(circle at top right, rgba(196,147,93,0.22), transparent 36%);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 18px;
+      font-size: clamp(38px, 6vw, 74px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .hero > p:not(.eyebrow) {
+      max-width: 790px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.75;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
       margin-top: 28px;
     }
 
-    .phase-title {
+    .section-head {
+      max-width: 800px;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .section-head h2 {
+      margin-bottom: 12px;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .card,
+    .path-card,
+    .lesson-card,
+    .cta-card {
+      border: 1px solid var(--gold-soft);
+      border-radius: var(--radius-md);
+      background: var(--card);
+      box-shadow: 0 14px 34px rgba(60, 43, 25, 0.07);
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #fff3df;
+      color: var(--gold);
+      font-weight: 950;
+    }
+
+    .card h3,
+    .path-card h3,
+    .lesson-card h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .card p,
+    .path-card p,
+    .lesson-card p,
+    .cta-card p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .path-card {
+      display: block;
+      padding: 24px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fff3df;
+      color: #9c6a34;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .course-section {
+      padding: clamp(24px, 4vw, 36px);
+      border: 1px solid var(--gold-soft);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.46);
+    }
+
+    .course-title {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 16px;
-      margin: 0 0 14px;
-      padding: 18px 20px;
-      border: 1px solid #e7dccd;
-      border-radius: 22px;
-      background: rgba(255, 250, 242, 0.72);
+      gap: 18px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    .phase-title h3 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.3;
+    .course-title h2 {
+      margin-bottom: 8px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.04em;
     }
 
-    .phase-title span {
-      color: #756b5f;
-      font-size: 13px;
-      font-weight: 800;
+    .course-title p {
+      max-width: 720px;
+      margin-bottom: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .lesson-card {
+      padding: 22px;
+    }
+
+    .lesson-card a {
+      display: inline-flex;
+      margin-top: 12px;
+      text-decoration: none;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .cta-card {
+      padding: clamp(28px, 5vw, 56px);
+      text-align: center;
+    }
+
+    .cta-card h2 {
+      margin-bottom: 14px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    footer {
+      margin-top: 72px;
+      padding: 36px 18px 46px;
+      border-top: 1px solid var(--gold-soft);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .footer-logo {
+      width: 86px;
+      margin: 0 auto 12px;
+    }
+
+    .footer-est {
+      margin: 18px auto 0;
+      padding-top: 14px;
+      border-top: 1px solid var(--gold-soft);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .top-button {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 80;
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #1f1d1b;
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: 0 14px 34px rgba(60, 43, 25, 0.22);
+      font-weight: 950;
+    }
+
+    .top-button span:first-child {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .top-button span:last-child {
+      margin-top: 1px;
+      font-size: 10px;
       letter-spacing: 0.08em;
-      white-space: nowrap;
+      text-transform: uppercase;
     }
 
-    .lesson-card h3 {
-      font-size: 18px;
-    }
-
-    .lesson-card p {
-      font-size: 14px;
-    }
-
-    @media (max-width: 720px) {
-      .phase-title {
-        align-items: flex-start;
-        flex-direction: column;
+    @media (max-width: 920px) {
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
       }
 
-      .phase-title span {
-        white-space: normal;
+      .nav-wrap {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 620px) {
+      main {
+        width: min(100% - 24px, 1180px);
+      }
+
+      section {
+        margin: 54px 0;
+      }
+
+      h1 {
+        font-size: clamp(34px, 12vw, 56px);
+      }
+
+      .nav-links a,
+      .btn {
+        width: 100%;
+      }
+
+      .actions {
+        align-items: stretch;
+        flex-direction: column;
       }
     }
   </style>
-
-<!-- YSP_LESSONS_TOP_STYLE_START -->
-<style>
-  html { scroll-behavior: smooth; }
-  body { overflow-x: hidden; }
-
-  .ysp-page-top-anchor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    pointer-events: none;
-  }
-
-  .ysp-page-top-button {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 99999;
-    width: 58px;
-    height: 58px;
-    border-radius: 999px;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1px;
-    background: #1f1d1b;
-    color: #ffffff;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,.28);
-    box-shadow: 0 14px 34px rgba(60,43,25,.22);
-    opacity: .92;
-    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
-  }
-
-  .ysp-page-top-button:hover {
-    transform: translateY(-2px);
-    opacity: 1;
-  }
-
-  .ysp-page-top-arrow {
-    font-size: 22px;
-    line-height: 1;
-    font-weight: 900;
-  }
-
-  .ysp-page-top-label {
-    font-size: 11px;
-    line-height: 1;
-    font-weight: 900;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-
-  .ysp-auto-lesson-library {
-    max-width: 1180px;
-    margin: 48px auto 70px;
-    padding: 0 24px;
-    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
-  }
-
-  .ysp-auto-library-heading {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-
-  .ysp-auto-library-heading .eyebrow {
-    color: #c4935d;
-    letter-spacing: .28em;
-    font-size: 12px;
-    font-weight: 900;
-    text-transform: uppercase;
-  }
-
-  .ysp-auto-library-heading h2 {
-    margin: 8px 0 10px;
-    color: #13213b;
-    font-size: clamp(28px, 4vw, 44px);
-    line-height: 1.08;
-  }
-
-  .ysp-auto-library-heading p {
-    max-width: 760px;
-    margin: 0 auto;
-    color: #6f6257;
-    font-size: 16px;
-    line-height: 1.75;
-  }
-
-  .ysp-auto-course-section {
-    margin-top: 34px;
-  }
-
-  .ysp-auto-course-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid rgba(196,147,93,.28);
-    padding-bottom: 12px;
-  }
-
-  .ysp-auto-course-title h3 {
-    margin: 0;
-    color: #13213b;
-    font-size: 24px;
-  }
-
-  .ysp-auto-course-title p {
-    margin: 4px 0 0;
-    color: #74685d;
-    font-size: 14px;
-  }
-
-  .ysp-auto-count {
-    color: #c4935d;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .ysp-auto-lesson-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-  }
-
-  .ysp-auto-lesson-card {
-    display: block;
-    padding: 18px 18px 16px;
-    border-radius: 20px;
-    background: rgba(255,255,255,.82);
-    border: 1px solid rgba(196,147,93,.28);
-    box-shadow: 0 12px 30px rgba(60,43,25,.08);
-    color: #13213b;
-    text-decoration: none;
-  }
-
-  .ysp-auto-lesson-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 36px rgba(60,43,25,.12);
-  }
-
-  .ysp-auto-lesson-card strong {
-    display: block;
-    font-size: 17px;
-    line-height: 1.35;
-    margin-bottom: 8px;
-  }
-
-  .ysp-auto-lesson-card span {
-    display: block;
-    color: #77695e;
-    font-size: 13px;
-    line-height: 1.55;
-  }
-
-  @media (max-width: 760px) {
-    .ysp-page-top-button {
-      right: 16px;
-      bottom: 16px;
-      width: 52px;
-      height: 52px;
-    }
-
-    .ysp-auto-course-title {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-</style>
-<!-- YSP_LESSONS_TOP_STYLE_END -->
 </head>
-<body>
-<!-- YSP_LESSONS_TOP_ANCHOR_START -->
-<div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
-<!-- YSP_LESSONS_TOP_ANCHOR_END -->
 
-
-<header class="site-header">
-    <a class="brand" href="../" aria-label="YSP Learn and Shine Home">
-      <img class="header-icon" src="../assets/img/ysp-header-icon.png" alt="YSP mountain sunrise icon">
-      <span class="brand-text">
-        <span class="brand-name">YSP Learn &amp; Shine</span>
-        <span class="brand-tagline">Learn with Purpose. Shine with Confidence.</span>
-      </span>
-    </a>
-
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="../">Home</a>
-      <a href="./">Lessons</a>
-      <a href="../#about">About</a>
-    </nav>
+<body id="top">
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="../" aria-label="YSP Learn & Shine home">
+        <img src="../assets/img/ysp-header-icon.png" alt="YSP Learn & Shine">
+        <span>
+          <strong>YSP Learn & Shine</strong>
+          <span>Learn with Purpose. Shine with Confidence.</span>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="../">Home</a>
+        <a href="./">Lessons</a>
+        <a href="../#about">About</a>
+        <a class="primary" href="https://en.amazingtalker.com/teachers-and-tutors/jobi-pan#timeslots">Book a Trial Lesson</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero hero-lessons">
-      <p class="eyebrow">LESSONS</p>
-      <h1>Explore Your English Path and Find the Right Lesson for Your Next Step.</h1>
-      <p class="hero-subtitle">
-        Choose a lesson path that matches your goal. Whether you want to build everyday confidence, prepare for travel, or improve workplace communication, each lesson is designed to help you use English in real situations.
-      </p>
-    </section>
-
-
-    <div class="course-jump">
-      <a href="#ca-life">Canada Life &amp; Career English</a>
-      <a href="#travel">Travel English</a>
-      <a href="#business">Business English</a>
-    </div>
-
-    <section id="ca-life" class="section">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Canada Life</p>
-          <h2>Canada Life &amp; Career English</h2>
-          <p class="section-note">加拿大生活、工作、文化與實用口說英文。共 40 堂，分成 4 個 phase。</p>
-        </div>
-      </div>
-
-      <div class="phase-group">
-        <div class="phase-title">
-          <h3>Phase 1 — Arrival &amp; Settlement</h3>
-          <span>L01–L10</span>
-        </div>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="ca-life/u1-l1.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L01 / U1-L1 — Welcome to Canada 歡迎來到加拿大</h3>
-            <p>Core focus：入境、打工度假、加拿大基礎、初次對話</p>
-            <span class="lesson-meta">Pronunciation：/θ/ /ð/ th 音</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l2.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L02 / U1-L2 — Transportation &amp; Getting Around 交通與方向</h3>
-            <p>Core focus：大眾運輸、搭車、方向、交通 App</p>
-            <span class="lesson-meta">Pronunciation：/θ/ /ð/ 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l3.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L03 / U1-L3 — Phone Plans &amp; Internet 手機與網路</h3>
-            <p>Core focus：門號、網路、App、合約</p>
-            <span class="lesson-meta">Pronunciation：字尾子音 -ed</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l4.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L04 / U1-L4 — Banking &amp; SIN Number 銀行與 SIN</h3>
-            <p>Core focus：銀行、政府證件、表格、數位銀行</p>
-            <span class="lesson-meta">Pronunciation：字尾子音 -s/-es</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l5.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L05 / U1-L5 — Finding a Place to Live 找房子</h3>
-            <p>Core focus：房型、租約、家具、社區</p>
-            <span class="lesson-meta">Pronunciation：/r/ vs /l/</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l6.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L06 / U1-L6 — Grocery Shopping &amp; Daily Essentials 超市購物</h3>
-            <p>Core focus：賣場區域、食材、包裝、付款</p>
-            <span class="lesson-meta">Pronunciation：/r/ vs /l/ 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l7.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L07 / U1-L7 — Eating Out &amp; Canadian Food Culture 外食文化</h3>
-            <p>Core focus：餐廳類型、菜單、飲食需求、小費</p>
-            <span class="lesson-meta">Pronunciation：重音節奏</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l8.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L08 / U1-L8 — Weather, Seasons &amp; Dressing 天氣穿搭</h3>
-            <p>Core focus：天氣、季節、衣物、溫度</p>
-            <span class="lesson-meta">Pronunciation：重音節奏複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l9.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L09 / U1-L9 — Everyday Canadian Life Skills 日常生活技能</h3>
-            <p>Core focus：郵局、洗衣、藥局、禮儀</p>
-            <span class="lesson-meta">Pronunciation：連音 Linking</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u1-l10.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L10 / U1-L10 — Settlement Simulation 安頓模擬</h3>
-            <p>Core focus：回顧 L01–L09 核心詞 + 10 個升級詞</p>
-            <span class="lesson-meta">Pronunciation：連音 複習</span>
-          </a>
-        </div>
-      </div>
-      <div class="phase-group">
-        <div class="phase-title">
-          <h3>Phase 2 — Career &amp; Workplace</h3>
-          <span>L11–L20</span>
-        </div>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="ca-life/u2-l1.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L11 / U2-L1 — Understanding the Canadian Job Market 就業市場</h3>
-            <p>Core focus：職業類型、WHV 工作、求職平台、薪資</p>
-            <span class="lesson-meta">Pronunciation：/ɪ/ vs /iː/</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l2.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L12 / U2-L2 — Resume, Cover Letters &amp; Applications 履歷求職信</h3>
-            <p>Core focus：履歷架構、動作動詞、求職信、應徵</p>
-            <span class="lesson-meta">Pronunciation：/ɪ/ vs /iː/ 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l3.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L13 / U2-L3 — Job Interview Skills 面試技巧</h3>
-            <p>Core focus：面試基本、常見問題、專業特質、跟進</p>
-            <span class="lesson-meta">Pronunciation：語調 Intonation</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l4.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L14 / U2-L4 — Job Interview Practice 面試練習</h3>
-            <p>Core focus：行為問題、情境回答、薪資、視訊面試</p>
-            <span class="lesson-meta">Pronunciation：語調 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l5.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L15 / U2-L5 — Your First Day at Work 第一天上班</h3>
-            <p>Core focus：工作區域、設備、排班、行為規範</p>
-            <span class="lesson-meta">Pronunciation：弱讀 Weak forms</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l6.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L16 / U2-L6 — Workplace Communication &amp; Email 職場溝通</h3>
-            <p>Core focus：閒聊、會議、Email、回饋</p>
-            <span class="lesson-meta">Pronunciation：弱讀 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l7.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L17 / U2-L7 — Customer Service English 客服英語</h3>
-            <p>Core focus：接待、投訴、電話、問題解決</p>
-            <span class="lesson-meta">Pronunciation：/v/ vs /w/</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l8.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L18 / U2-L8 — Workplace Safety &amp; Employee Rights 工作安全</h3>
-            <p>Core focus：安全設備、危險標誌、緊急程序、勞動基準</p>
-            <span class="lesson-meta">Pronunciation：/v/ vs /w/ 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l9.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L19 / U2-L9 — Canadian Workplace Culture 加拿大職場文化</h3>
-            <p>Core focus：階層、辦公室社交、工作生活平衡、多元包容</p>
-            <span class="lesson-meta">Pronunciation：子音群 Clusters</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u2-l10.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L20 / U2-L10 — Career Simulation 職場模擬</h3>
-            <p>Core focus：回顧 L11–L19 核心詞 + 10 個升級詞</p>
-            <span class="lesson-meta">Pronunciation：子音群 複習</span>
-          </a>
-        </div>
-      </div>
-      <div class="phase-group">
-        <div class="phase-title">
-          <h3>Phase 3 — Daily Life &amp; Canadian Society</h3>
-          <span>L21–L30</span>
-        </div>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="ca-life/u3-l1.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L21 / U3-L1 — Healthcare &amp; Visiting a Doctor 醫療保健</h3>
-            <p>Core focus：症狀、身體、醫療人員、藥局</p>
-            <span class="lesson-meta">Pronunciation：語塊節奏 Chunking</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l2.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L22 / U3-L2 — Exploring Your Community 探索社區</h3>
-            <p>Core focus：圖書館、公園、社區活動、安全</p>
-            <span class="lesson-meta">Pronunciation：語塊節奏 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l3.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L23 / U3-L3 — Budgeting, Taxes &amp; Financial Literacy 財務管理</h3>
-            <p>Core focus：薪資單、報稅、預算、匯款</p>
-            <span class="lesson-meta">Pronunciation：情緒語調</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l4.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L24 / U3-L4 — Canadian Social Norms &amp; Etiquette 社交禮儀</h3>
-            <p>Core focus：社交問候、個人空間、送禮、道歉文化</p>
-            <span class="lesson-meta">Pronunciation：情緒語調 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l5.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L25 / U3-L5 — Living with Roommates 室友生活</h3>
-            <p>Core focus：家規、費用分攤、衝突、家務</p>
-            <span class="lesson-meta">Pronunciation：正式 vs 非正式語氣</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l6.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L26 / U3-L6 — Canadian Media &amp; Pop Culture 媒體文化</h3>
-            <p>Core focus：影視、音樂、新聞、運動文化</p>
-            <span class="lesson-meta">Pronunciation：正式 vs 非正式 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l7.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L27 / U3-L7 — Dealing with Problems &amp; Emergencies 緊急狀況</h3>
-            <p>Core focus：急救、事故、投訴、保險</p>
-            <span class="lesson-meta">Pronunciation：緊急語氣與指令語調</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l8.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L28 / U3-L8 — Seasonal Life in Canada 四季生活</h3>
-            <p>Core focus：冬季生存、夏季活動、季節性工作、身心健康</p>
-            <span class="lesson-meta">Pronunciation：Shadowing 跟述練習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l9.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L29 / U3-L9 — Digital Life in Canada 加拿大數位生活</h3>
-            <p>Core focus：外送 App、網購、二手平台、串流/社群</p>
-            <span class="lesson-meta">Pronunciation：Shadowing 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u3-l10.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L30 / U3-L10 — Life Skills Simulation 生活模擬</h3>
-            <p>Core focus：回顧 L21–L29 核心詞 + 10 個升級詞</p>
-            <span class="lesson-meta">Pronunciation：綜合複習</span>
-          </a>
-        </div>
-      </div>
-      <div class="phase-group">
-        <div class="phase-title">
-          <h3>Phase 4 — Social Life, Culture &amp; Future</h3>
-          <span>L31–L40</span>
-        </div>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="ca-life/u4-l1.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L31 / U4-L1 — Small Talk &amp; Making Friends 閒聊與交友</h3>
-            <p>Core focus：開場白、興趣、邀約、回應</p>
-            <span class="lesson-meta">Pronunciation：自然語速練習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l2.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L32 / U4-L2 — Canadian Slang, Idioms &amp; Expressions 俚語慣用語</h3>
-            <p>Core focus：加拿大俚語、慣用語、片語動詞、語氣詞</p>
-            <span class="lesson-meta">Pronunciation：自然語速 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l3.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L33 / U4-L3 — Canadian Holidays &amp; Traditions 節慶傳統</h3>
-            <p>Core focus：國定假日、文化慶典、傳統食物、節日活動</p>
-            <span class="lesson-meta">Pronunciation：故事敘述語調</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l4.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L34 / U4-L4 — Multiculturalism &amp; Indigenous Awareness 多元文化</h3>
-            <p>Core focus：文化認同、原住民、移民歷史、包容語言</p>
-            <span class="lesson-meta">Pronunciation：故事敘述 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l5.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L35 / U4-L5 — Sports, Nature &amp; Weekend Activities 運動自然</h3>
-            <p>Core focus：加拿大運動、戶外活動、健身、國家公園</p>
-            <span class="lesson-meta">Pronunciation：描述語調</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l6.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L36 / U4-L6 — Traveling Within Canada 國內旅行</h3>
-            <p>Core focus：旅行規劃、住宿、景點、旅行問題</p>
-            <span class="lesson-meta">Pronunciation：描述語調 複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l7.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L37 / U4-L7 — Networking &amp; Professional Development 人脈發展</h3>
-            <p>Core focus：社交活動、LinkedIn、導師、職涯成長</p>
-            <span class="lesson-meta">Pronunciation：專業語氣</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l8.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L38 / U4-L8 — Mental Health &amp; Adjusting Abroad 心理健康</h3>
-            <p>Core focus：情緒、文化衝擊、求助、自我照顧</p>
-            <span class="lesson-meta">Pronunciation：同理心語調</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l9.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L39 / U4-L9 — Reflecting on Your WHV Journey 回顧打工度假</h3>
-            <p>Core focus：成長、挑戰、建議、未來計畫</p>
-            <span class="lesson-meta">Pronunciation：全面複習</span>
-          </a>
-          <a class="lesson-card" href="ca-life/u4-l10.html">
-            <p class="card-kicker">Canada Life</p>
-            <h3>L40 / U4-L10 — Final Simulation &amp; Graduation 總模擬結業</h3>
-            <p>Core focus：全課程核心詞彙總回顧</p>
-            <span class="lesson-meta">Pronunciation：自然語速全能力</span>
-          </a>
-        </div>
+    <section class="hero" aria-label="Lessons introduction">
+      <p class="eyebrow">Lessons</p>
+      <h1>Choose your English path and start with a free preview</h1>
+      <p>Explore practical English lessons for real life, travel, and career communication. Start with preview lessons, then practice deeper with full packs or guided lessons when you are ready.</p>
+      <div class="actions">
+        <a class="btn primary" href="#available-lessons">View Preview Lessons</a>
+        <a class="btn" href="#learning-paths">Choose a Learning Path</a>
       </div>
     </section>
 
-    <section id="travel" class="section">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Travel</p>
-          <h2>Travel English</h2>
-          <p class="section-note">旅遊、交通、機場、飯店與日常旅遊情境。共 20 堂，分成 4 個 unit。</p>
-        </div>
+    <section id="how-it-works" aria-label="How the lesson library works">
+      <div class="section-head">
+        <p class="eyebrow">How This Lesson Library Works</p>
+        <h2>Simple preview now. Deeper practice later.</h2>
+        <p>Public pages help you understand the learning style. Full practice packs and guided lessons are for learners who want structured review, speaking practice, and feedback.</p>
       </div>
 
-      <div class="phase-group">
-        <div class="phase-title">
-          <h3>Unit 1 — Airport &amp; Travel Basics</h3>
-          <span>Lessons 1–5</span>
-        </div>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="travel/u1-l1.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L01 / U1-L1 — Airport Check-In</h3>
-            <p>Travel survival English</p>
-            <span class="lesson-meta">Unit 1 · Lesson 1</span>
-          </a>
-          <a class="lesson-card" href="travel/u1-l2.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L02 / U1-L2 — Security &amp; Immigration</h3>
-            <p>Airport communication</p>
-            <span class="lesson-meta">Unit 1 · Lesson 2</span>
-          </a>
-          <a class="lesson-card" href="travel/u1-l3.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L03 / U1-L3 — On the Airplane</h3>
-            <p>Flight vocabulary &amp; conversation</p>
-            <span class="lesson-meta">Unit 1 · Lesson 3</span>
-          </a>
-          <a class="lesson-card" href="travel/u1-l4.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L04 / U1-L4 — Hotel Check-In</h3>
-            <p>Hotel communication</p>
-            <span class="lesson-meta">Unit 1 · Lesson 4</span>
-          </a>
-          <a class="lesson-card" href="travel/u1-l5.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L05 / U1-L5 — Transportation &amp; Directions</h3>
-            <p>Getting around a city</p>
-            <span class="lesson-meta">Unit 1 · Lesson 5</span>
-          </a>
-        </div>
-      </div>
-      <div class="phase-group">
-        <div class="phase-title">
-          <h3>Unit 2 — Daily Conversation English</h3>
-          <span>Lessons 6–10</span>
-        </div>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="travel/u2-l1.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L06 / U2-L1 — Self-Introduction</h3>
-            <p>Introducing yourself naturally</p>
-            <span class="lesson-meta">Unit 2 · Lesson 1</span>
-          </a>
-          <a class="lesson-card" href="travel/u2-l2.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L07 / U2-L2 — Small Talk</h3>
-            <p>Casual conversation skills</p>
-            <span class="lesson-meta">Unit 2 · Lesson 2</span>
-          </a>
-          <a class="lesson-card" href="travel/u2-l3.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L08 / U2-L3 — Ordering Food &amp; Coffee</h3>
-            <p>Restaurant &amp; café English</p>
-            <span class="lesson-meta">Unit 2 · Lesson 3</span>
-          </a>
-          <a class="lesson-card" href="travel/u2-l4.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L09 / U2-L4 — Shopping English</h3>
-            <p>Shopping conversations</p>
-            <span class="lesson-meta">Unit 2 · Lesson 4</span>
-          </a>
-          <a class="lesson-card" href="travel/u2-l5.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L10 / U2-L5 — Making Plans with Friends</h3>
-            <p>Invitations &amp; scheduling</p>
-            <span class="lesson-meta">Unit 2 · Lesson 5</span>
-          </a>
-        </div>
-      </div>
-      <div class="phase-group">
-        <div class="phase-title">
-          <h3>Unit 3 — Travel &amp; Daily Life English</h3>
-          <span>Lessons 11–15</span>
-        </div>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="travel/u3-l1.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L11 / U3-L1 — Sightseeing &amp; Tourist Attractions</h3>
-            <p>Travel experiences</p>
-            <span class="lesson-meta">Unit 3 · Lesson 1</span>
-          </a>
-          <a class="lesson-card" href="travel/u3-l2.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L12 / U3-L2 — Asking for Help</h3>
-            <p>Useful travel questions</p>
-            <span class="lesson-meta">Unit 3 · Lesson 2</span>
-          </a>
-          <a class="lesson-card" href="travel/u3-l3.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L13 / U3-L3 — Weather &amp; Seasons</h3>
-            <p>Daily conversation topics</p>
-            <span class="lesson-meta">Unit 3 · Lesson 3</span>
-          </a>
-          <a class="lesson-card" href="travel/u3-l4.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L14 / U3-L4 — At the Pharmacy &amp; Convenience Store</h3>
-            <p>Daily-life survival English</p>
-            <span class="lesson-meta">Unit 3 · Lesson 4</span>
-          </a>
-          <a class="lesson-card" href="travel/u3-l5.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L15 / U3-L5 — Taking Photos &amp; Social Media English</h3>
-            <p>Modern travel conversation</p>
-            <span class="lesson-meta">Unit 3 · Lesson 5</span>
-          </a>
-        </div>
-      </div>
-      <div class="phase-group">
-        <div class="phase-title">
-          <h3>Unit 4 — Real-Life Conversation</h3>
-          <span>Lessons 16–20</span>
-        </div>
-        <div class="lesson-grid">
-          <a class="lesson-card" href="travel/u4-l1.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L16 / U4-L1 — Restaurant Problems &amp; Complaints</h3>
-            <p>Problem-solving English</p>
-            <span class="lesson-meta">Unit 4 · Lesson 1</span>
-          </a>
-          <a class="lesson-card" href="travel/u4-l2.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L17 / U4-L2 — Emergencies While Traveling</h3>
-            <p>Emergency communication</p>
-            <span class="lesson-meta">Unit 4 · Lesson 2</span>
-          </a>
-          <a class="lesson-card" href="travel/u4-l3.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L18 / U4-L3 — Meeting New People</h3>
-            <p>Social English</p>
-            <span class="lesson-meta">Unit 4 · Lesson 3</span>
-          </a>
-          <a class="lesson-card" href="travel/u4-l4.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L19 / U4-L4 — Hobbies &amp; Weekend Activities</h3>
-            <p>Natural speaking practice</p>
-            <span class="lesson-meta">Unit 4 · Lesson 4</span>
-          </a>
-          <a class="lesson-card" href="travel/u4-l5.html">
-            <p class="card-kicker">Travel</p>
-            <h3>L20 / U4-L5 — Final Travel Simulation &amp; Review</h3>
-            <p>Comprehensive speaking review</p>
-            <span class="lesson-meta">Unit 4 · Lesson 5</span>
-          </a>
-        </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="step-number">1</div>
+          <h3>Preview</h3>
+          <p>Use the public lesson page to understand the topic, goals, and sample language.</p>
+        </article>
+
+        <article class="card">
+          <div class="step-number">2</div>
+          <h3>Practice Pack</h3>
+          <p>Use full materials for vocabulary review, dialogues, speaking drills, and answer keys.</p>
+        </article>
+
+        <article class="card">
+          <div class="step-number">3</div>
+          <h3>Guided Lesson</h3>
+          <p>Book a class when you want correction, pronunciation support, and speaking practice.</p>
+        </article>
       </div>
     </section>
 
-    <section id="business" class="section">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow">Business</p>
-          <h2>Business English</h2>
-          <p class="section-note">職場、會議、接待與商務英文。之後新增 Business 課程時，再把卡片加到這個區塊。</p>
-        </div>
+    <section id="learning-paths" aria-label="Learning paths">
+      <div class="section-head">
+        <p class="eyebrow">Learning Paths</p>
+        <h2>Pick the path that matches your goal</h2>
+        <p>Each path is organized around practical situations, so learners can connect vocabulary, phrases, and speaking practice to real life.</p>
       </div>
 
-      <div class="lesson-grid">
-        <a class="lesson-card" href="business/u1-l1.html">
-          <p class="card-kicker">Business</p>
-          <h3>U1-L1 — Business English Lesson 1</h3>
-          <p>Business English basic lesson.</p>
-          <span class="lesson-meta">A2–B1 · Unit 1</span>
+      <div class="grid-3">
+        <a class="path-card" href="#life-career">
+          <span class="tag">Life & Career</span>
+          <h3>Life & Career English</h3>
+          <p>For settling in, daily life, appointments, housing, work, and real-world communication.</p>
+        </a>
+
+        <a class="path-card" href="#travel">
+          <span class="tag">Travel</span>
+          <h3>Travel English</h3>
+          <p>For airports, hotels, directions, restaurants, transportation, and travel confidence.</p>
+        </a>
+
+        <a class="path-card" href="#business">
+          <span class="tag">Business</span>
+          <h3>Business English</h3>
+          <p>For meetings, reception, workplace communication, interviews, and professional confidence.</p>
         </a>
       </div>
     </section>
-  
-  <!-- YSP_STEP1_REVENUE_LESSONS_START -->
-<section class="ysp-revenue-section" id="how-lessons-work">
-  <div class="ysp-revenue-card">
-    <p class="ysp-revenue-eyebrow">HOW THIS LESSON LIBRARY WORKS</p>
-    <h2 class="ysp-revenue-title">Preview the path. Keep the full practice for deeper learning.</h2>
-    <p class="ysp-revenue-copy">These public lesson pages are designed to help learners explore the course path and sample the learning style. Full practice packs are reserved for active students and future paid self-study materials.</p>
-    <div class="ysp-revenue-grid">
-      <div class="ysp-revenue-mini">
-        <strong>1. Preview</strong>
-        <span>Use the public lesson page to understand the topic, goals, and sample language.</span>
+
+    <section id="available-lessons" aria-label="Available preview lessons">
+      <div class="section-head">
+        <p class="eyebrow">Available Preview Lessons</p>
+        <h2>Start with one lesson today</h2>
+        <p>These preview lessons are the best starting points before moving into full practice packs or guided lessons.</p>
       </div>
-      <div class="ysp-revenue-mini">
-        <strong>2. Practice Pack</strong>
-        <span>Use the full pack for vocabulary review, dialogues, speaking drills, and answer keys.</span>
+
+      <div id="life-career" class="course-section">
+        <div class="course-title">
+          <div>
+            <p class="eyebrow">Life & Career English</p>
+            <h2>Canada Life & Career English</h2>
+            <p>Daily life, settling in, work, housing, appointments, and useful communication for real situations.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="lesson-card">
+            <span class="tag">A2 · Unit 1</span>
+            <h3>Canada Life L01 / U1-L1 — Welcome to Canada 歡迎來到加拿大</h3>
+            <p>Core focus: arrival, working holiday, Canadian basics, and first conversations.</p>
+            <a href="ca-life/u1-l1.html">View Preview →</a>
+          </article>
+        </div>
       </div>
-      <div class="ysp-revenue-mini">
-        <strong>3. Guided Lesson</strong>
-        <span>Book a class when you want correction, pronunciation support, and speaking practice.</span>
+
+      <div id="travel" class="course-section">
+        <div class="course-title">
+          <div>
+            <p class="eyebrow">Travel English</p>
+            <h2>Travel English</h2>
+            <p>Travel, transportation, airports, hotels, directions, restaurants, and everyday travel communication.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="lesson-card">
+            <span class="tag">A2 · Unit 1</span>
+            <h3>Travel L01 / U1-L1 — Airport Check-In</h3>
+            <p>Practice basic airport check-in language and travel survival English.</p>
+            <a href="travel/u1-l1.html">View Preview →</a>
+          </article>
+
+          <article class="lesson-card">
+            <span class="tag">A2 · Unit 1</span>
+            <h3>Travel L02 / U1-L2 — Security & Immigration</h3>
+            <p>Practice useful questions and answers for airport security and immigration.</p>
+            <a href="travel/u1-l2.html">View Preview →</a>
+          </article>
+
+          <article class="lesson-card">
+            <span class="tag">A2 · Unit 2</span>
+            <h3>Travel L06 / U2-L1 — Self-Introduction</h3>
+            <p>Practice introducing yourself naturally in travel and daily conversation settings.</p>
+            <a href="travel/u1-l6.html">View Preview →</a>
+          </article>
+        </div>
       </div>
-    </div>
-    <div class="ysp-revenue-actions">
-      <a class="ysp-revenue-btn primary" href="../index.html#practice-packs">Practice Pack Model</a>
-      <a class="ysp-revenue-btn" href="https://en.amazingtalker.com/teachers-and-tutors/jobi-pan#timeslots">Book a Trial Lesson</a>
-    </div>
-  </div>
-</section>
-<!-- YSP_STEP1_REVENUE_LESSONS_END -->
-<!-- YSP_AUTO_LESSON_LIBRARY_START -->
-<section class="ysp-auto-lesson-library" id="lesson-library">
-  <div class="ysp-auto-library-heading">
-    <p class="eyebrow">LESSON LIBRARY</p>
-    <h2>Choose Your Next Lesson</h2>
-    <p>This section is automatically updated from the HTML lesson files inside the lessons folder.</p>
-  </div>
-  <section class="ysp-auto-course-section" id="auto-ca-life">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>🏔️ Canada Life &amp; Career English</h3>
-        <p>加拿大生活、工作、文化與實用口說英文。</p>
+
+      <div id="business" class="course-section">
+        <div class="course-title">
+          <div>
+            <p class="eyebrow">Business English</p>
+            <h2>Business English</h2>
+            <p>Workplace conversations, meetings, reception, professional communication, and business confidence.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="lesson-card">
+            <span class="tag">A2–B1 · Unit 1</span>
+            <h3>Business U1-L1 — Business English Lesson 1</h3>
+            <p>Start building clearer and more confident workplace communication.</p>
+            <a href="business/u1-l1.html">View Preview →</a>
+          </article>
+        </div>
       </div>
-      <span class="ysp-auto-count">1 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="ca-life/u1-l1.html">
-        <strong>L01 — Welcome to Canada 歡迎來到加拿大</strong>
-        <span>ca-life/u1-l1.html</span>
-      </a>
-    </div>
-  </section>
-  <section class="ysp-auto-course-section" id="auto-travel">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>✈️ Travel English</h3>
-        <p>旅遊、交通、機場、飯店與日常旅遊情境。</p>
+    </section>
+
+    <section aria-label="Practice pack call to action">
+      <div class="cta-card">
+        <p class="eyebrow">Practice Packs</p>
+        <h2>Full practice packs are coming next.</h2>
+        <p>Preview lessons stay public. Full review materials will be prepared for active students and future self-study learners who want deeper practice.</p>
+        <div class="actions">
+          <a class="btn primary" href="#available-lessons">View Preview Lessons</a>
+          <a class="btn" href="https://en.amazingtalker.com/teachers-and-tutors/jobi-pan#timeslots">Book a Trial Lesson</a>
+        </div>
       </div>
-      <span class="ysp-auto-count">3 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="travel/u1-l1.html">
-        <strong>Lesson 01 — Welcome to Canada</strong>
-        <span>travel/u1-l1.html</span>
-      </a>
-      <a class="ysp-auto-lesson-card" href="travel/u1-l2.html">
-        <strong>u1-l2</strong>
-        <span>travel/u1-l2.html</span>
-      </a>
-      <a class="ysp-auto-lesson-card" href="travel/u1-l6.html">
-        <strong>u1-l6</strong>
-        <span>travel/u1-l6.html</span>
-      </a>
-    </div>
-  </section>
-  <section class="ysp-auto-course-section" id="auto-business">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>💼 Business English</h3>
-        <p>職場、會議、接待與商務英文。</p>
-      </div>
-      <span class="ysp-auto-count">1 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="business/u1-l1.html">
-        <strong>u1-l1</strong>
-        <span>business/u1-l1.html</span>
-      </a>
-    </div>
-  </section>
-</section>
-<!-- YSP_AUTO_LESSON_LIBRARY_END -->
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-brand">
-      <img class="footer-signature-logo" src="../assets/img/ysp-logo-script-overlay.png" alt="YSP signature logo">
-      <span>YSP Learn &amp; Shine</span>
-    </div>
+  <footer>
+    <img class="footer-logo" src="../assets/img/ysp-logo-script-overlay.png" alt="YSP signature logo">
+    <strong>YSP Learn & Shine</strong>
     <p>Learn with Purpose. Shine with Confidence.</p>
+    <p class="footer-est">EST. 2026</p>
   </footer>
 
-
-<!-- YSP_LESSONS_TOP_BUTTON_START -->
-<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
-  <span class="ysp-page-top-arrow">↑</span>
-  <span class="ysp-page-top-label">Top</span>
-</a>
-<!-- YSP_LESSONS_TOP_BUTTON_END -->
-
+  <a class="top-button" href="#top" aria-label="Back to top">
+    <span>↑</span>
+    <span>Top</span>
+  </a>
 </body>
 </html>
