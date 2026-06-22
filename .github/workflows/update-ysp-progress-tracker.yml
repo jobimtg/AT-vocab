@@ -1,0 +1,186 @@
+name: Update YSP Progress Tracker
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "index.html"
+      - "lessons/index.html"
+      - "lessons/**/*.html"
+      - "practice-packs/**"
+      - "products/practice-packs/**"
+      - ".github/workflows/*.yml"
+      - "docs/YSP_PROGRESS_TRACKER.md"
+
+permissions:
+  contents: write
+
+jobs:
+  update-progress-tracker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Generate progress tracker
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path.cwd()
+          OUT = ROOT / "docs" / "YSP_PROGRESS_TRACKER.md"
+          OUT.parent.mkdir(parents=True, exist_ok=True)
+
+          def exists(path):
+              return (ROOT / path).exists()
+
+          def read(path):
+              p = ROOT / path
+              return p.read_text(encoding="utf-8", errors="ignore") if p.exists() else ""
+
+          def has(path, text):
+              return text in read(path)
+
+          def any_files(pattern):
+              return any(ROOT.glob(pattern))
+
+          def done_text(done):
+              return "✅ Done" if done else "⏳ Pending"
+
+          def progress(items):
+              return round(sum(1 for i in items if i["done"]) / len(items) * 100) if items else 0
+
+          def esc(text):
+              return str(text).replace("|", "\\|").replace("\n", " ")
+
+          old_workflows = [
+              ".github/workflows/auto-update-lessons-after-upload.yml",
+              ".github/workflows/refresh-lesson-navigation.yml",
+              ".github/workflows/check-course-links-v3-report-only.yml",
+              ".github/workflows/check-course-links-v2.yml",
+              ".github/workflows/check-site-links.yml",
+              ".github/workflows/add-lesson-navigation.yml",
+              ".github/workflows/add-lesson-navigation-v2.yml",
+          ]
+
+          homepage_exists = exists("index.html")
+          step1_workflow_exists = exists(".github/workflows/step1-revenue-positioning.yml")
+          clean_workflow_exists = exists(".github/workflows/auto-update-lessons-clean-header.yml")
+          old_workflows_removed = not any(exists(p) for p in old_workflows)
+          no_reports = not exists(".github/workflow-reports")
+          home_section = has("index.html", "YSP_STEP1_REVENUE_HOME_START") or has("index.html", "practice-packs")
+          lessons_section = has("lessons/index.html", "YSP_STEP1_REVENUE_LESSONS_START") or has("lessons/index.html", "how-lessons-work")
+          preview_lesson = any(
+              ("YSP_PREVIEW_LESSON" in p.read_text(encoding="utf-8", errors="ignore") or "Free Preview" in p.read_text(encoding="utf-8", errors="ignore"))
+              for p in ROOT.glob("lessons/**/*.html")
+              if p.name.lower() != "index.html"
+          )
+          pack_exists = any_files("practice-packs/**/*") or any_files("products/practice-packs/**/*")
+          payment_link = any(x in read("index.html").lower() for x in ["payhip.com", "ko-fi.com", "gumroad.com"])
+
+          revenue = [
+              {"done": True, "item": "Reframe website positioning", "purpose": "Change from free course database to preview + paid/student-only practice pack gateway.", "auto": "Tracker exists"},
+              {"done": homepage_exists, "item": "Keep GitHub Pages as brand entrance", "purpose": "Use GitHub for trust, course paths, previews, and CTAs.", "auto": "`index.html` exists"},
+              {"done": True, "item": "Avoid Substack as main system", "purpose": "Reduce weekly content and email-list management.", "auto": "Strategy confirmed"},
+              {"done": True, "item": "Avoid AdSense as first income source", "purpose": "Avoid needing lots of public free content and high traffic.", "auto": "Strategy confirmed"},
+              {"done": home_section, "item": "Choose practice pack model", "purpose": "Full materials become student-only or paid packs.", "auto": "Homepage contains practice pack section"},
+          ]
+
+          timeline = [
+              {"done": step1_workflow_exists, "step": "Upload Step 1 workflow", "target": "Add `.github/workflows/step1-revenue-positioning.yml`.", "auto": "Workflow file exists"},
+              {"done": home_section and lessons_section, "step": "Run Step 1 workflow", "target": "Add positioning sections to homepage and Lessons page.", "auto": "Homepage and Lessons markers exist"},
+              {"done": home_section, "step": "Check homepage", "target": "Confirm homepage has Preview + Practice Pack section.", "auto": "Homepage marker exists"},
+              {"done": lessons_section, "step": "Check Lessons page", "target": "Confirm Lessons explains Preview / Practice Pack / Guided Lesson.", "auto": "Lessons marker exists"},
+              {"done": False, "step": "Select first preview lesson", "target": "Choose one lesson, recommended L01 Welcome to Canada.", "auto": "Manual confirmation"},
+              {"done": preview_lesson, "step": "Convert first lesson to preview", "target": "Public page should show only sample content.", "auto": "Lesson contains `YSP_PREVIEW_LESSON` or `Free Preview`"},
+              {"done": pack_exists, "step": "Create first practice pack", "target": "Complete PDF / worksheet / review pack for the first lesson.", "auto": "`practice-packs/` or `products/practice-packs/` contains a file"},
+          ]
+
+          checklist = [
+              {"done": True, "task": "Keep lesson content unchanged at first", "done_when": "Step 1 only changes positioning, not all course content.", "auto": "Strategy decision"},
+              {"done": home_section or lessons_section, "task": "Add Practice Pack CTA", "done_when": "Homepage or Lessons page shows practice pack CTA.", "auto": "Practice pack marker exists"},
+              {"done": clean_workflow_exists and old_workflows_removed, "task": "Keep one clean automation workflow", "done_when": "Only clean lesson automation workflow remains.", "auto": "Old workflow files removed"},
+              {"done": no_reports, "task": "Remove duplicate reports", "done_when": "No `.github/workflow-reports/` folder in repo.", "auto": "Folder does not exist"},
+              {"done": False, "task": "Test with current 3 students", "done_when": "Ask whether the pack helps after class.", "auto": "Manual confirmation"},
+              {"done": payment_link, "task": "Decide payment platform later", "done_when": "Payhip / Ko-fi / Gumroad decision comes after first pack.", "auto": "Payment platform link appears on homepage"},
+          ]
+
+          all_items = revenue + timeline + checklist
+          next_item = next((x for x in timeline + checklist if not x["done"]), None)
+
+          lines = []
+          lines.append("# YSP Learn & Shine — Progress Tracker")
+          lines.append("")
+          lines.append("> This file is automatically updated by `.github/workflows/update-ysp-progress-tracker.yml`.")
+          lines.append("> Review this before starting the next step.")
+          lines.append("")
+          lines.append("## Current Dashboard")
+          lines.append("")
+          lines.append("| Area | Progress |")
+          lines.append("|---|---:|")
+          lines.append(f"| Revenue Strategy | {progress(revenue)}% |")
+          lines.append(f"| Step 1 Website Positioning | {progress(timeline)}% |")
+          lines.append(f"| Next-Step Readiness | {progress(checklist)}% |")
+          lines.append(f"| Overall | {progress(all_items)}% |")
+          lines.append("")
+          lines.append("## Next Action Before Moving Forward")
+          lines.append("")
+          lines.append("| Priority | Next Step | Why / Target |")
+          lines.append("|---:|---|---|")
+          if next_item:
+              name = next_item.get("step") or next_item.get("task") or next_item.get("item")
+              why = next_item.get("target") or next_item.get("done_when") or next_item.get("purpose")
+              lines.append(f"| 1 | {esc(name)} | {esc(why)} |")
+          else:
+              lines.append("| 1 | Ready for next phase | Step 1 tracker is complete. |")
+          lines.append("")
+          lines.append("## Revenue Strategy Tracker")
+          lines.append("")
+          lines.append("| Status | Item | Purpose | Auto Check |")
+          lines.append("|---|---|---|---|")
+          for x in revenue:
+              lines.append(f"| {done_text(x['done'])} | {esc(x['item'])} | {esc(x['purpose'])} | {esc(x['auto'])} |")
+          lines.append("")
+          lines.append("## Step 1 Timeline Tracker")
+          lines.append("")
+          lines.append("| Status | Step | Target | Auto Check |")
+          lines.append("|---|---|---|---|")
+          for x in timeline:
+              lines.append(f"| {done_text(x['done'])} | {esc(x['step'])} | {esc(x['target'])} | {esc(x['auto'])} |")
+          lines.append("")
+          lines.append("## Step 1 Checklist Tracker")
+          lines.append("")
+          lines.append("| Status | Task | Done When | Auto Check |")
+          lines.append("|---|---|---|---|")
+          for x in checklist:
+              lines.append(f"| {done_text(x['done'])} | {esc(x['task'])} | {esc(x['done_when'])} | {esc(x['auto'])} |")
+          lines.append("")
+          lines.append("## Notes")
+          lines.append("")
+          lines.append("- Auto-detectable items update when GitHub Actions runs.")
+          lines.append("- Real-world decisions still show as manual confirmation until a file, marker, or payment link exists.")
+          lines.append("- This file replaces the previous scattered strategy / timeline / checklist docs.")
+          lines.append("- No separate report files are created.")
+          OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
+          print("Updated docs/YSP_PROGRESS_TRACKER.md")
+          PY
+
+      - name: Commit progress tracker
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add docs/YSP_PROGRESS_TRACKER.md
+
+          if git diff --cached --quiet; then
+            echo "No progress tracker changes to commit."
+          else
+            git commit -m "Update YSP progress tracker"
+            git push
+          fi
