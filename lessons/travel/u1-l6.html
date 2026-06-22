@@ -6,44 +6,150 @@
   <meta http-equiv="refresh" content="0; url=../lessons/travel/u1-l6.html">
   <title>Redirecting...</title>
   <link rel="stylesheet" href="../../assets/css/site.css">
-
-
-
-
-<!-- YSP_CLEAN_TOP_STYLE_START -->
+<!-- YSP_GLOBAL_LESSON_STYLE_START -->
 <style>
   html { scroll-behavior: smooth; }
   body { overflow-x: hidden; }
-  .ysp-page-top-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
-  .ysp-page-top-button { position: fixed; right: 24px; bottom: 24px; z-index: 99999; width: 58px; height: 58px; border-radius: 999px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: #1f1d1b; color: #ffffff; text-decoration: none; border: 1px solid rgba(255,255,255,.28); box-shadow: 0 14px 34px rgba(60,43,25,.22); opacity: .92; font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; }
-  .ysp-page-top-button:hover { transform: translateY(-2px); opacity: 1; }
-  .ysp-page-top-arrow { font-size: 22px; line-height: 1; font-weight: 900; }
-  .ysp-page-top-label { font-size: 11px; line-height: 1; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
-  .ysp-auto-lesson-library { max-width: 1180px; margin: 48px auto 70px; padding: 0 24px; font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; }
-  .ysp-auto-library-heading { text-align: center; margin-bottom: 28px; }
-  .ysp-auto-library-heading .eyebrow { color: #c4935d; letter-spacing: .28em; font-size: 12px; font-weight: 900; text-transform: uppercase; }
-  .ysp-auto-library-heading h2 { margin: 8px 0 10px; color: #13213b; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; }
-  .ysp-auto-library-heading p { max-width: 760px; margin: 0 auto; color: #6f6257; font-size: 16px; line-height: 1.75; }
-  .ysp-auto-course-section { margin-top: 34px; }
-  .ysp-auto-course-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; border-bottom: 1px solid rgba(196,147,93,.28); padding-bottom: 12px; }
-  .ysp-auto-course-title h3 { margin: 0; color: #13213b; font-size: 24px; }
-  .ysp-auto-course-title p { margin: 4px 0 0; color: #74685d; font-size: 14px; }
-  .ysp-auto-count { color: #c4935d; font-size: 12px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
-  .ysp-auto-lesson-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
-  .ysp-auto-lesson-card { display: block; padding: 18px 18px 16px; border-radius: 20px; background: rgba(255,255,255,.82); border: 1px solid rgba(196,147,93,.28); box-shadow: 0 12px 30px rgba(60,43,25,.08); color: #13213b; text-decoration: none; }
-  .ysp-auto-lesson-card:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(60,43,25,.12); }
-  .ysp-auto-lesson-card strong { display: block; font-size: 17px; line-height: 1.35; margin-bottom: 8px; }
-  .ysp-auto-lesson-card span { display: block; color: #77695e; font-size: 13px; line-height: 1.55; }
-  @media (max-width: 760px) { .ysp-page-top-button { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
+
+  .ysp-page-top-anchor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .lesson-page-header {
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100000;
+  }
+
+  .lesson-page-header .brand {
+    margin: 0;
+    font-size: inherit;
+    letter-spacing: normal;
+    text-transform: none;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .lesson-page-header .brand-name,
+  .lesson-page-header .brand-tagline {
+    display: block;
+  }
+
+  .lesson-page-header .site-nav a {
+    text-decoration: none;
+  }
+
+  .lesson-top-actions {
+    max-width: 1180px;
+    margin: 30px auto 20px;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .back-to-lessons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.88);
+    border: 1px solid rgba(196,147,93,.30);
+    color: #1f1d1b;
+    text-decoration: none;
+    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: .02em;
+    box-shadow: 0 14px 34px rgba(60,43,25,.10);
+  }
+
+  .back-to-lessons:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 38px rgba(60,43,25,.14);
+  }
+
+  .ysp-page-top-button {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 99999;
+    width: 58px;
+    height: 58px;
+    border-radius: 999px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    background: #1f1d1b;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.28);
+    box-shadow: 0 14px 34px rgba(60,43,25,.22);
+    opacity: .92;
+    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+  }
+
+  .ysp-page-top-button:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+
+  .ysp-page-top-arrow {
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .ysp-page-top-label {
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .lesson-page-footer {
+    max-width: none;
+    width: 100%;
+    margin-top: 34px;
+  }
+
+  @media (max-width: 760px) {
+    .lesson-top-actions {
+      margin: 22px auto 16px;
+      padding: 0 18px;
+    }
+
+    .back-to-lessons {
+      width: 100%;
+      min-height: 44px;
+    }
+
+    .ysp-page-top-button {
+      right: 16px;
+      bottom: 16px;
+      width: 52px;
+      height: 52px;
+    }
+
+    .ysp-page-top-arrow { font-size: 20px; }
+    .ysp-page-top-label { font-size: 10px; }
+  }
 </style>
-<!-- YSP_CLEAN_TOP_STYLE_END -->
+<!-- YSP_GLOBAL_LESSON_STYLE_END -->
 </head>
 <body>
 <!-- YSP_AUTO_TOP_ANCHOR_START -->
 <div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
 <!-- YSP_AUTO_TOP_ANCHOR_END -->
-
-
 
 <!-- YSP_LESSON_NAV_START -->
 <header class="site-header lesson-page-header">
@@ -67,7 +173,6 @@
 </div>
 <!-- YSP_LESSON_NAV_END -->
 
-
 <p>Redirecting to <a href="../lessons/travel/u1-l6.html">Travel U1-L6</a></p>
   <script>window.location.replace("../lessons/travel/u1-l6.html");</script>
 
@@ -80,6 +185,7 @@
   <p>Learn with Purpose. Shine with Confidence.</p>
 </footer>
 <!-- YSP_LESSON_FOOTER_END -->
+
 <!-- YSP_AUTO_TOP_BUTTON_START -->
 <a class="ysp-page-top-button" href="#top" aria-label="Back to top">
   <span class="ysp-page-top-arrow">↑</span>
@@ -87,12 +193,5 @@
 </a>
 <!-- YSP_AUTO_TOP_BUTTON_END -->
 
-
-<!-- YSP_CLEAN_TOP_BUTTON_START -->
-<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
-  <span class="ysp-page-top-arrow">↑</span>
-  <span class="ysp-page-top-label">Top</span>
-</a>
-<!-- YSP_CLEAN_TOP_BUTTON_END -->
 </body>
 </html>
