@@ -2,14 +2,6 @@ name: Update YSP Progress Tracker
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "index.html"
-      - "lessons/index.html"
-      - "lessons/**/*.html"
-      - "practice-packs/**"
-      - "products/practice-packs/**"
-      - ".github/workflows/*.yml"
 
 permissions:
   contents: write
@@ -27,198 +19,195 @@ jobs:
       - name: Generate progress tracker
         shell: bash
         run: |
-          mkdir -p docs
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
 
-          exists_file() {
-            if [ -f "$1" ]; then echo 1; else echo 0; fi
-          }
+          root = Path.cwd()
+          docs = root / "docs"
+          docs.mkdir(parents=True, exist_ok=True)
+          out = docs / "YSP_PROGRESS_TRACKER.md"
 
-          exists_dir() {
-            if [ -d "$1" ]; then echo 1; else echo 0; fi
-          }
+          def exists_file(relative_path):
+              return (root / relative_path).is_file()
 
-          contains_text() {
-            local file="$1"
-            local text="$2"
-            if [ -f "$file" ] && grep -q "$text" "$file"; then echo 1; else echo 0; fi
-          }
+          def exists_dir(relative_path):
+              return (root / relative_path).is_dir()
 
-          status_text() {
-            if [ "$1" = "1" ]; then echo "✅ Done"; else echo "⏳ Pending"; fi
-          }
+          def read_text(relative_path):
+              path = root / relative_path
+              if not path.is_file():
+                  return ""
+              return path.read_text(encoding="utf-8", errors="ignore")
 
-          progress_percent() {
-            local done="$1"
-            local total="$2"
-            if [ "$total" = "0" ]; then echo 0; else echo $(( done * 100 / total )); fi
-          }
+          def contains(relative_path, text):
+              return text in read_text(relative_path)
 
-          homepage_exists=$(exists_file "index.html")
-          lessons_exists=$(exists_file "lessons/index.html")
-          step1_workflow_exists=$(exists_file ".github/workflows/step1-revenue-positioning.yml")
-          clean_workflow_exists=$(exists_file ".github/workflows/auto-update-lessons-clean-header.yml")
-          no_reports=1
-          if [ -d ".github/workflow-reports" ]; then no_reports=0; fi
+          def any_file_under(*relative_dirs):
+              for relative_dir in relative_dirs:
+                  folder = root / relative_dir
+                  if folder.exists():
+                      for path in folder.rglob("*"):
+                          if path.is_file():
+                              return True
+              return False
 
-          home_section=0
-          if [ "$(contains_text "index.html" "YSP_STEP1_REVENUE_HOME_START")" = "1" ] || [ "$(contains_text "index.html" "practice-packs")" = "1" ]; then
-            home_section=1
-          fi
+          def lesson_preview_exists():
+              lessons = root / "lessons"
+              if not lessons.exists():
+                  return False
+              for path in lessons.rglob("*.html"):
+                  if path.name.lower() == "index.html":
+                      continue
+                  text = path.read_text(encoding="utf-8", errors="ignore")
+                  if "YSP_PREVIEW_LESSON" in text or "Free Preview" in text:
+                      return True
+              return False
 
-          lessons_section=0
-          if [ "$(contains_text "lessons/index.html" "YSP_STEP1_REVENUE_LESSONS_START")" = "1" ] || [ "$(contains_text "lessons/index.html" "how-lessons-work")" = "1" ]; then
-            lessons_section=1
-          fi
+          def status(done):
+              return "Done" if done else "Pending"
 
-          step1_sections_done=0
-          if [ "$home_section" = "1" ] && [ "$lessons_section" = "1" ]; then
-            step1_sections_done=1
-          fi
+          def mark(done):
+              return "✅ Done" if done else "⏳ Pending"
 
-          old_workflows_removed=1
-          for old_wf in \
-            ".github/workflows/auto-update-lessons-after-upload.yml" \
-            ".github/workflows/refresh-lesson-navigation.yml" \
-            ".github/workflows/check-course-links-v3-report-only.yml" \
-            ".github/workflows/check-course-links-v2.yml" \
-            ".github/workflows/check-site-links.yml" \
-            ".github/workflows/add-lesson-navigation.yml" \
-            ".github/workflows/add-lesson-navigation-v2.yml"
-          do
-            if [ -f "$old_wf" ]; then
-              old_workflows_removed=0
-            fi
-          done
+          def percent(items):
+              if not items:
+                  return 0
+              done_count = sum(1 for item in items if item)
+              return round(done_count * 100 / len(items))
 
-          preview_lesson=0
-          if [ -d "lessons" ]; then
-            if grep -R -I -q -E "YSP_PREVIEW_LESSON|Free Preview" lessons --include="*.html"; then
-              preview_lesson=1
-            fi
-          fi
+          old_workflows = [
+              ".github/workflows/auto-update-lessons-after-upload.yml",
+              ".github/workflows/refresh-lesson-navigation.yml",
+              ".github/workflows/check-course-links-v3-report-only.yml",
+              ".github/workflows/check-course-links-v2.yml",
+              ".github/workflows/check-site-links.yml",
+              ".github/workflows/add-lesson-navigation.yml",
+              ".github/workflows/add-lesson-navigation-v2.yml",
+          ]
 
-          pack_exists=0
-          if find practice-packs products/practice-packs -type f 2>/dev/null | grep -q .; then
-            pack_exists=1
-          fi
+          homepage_exists = exists_file("index.html")
+          lessons_exists = exists_file("lessons/index.html")
+          step1_workflow_exists = exists_file(".github/workflows/step1-revenue-positioning.yml")
+          clean_lesson_workflow_exists = exists_file(".github/workflows/auto-update-lessons-clean-header.yml")
+          old_workflows_removed = not any(exists_file(item) for item in old_workflows)
+          no_workflow_reports = not exists_dir(".github/workflow-reports")
 
-          payment_link=0
-          if [ -f "index.html" ] && grep -i -E -q "payhip\.com|ko-fi\.com|gumroad\.com" index.html; then
-            payment_link=1
-          fi
+          home_section = (
+              contains("index.html", "YSP_STEP1_REVENUE_HOME_START")
+              or contains("index.html", "practice-packs")
+              or contains("index.html", "Practice Packs")
+          )
 
-          one_clean_workflow=0
-          if [ "$clean_workflow_exists" = "1" ] && [ "$old_workflows_removed" = "1" ]; then
-            one_clean_workflow=1
-          fi
+          lessons_section = (
+              contains("lessons/index.html", "YSP_STEP1_REVENUE_LESSONS_START")
+              or contains("lessons/index.html", "how-lessons-work")
+              or contains("lessons/index.html", "Practice Pack")
+          )
 
-          revenue_done=$(( 1 + homepage_exists + 1 + 1 + home_section ))
-          revenue_total=5
+          step1_sections_done = home_section and lessons_section
+          preview_exists = lesson_preview_exists()
+          pack_exists = any_file_under("practice-packs", "products/practice-packs")
 
-          timeline_done=$(( step1_workflow_exists + step1_sections_done + home_section + lessons_section + 0 + preview_lesson + pack_exists ))
-          timeline_total=7
+          index_lower = read_text("index.html").lower()
+          payment_link = (
+              "payhip.com" in index_lower
+              or "ko-fi.com" in index_lower
+              or "gumroad.com" in index_lower
+          )
 
-          checklist_done=$(( 1 + (home_section || lessons_section) + one_clean_workflow + no_reports + 0 + payment_link ))
-          checklist_total=6
+          revenue_items = [
+              ("Reframe website positioning", True, "Change from free course database to preview + paid/student-only practice pack gateway.", "Tracker exists"),
+              ("Keep GitHub Pages as brand entrance", homepage_exists, "Use GitHub for trust, course paths, previews, and CTAs.", "index.html exists"),
+              ("Avoid Substack as main system", True, "Reduce weekly content and email-list management.", "Strategy confirmed"),
+              ("Avoid AdSense as first income source", True, "Avoid needing lots of public free content and high traffic.", "Strategy confirmed"),
+              ("Choose practice pack model", home_section, "Full materials become student-only or paid packs.", "Homepage contains practice pack section"),
+          ]
 
-          overall_done=$(( revenue_done + timeline_done + checklist_done ))
-          overall_total=$(( revenue_total + timeline_total + checklist_total ))
+          timeline_items = [
+              ("Upload Step 1 workflow", step1_workflow_exists, "Add .github/workflows/step1-revenue-positioning.yml.", "Workflow file exists"),
+              ("Run Step 1 workflow", step1_sections_done, "Add positioning sections to homepage and Lessons page.", "Homepage and Lessons markers exist"),
+              ("Check homepage", home_section, "Confirm homepage has Preview + Practice Pack section.", "Homepage marker exists"),
+              ("Check Lessons page", lessons_section, "Confirm Lessons explains Preview / Practice Pack / Guided Lesson.", "Lessons marker exists"),
+              ("Select first preview lesson", False, "Choose one lesson, recommended L01 Welcome to Canada.", "Manual confirmation"),
+              ("Convert first lesson to preview", preview_exists, "Public page should show only sample content.", "A lesson contains YSP_PREVIEW_LESSON or Free Preview"),
+              ("Create first practice pack", pack_exists, "Complete PDF / worksheet / review pack for the first lesson.", "practice-packs/ or products/practice-packs/ contains a file"),
+          ]
 
-          next_step="Ready for next phase"
-          next_why="Step 1 tracker is complete."
+          checklist_items = [
+              ("Keep lesson content unchanged at first", True, "Step 1 only changes positioning, not all course content.", "Strategy decision"),
+              ("Add Practice Pack CTA", home_section or lessons_section, "Homepage or Lessons page shows practice pack CTA.", "Practice pack marker exists"),
+              ("Keep one clean automation workflow", clean_lesson_workflow_exists and old_workflows_removed, "Only clean lesson automation workflow remains.", "Old workflow files removed"),
+              ("Remove duplicate reports", no_workflow_reports, "No .github/workflow-reports/ folder in repo.", "Folder does not exist"),
+              ("Test with current 3 students", False, "Ask whether the pack helps after class.", "Manual confirmation"),
+              ("Decide payment platform later", payment_link, "Payhip / Ko-fi / Gumroad decision comes after first pack.", "Payment platform link appears on homepage"),
+          ]
 
-          if [ "$step1_workflow_exists" = "0" ]; then
-            next_step="Upload Step 1 workflow"
-            next_why="Add .github/workflows/step1-revenue-positioning.yml."
-          elif [ "$step1_sections_done" = "0" ]; then
-            next_step="Run Step 1 workflow"
-            next_why="Add positioning sections to homepage and Lessons page."
-          elif [ "$home_section" = "0" ]; then
-            next_step="Check homepage"
-            next_why="Confirm homepage has Preview + Practice Pack section."
-          elif [ "$lessons_section" = "0" ]; then
-            next_step="Check Lessons page"
-            next_why="Confirm Lessons explains Preview / Practice Pack / Guided Lesson."
-          elif [ "$preview_lesson" = "0" ]; then
-            next_step="Select and convert first preview lesson"
-            next_why="Choose one lesson, recommended L01 Welcome to Canada, and convert it into preview format."
-          elif [ "$pack_exists" = "0" ]; then
-            next_step="Create first practice pack"
-            next_why="Complete PDF / worksheet / review pack for the first lesson."
-          elif [ "$one_clean_workflow" = "0" ]; then
-            next_step="Clean old workflows"
-            next_why="Keep only the clean lesson automation workflow."
-          elif [ "$payment_link" = "0" ]; then
-            next_step="Decide payment platform later"
-            next_why="Add Payhip / Ko-fi / Gumroad only after the first pack exists."
-          fi
+          next_action = None
+          for name, done, target, auto in timeline_items + checklist_items:
+              if not done:
+                  next_action = (name, target)
+                  break
 
-          cat > docs/YSP_PROGRESS_TRACKER.md <<EOF
-          # YSP Learn & Shine — Progress Tracker
+          if next_action is None:
+              next_action = ("Ready for next phase", "Step 1 tracker is complete.")
 
-          > This file is automatically updated by \`.github/workflows/update-ysp-progress-tracker.yml\`.
-          > Review this before starting the next step.
+          def table_rows(items, second_header, third_header):
+              lines = [
+                  f"| Status | {second_header} | {third_header} | Auto Check |",
+                  "|---|---|---|---|",
+              ]
+              for name, done, purpose, auto in items:
+                  lines.append(f"| {mark(done)} | {name} | {purpose} | {auto} |")
+              return lines
 
-          ## Current Dashboard
+          all_bools = [item[1] for item in revenue_items + timeline_items + checklist_items]
 
-          | Area | Progress |
-          |---|---:|
-          | Revenue Strategy | $(progress_percent "$revenue_done" "$revenue_total")% |
-          | Step 1 Website Positioning | $(progress_percent "$timeline_done" "$timeline_total")% |
-          | Next-Step Readiness | $(progress_percent "$checklist_done" "$checklist_total")% |
-          | Overall | $(progress_percent "$overall_done" "$overall_total")% |
+          lines = []
+          lines.append("# YSP Learn & Shine — Progress Tracker")
+          lines.append("")
+          lines.append("> This file is automatically updated by `.github/workflows/update-ysp-progress-tracker.yml`.")
+          lines.append("> Review this before starting the next step.")
+          lines.append("")
+          lines.append("## Current Dashboard")
+          lines.append("")
+          lines.append("| Area | Progress |")
+          lines.append("|---|---:|")
+          lines.append(f"| Revenue Strategy | {percent([item[1] for item in revenue_items])}% |")
+          lines.append(f"| Step 1 Website Positioning | {percent([item[1] for item in timeline_items])}% |")
+          lines.append(f"| Next-Step Readiness | {percent([item[1] for item in checklist_items])}% |")
+          lines.append(f"| Overall | {percent(all_bools)}% |")
+          lines.append("")
+          lines.append("## Next Action Before Moving Forward")
+          lines.append("")
+          lines.append("| Priority | Next Step | Why / Target |")
+          lines.append("|---:|---|---|")
+          lines.append(f"| 1 | {next_action[0]} | {next_action[1]} |")
+          lines.append("")
+          lines.append("## Revenue Strategy Tracker")
+          lines.append("")
+          lines.extend(table_rows(revenue_items, "Item", "Purpose"))
+          lines.append("")
+          lines.append("## Step 1 Timeline Tracker")
+          lines.append("")
+          lines.extend(table_rows(timeline_items, "Step", "Target"))
+          lines.append("")
+          lines.append("## Step 1 Checklist Tracker")
+          lines.append("")
+          lines.extend(table_rows(checklist_items, "Task", "Done When"))
+          lines.append("")
+          lines.append("## Notes")
+          lines.append("")
+          lines.append("- Auto-detectable items update when GitHub Actions runs.")
+          lines.append("- Real-world decisions still show as manual confirmation until a file, marker, or payment link exists.")
+          lines.append("- This file replaces the previous scattered strategy / timeline / checklist docs.")
+          lines.append("- No separate report files are created.")
+          lines.append("")
 
-          ## Next Action Before Moving Forward
-
-          | Priority | Next Step | Why / Target |
-          |---:|---|---|
-          | 1 | $next_step | $next_why |
-
-          ## Revenue Strategy Tracker
-
-          | Status | Item | Purpose | Auto Check |
-          |---|---|---|---|
-          | $(status_text 1) | Reframe website positioning | Change from free course database to preview + paid/student-only practice pack gateway. | Tracker exists |
-          | $(status_text "$homepage_exists") | Keep GitHub Pages as brand entrance | Use GitHub for trust, course paths, previews, and CTAs. | index.html exists |
-          | $(status_text 1) | Avoid Substack as main system | Reduce weekly content and email-list management. | Strategy confirmed |
-          | $(status_text 1) | Avoid AdSense as first income source | Avoid needing lots of public free content and high traffic. | Strategy confirmed |
-          | $(status_text "$home_section") | Choose practice pack model | Full materials become student-only or paid packs. | Homepage contains practice pack section |
-
-          ## Step 1 Timeline Tracker
-
-          | Status | Step | Target | Auto Check |
-          |---|---|---|---|
-          | $(status_text "$step1_workflow_exists") | Upload Step 1 workflow | Add .github/workflows/step1-revenue-positioning.yml. | Workflow file exists |
-          | $(status_text "$step1_sections_done") | Run Step 1 workflow | Add positioning sections to homepage and Lessons page. | Homepage and Lessons markers exist |
-          | $(status_text "$home_section") | Check homepage | Confirm homepage has Preview + Practice Pack section. | Homepage marker exists |
-          | $(status_text "$lessons_section") | Check Lessons page | Confirm Lessons explains Preview / Practice Pack / Guided Lesson. | Lessons marker exists |
-          | ⏳ Pending | Select first preview lesson | Choose one lesson, recommended L01 Welcome to Canada. | Manual confirmation |
-          | $(status_text "$preview_lesson") | Convert first lesson to preview | Public page should show only sample content. | Lesson contains YSP_PREVIEW_LESSON or Free Preview |
-          | $(status_text "$pack_exists") | Create first practice pack | Complete PDF / worksheet / review pack for the first lesson. | practice-packs/ or products/practice-packs/ contains a file |
-
-          ## Step 1 Checklist Tracker
-
-          | Status | Task | Done When | Auto Check |
-          |---|---|---|---|
-          | $(status_text 1) | Keep lesson content unchanged at first | Step 1 only changes positioning, not all course content. | Strategy decision |
-          | $(status_text $(( home_section || lessons_section ))) | Add Practice Pack CTA | Homepage or Lessons page shows practice pack CTA. | Practice pack marker exists |
-          | $(status_text "$one_clean_workflow") | Keep one clean automation workflow | Only clean lesson automation workflow remains. | Old workflow files removed |
-          | $(status_text "$no_reports") | Remove duplicate reports | No .github/workflow-reports/ folder in repo. | Folder does not exist |
-          | ⏳ Pending | Test with current 3 students | Ask whether the pack helps after class. | Manual confirmation |
-          | $(status_text "$payment_link") | Decide payment platform later | Payhip / Ko-fi / Gumroad decision comes after first pack. | Payment platform link appears on homepage |
-
-          ## Notes
-
-          - Auto-detectable items update when GitHub Actions runs.
-          - Real-world decisions still show as manual confirmation until a file, marker, or payment link exists.
-          - This file replaces the previous scattered strategy / timeline / checklist docs.
-          - No separate report files are created.
-          EOF
-
-          sed -i 's/^          //' docs/YSP_PROGRESS_TRACKER.md
-
-          echo "Updated docs/YSP_PROGRESS_TRACKER.md"
-          echo "Next step: $next_step"
+          out.write_text("\n".join(lines), encoding="utf-8")
+          print("Updated docs/YSP_PROGRESS_TRACKER.md")
+          print(f"Next step: {next_action[0]}")
+          PY
 
       - name: Commit progress tracker
         shell: bash
@@ -232,6 +221,5 @@ jobs:
             echo "No progress tracker changes to commit."
           else
             git commit -m "Update YSP progress tracker"
-            git pull --rebase origin "${GITHUB_REF_NAME}" || true
             git push
           fi
