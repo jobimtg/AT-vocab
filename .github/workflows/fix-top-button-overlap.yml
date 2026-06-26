@@ -1,0 +1,138 @@
+name: Fix Top Button Overlap
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-top-button-overlap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Remove duplicate Top buttons and keep one clean Top button
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          ROOT = Path.cwd()
+          html_files = [p for p in ROOT.rglob('*.html') if '.git' not in p.parts]
+
+          TOP_STYLE_START = '/* YSP_SINGLE_TOP_BUTTON_STYLE_START */'
+          TOP_STYLE_END = '/* YSP_SINGLE_TOP_BUTTON_STYLE_END */'
+          TOP_HTML_START = '<!-- YSP_SINGLE_TOP_BUTTON_START -->'
+          TOP_HTML_END = '<!-- YSP_SINGLE_TOP_BUTTON_END -->'
+
+          TOP_STYLE = '\n'.join([
+              TOP_STYLE_START,
+              '.top-button {',
+              '  position: fixed;',
+              '  right: 22px;',
+              '  bottom: 22px;',
+              '  z-index: 9999;',
+              '  width: 56px;',
+              '  height: 56px;',
+              '  display: inline-flex;',
+              '  flex-direction: column;',
+              '  align-items: center;',
+              '  justify-content: center;',
+              '  border-radius: 999px;',
+              '  background: #1f1d1b;',
+              '  color: #ffffff;',
+              '  text-decoration: none;',
+              '  box-shadow: 0 14px 34px rgba(60, 43, 25, 0.22);',
+              '  font-weight: 950;',
+              '  line-height: 1;',
+              '}',
+              '.top-button .top-arrow {',
+              '  display: block;',
+              '  font-size: 20px;',
+              '  line-height: 1;',
+              '}',
+              '.top-button .top-label {',
+              '  display: block;',
+              '  margin-top: 3px;',
+              '  font-size: 10px;',
+              '  letter-spacing: 0.08em;',
+              '  text-transform: uppercase;',
+              '}',
+              TOP_STYLE_END,
+          ])
+
+          TOP_HTML = '\n'.join([
+              TOP_HTML_START,
+              '<a class="top-button" href="#top" aria-label="Back to top">',
+              '  <span class="top-arrow">↑</span>',
+              '  <span class="top-label">Top</span>',
+              '</a>',
+              TOP_HTML_END,
+          ])
+
+          def remove_top_blocks(text):
+              text = re.sub(re.escape(TOP_STYLE_START) + r'.*?' + re.escape(TOP_STYLE_END), '', text, flags=re.S)
+              text = re.sub(re.escape(TOP_HTML_START) + r'.*?' + re.escape(TOP_HTML_END), '', text, flags=re.S)
+              text = re.sub(r'<!--\s*YSP_TOP_BUTTON_START\s*-->.*?<!--\s*YSP_TOP_BUTTON_END\s*-->', '', text, flags=re.S | re.I)
+              text = re.sub(r'<!--\s*YSP_BACK_TO_TOP_START\s*-->.*?<!--\s*YSP_BACK_TO_TOP_END\s*-->', '', text, flags=re.S | re.I)
+              text = re.sub(r'<a\b[^>]*class=["\'][^"\']*(?:top-button|top-btn|back-to-top|ysp-top)[^"\']*["\'][^>]*>.*?</a>', '', text, flags=re.S | re.I)
+              text = re.sub(r'<button\b[^>]*class=["\'][^"\']*(?:top-button|top-btn|back-to-top|ysp-top)[^"\']*["\'][^>]*>.*?</button>', '', text, flags=re.S | re.I)
+              for cls in ['top-button', 'top-btn', 'back-to-top', 'ysp-top-button', 'ysp-top-btn']:
+                  text = re.sub(r'\n\s*\.' + re.escape(cls) + r'\s*\{[^{}]*\}', '', text, flags=re.S | re.I)
+                  text = re.sub(r'\n\s*\.' + re.escape(cls) + r'\s+span[^{}]*\{[^{}]*\}', '', text, flags=re.S | re.I)
+              return text
+
+          def ensure_body_id(text):
+              return re.sub(r'<body\b(?![^>]*\bid=)[^>]*>', lambda m: m.group(0).replace('<body', '<body id="top"', 1), text, count=1, flags=re.I)
+
+          def insert_style(text):
+              if '</style>' in text:
+                  return text.replace('</style>', TOP_STYLE + '\n</style>', 1)
+              if '</head>' in text:
+                  return text.replace('</head>', '<style>\n' + TOP_STYLE + '\n</style>\n</head>', 1)
+              return '<style>\n' + TOP_STYLE + '\n</style>\n' + text
+
+          def insert_top_html(text):
+              if '</body>' in text:
+                  return text.replace('</body>', TOP_HTML + '\n</body>', 1)
+              return text + '\n' + TOP_HTML
+
+          changed = []
+          for path in html_files:
+              original = path.read_text(encoding='utf-8', errors='ignore')
+              text = remove_top_blocks(original)
+              text = ensure_body_id(text)
+              text = insert_style(text)
+              text = insert_top_html(text)
+              text = re.sub(r'\n{4,}', '\n\n\n', text)
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed.append(str(path.relative_to(ROOT)))
+
+          print('Updated files:')
+          for item in changed:
+              print('-', item)
+          if not changed:
+              print('No duplicate Top buttons found.')
+          PY
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Fix duplicate Top buttons"
+            git push
+          fi
