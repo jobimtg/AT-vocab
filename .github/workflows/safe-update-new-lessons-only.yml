@@ -1,0 +1,46 @@
+name: Safe Update New Lesson Cards Only
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "lessons/**/*.html"
+      - "lessons/**/assets/**"
+      - "assets/**"
+      - "scripts/safe-update-new-lessons-only.mjs"
+
+permissions:
+  contents: write
+
+jobs:
+  safe-update-new-lessons-only:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Safe update lesson index and changed lesson pages only
+        run: node scripts/safe-update-new-lessons-only.mjs
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add lessons/index.html lessons/**/*.html
+            git commit -m "Safe update lesson cards and new lesson navigation"
+            git push
+          else
+            echo "No changes to commit."
+          fi
