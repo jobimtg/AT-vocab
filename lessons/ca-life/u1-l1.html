@@ -95,6 +95,19 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 .pvc .pe{font-weight:600;color:var(--c-primary)}.pvc .pz{color:var(--c-muted);margin-left:4px}
 .footer{text-align:center;padding:20px;color:var(--c-muted);font-family:var(--font-b);font-size:.68rem;border-top:1px solid var(--c-divider);margin-top:20px}
 
+/* ===== YSP L01 SAFE FIX — flip cards keep original content, 2 per row, no clipping ===== */
+.tp{max-width:1120px}
+.cg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+@media(max-width:720px){.cg{grid-template-columns:1fr}}
+.vc{perspective:1000px;cursor:pointer;min-height:320px;height:auto;overflow:visible}
+.vi{position:relative;width:100%;height:320px;transition:transform .6s;transform-style:preserve-3d}
+.vc.fl .vi{transform:rotateY(180deg)}
+.vf,.vb{position:absolute;inset:0;width:100%;height:100%;backface-visibility:hidden;border-radius:14px;background:var(--c-surface);border:1px solid var(--c-divider);overflow:visible;box-shadow:0 3px 10px rgba(27,42,74,.06)}
+.vb{transform:rotateY(180deg)}
+.vb .mg,.vb .ex,.vb .pi{word-break:normal;overflow-wrap:break-word}
+.vb .pi:last-child{padding-bottom:14px}
+/* ===== END YSP L01 SAFE FIX ===== */
+
 /* ===== YSP IMAGE SECTIONS — image tabs only ===== */
 .ysp-image-section{max-width:1040px;margin:0 auto}
 .ysp-image-card{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:16px;overflow:hidden;box-shadow:0 6px 18px rgba(27,42,74,.08);margin:14px 0}
@@ -200,7 +213,10 @@ h+='</div>';document.getElementById('t1').innerHTML=h;
 document.querySelectorAll('.vc').forEach(c=>{const f=c.querySelector('.vf'),b=c.querySelector('.vb');requestAnimationFrame(()=>{const ht=Math.max(f.scrollHeight,b.scrollHeight,280);c.style.minHeight=ht+'px';c.querySelector('.vi').style.height=ht+'px';f.style.height=ht+'px';b.style.height=ht+'px';});});
 document.querySelectorAll('.fbar .fb[data-f]').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.fbar .fb[data-f]').forEach(x=>x.classList.remove('on'));b.classList.add('on');const f=b.dataset.f;document.querySelectorAll('.vc').forEach(c=>{c.style.display=(f==='all'||c.dataset.g==f)?'':'none';});});});
 document.querySelectorAll('.fb[data-ff]').forEach(b=>{b.addEventListener('click',()=>{b.classList.toggle('on');const af=[...document.querySelectorAll('.fb[data-ff].on')].map(x=>x.dataset.ff);if(!af.length)document.querySelectorAll('.vc').forEach(c=>c.style.display='');else document.querySelectorAll('.vc').forEach(c=>{c.style.display=af.includes(String(fam[c.dataset.i]))?'':'none';});});});
-document.getElementById('cs').addEventListener('input',function(){const q=this.value.toLowerCase();document.querySelectorAll('.vc').forEach(c=>{c.style.display=(c.dataset.en.includes(q)||c.dataset.zh.includes(q))?'':'none';});});}
+document.getElementById('cs').addEventListener('input',function(){const q=this.value.toLowerCase();document.querySelectorAll('.vc').forEach(c=>{c.style.display=(c.dataset.en.includes(q)||c.dataset.zh.includes(q))?'':'none';});});
+setTimeout(yspFixVocabCardHeights, 0);
+setTimeout(yspFixVocabCardHeights, 100);
+}
 // T2 Extended
 function r2(){let h='<h2>📖 Extended Reference — 延伸詞彙 (30)</h2><div class="fbar" id="ef"></div><div class="eg" id="eG"></div>';
 document.getElementById('t2').innerHTML=h;
@@ -302,10 +318,42 @@ function yspMissingImage(path){
   return `<div class="ysp-image-placeholder"><div>尚未放入圖片或路徑錯誤</div><code>${path}</code></div>`;
 }
 
+function yspFixVocabCardHeights(){
+  const cards = document.querySelectorAll('#t1 .vc');
+  cards.forEach(card=>{
+    const inner = card.querySelector('.vi');
+    const front = card.querySelector('.vf');
+    const back = card.querySelector('.vb');
+    if(!inner || !front || !back) return;
+
+    // Reset before measuring.
+    card.style.height = 'auto';
+    inner.style.height = 'auto';
+    front.style.height = 'auto';
+    back.style.height = 'auto';
+
+    const frontH = front.scrollHeight;
+    const backH = back.scrollHeight;
+    const finalH = Math.max(frontH, backH, 320) + 4;
+
+    card.style.minHeight = finalH + 'px';
+    card.style.height = finalH + 'px';
+    inner.style.height = finalH + 'px';
+    front.style.height = finalH + 'px';
+    back.style.height = finalH + 'px';
+  });
+}
+
+
+const yspOriginalT = T;
+T = function(n){
+  yspOriginalT(n);
+  if(n===1){
+    requestAnimationFrame(()=>requestAnimationFrame(yspFixVocabCardHeights));
+  }
+};
+
 document.addEventListener('DOMContentLoaded',()=>{r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
 </script>
-<!-- YSP_GLOBAL_NAV_LOADER_START -->
-<script src="../../js/ysp-global-nav.js" defer data-ysp-base="../../"></script>
-<!-- YSP_GLOBAL_NAV_LOADER_END -->
 </body>
 </html>
