@@ -95,7 +95,7 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 .pvc .pe{font-weight:600;color:var(--c-primary)}.pvc .pz{color:var(--c-muted);margin-left:4px}
 .footer{text-align:center;padding:20px;color:var(--c-muted);font-family:var(--font-b);font-size:.68rem;border-top:1px solid var(--c-divider);margin-top:20px}
 
-/* ===== YSP IMAGE SECTIONS — managed once, do not duplicate ===== */
+/* ===== YSP IMAGE SECTIONS — image tabs only ===== */
 .ysp-image-section{max-width:1040px;margin:0 auto}
 .ysp-image-card{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:16px;overflow:hidden;box-shadow:0 6px 18px rgba(27,42,74,.08);margin:14px 0}
 .ysp-image-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--c-primary);color:#fff;font-family:var(--font-b);font-size:.88rem;font-weight:800}
@@ -120,52 +120,9 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 @media(max-width:720px){.ysp-rolebar{grid-template-columns:1fr}.ysp-image-card{border-radius:12px}}
 /* ===== END YSP IMAGE SECTIONS ===== */
 
-
-/* ===== YSP LESSON LOCAL NAV — part of lesson template, not workflow injected ===== */
-.ysp-local-nav{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;padding:12px 16px;background:#F7F0E6;border-bottom:1px solid var(--c-divider)}
-.ysp-local-nav a{text-decoration:none;color:var(--c-primary);background:#fff;border:1px solid rgba(27,42,74,.12);border-radius:999px;padding:8px 14px;font-family:var(--font-b);font-size:.78rem;font-weight:800;box-shadow:0 2px 8px rgba(27,42,74,.06)}
-.ysp-local-nav .trial{background:var(--c-primary);color:#fff}
-.ysp-top{position:fixed;right:18px;bottom:18px;z-index:10000;border:0;border-radius:999px;background:var(--c-primary);color:#fff;padding:10px 14px;font-family:var(--font-b);font-weight:800;box-shadow:0 6px 18px rgba(27,42,74,.25);cursor:pointer}
-@media(max-width:720px){.ysp-local-nav{justify-content:flex-start;overflow-x:auto}.ysp-local-nav a{font-size:.72rem;padding:7px 11px}.ysp-top{right:12px;bottom:12px}}
-/* ===== END YSP LESSON LOCAL NAV ===== */
-
 </style>
-<!-- YSP_CLEAN_TOP_STYLE_START -->
-<style>
-  html { scroll-behavior: smooth; }
-  body { overflow-x: hidden; }
-  .ysp-page-top-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
-  .ysp-page-top-button {
-    position: fixed;
-    right: 22px;
-    bottom: 22px;
-    z-index: 99999;
-    width: 56px;
-    height: 56px;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    background: #1f1d1b;
-    color: #ffffff;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,.28);
-    box-shadow: 0 14px 34px rgba(60,43,25,.22);
-    font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif;
-    font-weight: 950;
-  }
-  .ysp-page-top-arrow { font-size: 20px; line-height: 1; }
-  .ysp-page-top-label { margin-top: 1px; font-size: 10px; line-height: 1; letter-spacing: .08em; text-transform: uppercase; }
-  @media (max-width: 760px) { .ysp-page-top-button { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
-</style>
-<!-- YSP_CLEAN_TOP_STYLE_END -->
 </head>
 <body>
-<!-- YSP_CLEAN_TOP_ANCHOR_START -->
-<div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
-<!-- YSP_CLEAN_TOP_ANCHOR_END -->
-
 <div class="header">
 <div class="brand">YSP Learn &amp; Shine</div>
 <h1>L01 — Welcome to Canada 歡迎來到加拿大</h1>
@@ -262,23 +219,81 @@ else if(dL===2){pr='🔊 老師唸整句 → 學生跟唸';w=v.e1;s='';a=v.zh+' 
 else{pr='看中文 → 說英文';w=v.zh;s='';a=v.en+' '+v.pr;}
 z.innerHTML=`<div class="dc" onclick="this.classList.toggle('sa')"><div class="dp">${pr}</div><div class="dw">${w}</div><div class="ds">${s}</div><div class="da">💡 ${a}</div><div style="font-size:.65rem;color:var(--c-muted);margin-top:8px">點擊翻牌看答案</div></div><div class="dn"><button class="db" style="background:var(--c-divider);color:var(--c-text)" onclick="dI=Math.max(0,dI-1);rd()">← 上一個</button><span style="font-size:.78rem;color:var(--c-muted)">${dI+1} / ${V.length}</span><button class="db" style="background:var(--c-primary);color:#fff" onclick="dI=Math.min(V.length-1,dI+1);rd()">下一個 →</button></div>`;}
 // T4 Phrases
-function r4(){let h='<h2>💬 Useful Phrases — 實用句型 (5)</h2>';PHRASES.forEach(p=>{const tg=p.t==='core'?'<div class="tg" style="color:#1E8449">🏫 In-class</div>':'<div class="tg" style="color:#2471A3">📖 Self-study</div>';h+=`<div class="phr">${tg}<div class="en">"${p.en}"</div><div class="zh">${p.zh}</div><div class="nt">💡 ${p.note}</div></div>`;});document.getElementById('t4').innerHTML=h;}
+function r4(){
+document.getElementById('t4').innerHTML=`<h2>💬 Useful Phrases — 圖片版</h2>
+<p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">本分頁使用 1 張總覽圖片。請將圖片放在 <code>assets/phrases/l01-phrases.png</code>。</p>
+<div class="ysp-image-section">
+  <div class="ysp-image-card">
+    <div class="ysp-image-head accent"><span>Useful Phrases</span><small>句型總覽圖片</small></div>
+    <img src="assets/phrases/l01-phrases.png" alt="Useful Phrases" loading="lazy" onerror="this.outerHTML=yspMissingImage('assets/phrases/l01-phrases.png')">
+  </div>
+</div>`;
+}
 // T5 Pronunciation
-function r5(){let pw=PRON.words.map(w=>`<div class="wd"><b>${w.w}</b> ${w.ipa}<br><span style="font-size:.7rem;color:var(--c-alert)">✗ ${w.bad}</span> → <span style="color:var(--c-success)">✓ ${w.w}</span><br><span style="font-size:.68rem;color:var(--c-muted)">${w.tip}</span></div>`).join('');
-document.getElementById('t5').innerHTML=`<h2>🎯 Pronunciation Spotlight — 發音焦點</h2><div class="prc"><div style="font-size:.7rem;color:var(--c-accent);font-weight:600">🎯 PRONUNCIATION SPOTLIGHT</div><div class="fo">${PRON.focus}</div><div style="font-size:.8rem;color:var(--c-muted)">${PRON.fz}</div><div class="pw">${pw}</div><div class="tp" style="display:block">💡 ${PRON.tip}</div><div style="font-size:.85rem;color:var(--c-primary);font-weight:500;margin-top:6px">🗣️ ${PRON.prac}</div></div>`;}
+function r5(){
+document.getElementById('t5').innerHTML=`<h2>🎯 Pronunciation Spotlight — 圖片版</h2>
+<p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">本分頁使用 1 張完整發音教學圖。請將圖片放在 <code>assets/pronunciation/l01-pronunciation-1.png</code>。</p>
+<div class="ysp-image-section">
+  <div class="ysp-image-card">
+    <div class="ysp-image-head alert"><span>Pronunciation Spotlight</span><small>發音焦點圖片</small></div>
+    <img src="assets/pronunciation/l01-pronunciation-1.png" alt="Pronunciation Spotlight" loading="lazy" onerror="this.outerHTML=yspMissingImage('assets/pronunciation/l01-pronunciation-1.png')">
+  </div>
+</div>`;
+}
 // T6 Dialogues
-function r6(){let h='<h2>🎭 Dialogue Practice — 對話練習 (5)</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:10px">前 3 組必練 🏫，後 2 組選 1 組</p>';
-DIALOGUES.forEach(d=>{const tc=d.tag==='req'?'dtr':'dtc',tt=d.tag==='req'?'🏫 必練':'📖 選練';
-let ls=d.lines.map(l=>`<div class="ln"><span class="wh ${l[0]==='A'?'wa':'wb'}">${l[0]}</span><div class="sp">"${l[1]}"</div></div>`).join('');
-h+=`<div class="dlg"><div class="dh"><h3 style="margin:0;font-size:.85rem">#${d.id} ${d.title}<br><span style="font-size:.73rem;color:var(--c-muted)">${d.tz}</span></h3><span class="dt ${tc}">${tt}</span></div><div class="si">📍 ${d.sit}</div><div class="rl"><div class="ro ra">🧑 ${d.rA}</div><div class="ro rb">👤 ${d.rB}</div></div><div class="ls">${ls}</div><div class="tr"><b>🎯 Now you try!</b><p>${d.tp}</p></div><div class="tg2" onclick="const t=this.nextElementSibling;t.classList.toggle('show');this.textContent=t.classList.contains('show')?'Teacher notes ▴':'Teacher notes ▾'">Teacher notes ▾</div><div class="tn">📋 ${d.tn}</div></div>`;});
-document.getElementById('t6').innerHTML=h;}
+function r6(){
+const dialogueImages=[
+{id:1,title:"At the Immigration Counter",tz:"在入境櫃檯",tag:"req",sit:"You just landed at Vancouver International Airport.",rA:"Traveler",rB:"Immigration Officer",model:"assets/dialogues/l01-d01-model.png",practice:"assets/dialogues/l01-d01-practice.png"},
+{id:2,title:"Meeting Your Roommate",tz:"認識室友",tag:"req",sit:"You arrive at your new accommodation.",rA:"New Arrival",rB:"Roommate",model:"assets/dialogues/l01-d02-model.png",practice:"assets/dialogues/l01-d02-practice.png"},
+{id:3,title:"Asking for Directions",tz:"在機場問路",tag:"req",sit:"You need to find transportation or directions.",rA:"Traveler",rB:"Airport Staff",model:"assets/dialogues/l01-d03-model.png",practice:"assets/dialogues/l01-d03-practice.png"},
+{id:4,title:"Taking a Taxi",tz:"搭計程車",tag:"ch",sit:"You take a taxi because you have luggage.",rA:"Passenger",rB:"Taxi Driver",model:"assets/dialogues/l01-d04-model.png",practice:"assets/dialogues/l01-d04-practice.png"},
+{id:5,title:"Meeting a Neighbor",tz:"認識鄰居",tag:"ch",sit:"You meet a neighbor after moving in.",rA:"New Resident",rB:"Neighbor",model:"assets/dialogues/l01-d05-model.png",practice:"assets/dialogues/l01-d05-practice.png"}
+];
+let h='<h2>🎭 Dialogue Practice — 圖片版 (5)</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">每個對話主題使用 2 張圖。Full Model Dialogue 與 Now You Try 採上下排列，避免圖片過小。</p>';
+dialogueImages.forEach(d=>{
+const badge=d.tag==='req'?'<span class="ysp-badge req">🏫 必練</span>':'<span class="ysp-badge opt">📖 選練</span>';
+h+=`<section class="ysp-dialogue-topic">
+  <div class="ysp-dialogue-title"><div><h3>#${d.id} ${d.title}</h3><div style="font-size:.78rem;color:var(--c-muted)">${d.tz}</div></div>${badge}</div>
+  <div style="font-size:.78rem;color:var(--c-muted);margin-bottom:8px">📍 ${d.sit}</div>
+  <div class="ysp-rolebar"><div class="ysp-role a">🧑 ${d.rA}</div><div class="ysp-role b">👤 ${d.rB}</div></div>
+  <div class="ysp-image-card">
+    <div class="ysp-image-head"><span>Full Model Dialogue</span><small>主練習</small></div>
+    <img src="${d.model}" alt="${d.title} model dialogue" loading="lazy" onerror="this.outerHTML=yspMissingImage('${d.model}')">
+  </div>
+  <div class="ysp-image-card">
+    <div class="ysp-image-head accent"><span>Now You Try</span><small>換你說</small></div>
+    <img src="${d.practice}" alt="${d.title} practice variation" loading="lazy" onerror="this.outerHTML=yspMissingImage('${d.practice}')">
+  </div>
+</section>`;
+});
+document.getElementById('t6').innerHTML=h;
+}
 // T7 Speaking
-function r7(){const tl={1:['Tier 1 — Warm-up','s1'],2:['Tier 2 — Guided','s2'],3:['Tier 3 — Free','s3']};let h='<h2>🗣️ Speaking Questions — 口說練習 (5)</h2>';
-SPEAKING.forEach((s,i)=>{const[l,c]=tl[s.t];h+=`<div class="sq"><span class="st ${c}">${l}</span><div class="qq">Q${i+1}. ${s.q}</div><div class="qh">💡 ${s.h}</div></div>`;});document.getElementById('t7').innerHTML=h;}
+function r7(){
+document.getElementById('t7').innerHTML=`<h2>🗣️ Speaking Questions — 圖片版</h2>
+<p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">本分頁使用 1 張口說題目總覽圖片。請將圖片放在 <code>assets/speaking/l01-speaking-questions.png</code>。</p>
+<div class="ysp-image-section">
+  <div class="ysp-image-card">
+    <div class="ysp-image-head teal"><span>Speaking Questions</span><small>口說題目總覽圖片</small></div>
+    <img src="assets/speaking/l01-speaking-questions.png" alt="Speaking Questions" loading="lazy" onerror="this.outerHTML=yspMissingImage('assets/speaking/l01-speaking-questions.png')">
+  </div>
+</div>`;
+}
 // T8 Culture
-function r8(){let h='<h2>🌍 Canadian Culture — 加拿大文化 (2)</h2>';CULTURE.forEach(c=>{const sl=c.slot==='warm-up'?'🌅 Warm-up（課堂開頭）':'🌇 Closing（課堂結尾）';const qs=c.qs.map((q,i)=>`<div class="cq">Q${i+1}. ${q}</div>`).join('');
-h+=`<div class="cult"><div class="cs">${sl}</div><div class="ct">${c.title}</div><div style="font-size:.8rem;color:var(--c-muted);margin-bottom:6px">${c.tz}</div><div class="cp">${c.photo}</div><div class="cn">${c.notes}</div><h3 style="font-size:.78rem;margin:8px 0 4px">Discussion Questions</h3>${qs}</div>`;});
-document.getElementById('t8').innerHTML=h;}
+function r8(){
+document.getElementById('t8').innerHTML=`<h2>🌍 Canadian Culture — 圖片版</h2>
+<p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">本分頁使用 2 張文化圖卡。請將圖片放在 <code>assets/culture/</code>。</p>
+<div class="ysp-image-section">
+  <div class="ysp-image-card">
+    <div class="ysp-image-head green"><span>Culture 1</span><small>Warm-up</small></div>
+    <img src="assets/culture/l01-culture-1.png" alt="Canadian Culture Warm-up" loading="lazy" onerror="this.outerHTML=yspMissingImage('assets/culture/l01-culture-1.png')">
+  </div>
+  <div class="ysp-image-card">
+    <div class="ysp-image-head green"><span>Culture 2</span><small>Closing</small></div>
+    <img src="assets/culture/l01-culture-2.png" alt="Canadian Culture Closing" loading="lazy" onerror="this.outerHTML=yspMissingImage('assets/culture/l01-culture-2.png')">
+  </div>
+</div>`;
+}
 // T9 Progress
 function r9(){let h='<h2>📋 學習進度追蹤</h2><h3>Previously Learned — 已學詞彙</h3><p style="font-size:.82rem;color:var(--c-muted);margin-bottom:12px">這是第一堂課，尚無已學詞彙。從 L02 開始會顯示。</p><h3>Pronunciation Progress — 發音教學進度</h3><div style="font-size:.82rem;padding:6px 0"><span>🔄</span> <b>L01-L02</b> /θ/ /ð/ th 音</div>';
 document.getElementById('t9').innerHTML=h;}
@@ -289,14 +304,5 @@ function yspMissingImage(path){
 
 document.addEventListener('DOMContentLoaded',()=>{r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
 </script>
-<!-- YSP_CLEAN_TOP_BUTTON_START -->
-<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
-  <span class="ysp-page-top-arrow">↑</span>
-  <span class="ysp-page-top-label">Top</span>
-</a>
-<!-- YSP_CLEAN_TOP_BUTTON_END -->
-<!-- YSP_GLOBAL_NAV_LOADER_START -->
-<script src="../../js/ysp-global-nav.js" defer data-ysp-base="../../"></script>
-<!-- YSP_GLOBAL_NAV_LOADER_END -->
 </body>
 </html>
