@@ -67,8 +67,201 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 .pvh{padding:8px 14px;background:var(--c-secondary);cursor:pointer;font-family:var(--font-b);font-size:.8rem;font-weight:600;color:var(--c-primary);display:flex;justify-content:space-between;border-radius:8px;margin:4px 0}.pvb{max-height:0;overflow:hidden;transition:max-height .3s}.pvb.open{max-height:2000px}.pvl{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0}.pvc{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:6px;padding:4px 10px;font-size:.74rem}.pvc .pe{font-weight:600;color:var(--c-primary)}.pvc .pz{color:var(--c-muted);margin-left:4px}
 .footer{text-align:center;padding:20px;color:var(--c-muted);font-family:var(--font-b);font-size:.68rem;border-top:1px solid var(--c-divider);margin-top:20px}
 </style>
+  <link rel="stylesheet" href="../../assets/css/site.css">
+<!-- YSP_GLOBAL_LESSON_STYLE_START -->
+<style>
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden; }
+
+  .ysp-page-top-anchor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .lesson-page-header {
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 100000;
+    position: relative !important;
+    top: auto !important;
+  }
+
+  .lesson-page-header .brand {
+    margin: 0;
+    font-size: inherit;
+    letter-spacing: normal;
+    text-transform: none;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .lesson-page-header .brand-name,
+  .lesson-page-header .brand-tagline {
+    display: block;
+  }
+
+  .lesson-page-header .site-nav a {
+    text-decoration: none;
+  }
+
+  .lesson-top-actions {
+    max-width: 1180px;
+    margin: 30px auto 20px;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .back-to-lessons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.88);
+    border: 1px solid rgba(196,147,93,.30);
+    color: #1f1d1b;
+    text-decoration: none;
+    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: .02em;
+    box-shadow: 0 14px 34px rgba(60,43,25,.10);
+  }
+
+  .back-to-lessons:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 38px rgba(60,43,25,.14);
+  }
+
+  .ysp-page-top-button {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 99999;
+    width: 58px;
+    height: 58px;
+    border-radius: 999px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    background: #1f1d1b;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.28);
+    box-shadow: 0 14px 34px rgba(60,43,25,.22);
+    opacity: .92;
+    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+  }
+
+  .ysp-page-top-button:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+
+  .ysp-page-top-arrow {
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .ysp-page-top-label {
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .lesson-page-footer {
+    max-width: none;
+    width: 100%;
+    margin-top: 34px;
+  }
+
+  /*
+    Keep lesson inner tabs visible while browsing a long lesson.
+    Canada Life pages use .nav.
+    Travel / Business pages may use .tabs.
+  */
+  .nav,
+  .tabs,
+  #nav,
+  #tabs {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99998 !important;
+  }
+
+  .nav a,
+  .tabs .tab {
+    scroll-margin-top: 86px;
+  }
+
+  .section,
+  .panel,
+  [id^="sec-"] {
+    scroll-margin-top: 86px;
+  }
+
+  @media (max-width: 760px) {
+    .lesson-top-actions {
+      margin: 22px auto 16px;
+      padding: 0 18px;
+    }
+
+    .back-to-lessons {
+      width: 100%;
+      min-height: 44px;
+    }
+
+    .ysp-page-top-button {
+      right: 16px;
+      bottom: 16px;
+      width: 52px;
+      height: 52px;
+    }
+
+    .ysp-page-top-arrow { font-size: 20px; }
+    .ysp-page-top-label { font-size: 10px; }
+  }
+</style>
+<!-- YSP_GLOBAL_LESSON_STYLE_END -->
 </head>
 <body>
+<!-- YSP_AUTO_TOP_ANCHOR_START -->
+<div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
+<!-- YSP_AUTO_TOP_ANCHOR_END -->
+
+<!-- YSP_LESSON_NAV_START -->
+<header class="site-header lesson-page-header">
+  <a class="brand" href="../../" aria-label="YSP Learn and Shine Home">
+    <img class="header-icon" src="../../assets/img/ysp-header-icon.png" alt="YSP mountain sunrise icon">
+    <span class="brand-text">
+      <span class="brand-name">YSP Learn &amp; Shine</span>
+      <span class="brand-tagline">Learn with Purpose. Shine with Confidence.</span>
+    </span>
+  </a>
+
+  <nav class="site-nav" aria-label="Lesson navigation">
+    <a href="../../">Home</a>
+    <a href="../">Lessons</a>
+    <a href="../../#about">About</a>
+  </nav>
+</header>
+
+<div class="lesson-top-actions">
+  <a class="back-to-lessons" href="../">← Back to Lessons</a>
+</div>
+<!-- YSP_LESSON_NAV_END -->
+
 <div class="header">
 <div class="brand">YSP Learn &amp; Shine</div>
 <h1>L01 — Welcome to Canada 歡迎來到加拿大</h1>
@@ -173,5 +366,23 @@ document.addEventListener('DOMContentLoaded',function(){r0();r1();r2();r3();r4()
 
 function r9(){document.getElementById('t9').innerHTML='<h2>📋 學習進度追蹤</h2><h3>Previously Learned — 已學詞彙</h3><p style="font-size:.82rem;color:var(--c-muted)">這是第一堂課，尚無已學詞彙。</p><h3 style="margin-top:16px">Pronunciation Progress</h3><div style="font-size:.82rem;padding:6px 0"><span>🔄</span> <b>L01-L02</b> /θ/ /ð/ th 音</div>';}
 </script>
+
+<!-- YSP_LESSON_FOOTER_START -->
+<footer class="site-footer lesson-page-footer">
+  <div class="footer-brand">
+    <img class="footer-signature-logo" src="../../assets/img/ysp-logo-script-overlay.png" alt="YSP signature logo">
+    <span>YSP Learn &amp; Shine</span>
+  </div>
+  <p>Learn with Purpose. Shine with Confidence.</p>
+</footer>
+<!-- YSP_LESSON_FOOTER_END -->
+
+<!-- YSP_AUTO_TOP_BUTTON_START -->
+<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
+  <span class="ysp-page-top-arrow">↑</span>
+  <span class="ysp-page-top-label">Top</span>
+</a>
+<!-- YSP_AUTO_TOP_BUTTON_END -->
+
 </body>
 </html>
