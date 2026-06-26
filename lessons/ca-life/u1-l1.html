@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>L01 — Welcome to Canada 歡迎來到加拿大</title>
+<title>u1-l1 — Welcome to Canada 歡迎來到加拿大</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--c-primary:#1B2A4A;--c-secondary:#F5F0E8;--c-accent:#C8956C;--c-bg:#FAF8F5;--c-teal:#2A7A6E;--c-success:#5B8C5A;--c-alert:#D4735E;--c-cat1:#C4887A;--c-cat2:#C49A5C;--c-cat3:#8BA888;--c-cat4:#7A8EB0;--c-cat5:#A08AAC;--c-text:#2C2C2C;--c-muted:#7A7A6E;--c-surface:#FFFFFF;--c-divider:#E8E4DE;--font-b:'Montserrat','Noto Sans TC',sans-serif;--font-c:'Open Sans','Noto Sans TC',Arial,sans-serif;--font-h:'Playfair Display',Georgia,serif}
@@ -14,7 +14,7 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 .tabs{display:flex;background:var(--c-primary);position:sticky;top:0;z-index:100;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .tb{color:#fff;background:none;border:none;font-family:var(--font-b);font-size:.64rem;font-weight:500;padding:10px 11px;cursor:pointer;white-space:nowrap;opacity:.6;border-bottom:3px solid transparent;transition:all .2s}
 .tb.on{opacity:1;border-bottom-color:var(--c-accent);background:rgba(200,149,108,.1)}
-.tpn{display:none;max-width:960px;margin:0 auto;padding:20px 16px}.tpn.on{display:block}
+.tpn{display:none;max-width:1100px;margin:0 auto;padding:20px 16px}.tpn.on{display:block}
 .sbar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.stat{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:10px;padding:10px 14px;flex:1;min-width:80px;text-align:center}.sn{font-family:var(--font-b);font-size:1.3rem;font-weight:700;color:var(--c-primary)}.sl{font-size:.68rem;color:var(--c-muted);margin-top:2px}
 .pbar{height:8px;background:var(--c-divider);border-radius:4px;overflow:hidden;margin:6px 0}.pfill{height:100%;border-radius:4px;transition:width .5s;background:var(--c-success)}
 .fbar{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
@@ -22,7 +22,6 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 .fb.on{background:var(--c-primary);color:#fff;border-color:var(--c-primary)}
 .fb.f1.on{background:var(--c-alert);border-color:var(--c-alert)}.fb.f2.on{background:var(--c-accent);border-color:var(--c-accent)}.fb.f3.on{background:var(--c-success);border-color:var(--c-success);color:#fff}
 .sbx{border:1px solid var(--c-divider);border-radius:6px;padding:4px 10px;font-size:.73rem;font-family:var(--font-c);min-width:100px;max-width:160px}
-/* CARDS v3.5: display toggle, 3 columns portrait */
 .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:768px){.cg{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.cg{grid-template-columns:1fr}}
 .vc{cursor:pointer;border-radius:12px;background:var(--c-surface);border:1px solid var(--c-divider);overflow:hidden;box-shadow:0 3px 10px rgba(27,42,74,.06);transition:box-shadow .2s}.vc:hover{box-shadow:0 4px 16px rgba(27,42,74,.12)}
 .va{height:5px}.bdg{float:right;font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:4px;background:#D5F5E3;color:#1E8449;margin:6px 6px 0 0}
@@ -33,239 +32,39 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 .fm{border:none;border-radius:4px;padding:3px 8px;font-size:.62rem;cursor:pointer;font-family:var(--font-b);font-weight:600;opacity:.5;transition:all .2s}.fm:hover{opacity:.8}.fm.sel{opacity:1}
 .f1c{background:#FDECEA;color:var(--c-alert)}.f2c{background:#FFF3E0;color:#B8860B}.f3c{background:#E8F5E9;color:var(--c-success)}
 .vc[data-fam="1"]{border-left:4px solid var(--c-alert)}.vc[data-fam="2"]{border-left:4px solid var(--c-accent)}.vc[data-fam="3"]{border-left:4px solid var(--c-success)}
-/* Ext */
 .eg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}@media(max-width:768px){.eg{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.eg{grid-template-columns:1fr}}
 .ec{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:8px;padding:10px 12px;border-left:4px solid var(--c-divider)}
 .ec .een{font-family:var(--font-b);font-weight:600;color:var(--c-primary);font-size:.85rem}.ec .epr{font-size:.68rem;color:var(--c-muted)}.ec .ezh{font-size:.8rem;color:var(--c-accent);font-weight:500;margin:2px 0}.ec .emg{font-size:.72rem;color:var(--c-text)}.ec .eex{font-size:.7rem;color:var(--c-muted);font-style:italic}
-/* Drill */
 .dzone{max-width:500px;margin:0 auto}.dc{background:var(--c-surface);border:2px solid var(--c-divider);border-radius:14px;padding:30px 20px;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:14px 0;cursor:pointer;transition:border-color .3s}.dc:hover{border-color:var(--c-accent)}.dc .dp{font-size:.75rem;color:var(--c-muted);margin-bottom:8px}.dc .dw{font-family:var(--font-h);font-size:1.6rem;color:var(--c-primary);margin:6px 0}.dc .ds{font-size:.85rem;color:var(--c-muted)}.dc .da{font-size:1.2rem;color:var(--c-accent);font-weight:700;margin:10px 0;display:none}.dc.sa .da{display:block}
 .dn{display:flex;justify-content:space-between;align-items:center;margin:10px 0}.dbtn{padding:8px 20px;border:none;border-radius:8px;font-family:var(--font-b);font-weight:600;font-size:.78rem;cursor:pointer}
 .lt{display:flex;gap:6px;margin-bottom:16px;justify-content:center}.lb{padding:6px 16px;border:2px solid var(--c-divider);border-radius:8px;background:var(--c-surface);font-family:var(--font-b);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s}.lb.on{background:var(--c-primary);color:#fff;border-color:var(--c-primary)}
-
-/* Dialogue Image Mode — replace text script with two images per topic */
-.dlg .imgwrap{padding:0 16px 12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.dlg .imgcard{background:var(--c-secondary);border:1px solid var(--c-divider);border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(27,42,74,.06)}
-.dlg .imgcap{font-family:var(--font-b);font-size:.68rem;font-weight:700;color:#fff;background:var(--c-primary);padding:7px 10px;display:flex;justify-content:space-between;gap:8px;align-items:center}
-.dlg .imgcap.try{background:var(--c-accent)}
-.dlg .imgcard img{width:100%;height:auto;display:block;background:#F5F0E8}
-.dlg .imgnote{font-size:.7rem;color:var(--c-muted);padding:7px 10px;background:#fff;line-height:1.45}
-.dlg .imgmissing{min-height:190px;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;background:#fff;color:var(--c-muted);font-size:.78rem;line-height:1.5}
-@media(max-width:760px){.dlg .imgwrap{grid-template-columns:1fr}}
-
-/* Phrases/Pron/Dlg/Speak/Culture */
-.phr{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:8px;padding:12px 16px;margin:6px 0}
-.phr .ptg{font-size:.58rem;font-weight:700;margin-bottom:3px}.phr .pen{font-size:.9rem;font-weight:600;color:var(--c-primary);margin:3px 0}.phr .pzh{font-size:.82rem;color:var(--c-accent)}.phr .pnt{font-size:.74rem;color:var(--c-muted);margin-top:3px}
-.prc{background:var(--c-surface);border:2px solid var(--c-accent);border-radius:10px;padding:18px 20px}.prc .fo{font-family:var(--font-h);font-size:1rem;color:var(--c-primary);margin:6px 0}.prc .pw{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}.prc .wd{background:var(--c-secondary);padding:6px 12px;border-radius:6px;font-size:.85rem}.prc .ptip{background:#FFF8E1;padding:8px 12px;border-radius:6px;font-size:.8rem;margin:8px 0}
-.dlg{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:10px;margin:10px 0;overflow:hidden}.dlg .dh{padding:10px 16px;display:flex;justify-content:space-between;align-items:center}.dlg .dtag{font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:4px}.dtr{background:#D5F5E3;color:#1E8449}.dtc{background:#D6EAF8;color:#2471A3}
-.dlg .si{font-size:.78rem;color:var(--c-muted);padding:0 16px 8px}.dlg .rl{display:flex;gap:8px;padding:0 16px 8px}.dlg .ro{flex:1;padding:8px 12px;border-radius:6px;font-size:.75rem}.ra{background:var(--c-primary);color:#fff}.rb{background:var(--c-teal);color:#fff}
-.dlg .ls{padding:6px 16px 12px}.dlg .ln{display:flex;gap:6px;margin:3px 0;align-items:flex-start}.dlg .wh{font-family:var(--font-b);font-weight:700;font-size:.7rem;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}.wa{background:var(--c-primary);color:#fff}.wb{background:var(--c-teal);color:#fff}.dlg .sp{font-size:.8rem;line-height:1.5}
-.dlg .tr{background:var(--c-secondary);padding:10px 16px;border-top:1px solid var(--c-divider)}.dlg .tr b{color:var(--c-accent);font-size:.8rem}.dlg .tr p{font-size:.78rem;margin-top:3px}
-.dlg .tn{padding:10px 16px;background:#F8F9FA;border-top:1px solid var(--c-divider);font-size:.74rem;color:var(--c-muted);display:none}.dlg .tn.show{display:block}.dlg .tg2{text-align:center;padding:5px;font-size:.7rem;color:var(--c-muted);cursor:pointer;border-top:1px solid var(--c-divider)}
-.sq{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:8px;padding:12px 16px;margin:6px 0}.sq .stl{font-size:.63rem;font-weight:700;padding:2px 6px;border-radius:4px;display:inline-block;margin-bottom:4px}.s1{background:#E8F5E9;color:#2E7D32}.s2{background:#FFF3E0;color:#E65100}.s3{background:#FCE4EC;color:#C62828}.sq .qq{font-size:.88rem;font-weight:500;color:var(--c-primary);margin:3px 0}.sq .qh{font-size:.76rem;color:var(--c-muted);font-style:italic}
-.cult{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:10px;padding:16px 20px;margin:8px 0}.cult .cs{font-size:.63rem;font-weight:700;color:var(--c-accent)}.cult .ct{font-family:var(--font-h);font-size:.95rem;color:var(--c-primary);margin:4px 0 6px}.cult .cp{background:var(--c-secondary);border-radius:6px;padding:16px;text-align:center;font-size:.76rem;color:var(--c-muted);margin-bottom:8px}.cult .cn{font-size:.8rem;line-height:1.6;margin-bottom:8px}.cult .cq{font-size:.8rem;color:var(--c-primary);margin:3px 0;padding-left:10px;border-left:2px solid var(--c-accent)}
-.rt{width:100%;border-collapse:collapse;font-size:.78rem}.rt th{background:var(--c-primary);color:#fff;padding:8px 10px;text-align:left;font-family:var(--font-b);font-size:.72rem}.rt td{padding:6px 10px;border-bottom:1px solid var(--c-divider)}.rt tr:hover{background:var(--c-secondary)}
-.pvh{padding:8px 14px;background:var(--c-secondary);cursor:pointer;font-family:var(--font-b);font-size:.8rem;font-weight:600;color:var(--c-primary);display:flex;justify-content:space-between;border-radius:8px;margin:4px 0}.pvb{max-height:0;overflow:hidden;transition:max-height .3s}.pvb.open{max-height:2000px}.pvl{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0}.pvc{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:6px;padding:4px 10px;font-size:.74rem}.pvc .pe{font-weight:600;color:var(--c-primary)}.pvc .pz{color:var(--c-muted);margin-left:4px}
+.imggrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}@media(max-width:768px){.imggrid{grid-template-columns:1fr}}
+.imgcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}@media(max-width:900px){.imgcards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.imgcards{grid-template-columns:1fr}}
+.single-col{display:grid;grid-template-columns:1fr;gap:14px;max-width:900px}
+.imgcard{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(27,42,74,.06)}
+.imghead{padding:10px 14px;font-family:var(--font-b);font-size:.82rem;font-weight:700;display:flex;justify-content:space-between;align-items:center;color:#fff}
+.imghead .subh{font-size:.7rem;font-weight:600;opacity:.9}
+.imghead.navy{background:var(--c-primary)} .imghead.teal{background:var(--c-teal)} .imghead.accent{background:var(--c-accent)}
+.imghead.green{background:var(--c-success)} .imghead.alert{background:var(--c-alert)}
+.imgbody{padding:0;background:#fff}
+.imgbody img{display:block;width:100%;height:auto;background:#fff}
+.placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:260px;background:#F8F8F8;color:#8B8B8B;text-align:center;padding:16px;font-size:.9rem}
+.placeholder .path{margin-top:6px;font-size:.8rem;color:#6A6A6A;word-break:break-all}
+.imgnote{padding:10px 14px;font-size:.75rem;color:var(--c-muted);border-top:1px solid var(--c-divider)}
+.dlgwrap{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:12px;padding:16px 16px 8px;margin-bottom:14px}
+.dlgtitle{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.dlgtitle h3{margin:0;font-size:1rem;color:var(--c-primary)}
+.badge{font-size:.66rem;font-weight:700;padding:4px 8px;border-radius:999px}.req{background:#D5F5E3;color:#1E8449}.opt{background:#D6EAF8;color:#2471A3}
+.si{font-size:.82rem;color:var(--c-muted);margin-bottom:10px}
+.rolebar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}.role{padding:10px 12px;border-radius:8px;color:#fff;font-family:var(--font-b);font-weight:600}.role.a{background:var(--c-primary)}.role.b{background:var(--c-teal)}
 .footer{text-align:center;padding:20px;color:var(--c-muted);font-family:var(--font-b);font-size:.68rem;border-top:1px solid var(--c-divider);margin-top:20px}
 </style>
-  <link rel="stylesheet" href="../../assets/css/site.css">
-<!-- YSP_GLOBAL_LESSON_STYLE_START -->
-<style>
-  html { scroll-behavior: smooth; }
-  body { overflow-x: hidden; }
-
-  .ysp-page-top-anchor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    pointer-events: none;
-  }
-
-  .lesson-page-header {
-    max-width: none;
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 100000;
-    position: relative !important;
-    top: auto !important;
-  }
-
-  .lesson-page-header .brand {
-    margin: 0;
-    font-size: inherit;
-    letter-spacing: normal;
-    text-transform: none;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .lesson-page-header .brand-name,
-  .lesson-page-header .brand-tagline {
-    display: block;
-  }
-
-  .lesson-page-header .site-nav a {
-    text-decoration: none;
-  }
-
-  .lesson-top-actions {
-    max-width: 1180px;
-    margin: 30px auto 20px;
-    padding: 0 24px;
-    box-sizing: border-box;
-  }
-
-  .back-to-lessons {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 46px;
-    padding: 12px 22px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.88);
-    border: 1px solid rgba(196,147,93,.30);
-    color: #1f1d1b;
-    text-decoration: none;
-    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 900;
-    letter-spacing: .02em;
-    box-shadow: 0 14px 34px rgba(60,43,25,.10);
-  }
-
-  .back-to-lessons:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 16px 38px rgba(60,43,25,.14);
-  }
-
-  .ysp-page-top-button {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 99999;
-    width: 58px;
-    height: 58px;
-    border-radius: 999px;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1px;
-    background: #1f1d1b;
-    color: #ffffff;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,.28);
-    box-shadow: 0 14px 34px rgba(60,43,25,.22);
-    opacity: .92;
-    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
-  }
-
-  .ysp-page-top-button:hover {
-    transform: translateY(-2px);
-    opacity: 1;
-  }
-
-  .ysp-page-top-arrow {
-    font-size: 22px;
-    line-height: 1;
-    font-weight: 900;
-  }
-
-  .ysp-page-top-label {
-    font-size: 11px;
-    line-height: 1;
-    font-weight: 900;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-
-  .lesson-page-footer {
-    max-width: none;
-    width: 100%;
-    margin-top: 34px;
-  }
-
-  /*
-    Keep lesson inner tabs visible while browsing a long lesson.
-    Canada Life pages use .nav.
-    Travel / Business pages may use .tabs.
-  */
-  .nav,
-  .tabs,
-  #nav,
-  #tabs {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 99998 !important;
-  }
-
-  .nav a,
-  .tabs .tab {
-    scroll-margin-top: 86px;
-  }
-
-  .section,
-  .panel,
-  [id^="sec-"] {
-    scroll-margin-top: 86px;
-  }
-
-  @media (max-width: 760px) {
-    .lesson-top-actions {
-      margin: 22px auto 16px;
-      padding: 0 18px;
-    }
-
-    .back-to-lessons {
-      width: 100%;
-      min-height: 44px;
-    }
-
-    .ysp-page-top-button {
-      right: 16px;
-      bottom: 16px;
-      width: 52px;
-      height: 52px;
-    }
-
-    .ysp-page-top-arrow { font-size: 20px; }
-    .ysp-page-top-label { font-size: 10px; }
-  }
-</style>
-<!-- YSP_GLOBAL_LESSON_STYLE_END -->
 </head>
 <body>
-<!-- YSP_AUTO_TOP_ANCHOR_START -->
-<div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
-<!-- YSP_AUTO_TOP_ANCHOR_END -->
-
-<!-- YSP_LESSON_NAV_START -->
-<header class="site-header lesson-page-header">
-  <a class="brand" href="../../" aria-label="YSP Learn and Shine Home">
-    <img class="header-icon" src="../../assets/img/ysp-header-icon.png" alt="YSP mountain sunrise icon">
-    <span class="brand-text">
-      <span class="brand-name">YSP Learn &amp; Shine</span>
-      <span class="brand-tagline">Learn with Purpose. Shine with Confidence.</span>
-    </span>
-  </a>
-
-  <nav class="site-nav" aria-label="Lesson navigation">
-    <a href="../../">Home</a>
-    <a href="../">Lessons</a>
-    <a href="../../#about">About</a>
-  </nav>
-</header>
-
-<div class="lesson-top-actions">
-  <a class="back-to-lessons" href="../">← Back to Lessons</a>
-</div>
-<!-- YSP_LESSON_NAV_END -->
-
 <div class="header">
 <div class="brand">YSP Learn &amp; Shine</div>
-<h1>L01 — Welcome to Canada 歡迎來到加拿大</h1>
-<p class="sub">Canada Life &amp; Career English · Phase 1 · CEFR A2 · 25 Core ★ + 30 Extended ◇</p>
+<h1>u1-l1 — Welcome to Canada 歡迎來到加拿大</h1>
+<p class="sub">Canada Life &amp; Career English · Phase 1 · CEFR A2 · Image-based lesson tabs</p>
 </div>
 <div class="tabs">
 <button class="tb on" onclick="T(0)">📊 總覽</button>
@@ -280,9 +79,8 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 <button class="tb" onclick="T(9)">📋 進度</button>
 </div>
 <div class="tpn on" id="t0"></div><div class="tpn" id="t1"></div><div class="tpn" id="t2"></div><div class="tpn" id="t3"></div><div class="tpn" id="t4"></div><div class="tpn" id="t5"></div><div class="tpn" id="t6"></div><div class="tpn" id="t7"></div><div class="tpn" id="t8"></div><div class="tpn" id="t9"></div>
-<div class="footer"><span style="color:var(--c-accent);font-weight:600">YSP LEARN &amp; SHINE</span><br>Canada Life &amp; Career English — L01 Welcome to Canada<br><span style="font-size:.63rem">Learn with Purpose. Shine with Confidence.</span></div>
+<div class="footer"><span style="color:var(--c-accent);font-weight:600">YSP LEARN &amp; SHINE</span><br>Canada Life &amp; Career English — u1-l1 Welcome to Canada<br><span style="font-size:.63rem">Learn with Purpose. Shine with Confidence.</span></div>
 <script>
-
 var CATS=["Arrival & Immigration","Working Holiday","Canada Basics","First Conversations","Getting Settled"];
 var V=[
 {en:"passport",zh:"護照",pr:"/ˈpæspɔːrt/",cat:0,m1:"A passport is an official travel document with your photo.",m2:"You need it to enter another country.",e1:"Please show your passport at the counter.",e2:"My passport is valid for ten more years.",p1:"Don't forget your _______ when you travel.",p2:"The officer checked my _______ carefully.",svg:'<svg viewBox="0 0 80 80"><rect x="20" y="12" width="40" height="56" rx="4" fill="#1B2A4A" stroke="#C8956C" stroke-width="1.5"/><circle cx="40" cy="36" r="10" fill="none" stroke="#C8956C" stroke-width="1.5"/><rect x="28" y="52" width="24" height="3" rx="1" fill="#C8956C"/></svg>'},
@@ -312,15 +110,36 @@ var V=[
 {en:"luggage",zh:"行李",pr:"/ˈlʌɡɪdʒ/",cat:4,m1:"Luggage means the bags and suitcases you carry.",m2:"Be careful with your luggage at the airport.",e1:"I have two pieces of luggage.",e2:"My luggage arrived on the conveyor belt.",p1:"How many pieces of _______ do you have?",p2:"Please pick up your _______ at carousel three.",svg:'<svg viewBox="0 0 80 80"><rect x="24" y="24" width="32" height="36" rx="4" fill="none" stroke="#1B2A4A" stroke-width="1.5"/><path d="M32 24v-6h16v6" fill="none" stroke="#C8956C" stroke-width="1.5"/><circle cx="32" cy="60" r="3" fill="none" stroke="#1B2A4A" stroke-width="1"/><circle cx="48" cy="60" r="3" fill="none" stroke="#1B2A4A" stroke-width="1"/></svg>'}
 ];
 var EXT=[{en:"baggage claim",zh:"行李提領區",pr:"/ˈbæɡɪdʒ kleɪm/",cat:0,m:"The area where you pick up checked luggage.",ex:"Go to baggage claim on the first floor."},{en:"jet lag",zh:"時差",pr:"/ˈdʒet læɡ/",cat:0,m:"Tired feeling after a long flight.",ex:"I had bad jet lag for three days."},{en:"connecting flight",zh:"轉機航班",pr:"/kəˈnektɪŋ flaɪt/",cat:0,m:"A second flight to your final destination.",ex:"My connecting flight leaves in two hours."},{en:"landing card",zh:"入境卡",pr:"/ˈlændɪŋ kɑːrd/",cat:0,m:"A form you fill out before arriving.",ex:"Please complete this landing card."},{en:"conveyor belt",zh:"行李輸送帶",pr:"/kənˈveɪər belt/",cat:0,m:"The moving belt that carries luggage.",ex:"My suitcase is on conveyor belt three."},{en:"terminal",zh:"航廈",pr:"/ˈtɜːrmɪnəl/",cat:0,m:"A building at the airport for passengers.",ex:"International flights arrive at Terminal 1."},{en:"insurance",zh:"保險",pr:"/ɪnˈʃʊrəns/",cat:1,m:"A plan that pays for medical costs.",ex:"You need travel insurance."},{en:"registration",zh:"註冊",pr:"/ˌredʒɪˈstreɪʃən/",cat:1,m:"The process of officially signing up.",ex:"Complete your registration online."},{en:"eligible",zh:"符合資格的",pr:"/ˈelɪdʒəbəl/",cat:1,m:"Meeting the requirements.",ex:"You must be under 36 to be eligible."},{en:"requirement",zh:"要求",pr:"/rɪˈkwaɪərmənt/",cat:1,m:"Something that is needed.",ex:"A valid passport is a basic requirement."},{en:"document",zh:"文件",pr:"/ˈdɑːkjəmənt/",cat:1,m:"An official paper with important information.",ex:"Bring all your documents."},{en:"sponsor",zh:"擔保人",pr:"/ˈspɑːnsər/",cat:1,m:"A person that supports you officially.",ex:"Some visas need a sponsor."},{en:"territory",zh:"特區",pr:"/ˈterɪtɔːri/",cat:2,m:"An area of Canada that is not a province.",ex:"Canada has three territories."},{en:"capital",zh:"首都",pr:"/ˈkæpɪtəl/",cat:2,m:"The city where the government is located.",ex:"Ottawa is the capital of Canada."},{en:"population",zh:"人口",pr:"/ˌpɑːpjuˈleɪʃən/",cat:2,m:"The total number of people in a place.",ex:"Canada has about forty million people."},{en:"diverse",zh:"多樣的",pr:"/daɪˈvɜːrs/",cat:2,m:"Including many different types of people.",ex:"Vancouver is a very diverse city."},{en:"maple",zh:"楓樹",pr:"/ˈmeɪpəl/",cat:2,m:"A tree; the maple leaf is Canada's symbol.",ex:"The maple leaf is on the flag."},{en:"Indigenous",zh:"原住民的",pr:"/ɪnˈdɪdʒənəs/",cat:2,m:"Relating to the first people of a place.",ex:"Canada has many Indigenous communities."},{en:"casual",zh:"隨意的",pr:"/ˈkæʒuəl/",cat:3,m:"Relaxed and not formal.",ex:"Canadians usually dress casual."},{en:"handshake",zh:"握手",pr:"/ˈhændʃeɪk/",cat:3,m:"Shaking hands when you meet someone.",ex:"A firm handshake is common."},{en:"pleasure",zh:"榮幸",pr:"/ˈpleʒər/",cat:3,m:"A polite word meaning you are happy.",ex:"It is a pleasure to meet you!"},{en:"accent",zh:"口音",pr:"/ˈæksent/",cat:3,m:"The way a person says words.",ex:"Where are you from? I hear your accent."},{en:"pronounce",zh:"發音",pr:"/prəˈnaʊns/",cat:3,m:"To say a word in a particular way.",ex:"How do you pronounce this?"},{en:"chat",zh:"聊天",pr:"/tʃæt/",cat:3,m:"To talk in a friendly way.",ex:"We had a nice chat over coffee."},{en:"transit",zh:"大眾運輸",pr:"/ˈtrænzɪt/",cat:4,m:"The public transportation system.",ex:"I take transit to work."},{en:"subway",zh:"地鐵",pr:"/ˈsʌbweɪ/",cat:4,m:"An underground train system.",ex:"Toronto has the TTC subway."},{en:"deposit",zh:"押金",pr:"/dɪˈpɑːzɪt/",cat:4,m:"Money paid when renting.",ex:"The deposit is five hundred dollars."},{en:"grocery",zh:"超市",pr:"/ˈɡroʊsəri/",cat:4,m:"A store where you buy food.",ex:"I go to the grocery store weekly."},{en:"pharmacy",zh:"藥局",pr:"/ˈfɑːrməsi/",cat:4,m:"A store where you buy medicine.",ex:"There is a pharmacy on the corner."},{en:"laundry",zh:"洗衣",pr:"/ˈlɔːndri/",cat:4,m:"The activity of washing clothes.",ex:"I do laundry every Sunday."}];
-var PHRASES=[{en:"Nice to meet you! I just arrived from Taiwan.",zh:"很高興認識你！我剛從台灣來。",note:"最基本的自我介紹開場白。",t:"core"},{en:"Could you help me with something?",zh:"你可以幫我一下嗎？",note:"萬用求助句型。",t:"core"},{en:"I am here on a working holiday visa.",zh:"我持打工度假簽證來的。",note:"入境或認識新朋友時常用。",t:"core"},{en:"How do you like Canada so far?",zh:"你到目前為止覺得加拿大怎麼樣？",note:"別人可能會問你這個問題。",t:"ext"},{en:"I am still getting used to everything here.",zh:"我還在適應這裡的一切。",note:"誠實且自然的回答。",t:"ext"}];
-var DIALOGUES=[{id:1,img1:"assets/dialogues/l01-d01-model.png",img2:"assets/dialogues/l01-d01-practice.png",title:"At the Immigration Counter",tz:"在入境櫃檯",tag:"req",sit:"You just landed at Vancouver International Airport.",rA:"Traveler",rB:"Immigration Officer",lines:[["B","Welcome to Canada. May I see your passport?"],["A","Here is my passport."],["B","What is the purpose of your visit?"],["A","I am here on a working holiday visa."],["B","How long do you plan to stay?"],["A","The duration of my visa is twelve months."],["B","Do you have anything to declare?"],["A","No, nothing to declare."],["B","Welcome to Canada!"]],tp:"Try again: visa is TWO years, staying in Toronto.",tn:"重點：working holiday visa, duration, declare。"},{id:2,img1:"assets/dialogues/l01-d02-model.png",img2:"assets/dialogues/l01-d02-practice.png",title:"Meeting Your Roommate",tz:"認識室友",tag:"req",sit:"You arrive at your new accommodation.",rA:"New Arrival",rB:"Roommate (Jamie)",lines:[["B","Hey! You must be the new roommate. I am Jamie!"],["A","Hi Jamie! Nice to meet you. I am from Taiwan."],["B","How was your flight?"],["A","It was long, but I am happy to be here."],["B","Let me show you around. This is the kitchen."],["A","Thank you! This accommodation looks nice."],["B","We take turns doing the dishes. Pretty casual here."],["A","No problem! Everyone is so friendly."]],tp:"Try again: roommate is Alex, you arrived yesterday.",tn:"觀察 nickname 和 casual 語氣。"},{id:3,img1:"assets/dialogues/l01-d03-model.png",img2:"assets/dialogues/l01-d03-practice.png",title:"Asking for Directions",tz:"在機場問路",tag:"req",sit:"You need to find the bus to downtown.",rA:"Traveler",rB:"Airport Staff",lines:[["A","Excuse me, could you help me?"],["B","Of course! What do you need?"],["A","Where is the bus to downtown Vancouver?"],["B","Go straight, then turn left. Follow transit signs."],["A","How much is the fare?"],["B","About three dollars. You can use a credit card."],["A","Where can I exchange currency?"],["B","There is an exchange counter near the arrival gate."]],tp:"Try again: ask about the SkyTrain instead.",tn:"核心句型 Could you help me?"},{id:4,img1:"assets/dialogues/l01-d04-model.png",img2:"assets/dialogues/l01-d04-practice.png",title:"Taking a Taxi",tz:"搭計程車",tag:"ch",sit:"You take a taxi because you have heavy luggage.",rA:"Passenger",rB:"Taxi Driver",lines:[["A","Can you take me to this address?"],["B","Sure! First time in Canada?"],["A","Yes! I am on a working holiday visa."],["B","You will love Vancouver. Very multicultural."],["A","Do you accept credit cards?"],["B","Yes. Here we are! Let me help with your luggage."],["A","Thank you! You are very polite."]],tp:"Try again: ask about estimated travel time.",tn:"練習數字和禮貌用語。"},{id:5,img1:"assets/dialogues/l01-d05-model.png",img2:"assets/dialogues/l01-d05-practice.png",title:"Meeting a Neighbor",tz:"認識鄰居",tag:"ch",sit:"Your neighbor starts talking at the mailbox.",rA:"New Resident",rB:"Neighbor (Sarah)",lines:[["B","Hi! Did you just move in?"],["A","Yes! Nice to meet you. I am from Taiwan."],["B","Welcome! How do you like Canada so far?"],["A","I love it! But still getting used to the cold."],["B","If you need anything, knock on my door."],["A","That is so kind! Thank you, Sarah."]],tp:"Try again: Sarah invites you for coffee.",tn:"觀察 small talk 自然度。"}];
-var SPEAKING=[{t:1,q:"Do you prefer living in a big city or a small town?",h:"I prefer living in a ___ because..."},{t:1,q:"Have you traveled where you did not speak the language?",h:"Yes / No. One time I..."},{t:2,q:"What are you most excited about in Canada? Start with: I am most excited about...",h:"Give at least two reasons."},{t:2,q:"What is the biggest difference between Taiwan and Canada?",h:"Think about food, weather, culture."},{t:3,q:"What three things would you tell a friend to prepare for Canada?",h:"Speak for 30 seconds."}];
-var CULTURE=[{slot:"warm-up",title:"Tim Hortons — Canada Coffee Culture",tz:"Tim Hortons 咖啡文化",photo:"📷 A Tim Hortons store with coffee and Timbits.",notes:"Tim Hortons is the most popular coffee chain. A double-double means two creams and two sugars. Timbits are small donuts.",qs:["Do you have a favorite coffee shop in Taiwan?","What drink is as popular as Tim Hortons?","Would you try a double-double?"]},{slot:"closing",title:"Canadian Sorry Culture",tz:"加拿大道歉文化",photo:"📷 Two Canadians smiling. A sign says Sorry, eh!",notes:"Canadians say sorry a lot — even when it is not their fault! Eh is added to sentences like Nice day, eh? It means right? or 對吧?",qs:["Do people in Taiwan apologize a lot?","Try using eh in a sentence.","Do you prefer formal or casual greetings?"]}];
-var PRON={focus:"/θ/ and /ð/ — the th sounds",fz:"th 音：無聲 /θ/ 與有聲 /ð/",words:[{w:"think",ipa:"/θɪŋk/",bad:"sink",tip:"Tongue between teeth, blow air"},{w:"this",ipa:"/ðɪs/",bad:"dis",tip:"Tongue between teeth, voice ON"},{w:"thank",ipa:"/θæŋk/",bad:"tank",tip:"Feel the air"},{w:"the",ipa:"/ðə/",bad:"da",tip:"Vibrate your tongue"},{w:"three",ipa:"/θriː/",bad:"tree",tip:"Start with tongue out"}],tip:"把舌頭放在牙齒之間！/θ/ 只吹氣，/ð/ 要發聲。",prac:"I think this is the third Thursday of the month."};
-
+var PHRASE_IMAGES=[
+  {title:'Phrase 1', note:'Useful Phrase image', path:'assets/phrases/l01-phrase-1.png'},
+  {title:'Phrase 2', note:'Useful Phrase image', path:'assets/phrases/l01-phrase-2.png'},
+  {title:'Phrase 3', note:'Useful Phrase image', path:'assets/phrases/l01-phrase-3.png'},
+  {title:'Phrase 4', note:'Useful Phrase image', path:'assets/phrases/l01-phrase-4.png'},
+  {title:'Phrase 5', note:'Useful Phrase image', path:'assets/phrases/l01-phrase-5.png'}
+];
+var PRON_IMAGES=[
+  {title:'Pronunciation Spotlight', note:'th 音圖片版', path:'assets/pronunciation/l01-pronunciation-1.png'}
+];
+var SPEAKING_IMAGES=[
+  {title:'Speaking Q1', note:'Tier 1 — Warm-up', path:'assets/speaking/l01-speaking-q1.png'},
+  {title:'Speaking Q2', note:'Tier 1 / Tier 2', path:'assets/speaking/l01-speaking-q2.png'},
+  {title:'Speaking Q3', note:'Tier 2 — Guided', path:'assets/speaking/l01-speaking-q3.png'},
+  {title:'Speaking Q4', note:'Tier 2 / Tier 3', path:'assets/speaking/l01-speaking-q4.png'},
+  {title:'Speaking Q5', note:'Tier 3 — Free', path:'assets/speaking/l01-speaking-q5.png'}
+];
+var CULTURE_IMAGES=[
+  {title:'Culture 1', note:'Warm-up — Tim Hortons', path:'assets/culture/l01-culture-1.png'},
+  {title:'Culture 2', note:'Closing — Canadian Sorry Culture', path:'assets/culture/l01-culture-2.png'}
+];
+var DIALOGUES=[
+{id:1,title:'At the Immigration Counter',tz:'在入境櫃檯',tag:'req',sit:'You just landed at Vancouver International Airport.',rA:'Traveler',rB:'Immigration Officer',modelImg:'assets/dialogues/l01-d01-model.png',practiceImg:'assets/dialogues/l01-d01-practice.png',practiceText:'Try again: visa is TWO years, staying in Toronto.',tn:'重點：working holiday visa, duration, declare。'},
+{id:2,title:'Meeting Your Roommate',tz:'認識室友',tag:'req',sit:'You arrive at your new accommodation.',rA:'New Arrival',rB:'Roommate (Jamie)',modelImg:'assets/dialogues/l01-d02-model.png',practiceImg:'assets/dialogues/l01-d02-practice.png',practiceText:'Try again: roommate is Alex, you arrived yesterday.',tn:'觀察 nickname 和 casual 語氣。'},
+{id:3,title:'Asking for Directions',tz:'在機場問路',tag:'req',sit:'You need to find the bus to downtown.',rA:'Traveler',rB:'Airport Staff',modelImg:'assets/dialogues/l01-d03-model.png',practiceImg:'assets/dialogues/l01-d03-practice.png',practiceText:'Try again: ask about the SkyTrain instead.',tn:'核心句型 Could you help me?'},
+{id:4,title:'Taking a Taxi',tz:'搭計程車',tag:'opt',sit:'You take a taxi because you have heavy luggage.',rA:'Passenger',rB:'Taxi Driver',modelImg:'assets/dialogues/l01-d04-model.png',practiceImg:'assets/dialogues/l01-d04-practice.png',practiceText:'Try again: ask about estimated travel time.',tn:'練習數字和禮貌用語。'},
+{id:5,title:'Meeting a Neighbor',tz:'認識鄰居',tag:'opt',sit:'Your neighbor starts talking at the mailbox.',rA:'New Resident',rB:'Neighbor (Sarah)',modelImg:'assets/dialogues/l01-d05-model.png',practiceImg:'assets/dialogues/l01-d05-practice.png',practiceText:'Try again: Sarah invites you for coffee.',tn:'觀察 small talk 自然度。'}
+];
 </script>
 <script>
-
 function T(n){document.querySelectorAll('.tpn').forEach((p,i)=>p.classList.toggle('on',i===n));document.querySelectorAll('.tb').forEach((b,i)=>b.classList.toggle('on',i===n));}
 const CC=["var(--c-cat1)","var(--c-cat2)","var(--c-cat3)","var(--c-cat4)","var(--c-cat5)"];
 const fam={};
@@ -333,7 +152,7 @@ function r1(){var h='<h2>📚 Core Vocabulary — 核心詞彙 ('+V.length+')</h
 CATS.forEach(function(c,i){var n=V.filter(function(v){return v.cat===i}).length;h+='<button class="fb" data-f="'+i+'" style="border-left:3px solid '+CC[i]+'">'+c+' ('+n+')</button>';});
 h+='<span style="margin-left:auto;display:flex;gap:3px"><button class="fb f1" data-ff="1">🔴</button><button class="fb f2" data-ff="2">🟡</button><button class="fb f3" data-ff="3">🟢</button></span>';
 h+='<input type="text" class="sbx" placeholder="🔍" id="cs"></div><div class="cg">';
-V.forEach(function(v,i){h+='<div class="vc" data-i="'+i+'" data-g="'+v.cat+'" data-en="'+v.en+'" data-zh="'+v.zh+'" data-fam="" onclick="this.classList.toggle(&#39;fl&#39;)"><div class="vf"><span class="bdg">★ Core</span><div class="va" style="background:'+CC[v.cat]+'"></div><div class="pic">'+v.svg+'</div><div class="pr">'+v.pr+'</div><div class="ew">'+v.en+'</div><div class="fh">tap to flip →</div></div><div class="vb"><div class="va" style="background:'+CC[v.cat]+'"></div><div class="eb">'+v.en+'</div><div class="zb">'+v.zh+'</div><div class="dv"></div><div class="mg">📖 '+v.m1+'</div><div class="mg">📖 '+v.m2+'</div><div class="dv"></div><div class="ex">📝 '+v.e1+'</div><div class="ex">📝 '+v.e2+'</div><div class="dv"></div><div class="pl">✏ Try using this word:</div><div class="pi">1. '+v.p1+'</div><div class="pi">2. '+v.p2+'</div></div><div class="famb" onclick="event.stopPropagation()"><button class="fm f1c" data-l="1" onclick="sf('+i+',1,event)">🔴 不知道</button><button class="fm f2c" data-l="2" onclick="sf('+i+',2,event)">🟡 有印象</button><button class="fm f3c" data-l="3" onclick="sf('+i+',3,event)">🟢 已經會</button></div></div>';});
+V.forEach(function(v,i){h+='<div class="vc" data-i="'+i+'" data-g="'+v.cat+'" data-en="'+v.en.toLowerCase()+'" data-zh="'+v.zh+'" data-fam="" onclick="this.classList.toggle(\'fl\')"><div class="vf"><span class="bdg">★ Core</span><div class="va" style="background:'+CC[v.cat]+'"></div><div class="pic">'+v.svg+'</div><div class="pr">'+v.pr+'</div><div class="ew">'+v.en+'</div><div class="fh">tap to flip →</div></div><div class="vb"><div class="va" style="background:'+CC[v.cat]+'"></div><div class="eb">'+v.en+'</div><div class="zb">'+v.zh+'</div><div class="dv"></div><div class="mg">📖 '+v.m1+'</div><div class="mg">📖 '+v.m2+'</div><div class="dv"></div><div class="ex">📝 '+v.e1+'</div><div class="ex">📝 '+v.e2+'</div><div class="dv"></div><div class="pl">✏ Try using this word:</div><div class="pi">1. '+v.p1+'</div><div class="pi">2. '+v.p2+'</div></div><div class="famb" onclick="event.stopPropagation()"><button class="fm f1c" data-l="1" onclick="sf('+i+',1,event)">🔴 不知道</button><button class="fm f2c" data-l="2" onclick="sf('+i+',2,event)">🟡 有印象</button><button class="fm f3c" data-l="3" onclick="sf('+i+',3,event)">🟢 已經會</button></div></div>';});
 h+='</div>';document.getElementById('t1').innerHTML=h;
 document.querySelectorAll('.fbar .fb[data-f]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.fbar .fb[data-f]').forEach(function(x){x.classList.remove('on')});b.classList.add('on');var f=b.dataset.f;document.querySelectorAll('.vc').forEach(function(c){c.style.display=(f==='all'||c.dataset.g==f)?'':'none';});});});
 document.querySelectorAll('.fb[data-ff]').forEach(function(b){b.addEventListener('click',function(){b.classList.toggle('on');var af=Array.from(document.querySelectorAll('.fb[data-ff].on')).map(function(x){return x.dataset.ff});if(!af.length)document.querySelectorAll('.vc').forEach(function(c){c.style.display=''});else document.querySelectorAll('.vc').forEach(function(c){c.style.display=af.indexOf(String(fam[c.dataset.i]))>=0?'':'none';});});});
@@ -346,43 +165,41 @@ var dL=1,dI=0;
 function r3(){document.getElementById('t3').innerHTML='<h2>🔁 Drilling 三關練習</h2><p style="font-size:.78rem;color:var(--c-muted);margin-bottom:14px">L1 跟唸 → L2 整句跟唸 → L3 中翻英</p><div class="lt"><button class="lb on" onclick="sL(1)">L1 跟唸</button><button class="lb" onclick="sL(2)">L2 整句</button><button class="lb" onclick="sL(3)">L3 中翻英</button></div><div class="dzone" id="dz"></div>';rd();}
 function sL(l){dL=l;dI=0;document.querySelectorAll('.lb').forEach(function(b,i){b.classList.toggle('on',i===l-1)});rd();}
 function rd(){var v=V[dI],z=document.getElementById('dz'),pr,w,s,a;if(dL===1){pr='🔊 老師唸 → 學生跟唸 3 次';w=v.en;s=v.pr;a=v.zh;}else if(dL===2){pr='🔊 老師唸整句 → 學生跟唸';w=v.e1;s='';a=v.zh+' — '+v.en;}else{pr='看中文 → 說英文';w=v.zh;s='';a=v.en+' '+v.pr;}
-z.innerHTML='<div class="dc" onclick="this.classList.toggle(&#39;sa&#39;)"><div class="dp">'+pr+'</div><div class="dw">'+w+'</div><div class="ds">'+s+'</div><div class="da">💡 '+a+'</div><div style="font-size:.65rem;color:var(--c-muted);margin-top:8px">點擊翻牌看答案</div></div><div class="dn"><button class="dbtn" style="background:var(--c-divider);color:var(--c-text)" onclick="dI=Math.max(0,dI-1);rd()">← 上一個</button><span style="font-size:.78rem;color:var(--c-muted)">'+(dI+1)+' / '+V.length+'</span><button class="dbtn" style="background:var(--c-primary);color:#fff" onclick="dI=Math.min(V.length-1,dI+1);rd()">下一個 →</button></div>';}
-function r4(){var h='<h2>💬 Useful Phrases — 實用句型 (5)</h2>';PHRASES.forEach(function(p){var tg=p.t==='core'?'<div class="ptg" style="color:#1E8449">🏫 In-class</div>':'<div class="ptg" style="color:#2471A3">📖 Self-study</div>';h+='<div class="phr">'+tg+'<div class="pen">"'+p.en+'"</div><div class="pzh">'+p.zh+'</div><div class="pnt">💡 '+p.note+'</div></div>';});document.getElementById('t4').innerHTML=h;}
-function r5(){var pw='';PRON.words.forEach(function(w){pw+='<div class="wd"><b>'+w.w+'</b> '+w.ipa+'<br><span style="font-size:.7rem;color:var(--c-alert)">✗ '+w.bad+'</span> → <span style="color:var(--c-success)">✓ '+w.w+'</span><br><span style="font-size:.68rem;color:var(--c-muted)">'+w.tip+'</span></div>';});
-document.getElementById('t5').innerHTML='<h2>🎯 Pronunciation Spotlight</h2><div class="prc"><div style="font-size:.7rem;color:var(--c-accent);font-weight:600">🎯 PRONUNCIATION SPOTLIGHT</div><div class="fo">'+PRON.focus+'</div><div style="font-size:.8rem;color:var(--c-muted)">'+PRON.fz+'</div><div class="pw">'+pw+'</div><div class="ptip">💡 '+PRON.tip+'</div><div style="font-size:.85rem;color:var(--c-primary);font-weight:500;margin-top:6px">🗣️ '+PRON.prac+'</div></div>';}
-function r6(){
-var h='<h2>🎭 Dialogue Practice — 圖片對話練習 (5)</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:10px">此版本已改成圖片呈現：每個主題 2 張圖（Model Dialogue + Now You Try）。請把圖片放在 <b>assets/dialogues/</b> 資料夾，檔名照下方規則即可。</p>';
-DIALOGUES.forEach(function(d){
-var tc=d.tag==='req'?'dtr':'dtc',tt=d.tag==='req'?'🏫 必練':'📖 選練';
-var img1=d.img1||('assets/dialogues/l01-d'+String(d.id).padStart(2,'0')+'-model.png');
-var img2=d.img2||('assets/dialogues/l01-d'+String(d.id).padStart(2,'0')+'-practice.png');
-h+='<div class="dlg"><div class="dh"><h3 style="margin:0;font-size:.85rem">#'+d.id+' '+d.title+'<br><span style="font-size:.73rem;color:var(--c-muted)">'+d.tz+'</span></h3><span class="dtag '+tc+'">'+tt+'</span></div><div class="si">📍 '+d.sit+'</div><div class="rl"><div class="ro ra">🧑 '+d.rA+'</div><div class="ro rb">👤 '+d.rB+'</div></div><div class="imgwrap"><div class="imgcard"><div class="imgcap"><span>Full Model Dialogue</span><span>主練習</span></div><img src="'+img1+'" alt="'+d.title+' full model dialogue image" onerror="this.style.display=\'none\';this.insertAdjacentHTML(\'afterend\',\'<div class=&quot;imgmissing&quot;>尚未放入圖片<br>'+img1+'</div>\')"><div class="imgnote">建議：完整示範對話圖片。</div></div><div class="imgcard"><div class="imgcap try"><span>Now You Try</span><span>換你說</span></div><img src="'+img2+'" alt="'+d.title+' practice variation image" onerror="this.style.display=\'none\';this.insertAdjacentHTML(\'afterend\',\'<div class=&quot;imgmissing&quot;>尚未放入圖片<br>'+img2+'</div>\')"><div class="imgnote">練習變化：'+d.tp+'</div></div></div><div class="tg2" onclick="var t=this.nextElementSibling;t.classList.toggle(&#39;show&#39;);this.textContent=t.classList.contains(&#39;show&#39;)?&quot;Teacher notes ▴&quot;:&quot;Teacher notes ▾&quot;">Teacher notes ▾</div><div class="tn">📋 '+d.tn+'</div></div>';
-});
-document.getElementById('t6').innerHTML=h;
+z.innerHTML='<div class="dc" onclick="this.classList.toggle(\'sa\')"><div class="dp">'+pr+'</div><div class="dw">'+w+'</div><div class="ds">'+s+'</div><div class="da">💡 '+a+'</div><div style="font-size:.65rem;color:var(--c-muted);margin-top:8px">點擊翻牌看答案</div></div><div class="dn"><button class="dbtn" style="background:var(--c-divider);color:var(--c-text)" onclick="dI=Math.max(0,dI-1);rd()">← 上一個</button><span style="font-size:.78rem;color:var(--c-muted)">'+(dI+1)+' / '+V.length+'</span><button class="dbtn" style="background:var(--c-primary);color:#fff" onclick="dI=Math.min(V.length-1,dI+1);rd()">下一個 →</button></div>';}
+function renderImageOnlyCards(list, containerId, options){
+  var cls = options && options.single ? 'single-col' : 'imgcards';
+  var h = '<div class="'+cls+'">';
+  list.forEach(function(item){
+    h += '<div class="imgcard">';
+    h += '<div class="imghead '+(options.headClass||'accent')+'"><span>'+item.title+'</span><span class="subh">'+(item.note||'')+'</span></div>';
+    h += '<div class="imgbody">'+imageBlock(item.path, item.title)+'</div>';
+    if(item.caption){h += '<div class="imgnote">'+item.caption+'</div>'}
+    h += '</div>';
+  });
+  h += '</div>';
+  document.getElementById(containerId).innerHTML = h;
 }
-function r7(){var tl={1:['Tier 1 — Warm-up','s1'],2:['Tier 2 — Guided','s2'],3:['Tier 3 — Free','s3']};var h='<h2>🗣️ Speaking Questions — 口說練習 (5)</h2>';SPEAKING.forEach(function(s,i){var x=tl[s.t];h+='<div class="sq"><span class="stl '+x[1]+'">'+x[0]+'</span><div class="qq">Q'+(i+1)+'. '+s.q+'</div><div class="qh">💡 '+s.h+'</div></div>';});document.getElementById('t7').innerHTML=h;}
-function r8(){var h='<h2>🌍 Canadian Culture — 加拿大文化 (2)</h2>';CULTURE.forEach(function(c){var sl=c.slot==='warm-up'?'🌅 Warm-up（課堂開頭）':'🌇 Closing（課堂結尾）';var qs='';c.qs.forEach(function(q,i){qs+='<div class="cq">Q'+(i+1)+'. '+q+'</div>';});h+='<div class="cult"><div class="cs">'+sl+'</div><div class="ct">'+c.title+'</div><div style="font-size:.8rem;color:var(--c-muted);margin-bottom:6px">'+c.tz+'</div><div class="cp">'+c.photo+'</div><div class="cn">'+c.notes+'</div><h3 style="font-size:.78rem;margin:8px 0 4px">Discussion Questions</h3>'+qs+'</div>';});document.getElementById('t8').innerHTML=h;}
-document.addEventListener('DOMContentLoaded',function(){r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
-
+function imageBlock(path, label){
+  return '<img src="'+path+'" alt="'+label+'" loading="lazy" onerror="this.outerHTML=placeholderHTML('+JSON.stringify(path)+')">';
+}
+function placeholderHTML(path){
+  return '\'' + '<div class="placeholder"><div>尚未放入圖片</div><div class="path">' + path + '</div></div>' + '\'';
+}
+function r4(){document.getElementById('t4').innerHTML='<h2>💬 Useful Phrases — 圖片版</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">此分頁已改為圖片呈現。請把每張句型圖放進對應路徑。</p><div id="phrWrap"></div>';renderImageOnlyCards(PHRASE_IMAGES,'phrWrap',{headClass:'accent'});}
+function r5(){document.getElementById('t5').innerHTML='<h2>🎯 Pronunciation Spotlight — 圖片版</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">此分頁已改為圖片呈現。建議放 1 張完整發音教學圖。</p><div id="pronWrap"></div>';renderImageOnlyCards(PRON_IMAGES,'pronWrap',{headClass:'alert',single:true});}
+function r6(){var h='<h2>🎭 Dialogue Practice — 圖片版 (5)</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:10px">每個對話主題使用 2 張圖：1 張 Full Model Dialogue、1 張 Now You Try。</p>';
+DIALOGUES.forEach(function(d){
+  var badge = d.tag==='req' ? '<span class="badge req">🏫 必練</span>' : '<span class="badge opt">📖 選練</span>';
+  h += '<div class="dlgwrap"><div class="dlgtitle"><div><h3>#'+d.id+' '+d.title+'</h3><div style="font-size:.8rem;color:var(--c-muted)">'+d.tz+'</div></div>'+badge+'</div><div class="si">📍 '+d.sit+'</div><div class="rolebar"><div class="role a">🧑 '+d.rA+'</div><div class="role b">👤 '+d.rB+'</div></div><div class="imggrid">';
+  h += '<div class="imgcard"><div class="imghead navy"><span>Full Model Dialogue</span><span class="subh">主練習</span></div><div class="imgbody">'+imageBlock(d.modelImg,'Dialogue model')+'</div><div class="imgnote">建議：完整示範對話圖片。</div></div>';
+  h += '<div class="imgcard"><div class="imghead accent"><span>Now You Try</span><span class="subh">換你說</span></div><div class="imgbody">'+imageBlock(d.practiceImg,'Dialogue practice')+'</div><div class="imgnote">練習變化：'+d.practiceText+'</div></div>';
+  h += '</div><div style="text-align:center;padding:8px 0 4px;font-size:.74rem;color:var(--c-muted)">Teacher notes ▾</div><div class="imgnote" style="border-top:none;padding-top:0">📋 '+d.tn+'</div></div>';
+});
+document.getElementById('t6').innerHTML=h;}
+function r7(){document.getElementById('t7').innerHTML='<h2>🗣️ Speaking Questions — 圖片版</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">此分頁已改為圖片呈現。建議每一題 1 張圖卡。</p><div id="speakWrap"></div>';renderImageOnlyCards(SPEAKING_IMAGES,'speakWrap',{headClass:'teal'});}
+function r8(){document.getElementById('t8').innerHTML='<h2>🌍 Canadian Culture — 圖片版</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">此分頁已改為圖片呈現。建議 2 張文化圖卡：Warm-up 與 Closing。</p><div id="cultureWrap"></div>';renderImageOnlyCards(CULTURE_IMAGES,'cultureWrap',{headClass:'green'});}
 function r9(){document.getElementById('t9').innerHTML='<h2>📋 學習進度追蹤</h2><h3>Previously Learned — 已學詞彙</h3><p style="font-size:.82rem;color:var(--c-muted)">這是第一堂課，尚無已學詞彙。</p><h3 style="margin-top:16px">Pronunciation Progress</h3><div style="font-size:.82rem;padding:6px 0"><span>🔄</span> <b>L01-L02</b> /θ/ /ð/ th 音</div>';}
+document.addEventListener('DOMContentLoaded',function(){r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
 </script>
-
-<!-- YSP_LESSON_FOOTER_START -->
-<footer class="site-footer lesson-page-footer">
-  <div class="footer-brand">
-    <img class="footer-signature-logo" src="../../assets/img/ysp-logo-script-overlay.png" alt="YSP signature logo">
-    <span>YSP Learn &amp; Shine</span>
-  </div>
-  <p>Learn with Purpose. Shine with Confidence.</p>
-</footer>
-<!-- YSP_LESSON_FOOTER_END -->
-
-<!-- YSP_AUTO_TOP_BUTTON_START -->
-<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
-  <span class="ysp-page-top-arrow">↑</span>
-  <span class="ysp-page-top-label">Top</span>
-</a>
-<!-- YSP_AUTO_TOP_BUTTON_END -->
-
 </body>
 </html>
