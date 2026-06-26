@@ -256,10 +256,40 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
   }
 </style>
 <!-- YSP_GLOBAL_LESSON_STYLE_END -->
+<!-- YSP_CLEAN_TOP_STYLE_START -->
+<style>
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden; }
+  .ysp-page-top-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
+  .ysp-page-top-button {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 99999;
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #1f1d1b;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.28);
+    box-shadow: 0 14px 34px rgba(60,43,25,.22);
+    font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif;
+    font-weight: 950;
+  }
+  .ysp-page-top-arrow { font-size: 20px; line-height: 1; }
+  .ysp-page-top-label { margin-top: 1px; font-size: 10px; line-height: 1; letter-spacing: .08em; text-transform: uppercase; }
+  @media (max-width: 760px) { .ysp-page-top-button { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
+</style>
+<!-- YSP_CLEAN_TOP_STYLE_END -->
 </head>
 <body id="top">
 <!-- YSP_AUTO_TOP_ANCHOR_START -->
-<div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
+
 <!-- YSP_AUTO_TOP_ANCHOR_END -->
 
 <!-- YSP_LESSON_NAV_START -->
@@ -380,10 +410,7 @@ document.addEventListener('DOMContentLoaded',function(){r0();r1();r2();r3();r4()
 function r9(){document.getElementById('t9').innerHTML='<h2>📋 學習進度追蹤</h2><h3>Previously Learned — 已學詞彙</h3><div class="pvh" onclick="this.nextElementSibling.classList.toggle(&#39;open&#39;)"><span>📖 L01 Welcome to Canada (25 Core ★)</span><span>▾</span></div><div class="pvb"><div class="pvl"><div class="pvc"><span class="pe">passport</span><span class="pz">護照</span></div><div class="pvc"><span class="pe">customs</span><span class="pz">海關</span></div><div class="pvc"><span class="pe">declare</span><span class="pz">申報</span></div><div class="pvc"><span class="pe">immigration</span><span class="pz">入境檢查</span></div><div class="pvc"><span class="pe">arrival</span><span class="pz">抵達</span></div><div class="pvc"><span class="pe">visa</span><span class="pz">簽證</span></div><div class="pvc"><span class="pe">work permit</span><span class="pz">工作許可</span></div><div class="pvc"><span class="pe">employer</span><span class="pz">雇主</span></div><div class="pvc"><span class="pe">duration</span><span class="pz">期間</span></div><div class="pvc"><span class="pe">apply</span><span class="pz">申請</span></div><div class="pvc"><span class="pe">province</span><span class="pz">省份</span></div><div class="pvc"><span class="pe">downtown</span><span class="pz">市中心</span></div><div class="pvc"><span class="pe">multicultural</span><span class="pz">多元文化的</span></div><div class="pvc"><span class="pe">bilingual</span><span class="pz">雙語的</span></div><div class="pvc"><span class="pe">suburb</span><span class="pz">郊區</span></div><div class="pvc"><span class="pe">introduce</span><span class="pz">介紹</span></div><div class="pvc"><span class="pe">greeting</span><span class="pz">問候</span></div><div class="pvc"><span class="pe">nickname</span><span class="pz">暱稱</span></div><div class="pvc"><span class="pe">polite</span><span class="pz">有禮貌的</span></div><div class="pvc"><span class="pe">friendly</span><span class="pz">友善的</span></div><div class="pvc"><span class="pe">accommodation</span><span class="pz">住宿</span></div><div class="pvc"><span class="pe">schedule</span><span class="pz">行程</span></div><div class="pvc"><span class="pe">currency</span><span class="pz">貨幣</span></div><div class="pvc"><span class="pe">exchange</span><span class="pz">兌換</span></div><div class="pvc"><span class="pe">luggage</span><span class="pz">行李</span></div></div></div><h3 style="margin-top:16px">Pronunciation Progress</h3><div style="font-size:.82rem;padding:6px 0"><span>✅</span> <b>L01</b> /θ/ /ð/ th 音<br><span>🔄</span> <b>L02</b> /r/ vs /l/ 區別</div>';}
 </script>
 <!-- YSP_SINGLE_TOP_BUTTON_START -->
-<a class="top-button" href="#top" aria-label="Back to top">
-  <span class="top-arrow">↑</span>
-  <span class="top-label">Top</span>
-</a>
+
 <!-- YSP_SINGLE_TOP_BUTTON_END -->
 
 <!-- YSP_LESSON_FOOTER_START -->
@@ -397,11 +424,14 @@ function r9(){document.getElementById('t9').innerHTML='<h2>📋 學習進度追�
 <!-- YSP_LESSON_FOOTER_END -->
 
 <!-- YSP_AUTO_TOP_BUTTON_START -->
+
+<!-- YSP_AUTO_TOP_BUTTON_END -->
+
+<!-- YSP_CLEAN_TOP_BUTTON_START -->
 <a class="ysp-page-top-button" href="#top" aria-label="Back to top">
   <span class="ysp-page-top-arrow">↑</span>
   <span class="ysp-page-top-label">Top</span>
 </a>
-<!-- YSP_AUTO_TOP_BUTTON_END -->
-
+<!-- YSP_CLEAN_TOP_BUTTON_END -->
 </body>
 </html>

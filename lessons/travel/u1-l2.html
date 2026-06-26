@@ -383,10 +383,40 @@ body{font-family:"Open Sans","Noto Sans TC",sans-serif;background:var(--bg);colo
   }
 </style>
 <!-- YSP_GLOBAL_LESSON_STYLE_END -->
+<!-- YSP_CLEAN_TOP_STYLE_START -->
+<style>
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden; }
+  .ysp-page-top-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
+  .ysp-page-top-button {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 99999;
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #1f1d1b;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.28);
+    box-shadow: 0 14px 34px rgba(60,43,25,.22);
+    font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif;
+    font-weight: 950;
+  }
+  .ysp-page-top-arrow { font-size: 20px; line-height: 1; }
+  .ysp-page-top-label { margin-top: 1px; font-size: 10px; line-height: 1; letter-spacing: .08em; text-transform: uppercase; }
+  @media (max-width: 760px) { .ysp-page-top-button { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
+</style>
+<!-- YSP_CLEAN_TOP_STYLE_END -->
 </head>
 <body id="top">
 <!-- YSP_AUTO_TOP_ANCHOR_START -->
-<div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
+
 <!-- YSP_AUTO_TOP_ANCHOR_END -->
 
 <!-- YSP_LESSON_NAV_START -->
@@ -979,10 +1009,7 @@ function buildRef(){
 renderCard();buildSR();buildFC3();buildRef();
 </script>
 <!-- YSP_SINGLE_TOP_BUTTON_START -->
-<a class="top-button" href="#top" aria-label="Back to top">
-  <span class="top-arrow">↑</span>
-  <span class="top-label">Top</span>
-</a>
+
 <!-- YSP_SINGLE_TOP_BUTTON_END -->
 
 <!-- YSP_LESSON_FOOTER_START -->
@@ -996,11 +1023,14 @@ renderCard();buildSR();buildFC3();buildRef();
 <!-- YSP_LESSON_FOOTER_END -->
 
 <!-- YSP_AUTO_TOP_BUTTON_START -->
+
+<!-- YSP_AUTO_TOP_BUTTON_END -->
+
+<!-- YSP_CLEAN_TOP_BUTTON_START -->
 <a class="ysp-page-top-button" href="#top" aria-label="Back to top">
   <span class="ysp-page-top-arrow">↑</span>
   <span class="ysp-page-top-label">Top</span>
 </a>
-<!-- YSP_AUTO_TOP_BUTTON_END -->
-
+<!-- YSP_CLEAN_TOP_BUTTON_END -->
 </body>
 </html>

@@ -59,8 +59,42 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 .rolebar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}.role{padding:10px 12px;border-radius:8px;color:#fff;font-family:var(--font-b);font-weight:600}.role.a{background:var(--c-primary)}.role.b{background:var(--c-teal)}
 .footer{text-align:center;padding:20px;color:var(--c-muted);font-family:var(--font-b);font-size:.68rem;border-top:1px solid var(--c-divider);margin-top:20px}
 </style>
+<!-- YSP_CLEAN_TOP_STYLE_START -->
+<style>
+  html { scroll-behavior: smooth; }
+  body { overflow-x: hidden; }
+  .ysp-page-top-anchor { position: absolute; top: 0; left: 0; width: 1px; height: 1px; pointer-events: none; }
+  .ysp-page-top-button {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 99999;
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #1f1d1b;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,.28);
+    box-shadow: 0 14px 34px rgba(60,43,25,.22);
+    font-family: Inter, 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif;
+    font-weight: 950;
+  }
+  .ysp-page-top-arrow { font-size: 20px; line-height: 1; }
+  .ysp-page-top-label { margin-top: 1px; font-size: 10px; line-height: 1; letter-spacing: .08em; text-transform: uppercase; }
+  @media (max-width: 760px) { .ysp-page-top-button { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
+</style>
+<!-- YSP_CLEAN_TOP_STYLE_END -->
 </head>
 <body>
+<!-- YSP_CLEAN_TOP_ANCHOR_START -->
+<div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
+<!-- YSP_CLEAN_TOP_ANCHOR_END -->
+
 <div class="header">
 <div class="brand">YSP Learn &amp; Shine</div>
 <h1>u1-l1 — Welcome to Canada 歡迎來到加拿大</h1>
@@ -201,5 +235,11 @@ function r8(){document.getElementById('t8').innerHTML='<h2>🌍 Canadian Culture
 function r9(){document.getElementById('t9').innerHTML='<h2>📋 學習進度追蹤</h2><h3>Previously Learned — 已學詞彙</h3><p style="font-size:.82rem;color:var(--c-muted)">這是第一堂課，尚無已學詞彙。</p><h3 style="margin-top:16px">Pronunciation Progress</h3><div style="font-size:.82rem;padding:6px 0"><span>🔄</span> <b>L01-L02</b> /θ/ /ð/ th 音</div>';}
 document.addEventListener('DOMContentLoaded',function(){r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
 </script>
+<!-- YSP_CLEAN_TOP_BUTTON_START -->
+<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
+  <span class="ysp-page-top-arrow">↑</span>
+  <span class="ysp-page-top-label">Top</span>
+</a>
+<!-- YSP_CLEAN_TOP_BUTTON_END -->
 </body>
 </html>

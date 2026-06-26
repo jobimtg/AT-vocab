@@ -8,7 +8,6 @@
   <link rel="icon" href="../assets/img/ysp-header-icon.png">
   <style>
     :root {
-      --bg: #fff8ed;
       --card: rgba(255, 255, 255, 0.88);
       --ink: #13213b;
       --muted: #6f6257;
@@ -16,18 +15,11 @@
       --gold-soft: rgba(196, 147, 93, 0.24);
       --navy: #162849;
       --shadow: 0 18px 50px rgba(60, 43, 25, 0.09);
-      --radius-lg: 30px;
       --radius-md: 22px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       overflow-x: hidden;
@@ -37,15 +29,8 @@
       color: var(--ink);
       font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
     }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
 
     .site-header {
       position: sticky;
@@ -70,28 +55,13 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      text-decoration: none;
       color: var(--ink);
+      text-decoration: none;
     }
 
-    .brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-    }
-
-    .brand strong {
-      display: block;
-      font-size: 17px;
-      letter-spacing: 0.02em;
-    }
-
-    .brand span {
-      display: block;
-      margin-top: 2px;
-      color: var(--muted);
-      font-size: 12px;
-    }
+    .brand img { width: 42px; height: 42px; object-fit: contain; }
+    .brand strong { display: block; font-size: 17px; letter-spacing: 0.02em; }
+    .brand span span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
 
     .nav-links {
       display: flex;
@@ -119,20 +89,10 @@
     }
 
     .btn.primary,
-    .nav-links a.primary {
-      background: var(--navy);
-      border-color: var(--navy);
-      color: #ffffff;
-    }
+    .nav-links a.primary { background: var(--navy); border-color: var(--navy); color: #ffffff; }
 
-    main {
-      width: min(1180px, calc(100% - 36px));
-      margin: 0 auto;
-    }
-
-    section {
-      margin: 72px 0;
-    }
+    main { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+    section { margin: 72px 0; }
 
     .hero {
       margin-top: 34px;
@@ -155,13 +115,7 @@
       text-transform: uppercase;
     }
 
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
+    h1, h2, h3, p { margin-top: 0; }
     h1 {
       max-width: 900px;
       margin-left: auto;
@@ -182,93 +136,38 @@
       line-height: 1.75;
     }
 
-    .actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
+    .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
-    .section-head {
-      max-width: 800px;
-      margin: 0 auto 28px;
-      text-align: center;
-    }
-
+    .section-head { max-width: 800px; margin: 0 auto 28px; text-align: center; }
     .section-head h2 {
       margin-bottom: 12px;
       font-size: clamp(30px, 4vw, 48px);
       line-height: 1.06;
       letter-spacing: -0.04em;
     }
+    .section-head p { color: var(--muted); font-size: 17px; line-height: 1.75; }
 
-    .section-head p {
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.75;
-    }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .card,
-    .path-card,
-    .lesson-card,
-    .cta-card {
+    .card, .path-card, .lesson-card, .cta-card {
       border: 1px solid var(--gold-soft);
       border-radius: var(--radius-md);
       background: var(--card);
       box-shadow: 0 14px 34px rgba(60, 43, 25, 0.07);
     }
 
-    .card {
-      padding: 24px;
-    }
-
+    .card { padding: 24px; }
     .step-number {
-      width: 42px;
-      height: 42px;
-      margin-bottom: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: #fff3df;
-      color: var(--gold);
-      font-weight: 950;
+      width: 42px; height: 42px; margin-bottom: 18px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: #fff3df; color: var(--gold); font-weight: 950;
     }
 
-    .card h3,
-    .path-card h3,
-    .lesson-card h3 {
-      margin-bottom: 10px;
-      font-size: 22px;
-    }
+    .card h3, .path-card h3, .lesson-card h3 { margin-bottom: 10px; font-size: 22px; }
+    .card p, .path-card p, .lesson-card p, .cta-card p { color: var(--muted); line-height: 1.7; }
 
-    .card p,
-    .path-card p,
-    .lesson-card p,
-    .cta-card p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .path-card {
-      display: block;
-      padding: 24px;
-      text-decoration: none;
-      color: var(--ink);
-    }
+    .path-card { display: block; padding: 24px; color: var(--ink); text-decoration: none; }
 
     .tag {
       display: inline-flex;
@@ -284,6 +183,7 @@
     }
 
     .course-section {
+      margin-top: 28px;
       padding: clamp(24px, 4vw, 36px);
       border: 1px solid var(--gold-soft);
       border-radius: 30px;
@@ -299,36 +199,12 @@
       flex-wrap: wrap;
     }
 
-    .course-title h2 {
-      margin-bottom: 8px;
-      font-size: clamp(28px, 4vw, 42px);
-      letter-spacing: -0.04em;
-    }
+    .course-title h2 { margin-bottom: 8px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.04em; }
+    .course-title p { max-width: 720px; margin-bottom: 0; color: var(--muted); line-height: 1.7; }
+    .lesson-card { padding: 22px; }
+    .lesson-card a { display: inline-flex; margin-top: 12px; color: var(--navy); text-decoration: none; font-weight: 900; }
 
-    .course-title p {
-      max-width: 720px;
-      margin-bottom: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .lesson-card {
-      padding: 22px;
-    }
-
-    .lesson-card a {
-      display: inline-flex;
-      margin-top: 12px;
-      text-decoration: none;
-      font-weight: 900;
-      color: var(--navy);
-    }
-
-    .cta-card {
-      padding: clamp(28px, 5vw, 56px);
-      text-align: center;
-    }
-
+    .cta-card { padding: clamp(28px, 5vw, 56px); text-align: center; }
     .cta-card h2 {
       margin-bottom: 14px;
       font-size: clamp(30px, 4vw, 46px);
@@ -344,11 +220,7 @@
       color: var(--muted);
     }
 
-    .footer-logo {
-      width: 86px;
-      margin: 0 auto 12px;
-    }
-
+    .footer-logo { width: 86px; margin: 0 auto 12px; }
     .footer-est {
       margin: 18px auto 0;
       padding-top: 14px;
@@ -360,259 +232,41 @@
       text-transform: uppercase;
     }
 
+    .top-button {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 80;
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #1f1d1b;
+      color: #ffffff;
+      text-decoration: none;
+      box-shadow: 0 14px 34px rgba(60, 43, 25, 0.22);
+      font-weight: 950;
+    }
+    .top-button span:first-child { font-size: 20px; line-height: 1; }
+    .top-button span:last-child { margin-top: 1px; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+
     @media (max-width: 920px) {
-      .grid-3,
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-wrap {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-
-      .nav-links {
-        justify-content: flex-start;
-      }
+      .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .nav-wrap { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .nav-links { justify-content: flex-start; }
     }
 
     @media (max-width: 620px) {
-      main {
-        width: min(100% - 24px, 1180px);
-      }
-
-      section {
-        margin: 54px 0;
-      }
-
-      h1 {
-        font-size: clamp(34px, 12vw, 56px);
-      }
-
-      .nav-links a,
-      .btn {
-        width: 100%;
-      }
-
-      .actions {
-        align-items: stretch;
-        flex-direction: column;
-      }
+      main { width: min(100% - 24px, 1180px); }
+      section { margin: 54px 0; }
+      h1 { font-size: clamp(34px, 12vw, 56px); }
+      .nav-links a, .btn { width: 100%; }
+      .actions { align-items: stretch; flex-direction: column; }
     }
-  /* YSP_SINGLE_TOP_BUTTON_STYLE_START */
-.top-button {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 9999;
-  width: 56px;
-  height: 56px;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: #1f1d1b;
-  color: #ffffff;
-  text-decoration: none;
-  box-shadow: 0 14px 34px rgba(60, 43, 25, 0.22);
-  font-weight: 950;
-  line-height: 1;
-}
-.top-button .top-arrow {
-  display: block;
-  font-size: 20px;
-  line-height: 1;
-}
-.top-button .top-label {
-  display: block;
-  margin-top: 3px;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-/* YSP_SINGLE_TOP_BUTTON_STYLE_END */
-</style>
-  <link rel="stylesheet" href="../assets/css/site.css">
-
-
-<!-- YSP_LESSONS_TOP_STYLE_START -->
-<style>
-  html { scroll-behavior: smooth; }
-  body { overflow-x: hidden; }
-
-  .ysp-page-top-anchor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    pointer-events: none;
-  }
-
-  .ysp-page-top-button {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 99999;
-    width: 58px;
-    height: 58px;
-    border-radius: 999px;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1px;
-    background: #1f1d1b;
-    color: #ffffff;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,.28);
-    box-shadow: 0 14px 34px rgba(60,43,25,.22);
-    opacity: .92;
-    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
-  }
-
-  .ysp-page-top-button:hover {
-    transform: translateY(-2px);
-    opacity: 1;
-  }
-
-  .ysp-page-top-arrow {
-    font-size: 22px;
-    line-height: 1;
-    font-weight: 900;
-  }
-
-  .ysp-page-top-label {
-    font-size: 11px;
-    line-height: 1;
-    font-weight: 900;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-
-  .ysp-auto-lesson-library {
-    max-width: 1180px;
-    margin: 48px auto 70px;
-    padding: 0 24px;
-    font-family: Inter, "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
-  }
-
-  .ysp-auto-library-heading {
-    text-align: center;
-    margin-bottom: 28px;
-  }
-
-  .ysp-auto-library-heading .eyebrow {
-    color: #c4935d;
-    letter-spacing: .28em;
-    font-size: 12px;
-    font-weight: 900;
-    text-transform: uppercase;
-  }
-
-  .ysp-auto-library-heading h2 {
-    margin: 8px 0 10px;
-    color: #13213b;
-    font-size: clamp(28px, 4vw, 44px);
-    line-height: 1.08;
-  }
-
-  .ysp-auto-library-heading p {
-    max-width: 760px;
-    margin: 0 auto;
-    color: #6f6257;
-    font-size: 16px;
-    line-height: 1.75;
-  }
-
-  .ysp-auto-course-section {
-    margin-top: 34px;
-  }
-
-  .ysp-auto-course-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid rgba(196,147,93,.28);
-    padding-bottom: 12px;
-  }
-
-  .ysp-auto-course-title h3 {
-    margin: 0;
-    color: #13213b;
-    font-size: 24px;
-  }
-
-  .ysp-auto-course-title p {
-    margin: 4px 0 0;
-    color: #74685d;
-    font-size: 14px;
-  }
-
-  .ysp-auto-count {
-    color: #c4935d;
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .ysp-auto-lesson-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-  }
-
-  .ysp-auto-lesson-card {
-    display: block;
-    padding: 18px 18px 16px;
-    border-radius: 20px;
-    background: rgba(255,255,255,.82);
-    border: 1px solid rgba(196,147,93,.28);
-    box-shadow: 0 12px 30px rgba(60,43,25,.08);
-    color: #13213b;
-    text-decoration: none;
-  }
-
-  .ysp-auto-lesson-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 36px rgba(60,43,25,.12);
-  }
-
-  .ysp-auto-lesson-card strong {
-    display: block;
-    font-size: 17px;
-    line-height: 1.35;
-    margin-bottom: 8px;
-  }
-
-  .ysp-auto-lesson-card span {
-    display: block;
-    color: #77695e;
-    font-size: 13px;
-    line-height: 1.55;
-  }
-
-  @media (max-width: 760px) {
-    .ysp-page-top-button {
-      right: 16px;
-      bottom: 16px;
-      width: 52px;
-      height: 52px;
-    }
-
-    .ysp-auto-course-title {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-</style>
-<!-- YSP_LESSONS_TOP_STYLE_END -->
+  </style>
 </head>
 
 <body id="top">
@@ -625,6 +279,7 @@
           <span>Learn with Purpose. Shine with Confidence.</span>
         </span>
       </a>
+
       <nav class="nav-links" aria-label="Main navigation">
         <a href="../">Home</a>
         <a href="./">Lessons</a>
@@ -635,12 +290,14 @@
   </header>
 
   <main>
-    <section class="hero hero-lessons">
-      <p class="eyebrow">LESSONS</p>
+    <section class="hero" aria-label="Lessons introduction">
+      <p class="eyebrow">Lessons</p>
       <h1>Explore Your English Path and Find the Right Lesson for Your Next Step.</h1>
-      <p class="hero-subtitle">
-        Choose a lesson path that matches your goal. Whether you want to build everyday confidence, prepare for travel, or improve workplace communication, each lesson is designed to help you use English in real situations.
-      </p>
+      <p>Choose a lesson path that matches your goal. Whether you want to build everyday confidence, prepare for travel, or improve workplace communication, each lesson is designed to help you use English in real situations.</p>
+      <div class="actions">
+        <a class="btn primary" href="#available-lessons">View Preview Lessons</a>
+        <a class="btn" href="#learning-paths">Choose a Learning Path</a>
+      </div>
     </section>
 
     <section id="how-it-works" aria-label="How the lesson library works">
@@ -681,7 +338,7 @@
       <div class="grid-3">
         <a class="path-card" href="#life-career">
           <span class="tag">Life & Career</span>
-          <h3>Life & Career English</h3>
+          <h3>Canada Life & Career English</h3>
           <p>For settling in, daily life, appointments, housing, work, and real-world communication.</p>
         </a>
 
@@ -706,72 +363,79 @@
         <p>These preview lessons are the best starting points before moving into full practice packs or guided lessons.</p>
       </div>
 
-      <div id="life-career" class="course-section">
+                <div id="life-career" class="course-section">
         <div class="course-title">
           <div>
-            <p class="eyebrow">Life & Career English</p>
-            <h2>Canada Life & Career English</h2>
+            <p class="eyebrow">Canada Life</p>
+            <h2>Canada Life &amp; Career English</h2>
             <p>Daily life, settling in, work, housing, appointments, and useful communication for real situations.</p>
           </div>
         </div>
 
         <div class="grid-2">
-          <article class="lesson-card">
-            <span class="tag">A2 · Unit 1</span>
-            <h3>Canada Life L01 / U1-L1 — Welcome to Canada 歡迎來到加拿大</h3>
-            <p>Core focus: arrival, working holiday, Canadian basics, and first conversations.</p>
+                    <article class="lesson-card">
+            <span class="tag">Life &amp; Career · U1-L1</span>
+            <h3>u1-l1 — Welcome to Canada 歡迎來到加拿大</h3>
+            <p>Practice useful English for arrival, daily life, and first conversations.</p>
             <a href="ca-life/u1-l1.html">View Preview →</a>
+          </article>
+
+                    <article class="lesson-card">
+            <span class="tag">Life &amp; Career · U1-L2</span>
+            <h3>L02 — Transportation in Canada 加拿大交通</h3>
+            <p>Practice useful English for arrival, daily life, and first conversations.</p>
+            <a href="ca-life/u1-l2.html">View Preview →</a>
           </article>
         </div>
       </div>
 
-      <div id="travel" class="course-section">
+                <div id="travel" class="course-section">
         <div class="course-title">
           <div>
-            <p class="eyebrow">Travel English</p>
+            <p class="eyebrow">Travel</p>
             <h2>Travel English</h2>
             <p>Travel, transportation, airports, hotels, directions, restaurants, and everyday travel communication.</p>
           </div>
         </div>
 
         <div class="grid-2">
-          <article class="lesson-card">
-            <span class="tag">A2 · Unit 1</span>
-            <h3>Travel L01 / U1-L1 — Airport Check-In</h3>
-            <p>Practice basic airport check-in language and travel survival English.</p>
+                    <article class="lesson-card">
+            <span class="tag">Travel · U1-L1</span>
+            <h3>L01 — Airport Check-In 機場報到</h3>
+            <p>Practice useful airport and travel survival English.</p>
             <a href="travel/u1-l1.html">View Preview →</a>
           </article>
 
-          <article class="lesson-card">
-            <span class="tag">A2 · Unit 1</span>
-            <h3>Travel L02 / U1-L2 — Security & Immigration</h3>
+                    <article class="lesson-card">
+            <span class="tag">Travel · U1-L2</span>
+            <h3>Lesson 02 — Security &amp; Immigration</h3>
             <p>Practice useful questions and answers for airport security and immigration.</p>
             <a href="travel/u1-l2.html">View Preview →</a>
           </article>
 
-          <article class="lesson-card">
-            <span class="tag">A2 · Unit 2</span>
-            <h3>Travel L06 / U2-L1 — Self-Introduction</h3>
-            <p>Practice introducing yourself naturally in travel and daily conversation settings.</p>
+                    <article class="lesson-card">
+            <span class="tag">Travel · U1-L6</span>
+            <h3>Redirecting...</h3>
+            <p>Practice useful English for travel situations and trip confidence.</p>
             <a href="travel/u1-l6.html">View Preview →</a>
           </article>
         </div>
       </div>
 
-      <div id="business" class="course-section">
+                <div id="business" class="course-section">
         <div class="course-title">
           <div>
-            <p class="eyebrow">Business English</p>
+            <p class="eyebrow">Business</p>
             <h2>Business English</h2>
             <p>Workplace conversations, meetings, reception, professional communication, and business confidence.</p>
           </div>
         </div>
 
         <div class="grid-2">
-          <article class="lesson-card">
-            <span class="tag">A2–B1 · Unit 1</span>
-            <h3>Business U1-L1 — Business English Lesson 1</h3>
-            <p>Start building clearer and more confident workplace communication.</p>
+                    <article class="lesson-card">
+            <span class="tag">Business · U1-L1</span>
+            <h3>Redirecting...</h3>
+            <p>Practice useful English for workplace and professional communication.</p>
             <a href="business/u1-l1.html">View Preview →</a>
           </article>
         </div>
@@ -789,77 +453,6 @@
         </div>
       </div>
     </section>
-  
-  
-  
-  
-  
-  <!-- YSP_AUTO_LESSON_LIBRARY_START -->
-<section class="ysp-auto-lesson-library" id="lesson-library">
-  <div class="ysp-auto-library-heading">
-    <p class="eyebrow">LESSON LIBRARY</p>
-    <h2>Choose Your Next Lesson</h2>
-    <p>This section is automatically updated from the HTML lesson files inside the lessons folder.</p>
-  </div>
-  <section class="ysp-auto-course-section" id="auto-ca-life">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>🏔️ Canada Life &amp; Career English</h3>
-        <p>加拿大生活、工作、文化與實用口說英文。</p>
-      </div>
-      <span class="ysp-auto-count">2 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="ca-life/u1-l1.html">
-        <strong>L01 — Welcome to Canada 歡迎來到加拿大</strong>
-        <span>ca-life/u1-l1.html</span>
-      </a>
-      <a class="ysp-auto-lesson-card" href="ca-life/u1-l2.html">
-        <strong>L02 — Transportation in Canada 加拿大交通</strong>
-        <span>ca-life/u1-l2.html</span>
-      </a>
-    </div>
-  </section>
-  <section class="ysp-auto-course-section" id="auto-travel">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>✈️ Travel English</h3>
-        <p>旅遊、交通、機場、飯店與日常旅遊情境。</p>
-      </div>
-      <span class="ysp-auto-count">3 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="travel/u1-l1.html">
-        <strong>L01 — Airport Check-In 機場報到</strong>
-        <span>travel/u1-l1.html</span>
-      </a>
-      <a class="ysp-auto-lesson-card" href="travel/u1-l2.html">
-        <strong>Lesson 02 — Security &amp; Immigration</strong>
-        <span>travel/u1-l2.html</span>
-      </a>
-      <a class="ysp-auto-lesson-card" href="travel/u1-l6.html">
-        <strong>u1-l6</strong>
-        <span>travel/u1-l6.html</span>
-      </a>
-    </div>
-  </section>
-  <section class="ysp-auto-course-section" id="auto-business">
-    <div class="ysp-auto-course-title">
-      <div>
-        <h3>💼 Business English</h3>
-        <p>職場、會議、接待與商務英文。</p>
-      </div>
-      <span class="ysp-auto-count">1 lessons</span>
-    </div>
-    <div class="ysp-auto-lesson-grid">
-      <a class="ysp-auto-lesson-card" href="business/u1-l1.html">
-        <strong>u1-l1</strong>
-        <span>business/u1-l1.html</span>
-      </a>
-    </div>
-  </section>
-</section>
-<!-- YSP_AUTO_LESSON_LIBRARY_END -->
   </main>
 
   <footer>
@@ -869,23 +462,9 @@
     <p class="footer-est">EST. 2026</p>
   </footer>
 
-  
-
-
-<!-- YSP_SINGLE_TOP_BUTTON_START -->
-<a class="top-button" href="#top" aria-label="Back to top">
-  <span class="top-arrow">↑</span>
-  <span class="top-label">Top</span>
-</a>
-<!-- YSP_SINGLE_TOP_BUTTON_END -->
-
-
-<!-- YSP_LESSONS_TOP_BUTTON_START -->
-<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
-  <span class="ysp-page-top-arrow">↑</span>
-  <span class="ysp-page-top-label">Top</span>
-</a>
-<!-- YSP_LESSONS_TOP_BUTTON_END -->
-
+  <a class="top-button" href="#top" aria-label="Back to top">
+    <span>↑</span>
+    <span>Top</span>
+  </a>
 </body>
 </html>
