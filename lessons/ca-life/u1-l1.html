@@ -112,8 +112,30 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
   @media (max-width: 760px) { .ysp-page-top-button { right: 16px; bottom: 16px; width: 52px; height: 52px; } }
 </style>
 <!-- YSP_CLEAN_TOP_STYLE_END -->
+
+<style id="ysp-auto-nav-style">
+.ysp-site-nav{position:sticky;top:0;z-index:9999;display:flex;gap:12px;justify-content:flex-end;align-items:center;padding:10px 24px;background:#F7F0E6;border-bottom:1px solid rgba(27,42,74,.12);font-family:Montserrat,'Noto Sans TC',Arial,sans-serif}
+.ysp-site-nav a{text-decoration:none;color:#1B2A4A;background:#fff;border:1px solid rgba(27,42,74,.10);border-radius:999px;padding:9px 18px;font-size:14px;font-weight:700;box-shadow:0 2px 8px rgba(27,42,74,.05)}
+.ysp-site-nav a:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(27,42,74,.12)}
+.ysp-site-nav .ysp-trial{background:#1B2A4A;color:#fff;border-color:#1B2A4A}
+.ysp-back-lessons{display:inline-flex;margin:14px 16px 0;padding:8px 14px;border-radius:999px;text-decoration:none;background:#fff;color:#1B2A4A;border:1px solid rgba(27,42,74,.15);font-family:Montserrat,'Noto Sans TC',Arial,sans-serif;font-size:13px;font-weight:700;box-shadow:0 2px 8px rgba(27,42,74,.05)}
+.ysp-back-lessons:hover{transform:translateY(-1px)}
+.ysp-top-btn{position:fixed;right:18px;bottom:18px;z-index:9999;border:0;border-radius:999px;background:#1B2A4A;color:#fff;padding:10px 14px;font-family:Montserrat,'Noto Sans TC',Arial,sans-serif;font-weight:800;box-shadow:0 6px 18px rgba(27,42,74,.25);cursor:pointer}
+@media(max-width:720px){.ysp-site-nav{justify-content:flex-start;overflow-x:auto;padding:8px 12px}.ysp-site-nav a{font-size:12px;padding:8px 12px}.ysp-back-lessons{margin-left:12px}.ysp-top-btn{right:12px;bottom:12px}}
+</style>
 </head>
 <body>
+<!-- YSP_SITE_NAV_START -->
+<nav class="ysp-site-nav" aria-label="YSP site navigation">
+  <a href="../../index.html">Home</a>
+  <a href="../../lessons/index.html">Lessons</a>
+  <a href="../../index.html#about">About</a>
+  <a class="ysp-trial" href="../../index.html#book">Book a Trial Lesson</a>
+</nav>
+<!-- YSP_SITE_NAV_END -->
+<!-- YSP_BACK_TO_LESSONS_START -->
+<a class="ysp-back-lessons" href="../../lessons/index.html">← Back to Lessons</a>
+<!-- YSP_BACK_TO_LESSONS_END -->
 <!-- YSP_CLEAN_TOP_ANCHOR_START -->
 <div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
 <!-- YSP_CLEAN_TOP_ANCHOR_END -->
@@ -287,5 +309,8 @@ function r9(){document.getElementById('t9').innerHTML='<h2>📋 學習進度追�
   <span class="ysp-page-top-label">Top</span>
 </a>
 <!-- YSP_CLEAN_TOP_BUTTON_END -->
+<!-- YSP_TOP_BUTTON_START -->
+<button class="ysp-top-btn" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top ↑</button>
+<!-- YSP_TOP_BUTTON_END -->
 </body>
 </html>
