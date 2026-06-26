@@ -166,13 +166,6 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 <div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
 <!-- YSP_CLEAN_TOP_ANCHOR_END -->
 
-<nav class="ysp-local-nav">
-  <a href="../../index.html">Home</a>
-  <a href="../index.html">Lessons</a>
-  <a href="../../index.html#about">About</a>
-  <a class="trial" href="../../index.html#book">Book a Trial Lesson</a>
-</nav>
-
 <div class="header">
 <div class="brand">YSP Learn &amp; Shine</div>
 <h1>L01 — Welcome to Canada 歡迎來到加拿大</h1>
@@ -296,12 +289,14 @@ function yspMissingImage(path){
 
 document.addEventListener('DOMContentLoaded',()=>{r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
 </script>
-<button class="ysp-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top ↑</button>
 <!-- YSP_CLEAN_TOP_BUTTON_START -->
 <a class="ysp-page-top-button" href="#top" aria-label="Back to top">
   <span class="ysp-page-top-arrow">↑</span>
   <span class="ysp-page-top-label">Top</span>
 </a>
 <!-- YSP_CLEAN_TOP_BUTTON_END -->
+<!-- YSP_GLOBAL_NAV_LOADER_START -->
+<script src="../../js/ysp-global-nav.js" defer data-ysp-base="../../"></script>
+<!-- YSP_GLOBAL_NAV_LOADER_END -->
 </body>
 </html>
