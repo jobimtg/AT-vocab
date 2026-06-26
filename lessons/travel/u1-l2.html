@@ -182,6 +182,39 @@ body{font-family:"Open Sans","Noto Sans TC",sans-serif;background:var(--bg);colo
 .sq-hint{font-size:.78rem;color:var(--muted);font-style:italic;}
 .footer{text-align:center;padding:16px;color:var(--muted);font-family:"Montserrat",sans-serif;font-size:.7rem;border-top:1px solid var(--border);margin-top:20px;}
 .g{color:var(--gold);font-weight:600;letter-spacing:1px;}
+/* YSP_SINGLE_TOP_BUTTON_STYLE_START */
+.top-button {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 9999;
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #1f1d1b;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(60, 43, 25, 0.22);
+  font-weight: 950;
+  line-height: 1;
+}
+.top-button .top-arrow {
+  display: block;
+  font-size: 20px;
+  line-height: 1;
+}
+.top-button .top-label {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+/* YSP_SINGLE_TOP_BUTTON_STYLE_END */
 </style>
   <link rel="stylesheet" href="../../assets/css/site.css">
 <!-- YSP_GLOBAL_LESSON_STYLE_START -->
@@ -351,7 +384,7 @@ body{font-family:"Open Sans","Noto Sans TC",sans-serif;background:var(--bg);colo
 </style>
 <!-- YSP_GLOBAL_LESSON_STYLE_END -->
 </head>
-<body>
+<body id="top">
 <!-- YSP_AUTO_TOP_ANCHOR_START -->
 <div id="top" class="ysp-page-top-anchor" aria-hidden="true"></div>
 <!-- YSP_AUTO_TOP_ANCHOR_END -->
@@ -957,11 +990,14 @@ renderCard();buildSR();buildFC3();buildRef();
 <!-- YSP_LESSON_FOOTER_END -->
 
 <!-- YSP_AUTO_TOP_BUTTON_START -->
-<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
-  <span class="ysp-page-top-arrow">↑</span>
-  <span class="ysp-page-top-label">Top</span>
-</a>
+
 <!-- YSP_AUTO_TOP_BUTTON_END -->
 
+<!-- YSP_SINGLE_TOP_BUTTON_START -->
+<a class="top-button" href="#top" aria-label="Back to top">
+  <span class="top-arrow">↑</span>
+  <span class="top-label">Top</span>
+</a>
+<!-- YSP_SINGLE_TOP_BUTTON_END -->
 </body>
 </html>
