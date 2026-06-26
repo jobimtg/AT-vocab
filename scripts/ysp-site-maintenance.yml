@@ -1,0 +1,46 @@
+name: YSP Site Maintenance
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "lessons/**/*.html"
+      - "js/ysp-global-nav.js"
+      - "scripts/ysp-site-maintenance.mjs"
+      - ".github/workflows/ysp-site-maintenance.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  ysp-site-maintenance:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Normalize lesson loaders and update cards
+        run: node scripts/ysp-site-maintenance.mjs
+
+      - name: Commit safe maintenance changes
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add js/ysp-global-nav.js scripts/ysp-site-maintenance.mjs index.html lessons/index.html lessons/**/*.html
+            git commit -m "YSP site maintenance"
+            git push
+          else
+            echo "No changes to commit."
+          fi
