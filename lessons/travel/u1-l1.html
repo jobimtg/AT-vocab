@@ -116,6 +116,7 @@ h3{font-family:var(--font-body);font-size:.85rem;font-weight:600;margin:14px 0 8
 /* ===== END YSP FINAL FORMAT v2 ===== */
 
 
+
 /* ===== YSP VOCAB FONT SIZE FINAL V2 — larger Core Vocabulary text ===== */
 .vcard{
   min-height:430px;
@@ -210,11 +211,83 @@ h3{font-family:var(--font-body);font-size:.85rem;font-weight:600;margin:14px 0 8
 }
 /* ===== END YSP VOCAB FONT SIZE FINAL V2 ===== */
 
+
+/* ===== YSP DYNAMIC IMAGE GALLERY V3 ===== */
+.ysp-image-gallery{
+  max-width:1080px;
+  margin:18px auto;
+  background:var(--c-surface);
+  border:1px solid var(--c-divider);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(27,42,74,.08);
+}
+
+.ysp-image-gallery-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:11px 16px;
+  background:var(--c-primary);
+  color:#fff;
+  font-family:var(--font-body);
+  font-size:.88rem;
+  font-weight:800;
+}
+
+.ysp-image-gallery-head.accent{background:var(--c-accent)}
+.ysp-image-gallery-head.teal{background:var(--c-teal)}
+.ysp-image-gallery-head.alert{background:var(--c-alert)}
+.ysp-image-gallery-head.green{background:var(--c-success)}
+
+.ysp-image-gallery-head small{
+  font-size:.7rem;
+  opacity:.9;
+  font-weight:700;
+}
+
+.ysp-image-gallery-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  padding:14px;
+}
+
+.ysp-image-gallery-grid img{
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:auto;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid var(--c-divider);
+}
+
+.ysp-image-placeholder{
+  min-height:240px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:#F8F8F8;
+  color:var(--c-muted);
+  padding:22px;
+  font-size:.9rem;
+}
+
+.ysp-image-placeholder code{
+  margin-top:8px;
+  font-size:.78rem;
+  word-break:break-all;
+  color:#555;
+}
+/* ===== END YSP DYNAMIC IMAGE GALLERY V3 ===== */
+
 </style>
-
-
 </head>
-<body id="top">
+<body>
 <div class="header">
   <div class="brand">YSP Learn &amp; Shine</div>
   <h1>L01 — Airport Check-In 機場報到</h1>
@@ -411,12 +484,13 @@ PHRASES.forEach(p=>{
   const tag=p.tier==='core'?'<span class="phrase-tag" style="color:#1E8449">🏫⭐ In-class</span>':'<span class="phrase-tag" style="color:#2471A3">📖◇ Self-study</span>';
   h+=`<div class="phrase-card">${tag}<div class="phrase-en">"${p.en}"</div><div class="phrase-zh">${p.zh}</div><div class="phrase-note">💡 ${p.note}</div></div>`;
 });
-h+=yspImageSlot('l01-phrases','assets/phrases/l01-phrases.png','Useful Phrases — 圖片版','句型總覽圖片','accent');
+h+=yspImageGallery('l01-phrases','assets/phrases','l01-phrases-','Useful Phrases — 圖片版','句型總覽圖片','accent');
 document.getElementById('phrasesSection').innerHTML=h;
 }
 function renderPron(){
 let w=PRON.words.map(w=>`<div class="pron-word"><strong>${w.word}</strong> ${w.ipa}<br><span style="font-size:.72rem;color:var(--c-alert)">✗ ${w.wrong}</span> → <span style="color:var(--c-success)">✓ ${w.word}</span><br><span style="font-size:.7rem;color:var(--c-muted)">${w.tip}</span></div>`).join('');
 let h=`<div class="pron-card"><div style="font-size:.72rem;color:var(--c-accent);font-weight:600">🎯 PRONUNCIATION SPOTLIGHT</div><div class="pron-focus">${PRON.focus}</div><div style="font-size:.82rem;color:var(--c-muted)">${PRON.focusZh}</div><div class="pron-words">${w}</div><div class="pron-tip">💡 ${PRON.tip}</div><div class="pron-practice">🗣️ ${PRON.practice}</div></div>`;
+h+=yspImageGallery('l01-pronunciation','assets/pronunciation','l01-pronunciation-','Pronunciation Spotlight — 圖片版','發音焦點圖片','alert');
 document.getElementById('pronSection').innerHTML=h;
 }
 function renderDlg(){
@@ -428,7 +502,7 @@ DIALOGUES.forEach(d=>{
     return`<div class="dlg-line"><span class="dlg-who dlg-who-${w}">${l[0]}</span><div class="dlg-speech">"${l[1]}"</div></div>`;
   }).join('');
   const id=String(d.id).padStart(2,'0');
-  h+=`<div class="dlg-card"><div class="dlg-header"><h3 style="margin:0;font-size:.88rem">#${d.id} ${d.title}<br><span style="font-size:.75rem;color:var(--c-muted)">${d.titleZh}</span></h3><span class="dlg-tag ${tc}">${tt}</span></div><div class="dlg-situation">📍 ${d.situationA}</div><div class="dlg-roles"><div class="dlg-role dlg-role-a">🧑 ${d.roleA}</div><div class="dlg-role dlg-role-b">👤 ${d.roleB}</div></div><div class="dlg-convo">${lines}</div><div class="dlg-try"><div class="dlg-try-label">🎯 Now you try!</div><div class="dlg-try-text">${d.tryPrompt}</div></div><div class="dlg-toggle" onclick="const t=this.nextElementSibling;t.classList.toggle('show');this.textContent=t.classList.contains('show')?'Teacher notes ▴':'Teacher notes ▾'">Teacher notes ▾</div><div class="dlg-teacher">📋 ${d.teacherNotes}</div>${yspImageSlot(`l01-d${id}-model`,`assets/dialogues/l01-d${id}-model.png`,'Full Model Dialogue — 圖片版','主練習')}${yspImageSlot(`l01-d${id}-practice`,`assets/dialogues/l01-d${id}-practice.png`,'Now You Try — 圖片版','換你說','accent')}</div>`;
+  h+=`<div class="dlg-card"><div class="dlg-header"><h3 style="margin:0;font-size:.88rem">#${d.id} ${d.title}<br><span style="font-size:.75rem;color:var(--c-muted)">${d.titleZh}</span></h3><span class="dlg-tag ${tc}">${tt}</span></div><div class="dlg-situation">📍 ${d.situationA}</div><div class="dlg-roles"><div class="dlg-role dlg-role-a">🧑 ${d.roleA}</div><div class="dlg-role dlg-role-b">👤 ${d.roleB}</div></div><div class="dlg-convo">${lines}</div><div class="dlg-try"><div class="dlg-try-label">🎯 Now you try!</div><div class="dlg-try-text">${d.tryPrompt}</div></div><div class="dlg-toggle" onclick="const t=this.nextElementSibling;t.classList.toggle('show');this.textContent=t.classList.contains('show')?'Teacher notes ▴':'Teacher notes ▾'">Teacher notes ▾</div><div class="dlg-teacher">📋 ${d.teacherNotes}</div>${yspImageGallery(`l01-d${id}`,'assets/dialogues',`l01-d${id}-`,`Dialogue ${d.id} — 圖片版`,'Model / Practice / Extra images')}</div>`;
 });
 document.getElementById('dlgSection').innerHTML=h;
 }
@@ -439,7 +513,7 @@ SPEAKING.forEach((s,i)=>{
   const[l,c]=tl[s.tier];
   h+=`<div class="sq-card"><span class="sq-tier-label ${c}">${l}</span><div class="sq-question">Q${i+1}. ${s.q}</div><div class="sq-hint">💡 ${s.hint}</div></div>`;
 });
-h+=yspImageSlot('l01-speaking-questions','assets/speaking/l01-speaking-questions.png','Speaking Questions — 圖片版','口說題目總覽圖片','teal');
+h+=yspImageGallery('l01-speaking','assets/speaking','l01-speaking-','Speaking Questions — 圖片版','口說題目圖片','teal');
 document.getElementById('speakSection').innerHTML=h;
 }
 function renderCulture(){
@@ -447,9 +521,9 @@ let h='';
 CULTURE.forEach((c,i)=>{
   const sl=c.slot==='warm-up'?'🌅 Warm-up（課堂開頭）':'🌇 Closing（課堂結尾）';
   const qs=c.questions.map((q,idx)=>`<div class="culture-q">Q${idx+1}. ${q}</div>`).join('');
-  const imgId=`l01-culture-${i+1}`;
-  h+=`<div class="culture-card"><div class="culture-slot">${sl}</div><div class="culture-title">${c.title}</div><div style="font-size:.82rem;color:var(--c-muted);margin-bottom:8px">${c.titleZh}</div><div class="culture-photo">📷 ${c.photo}</div><div class="culture-notes">${c.notes}</div><h3 style="font-size:.8rem;margin:10px 0 6px">Discussion Questions</h3>${qs}${yspImageSlot(imgId,`assets/culture/${imgId}.png`,'Travel Culture — 圖片版',`Culture ${i+1}`,'green')}</div>`;
+  h+=`<div class="culture-card"><div class="culture-slot">${sl}</div><div class="culture-title">${c.title}</div><div style="font-size:.82rem;color:var(--c-muted);margin-bottom:8px">${c.titleZh}</div><div class="culture-photo">📷 ${c.photo}</div><div class="culture-notes">${c.notes}</div><h3 style="font-size:.8rem;margin:10px 0 6px">Discussion Questions</h3>${qs}</div>`;
 });
+h+=yspImageGallery('l01-culture','assets/culture','l01-culture-','Travel Culture — 圖片版','Culture gallery','green');
 document.getElementById('cultureSection').innerHTML=h;
 }
 function renderProgress(){let h='';PRON_PROGRESS.forEach(p=>{const i=p.status==='current'?'🔄':p.status==='done'?'✅':'⬜';h+=`<div class="pron-prog-item"><span>${i}</span><strong>${p.lesson}</strong>&nbsp; ${p.focus}</div>`;});document.getElementById('pronProgress').innerHTML=h;}
@@ -470,22 +544,33 @@ function initNav(){
   }));
 }
 
-function yspImageSlot(slotId, src, title, subTitle, headClass=''){
-  return `<!-- YSP_IMAGE_SLOT_START: ${slotId} -->
-<section class="ysp-image-slot" data-ysp-image-slot="${slotId}" data-ysp-image-src="${src}">
-  <div class="ysp-image-slot-head ${headClass}">
+function yspImageGallery(id, dir, prefix, title, subtitle, headClass=''){
+  return `<!-- YSP_IMAGE_GALLERY_START: ${id} -->
+<section
+  class="ysp-image-gallery"
+  data-ysp-gallery="${id}"
+  data-ysp-image-dir="${dir}"
+  data-ysp-image-prefix="${prefix}"
+  data-ysp-image-title="${title}"
+  data-ysp-image-subtitle="${subtitle}">
+
+  <div class="ysp-image-gallery-head ${headClass}">
     <span>${title}</span>
-    <small>${subTitle}</small>
+    <small>${subtitle}</small>
   </div>
-  <div class="ysp-image-mount">
-    <img src="${src}" alt="${slotId}" loading="lazy" onerror="this.outerHTML=yspMissingImage('${src}')">
+
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>${dir}/${prefix}*.png</code>
+    </div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
   </div>
 </section>
-<!-- YSP_IMAGE_SLOT_END: ${slotId} -->`;
+<!-- YSP_IMAGE_GALLERY_END: ${id} -->`;
 }
-function yspMissingImage(path){
-  return `<div class="ysp-image-placeholder"><div>圖片尚未更新或路徑錯誤</div><code>${path}</code></div>`;
-}
+
 function yspFixVocabCardHeights(){
   document.querySelectorAll('.vcard').forEach(card=>{
     const inner=card.querySelector('.vcard-inner');
