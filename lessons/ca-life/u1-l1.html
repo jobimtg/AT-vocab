@@ -134,54 +134,8 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 /* ===== END YSP IMAGE SECTIONS ===== */
 
 </style>
-<!-- YSP_LESSON_BRAND_NAV_STYLE_START -->
-<style>
-.ysp-lesson-brand-header{position:sticky;top:0;z-index:99998;background:rgba(247,241,232,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(196,147,93,.24);font-family:Inter,'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif}
-.ysp-lesson-brand-wrap{width:min(1180px,calc(100% - 36px));min-height:74px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.ysp-lesson-brand{display:inline-flex;align-items:center;gap:12px;color:#1f1d1b;text-decoration:none}
-.ysp-lesson-brand img{width:54px;height:54px;object-fit:contain}
-.ysp-lesson-brand strong{display:block;color:#1f1d1b;font-size:24px;line-height:1.05;letter-spacing:.08em;font-weight:900}
-.ysp-lesson-brand span span{display:block;margin-top:4px;color:#756f68;font-size:16px;font-weight:500}
-.ysp-lesson-nav{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}
-.ysp-lesson-nav a,.ysp-lesson-back-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 18px;border-radius:999px;border:1px solid rgba(196,147,93,.24);background:rgba(255,255,255,.86);color:#14213d;text-decoration:none;font-size:15px;line-height:1;font-weight:900;box-shadow:0 10px 24px rgba(60,43,25,.08)}
-.ysp-lesson-back-wrap{width:min(1180px,calc(100% - 36px));margin:28px auto 0}
-.ysp-lesson-back-link{min-height:48px;padding:13px 22px}
-@media(max-width:820px){.ysp-lesson-brand-wrap{align-items:flex-start;flex-direction:column;padding:14px 0}.ysp-lesson-nav{justify-content:flex-start}}
-@media(max-width:520px){.ysp-lesson-nav a{width:100%}.ysp-lesson-brand strong{font-size:20px}.ysp-lesson-brand span span{font-size:13px}}
-</style>
-<!-- YSP_LESSON_BRAND_NAV_STYLE_END -->
-<!-- YSP_CLEAN_TOP_STYLE_START -->
-<style>
-html{scroll-behavior:smooth}body{overflow-x:hidden}
-.ysp-page-top-button{position:fixed;right:22px;bottom:22px;z-index:99999;width:56px;height:56px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border-radius:999px;background:#1f1d1b;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.28);box-shadow:0 14px 34px rgba(60,43,25,.22);font-family:Inter,'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;font-weight:950}
-.ysp-page-top-arrow{font-size:20px;line-height:1}.ysp-page-top-label{margin-top:1px;font-size:10px;line-height:1;letter-spacing:.08em;text-transform:uppercase}
-@media(max-width:760px){.ysp-page-top-button{right:16px;bottom:16px;width:52px;height:52px}}
-</style>
-<!-- YSP_CLEAN_TOP_STYLE_END -->
 </head>
-<body id="top">
-<!-- YSP_LESSON_BRAND_NAV_START -->
-<header class="ysp-lesson-brand-header">
-  <div class="ysp-lesson-brand-wrap">
-    <a class="ysp-lesson-brand" href="../../" aria-label="YSP Learn & Shine home">
-      <img src="../../assets/img/ysp-header-icon.png" alt="YSP Learn & Shine">
-      <span>
-        <strong>YSP Learn & Shine</strong>
-        <span>Learn with Purpose. Shine with Confidence.</span>
-      </span>
-    </a>
-    <nav class="ysp-lesson-nav" aria-label="Lesson site navigation">
-      <a href="../../">Home</a>
-      <a href="../">Lessons</a>
-      <a href="../../#about">About</a>
-    </nav>
-  </div>
-</header>
-<div class="ysp-lesson-back-wrap">
-  <a class="ysp-lesson-back-link" href="../">← Back to Lessons</a>
-</div>
-<!-- YSP_LESSON_BRAND_NAV_END -->
-
+<body>
 <div class="header">
 <div class="brand">YSP Learn &amp; Shine</div>
 <h1>L01 — Welcome to Canada 歡迎來到加拿大</h1>
@@ -283,6 +237,7 @@ z.innerHTML=`<div class="dc" onclick="this.classList.toggle('sa')"><div class="d
 // T4 Phrases
 function r4(){
 document.getElementById('t4').innerHTML=`<h2>💬 Useful Phrases — 圖片版</h2>
+<p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">本分頁使用 1 張總覽圖片。請將圖片放在 <code>assets/phrases/l01-phrases.png</code>。</p>
 <div class="ysp-image-section">
   <div class="ysp-image-card">
     <div class="ysp-image-head accent"><span>Useful Phrases</span><small>句型總覽圖片</small></div>
@@ -293,9 +248,11 @@ document.getElementById('t4').innerHTML=`<h2>💬 Useful Phrases — 圖片版</
 // T5 Pronunciation
 function r5(){
 document.getElementById('t5').innerHTML=`<h2>🎯 Pronunciation Spotlight — 圖片版</h2>
+<p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">本分頁使用 1 張完整發音教學圖。請將圖片放在 <code>assets/pronunciation/l01-pronunciation-1.png</code>。</p>
 <div class="ysp-image-section">
   <div class="ysp-image-card">
     <div class="ysp-image-head alert"><span>Pronunciation Spotlight</span><small>發音焦點圖片</small></div>
+    <img src="assets/pronunciation/l01-pronunciation-1.png" alt="Pronunciation Spotlight" loading="lazy" onerror="this.outerHTML=yspMissingImage('assets/pronunciation/l01-pronunciation-1.png')">
   </div>
 </div>`;
 }
@@ -330,6 +287,7 @@ document.getElementById('t6').innerHTML=h;
 // T7 Speaking
 function r7(){
 document.getElementById('t7').innerHTML=`<h2>🗣️ Speaking Questions — 圖片版</h2>
+<p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">本分頁使用 1 張口說題目總覽圖片。請將圖片放在 <code>assets/speaking/l01-speaking-questions.png</code>。</p>
 <div class="ysp-image-section">
   <div class="ysp-image-card">
     <div class="ysp-image-head teal"><span>Speaking Questions</span><small>口說題目總覽圖片</small></div>
@@ -340,6 +298,7 @@ document.getElementById('t7').innerHTML=`<h2>🗣️ Speaking Questions — 圖�
 // T8 Culture
 function r8(){
 document.getElementById('t8').innerHTML=`<h2>🌍 Canadian Culture — 圖片版</h2>
+<p style="font-size:.76rem;color:var(--c-muted);margin-bottom:12px">本分頁使用 2 張文化圖卡。請將圖片放在 <code>assets/culture/</code>。</p>
 <div class="ysp-image-section">
   <div class="ysp-image-card">
     <div class="ysp-image-head green"><span>Culture 1</span><small>Warm-up</small></div>
@@ -396,14 +355,5 @@ T = function(n){
 
 document.addEventListener('DOMContentLoaded',()=>{r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
 </script>
-<!-- YSP_GLOBAL_NAV_LOADER_START -->
-<script src="../../js/ysp-global-nav.js" defer data-ysp-base="../../"></script>
-<!-- YSP_GLOBAL_NAV_LOADER_END -->
-<!-- YSP_CLEAN_TOP_BUTTON_START -->
-<a class="ysp-page-top-button" href="#top" aria-label="Back to top">
-  <span class="ysp-page-top-arrow">↑</span>
-  <span class="ysp-page-top-label">Top</span>
-</a>
-<!-- YSP_CLEAN_TOP_BUTTON_END -->
 </body>
 </html>
