@@ -26,7 +26,9 @@ Website:
 https://jobimtg.github.io/AT-vocab/
 ```
 
-This is a GitHub Pages site. All paths must work as relative paths. No server-side logic is available.
+This is a GitHub Pages static site.
+
+All public paths must work as relative paths. No server-side logic is available.
 
 ---
 
@@ -73,6 +75,15 @@ lessons/business/assets/speaking/
 lessons/business/assets/culture/
 ```
 
+Do not create per-lesson asset folders such as:
+
+```text
+lessons/ca-life/u1-l1/assets/
+lessons/travel/u1-l2/assets/
+```
+
+Images should live in the course-level shared `assets/` folder.
+
 ---
 
 ## Lesson File Naming
@@ -95,24 +106,93 @@ lessons/business/u1-l1.html
 
 ---
 
-## Image Naming and Prefix Rule
+## Lesson Image Prefix Rule
 
-Image filenames use a lesson sequence prefix: `l01`, `l02`, `l03`, and so on.
+Image filenames use a lesson sequence prefix:
 
-The prefix is a manually assigned lesson sequence number that matches the lesson's approved metadata and existing file naming plan. It is not calculated from the unit and lesson numbers in the filename.
+```text
+l01
+l02
+l03
+```
 
-The authoritative mapping is whatever prefix has been assigned for that lesson. When in doubt, check the existing image files in the course assets folder.
+The prefix is a manually assigned lesson sequence number that matches the lesson's approved metadata and existing file naming plan.
 
-Image filename examples for the lesson assigned prefix `l01`:
+It is not automatically calculated from the unit and lesson numbers in the HTML filename.
+
+For example:
+
+```text
+u1-l1.html may use l01
+u1-l2.html may use l02
+u2-l1.html may use l03 or another approved prefix
+```
+
+When in doubt, check the existing image files in the course assets folder and the approved lesson plan.
+
+---
+
+## Future Lesson Registry
+
+Because lesson image prefixes are manually assigned, a future registry file should be created later.
+
+Possible locations:
+
+```text
+docs/YSP_LESSON_REGISTRY.md
+```
+
+or:
+
+```text
+lesson-data/lesson_registry.json
+```
+
+The registry should eventually track:
+
+```text
+course
+lesson HTML path
+lesson title
+assigned image prefix
+publish status
+```
+
+Example:
+
+```text
+ca-life | lessons/ca-life/u1-l1.html | Welcome to Canada | l01 | published
+ca-life | lessons/ca-life/u1-l2.html | Getting a Phone Plan | l02 | draft
+travel  | lessons/travel/u1-l1.html  | At the Airport | l01 | published
+```
+
+Until the registry exists, use the approved lesson plan and existing image filenames as the source of truth.
+
+---
+
+## Image Naming Rules
+
+Image filename examples for a lesson assigned prefix `l01`:
 
 ```text
 assets/pronunciation/l01-pronunciation-1.png
+assets/pronunciation/l01-pronunciation-2.png
+
 assets/phrases/l01-phrases-1.png
+assets/phrases/l01-phrases-2.png
+
 assets/dialogues/l01-d01-model.png
 assets/dialogues/l01-d01-practice.png
+assets/dialogues/l01-d01-extra-1.png
+assets/dialogues/l01-d01-extra-2.png
+
 assets/speaking/l01-speaking-1.png
+assets/speaking/l01-speaking-2.png
+
 assets/culture/l01-culture-1.png
 assets/culture/l01-culture-2.png
+assets/culture/l01-culture-3.png
+assets/culture/l01-culture-4.png
 ```
 
 Supported image formats:
@@ -124,9 +204,11 @@ Supported image formats:
 .webp
 ```
 
-### Image Prefix Matching — Trailing Hyphen Rule
+---
 
-Gallery prefixes must include a trailing hyphen where needed to avoid matching unintended files.
+## Image Prefix Matching Rule
+
+Gallery prefixes must include a trailing hyphen.
 
 Correct prefixes:
 
@@ -137,7 +219,7 @@ l01-speaking-
 l01-culture-
 ```
 
-Dialogue prefixes are per-topic:
+Dialogue prefixes are per topic:
 
 ```text
 l01-d01-
@@ -145,7 +227,146 @@ l01-d02-
 l01-d03-
 ```
 
-A prefix like `l01-pronunciation` without a trailing hyphen could accidentally match `l01-pronunciation-extra-notes.png`. Always use the trailing hyphen form.
+The trailing hyphen reduces accidental matches such as:
+
+```text
+l01-pronunciationGuide.png
+l01-pronunciation2.png
+```
+
+However, the trailing hyphen does not prevent every invalid filename. For example, this still starts with `l01-pronunciation-`:
+
+```text
+l01-pronunciation-extra-notes.png
+```
+
+Therefore, automation should also follow stricter allowed suffix patterns.
+
+---
+
+## Allowed Image Suffix Patterns
+
+### Pronunciation
+
+Allowed:
+
+```text
+l01-pronunciation-1.png
+l01-pronunciation-2.png
+l01-pronunciation-3.png
+```
+
+Pattern:
+
+```text
+l01-pronunciation-[number].[extension]
+```
+
+---
+
+### Useful Phrases
+
+Allowed:
+
+```text
+l01-phrases-1.png
+l01-phrases-2.png
+l01-phrases-3.png
+```
+
+Pattern:
+
+```text
+l01-phrases-[number].[extension]
+```
+
+---
+
+### Speaking Questions
+
+Allowed:
+
+```text
+l01-speaking-1.png
+l01-speaking-2.png
+l01-speaking-3.png
+```
+
+Pattern:
+
+```text
+l01-speaking-[number].[extension]
+```
+
+---
+
+### Culture
+
+Allowed:
+
+```text
+l01-culture-1.png
+l01-culture-2.png
+l01-culture-3.png
+l01-culture-4.png
+```
+
+Pattern:
+
+```text
+l01-culture-[number].[extension]
+```
+
+---
+
+### Dialogue Practice
+
+Allowed:
+
+```text
+l01-d01-model.png
+l01-d01-practice.png
+l01-d01-extra-1.png
+l01-d01-extra-2.png
+l01-d02-model.png
+l01-d02-practice.png
+l01-d02-extra-1.png
+```
+
+Patterns:
+
+```text
+l01-d01-model.[extension]
+l01-d01-practice.[extension]
+l01-d01-extra-[number].[extension]
+```
+
+Replace `d01` with the correct dialogue topic number.
+
+---
+
+## Dialogue Image Ordering Rule
+
+Dialogue galleries should render images in this teaching order:
+
+```text
+1. model
+2. practice
+3. extra-1
+4. extra-2
+5. extra-3
+```
+
+Example:
+
+```text
+l01-d01-model.png
+l01-d01-practice.png
+l01-d01-extra-1.png
+l01-d01-extra-2.png
+```
+
+Do not rely on plain alphabetical sorting for dialogue images if it causes model / practice / extra images to appear in the wrong order.
 
 ---
 
@@ -153,197 +374,397 @@ A prefix like `l01-pronunciation` without a trailing hyphen could accidentally m
 
 All `src` and `href` attributes inside lesson HTML must use relative paths.
 
-From a lesson at `lessons/ca-life/u1-l1.html`:
+From a lesson at:
 
 ```text
-assets/pronunciation/l01-pronunciation-1.png      ← correct
-../../js/ysp-global-nav.js                         ← correct
-
-/assets/pronunciation/l01-pronunciation-1.png     ← wrong (absolute)
-https://jobimtg.github.io/AT-vocab/assets/...     ← wrong (absolute URL)
+lessons/ca-life/u1-l1.html
 ```
 
-Absolute paths break on GitHub Pages subpaths.
+Correct:
+
+```text
+assets/pronunciation/l01-pronunciation-1.png
+../../js/ysp-global-nav.js
+../../lessons/
+```
+
+Wrong:
+
+```text
+/assets/pronunciation/l01-pronunciation-1.png
+https://jobimtg.github.io/AT-vocab/assets/...
+lessons/ca-life/assets/pronunciation/l01-pronunciation-1.png
+```
+
+Absolute paths can break on GitHub Pages subpaths.
 
 ---
 
-## Dynamic Image Gallery v3 — Structure
+## Dynamic Image Gallery v3 — Canonical Structure
 
-The Dynamic Image Gallery v3 system uses two levels of markers.
+The Dynamic Image Gallery v3 system uses an outer persistent gallery container and an inner mount area.
 
-### Outer Gallery Block — `YSP_IMAGE_GALLERY_START` / `YSP_IMAGE_GALLERY_END`
+The workflow must preserve the outer container and all data attributes.
 
-The outer markers wrap the entire gallery section, including its heading and any permanent attributes. The workflow does not replace anything outside the inner mount.
+The workflow may only replace the content inside the inner mount markers.
 
-```html
-<!-- YSP_IMAGE_GALLERY_START: pronunciation -->
-<section class="ysp-gallery-section">
-  <h3>Pronunciation Spotlight</h3>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_START: pronunciation -->
-  <div
-    class="ysp-image-gallery"
-    data-ysp-image-dir="assets/pronunciation/"
-    data-ysp-image-prefix="l01-pronunciation-"
-  ></div>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_END: pronunciation -->
-</section>
-<!-- YSP_IMAGE_GALLERY_END: pronunciation -->
-```
-
-### Inner Mount Point — `YSP_IMAGE_GALLERY_MOUNT_START` / `YSP_IMAGE_GALLERY_MOUNT_END`
-
-The inner markers wrap only the `<div class="ysp-image-gallery">` element. This is the only part the workflow replaces when updating images.
+Canonical structure:
 
 ```html
-<!-- YSP_IMAGE_GALLERY_MOUNT_START: pronunciation -->
-<div
+<!-- YSP_IMAGE_GALLERY_START: l01-culture -->
+<section
   class="ysp-image-gallery"
-  data-ysp-image-dir="assets/pronunciation/"
-  data-ysp-image-prefix="l01-pronunciation-"
-></div>
-<!-- YSP_IMAGE_GALLERY_MOUNT_END: pronunciation -->
+  data-ysp-gallery="l01-culture"
+  data-ysp-image-dir="assets/culture"
+  data-ysp-image-prefix="l01-culture-"
+  data-ysp-image-title="Culture — 圖片版"
+  data-ysp-image-subtitle="Culture gallery">
+
+  <div class="ysp-image-gallery-head green">
+    <span>Culture — 圖片版</span>
+    <small>Culture gallery</small>
+  </div>
+
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/culture/l01-culture-*.png</code>
+    </div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
+</section>
+<!-- YSP_IMAGE_GALLERY_END: l01-culture -->
 ```
 
-### Mount Point Attributes
+---
 
-| Attribute | Purpose |
-|---|---|
-| `class="ysp-image-gallery"` | Marks the element as a gallery mount point |
-| `data-ysp-image-dir` | Relative path to the image folder |
-| `data-ysp-image-prefix` | Filename prefix used to match images, including trailing hyphen |
+## Gallery Attributes
 
-### How the Workflow Uses These Markers
+| Attribute                   | Purpose                                  |
+| --------------------------- | ---------------------------------------- |
+| `class="ysp-image-gallery"` | Marks the section as a gallery container |
+| `data-ysp-gallery`          | Unique gallery ID within the lesson page |
+| `data-ysp-image-dir`        | Relative image folder path               |
+| `data-ysp-image-prefix`     | Filename prefix used to match images     |
+| `data-ysp-image-title`      | Display title for the gallery            |
+| `data-ysp-image-subtitle`   | Display subtitle for the gallery         |
 
-The workflow scans for `YSP_IMAGE_GALLERY_MOUNT_START` / `YSP_IMAGE_GALLERY_MOUNT_END` pairs only.
+Use `data-ysp-image-dir` without a trailing slash.
 
-Inside each pair, it:
+Correct:
 
-1. Reads `data-ysp-image-dir` and `data-ysp-image-prefix`.
-2. Scans the folder for files whose names start with the given prefix.
-3. Sorts results using natural sort order.
-4. Replaces the inner `<div>` with rendered `<img>` tags for all matching images.
-5. If no matching images exist, leaves a placeholder inside the mount with a human-readable message and does not create a broken `<img>` tag.
-6. Does not touch anything outside the `YSP_IMAGE_GALLERY_MOUNT_START` / `YSP_IMAGE_GALLERY_MOUNT_END` pair.
+```html
+data-ysp-image-dir="assets/culture"
+```
+
+Avoid:
+
+```html
+data-ysp-image-dir="assets/culture/"
+```
+
+---
+
+## Inner Mount Point Rule
+
+The workflow may replace only the content between:
+
+```html
+<!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+...
+<!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+```
+
+The workflow must not remove:
+
+```text
+the outer <section class="ysp-image-gallery">
+data-ysp-gallery
+data-ysp-image-dir
+data-ysp-image-prefix
+data-ysp-image-title
+data-ysp-image-subtitle
+the .ysp-image-gallery-mount wrapper
+the YSP_IMAGE_GALLERY_MOUNT_START marker
+the YSP_IMAGE_GALLERY_MOUNT_END marker
+```
+
+This rule is required for idempotency.
+
+If the workflow removes the element containing `data-ysp-image-dir` and `data-ysp-image-prefix`, the first workflow run may appear successful, but the second run will no longer know where to find the images.
+
+---
+
+## Workflow Image Rendering Example
+
+When matching images exist, the inner mount content may become:
+
+```html
+<!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+<div class="ysp-image-gallery-grid">
+  <img src="assets/culture/l01-culture-1.png" alt="l01-culture-1" loading="lazy">
+  <img src="assets/culture/l01-culture-2.png" alt="l01-culture-2" loading="lazy">
+  <img src="assets/culture/l01-culture-3.png" alt="l01-culture-3" loading="lazy">
+</div>
+<!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+```
+
+When no matching images exist, the inner mount content should remain a placeholder:
+
+```html
+<!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+<div class="ysp-image-placeholder">
+  圖片尚未更新
+  <code>assets/culture/l01-culture-*.png</code>
+</div>
+<!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+```
+
+The workflow must not create broken `<img>` tags.
 
 ---
 
 ## Required Gallery Blocks Per Lesson
 
-Every lesson HTML that includes image-based sections must have the following gallery blocks. Original text content for each section must remain in the page alongside the gallery — the gallery is an addition, not a replacement.
+Every lesson HTML that includes the corresponding image-based section should include the matching gallery block.
 
-### Useful Phrases
+If a course template explicitly requires all five sections, then all five gallery blocks should exist.
 
-```html
-<!-- YSP_IMAGE_GALLERY_START: phrases -->
-<section class="ysp-gallery-section">
-  <h3>Useful Phrases</h3>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_START: phrases -->
-  <div
-    class="ysp-image-gallery"
-    data-ysp-image-dir="assets/phrases/"
-    data-ysp-image-prefix="l01-phrases-"
-  ></div>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_END: phrases -->
-</section>
-<!-- YSP_IMAGE_GALLERY_END: phrases -->
-```
+If a lesson does not include a specific section, do not create a fake section only for the gallery.
 
-### Pronunciation Spotlight
+Original text content for each section must remain in the page alongside the gallery.
+
+The gallery is an addition, not a replacement.
+
+---
+
+## Useful Phrases Gallery
 
 ```html
-<!-- YSP_IMAGE_GALLERY_START: pronunciation -->
-<section class="ysp-gallery-section">
-  <h3>Pronunciation Spotlight</h3>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_START: pronunciation -->
-  <div
-    class="ysp-image-gallery"
-    data-ysp-image-dir="assets/pronunciation/"
-    data-ysp-image-prefix="l01-pronunciation-"
-  ></div>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_END: pronunciation -->
+<!-- YSP_IMAGE_GALLERY_START: l01-phrases -->
+<section
+  class="ysp-image-gallery"
+  data-ysp-gallery="l01-phrases"
+  data-ysp-image-dir="assets/phrases"
+  data-ysp-image-prefix="l01-phrases-"
+  data-ysp-image-title="Useful Phrases — 圖片版"
+  data-ysp-image-subtitle="句型總覽圖片">
+
+  <div class="ysp-image-gallery-head accent">
+    <span>Useful Phrases — 圖片版</span>
+    <small>句型總覽圖片</small>
+  </div>
+
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/phrases/l01-phrases-*.png</code>
+    </div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
 </section>
-<!-- YSP_IMAGE_GALLERY_END: pronunciation -->
+<!-- YSP_IMAGE_GALLERY_END: l01-phrases -->
 ```
 
-### Dialogue Practice — One Gallery Per Topic
+---
 
-Each dialogue topic has its own outer and inner gallery block. Do not use a single broad prefix like `l01-d` for all dialogues.
+## Pronunciation Spotlight Gallery
 
 ```html
-<!-- YSP_IMAGE_GALLERY_START: dialogue-01 -->
-<section class="ysp-gallery-section">
-  <h3>Dialogue 1 — At the Immigration Counter</h3>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_START: dialogue-01 -->
-  <div
-    class="ysp-image-gallery"
-    data-ysp-image-dir="assets/dialogues/"
-    data-ysp-image-prefix="l01-d01-"
-  ></div>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_END: dialogue-01 -->
-</section>
-<!-- YSP_IMAGE_GALLERY_END: dialogue-01 -->
+<!-- YSP_IMAGE_GALLERY_START: l01-pronunciation -->
+<section
+  class="ysp-image-gallery"
+  data-ysp-gallery="l01-pronunciation"
+  data-ysp-image-dir="assets/pronunciation"
+  data-ysp-image-prefix="l01-pronunciation-"
+  data-ysp-image-title="Pronunciation Spotlight — 圖片版"
+  data-ysp-image-subtitle="發音焦點圖片">
 
-<!-- YSP_IMAGE_GALLERY_START: dialogue-02 -->
-<section class="ysp-gallery-section">
-  <h3>Dialogue 2 — Meeting Your Roommate</h3>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_START: dialogue-02 -->
-  <div
-    class="ysp-image-gallery"
-    data-ysp-image-dir="assets/dialogues/"
-    data-ysp-image-prefix="l01-d02-"
-  ></div>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_END: dialogue-02 -->
+  <div class="ysp-image-gallery-head alert">
+    <span>Pronunciation Spotlight — 圖片版</span>
+    <small>發音焦點圖片</small>
+  </div>
+
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/pronunciation/l01-pronunciation-*.png</code>
+    </div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
 </section>
-<!-- YSP_IMAGE_GALLERY_END: dialogue-02 -->
+<!-- YSP_IMAGE_GALLERY_END: l01-pronunciation -->
 ```
 
-Continue this pattern for each additional dialogue topic (`l01-d03-`, `l01-d04-`, etc.).
+---
 
-### Speaking Questions
+## Dialogue Practice Gallery
+
+Each dialogue topic must have its own gallery.
+
+Do not use one broad prefix such as:
+
+```text
+l01-d
+```
+
+Use per-topic prefixes:
+
+```text
+l01-d01-
+l01-d02-
+l01-d03-
+```
+
+Dialogue 1 example:
 
 ```html
-<!-- YSP_IMAGE_GALLERY_START: speaking -->
-<section class="ysp-gallery-section">
-  <h3>Speaking Questions</h3>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_START: speaking -->
-  <div
-    class="ysp-image-gallery"
-    data-ysp-image-dir="assets/speaking/"
-    data-ysp-image-prefix="l01-speaking-"
-  ></div>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_END: speaking -->
+<!-- YSP_IMAGE_GALLERY_START: l01-d01 -->
+<section
+  class="ysp-image-gallery"
+  data-ysp-gallery="l01-d01"
+  data-ysp-image-dir="assets/dialogues"
+  data-ysp-image-prefix="l01-d01-"
+  data-ysp-image-title="Dialogue 1 — 圖片版"
+  data-ysp-image-subtitle="Model / Practice / Extra images">
+
+  <div class="ysp-image-gallery-head">
+    <span>Dialogue 1 — 圖片版</span>
+    <small>Model / Practice / Extra images</small>
+  </div>
+
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/dialogues/l01-d01-*.png</code>
+    </div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
 </section>
-<!-- YSP_IMAGE_GALLERY_END: speaking -->
+<!-- YSP_IMAGE_GALLERY_END: l01-d01 -->
 ```
 
-### Culture
+Dialogue 2 example:
 
 ```html
-<!-- YSP_IMAGE_GALLERY_START: culture -->
-<section class="ysp-gallery-section">
-  <h3>Canadian Culture</h3>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_START: culture -->
-  <div
-    class="ysp-image-gallery"
-    data-ysp-image-dir="assets/culture/"
-    data-ysp-image-prefix="l01-culture-"
-  ></div>
-  <!-- YSP_IMAGE_GALLERY_MOUNT_END: culture -->
+<!-- YSP_IMAGE_GALLERY_START: l01-d02 -->
+<section
+  class="ysp-image-gallery"
+  data-ysp-gallery="l01-d02"
+  data-ysp-image-dir="assets/dialogues"
+  data-ysp-image-prefix="l01-d02-"
+  data-ysp-image-title="Dialogue 2 — 圖片版"
+  data-ysp-image-subtitle="Model / Practice / Extra images">
+
+  <div class="ysp-image-gallery-head">
+    <span>Dialogue 2 — 圖片版</span>
+    <small>Model / Practice / Extra images</small>
+  </div>
+
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/dialogues/l01-d02-*.png</code>
+    </div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
 </section>
-<!-- YSP_IMAGE_GALLERY_END: culture -->
+<!-- YSP_IMAGE_GALLERY_END: l01-d02 -->
 ```
 
-Replace `l01` with the correct lesson sequence prefix for each lesson.
+---
+
+## Speaking Questions Gallery
+
+```html
+<!-- YSP_IMAGE_GALLERY_START: l01-speaking -->
+<section
+  class="ysp-image-gallery"
+  data-ysp-gallery="l01-speaking"
+  data-ysp-image-dir="assets/speaking"
+  data-ysp-image-prefix="l01-speaking-"
+  data-ysp-image-title="Speaking Questions — 圖片版"
+  data-ysp-image-subtitle="口說題目圖片">
+
+  <div class="ysp-image-gallery-head teal">
+    <span>Speaking Questions — 圖片版</span>
+    <small>口說題目圖片</small>
+  </div>
+
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/speaking/l01-speaking-*.png</code>
+    </div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
+</section>
+<!-- YSP_IMAGE_GALLERY_END: l01-speaking -->
+```
+
+---
+
+## Culture Gallery
+
+```html
+<!-- YSP_IMAGE_GALLERY_START: l01-culture -->
+<section
+  class="ysp-image-gallery"
+  data-ysp-gallery="l01-culture"
+  data-ysp-image-dir="assets/culture"
+  data-ysp-image-prefix="l01-culture-"
+  data-ysp-image-title="Culture — 圖片版"
+  data-ysp-image-subtitle="Culture gallery">
+
+  <div class="ysp-image-gallery-head green">
+    <span>Culture — 圖片版</span>
+    <small>Culture gallery</small>
+  </div>
+
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/culture/l01-culture-*.png</code>
+    </div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
+</section>
+<!-- YSP_IMAGE_GALLERY_END: l01-culture -->
+```
 
 ---
 
 ## Original Text Content Rule
 
-Original lesson text content — vocabulary cards, drilling exercises, dialogues, speaking prompts, culture notes — must always be preserved in full.
+Original lesson text content must always be preserved in full.
 
-Gallery blocks are additions. They must appear alongside the original text content for their section, not in place of it.
+This includes:
 
-The workflow and Claude must never:
+```text
+vocabulary cards
+drilling exercises
+useful phrases
+pronunciation text
+dialogues
+role-play prompts
+speaking questions
+culture notes
+review tasks
+JavaScript lesson data
+```
+
+Gallery blocks are additions.
+
+They must appear alongside the original text content for their section, not in place of it.
+
+Claude and workflow must never:
 
 ```text
 delete text content sections
@@ -355,11 +776,51 @@ rewrite full lesson HTML unnecessarily
 
 ---
 
-## Workflow Modification Boundary Rule
+## Gallery Updater Boundary
 
-The workflow may only update HTML content inside `YSP_IMAGE_GALLERY_MOUNT_START` / `YSP_IMAGE_GALLERY_MOUNT_END` pairs.
+The gallery updater may only update image-rendered content inside:
 
-Everything outside those markers — headings, text content, outer gallery section markup, vocabulary data, styles — must not be touched by the workflow.
+```html
+<!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+...
+<!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+```
+
+The gallery updater must not modify:
+
+```text
+lesson text content
+gallery outer section
+gallery data attributes
+headings
+navigation
+lesson cards
+homepage featured cards
+workflow files
+```
+
+---
+
+## Site Maintenance Boundary
+
+The site maintenance script may update explicitly generated site infrastructure only.
+
+Allowed site infrastructure updates include:
+
+```text
+adding or repairing one YSP_GLOBAL_NAV_LOADER block
+removing legacy generated nav blocks from old patch workflows
+removing duplicate generated Top buttons
+removing duplicate generated Back to Lessons buttons
+updating lessons/index.html lesson cards
+updating index.html featured lesson cards
+removing internal production notes
+normalizing generated wrappers if explicitly documented
+```
+
+The site maintenance script must not rewrite original lesson teaching content.
+
+If content must be changed, it requires a separate user-approved content update task.
 
 ---
 
@@ -371,9 +832,9 @@ Claude and the workflow must never:
 delete text content from lesson pages
 replace text content with images
 hard-code nav, Top button, or Back to Lessons inline in HTML
-use a broad dialogue prefix (e.g. l01-d) instead of per-topic prefixes (l01-d01-, l01-d02-)
+use a broad dialogue prefix such as l01-d instead of per-topic prefixes such as l01-d01-
 omit the trailing hyphen from image prefixes
-hard-code a fixed image count (the gallery supports any number of images)
+hard-code a fixed image count
 rewrite full lesson HTML unless the user explicitly requests it
 commit when no files have actually changed
 create report folders
@@ -381,13 +842,15 @@ restore old patch workflows
 add duplicate YSP_GLOBAL_NAV_LOADER blocks
 add duplicate Top buttons
 add duplicate Back to Lessons buttons
+remove gallery data attributes during image rendering
+remove YSP_IMAGE_GALLERY_MOUNT markers during image rendering
 ```
 
 ---
 
 ## Navigation Rule
 
-Every lesson HTML file must include exactly one global nav loader block, placed before `</body>`:
+Every lesson HTML file must include exactly one global nav loader block placed before `</body>`:
 
 ```html
 <!-- YSP_GLOBAL_NAV_LOADER_START -->
@@ -395,9 +858,23 @@ Every lesson HTML file must include exactly one global nav loader block, placed 
 <!-- YSP_GLOBAL_NAV_LOADER_END -->
 ```
 
-The relative prefix (`../../`) must match the lesson's depth in the folder tree.
+The relative prefix must match the lesson's depth in the folder tree.
 
-All navigation rendering — the top nav bar, the Back to Lessons button, and the Top button — is handled exclusively by `js/ysp-global-nav.js`. Lesson HTML files must not hard-code any of these elements.
+All navigation rendering is handled exclusively by:
+
+```text
+js/ysp-global-nav.js
+```
+
+This includes:
+
+```text
+top nav bar
+Back to Lessons button
+Top button
+```
+
+Lesson HTML files must not hard-code any of these navigation elements.
 
 ---
 
@@ -405,25 +882,33 @@ All navigation rendering — the top nav bar, the Back to Lessons button, and th
 
 When the workflow scans for gallery images:
 
-- It reads `data-ysp-image-dir` and `data-ysp-image-prefix` from the mount point.
-- It searches the resolved folder for files whose names start with the given prefix (including the trailing hyphen).
-- It accepts `.png`, `.jpg`, `.jpeg`, and `.webp` extensions.
-- It sorts results using natural sort order (`l01-culture-1` before `l01-culture-10`).
-- It does not assume a fixed count. If three images exist, it renders three. If one exists, it renders one.
-- If no matching images exist, it renders a placeholder `<div>` inside the mount point and does not create a broken `<img>` tag.
+1. It finds each outer `.ysp-image-gallery` section.
+2. It reads `data-ysp-image-dir`.
+3. It reads `data-ysp-image-prefix`.
+4. It resolves the folder relative to the lesson HTML file.
+5. It searches for supported image files whose names match the allowed prefix and suffix pattern.
+6. It supports `.png`, `.jpg`, `.jpeg`, and `.webp`.
+7. It sorts standard numbered galleries using natural sort.
+8. It sorts dialogue galleries by model, practice, extra-1, extra-2, extra-3.
+9. It does not assume a fixed image count.
+10. If no matching images exist, it keeps or renders a placeholder.
+11. It never creates broken `<img>` tags.
+12. It preserves the gallery data attributes and mount markers.
 
 ---
 
 ## Active Workflows
 
-Only two workflows must remain active:
+Only these workflows should remain active:
 
 ```text
 .github/workflows/ysp-site-maintenance.yml
 .github/workflows/ysp-progress-dashboard.yml
 ```
 
-Do not restore any old patch workflows.
+Do not restore old patch workflows.
+
+If the repository still contains older workflow files, they must be reviewed separately before deletion or migration.
 
 ---
 
@@ -432,9 +917,9 @@ Do not restore any old patch workflows.
 The site maintenance workflow is responsible for:
 
 ```text
-scanning lesson HTML for YSP_IMAGE_GALLERY_MOUNT_START / END pairs
+scanning lesson HTML for YSP_IMAGE_GALLERY_START / END sections
 reading data-ysp-image-dir and data-ysp-image-prefix
-finding matching image files using natural sort
+finding matching image files using the approved matching rules
 rendering img tags for found images
 preserving placeholder when no images exist
 supporting png, jpg, jpeg, webp
@@ -442,10 +927,13 @@ updating lessons/index.html lesson cards
 updating index.html featured lesson cards
 adding YSP_GLOBAL_NAV_LOADER to lesson pages that are missing it
 removing legacy generated nav blocks from old patch workflows
+removing internal production notes
 committing only when files actually changed
 ```
 
-The progress dashboard workflow is display-only. It must not modify files or commit.
+The progress dashboard workflow is display-only.
+
+It must not modify files or commit.
 
 ---
 
@@ -457,33 +945,91 @@ Running it twice must not create:
 
 ```text
 duplicate headers
-duplicate Back to Lessons
+duplicate Back to Lessons buttons
 duplicate Top buttons
 duplicate gallery blocks
+duplicate lesson cards
 extra commits when nothing changed
 ```
+
+Running maintenance twice should produce no diff on the second run.
 
 ---
 
 ## Validation Checklist Before Publishing a Lesson
 
 ```text
-[ ] Lesson file is named correctly (e.g. u1-l1.html)
+[ ] Lesson file is named correctly, for example u1-l1.html
 [ ] Lesson is in the correct course folder
 [ ] Lesson HTML contains exactly one YSP_GLOBAL_NAV_LOADER block
-[ ] No inline nav, Top button, or Back to Lessons hard-coded in HTML
-[ ] No duplicate generated blocks
-[ ] Original text content (vocabulary, drills, dialogues) is intact
-[ ] Each image-based section has an outer YSP_IMAGE_GALLERY_START / END block
+[ ] No inline nav, Top button, or Back to Lessons is hard-coded in HTML
+[ ] No duplicate generated blocks exist
+[ ] Original text content is intact
+[ ] HTML still contains original section text above or near each gallery
+[ ] Each image-based section has an outer YSP_IMAGE_GALLERY_START / END block when that section exists
 [ ] Each image-based section has an inner YSP_IMAGE_GALLERY_MOUNT_START / END block
-[ ] data-ysp-image-dir uses a relative path (assets/..., not /assets/...)
+[ ] Every gallery id is unique within the lesson page
+[ ] Gallery data attributes remain after maintenance workflow runs
+[ ] YSP_IMAGE_GALLERY_MOUNT markers remain after image rendering
+[ ] data-ysp-image-dir uses a relative path such as assets/culture
+[ ] data-ysp-image-dir does not use a trailing slash
 [ ] data-ysp-image-prefix includes the correct l01 / l02 / l03 prefix and trailing hyphen
-[ ] Each dialogue topic has its own per-topic dialogue gallery (l01-d01-, l01-d02-, etc.)
+[ ] Each dialogue topic has its own per-topic dialogue gallery, such as l01-d01-, l01-d02-
+[ ] Dialogue images appear in model → practice → extra order
+[ ] No non-gallery images are accidentally matched by prefix
 [ ] Image files are in the correct course assets subfolder
 [ ] Image files use supported formats: png, jpg, jpeg, webp
-[ ] No broken image tags (src pointing to nonexistent files)
-[ ] No internal production notes visible in rendered HTML
+[ ] No broken image tags point to nonexistent files
+[ ] No internal production notes are visible in rendered HTML
 [ ] lessons/index.html lesson card is correct
-[ ] index.html featured lesson section is correct (if featured)
-[ ] Maintenance workflow runs twice without creating new commits on second run
+[ ] index.html featured lesson section is correct if the lesson is featured
+[ ] Maintenance workflow runs twice without creating a new commit on the second run
+```
+
+---
+
+## Black Swan Checks
+
+Before modifying automation, always check for these risks:
+
+```text
+A workflow that removes gallery data attributes after the first run
+A workflow that removes YSP_IMAGE_GALLERY_MOUNT markers after rendering images
+A workflow that commits repeatedly with no real changes
+A workflow that rewrites lesson teaching content
+A workflow that restores old duplicate nav or Top button blocks
+A workflow that matches unintended images because prefix rules are too broad
+A workflow that breaks GitHub Pages relative paths
+A workflow that hard-codes image counts instead of discovering available files
+A workflow that uses stale workflow names from old project phases
+```
+
+If any of these risks are found, stop and fix the rule or script before publishing new lessons.
+
+---
+
+## Implementation Order
+
+Do not create more course pages yet.
+
+First stabilize:
+
+```text
+docs/YSP_SITE_RULES.md
+scripts/ysp_validate_site.py
+scripts/ysp_site_maintenance.py
+js/ysp-global-nav.js
+.github/workflows/ysp-site-maintenance.yml
+.github/workflows/ysp-progress-dashboard.yml
+```
+
+After that:
+
+```text
+Create or finalize lesson JSON schema
+Create lesson registry
+Convert first lesson into true Free Preview format
+Build first Full Practice Pack
+Test with existing students
+Add purchase/contact/waitlist pathway
 ```
