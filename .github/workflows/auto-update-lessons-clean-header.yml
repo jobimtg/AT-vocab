@@ -1,0 +1,205 @@
+name: Auto Update Lessons Clean Header
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "lessons/**/*.html"
+
+permissions:
+  contents: write
+
+jobs:
+  auto-update-lessons-clean-header:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Normalize lesson pages and rebuild Lessons index
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          import html as html_lib
+          import os, re, shutil
+
+          ROOT = Path.cwd()
+          LESSONS = ROOT / "lessons"
+          INDEX = LESSONS / "index.html"
+          REPORTS = ROOT / ".github" / "workflow-reports"
+          if REPORTS.exists():
+              shutil.rmtree(REPORTS)
+
+          COURSES = {
+              "ca-life": ("life-career", "Canada Life", "Canada Life & Career English", "Life & Career", "Daily life, settling in, work, housing, appointments, and real-world communication."),
+              "travel": ("travel", "Travel", "Travel English", "Travel", "Airports, hotels, directions, restaurants, transportation, and travel confidence."),
+              "business": ("business", "Business", "Business English", "Business", "Meetings, reception, workplace communication, interviews, and professional confidence."),
+          }
+
+          class TitleParser(HTMLParser):
+              def __init__(self):
+                  super().__init__(); self.t=False; self.h=False; self.title=[]; self.h1=[]
+              def handle_starttag(self, tag, attrs):
+                  if tag.lower()=="title": self.t=True
+                  if tag.lower()=="h1": self.h=True
+              def handle_endtag(self, tag):
+                  if tag.lower()=="title": self.t=False
+                  if tag.lower()=="h1": self.h=False
+              def handle_data(self, data):
+                  if self.t: self.title.append(data)
+                  if self.h: self.h1.append(data)
+
+          def read(p): return p.read_text(encoding="utf-8", errors="ignore")
+          def write(p, s): p.write_text(s, encoding="utf-8")
+          def squish(s): return re.sub(r"\s+", " ", s or "").strip()
+          def rm_between(s, a, b): return re.sub(re.escape(a)+r".*?"+re.escape(b), "", s, flags=re.S)
+
+          def title_of(path):
+              parser = TitleParser(); parser.feed(read(path))
+              raw = squish(" ".join(parser.h1)) or squish(" ".join(parser.title)) or path.stem
+              raw = re.sub(r"\s*(?:\||[-–—])\s*YSP.*$", "", raw, flags=re.I)
+              return raw
+
+          def key_of(path):
+              try: return path.relative_to(LESSONS).parts[0]
+              except Exception: return ""
+
+          def code_of(path):
+              m = re.search(r"u(\d+)[-_]?l(\d+)", path.stem.lower())
+              if m: return f"U{m.group(1)}-L{m.group(2)}"
+              nums = re.findall(r"\d+", path.stem)
+              return "L" + nums[-1] if nums else "Preview"
+
+          def summary(title, key):
+              low = title.lower()
+              if "transportation" in low: return "Practice useful English for transportation, transit, and getting around."
+              if "airport" in low: return "Practice useful airport and travel survival English."
+              if "immigration" in low or "security" in low: return "Practice airport security and immigration questions and answers."
+              if "welcome" in low or "canada" in low: return "Practice useful English for arrival, daily life, and first conversations."
+              if key == "ca-life": return "Practice useful English for daily life, settling in, and real situations."
+              if key == "travel": return "Practice useful English for travel situations and trip confidence."
+              return "Practice useful English for workplace and professional communication."
+
+          MARKED = [
+              ("<!-- YSP_AUTO_LESSON_NAV_START -->","<!-- YSP_AUTO_LESSON_NAV_END -->"),
+              ("<!-- YSP_LESSON_SITE_NAV_START -->","<!-- YSP_LESSON_SITE_NAV_END -->"),
+              ("<!-- YSP_AUTO_NAV_STYLE_START -->","<!-- YSP_AUTO_NAV_STYLE_END -->"),
+              ("<!-- YSP_LESSON_SITE_NAV_STYLE_START -->","<!-- YSP_LESSON_SITE_NAV_STYLE_END -->"),
+              ("<!-- YSP_LESSON_BRAND_NAV_START -->","<!-- YSP_LESSON_BRAND_NAV_END -->"),
+              ("<!-- YSP_LESSON_BRAND_NAV_STYLE_START -->","<!-- YSP_LESSON_BRAND_NAV_STYLE_END -->"),
+              ("<!-- YSP_PAGE_TOP_BUTTON_START -->","<!-- YSP_PAGE_TOP_BUTTON_END -->"),
+              ("<!-- YSP_TOP_BUTTON_START -->","<!-- YSP_TOP_BUTTON_END -->"),
+              ("<!-- YSP_BACK_TO_TOP_START -->","<!-- YSP_BACK_TO_TOP_END -->"),
+              ("<!-- YSP_CLEAN_TOP_BUTTON_START -->","<!-- YSP_CLEAN_TOP_BUTTON_END -->"),
+              ("<!-- YSP_CLEAN_TOP_STYLE_START -->","<!-- YSP_CLEAN_TOP_STYLE_END -->"),
+          ]
+
+          def remove_old_ui(s):
+              for a,b in MARKED: s = rm_between(s,a,b)
+              s = re.sub(r"<header\b(?=[^>]*class=[\"'][^\"']*(?:site-header|ysp-lesson-brand-header)[^\"']*[\"'])[^>]*>.*?</header>", "", s, flags=re.I|re.S)
+              for cls in ["top-button","ysp-page-top-button","back-to-top","scroll-top","to-top"]:
+                  s = re.sub(r"<a\b(?=[^>]*class=[\"'][^\"']*"+cls+r"[^\"']*[\"'])[^>]*>.*?</a>", "", s, flags=re.I|re.S)
+                  s = re.sub(r"<button\b(?=[^>]*class=[\"'][^\"']*"+cls+r"[^\"']*[\"'])[^>]*>.*?</button>", "", s, flags=re.I|re.S)
+              s = re.sub(r"<a\b(?=[^>]*href=[\"'][^\"']*(?:\.\./|/)?lessons/?[\"'])(?=[^>]*class=[\"'][^\"']*(?:back|lesson-back|back-to-lessons|btn)[^\"']*[\"'])[^>]*>.*?Back to Lessons.*?</a>", "", s, flags=re.I|re.S)
+              return s
+
+          def remove_internal_notes(s):
+              bad = r"本分頁使用|請將圖片放在|完整發音教學圖|assets/pronunciation|pronunciation/[^<\s]+\.png"
+              s = re.sub(r"<(p|div|li)[^>]*>[^<]*(?:"+bad+r")[^<]*</\1>", "", s, flags=re.I|re.S)
+              return "\n".join(line for line in s.splitlines() if not re.search(bad, line, flags=re.I))
+
+          BRAND_STYLE = '''<!-- YSP_LESSON_BRAND_NAV_STYLE_START -->
+<style>
+.ysp-lesson-brand-header{position:sticky;top:0;z-index:99998;background:rgba(247,241,232,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(196,147,93,.24);font-family:Inter,'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif}.ysp-lesson-brand-wrap{width:min(1180px,calc(100% - 36px));min-height:74px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}.ysp-lesson-brand{display:inline-flex;align-items:center;gap:12px;color:#1f1d1b;text-decoration:none}.ysp-lesson-brand img{width:54px;height:54px;object-fit:contain}.ysp-lesson-brand strong{display:block;color:#1f1d1b;font-size:24px;line-height:1.05;letter-spacing:.08em;font-weight:900}.ysp-lesson-brand span span{display:block;margin-top:4px;color:#756f68;font-size:16px;font-weight:500}.ysp-lesson-nav{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}.ysp-lesson-nav a,.ysp-lesson-back-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 18px;border-radius:999px;border:1px solid rgba(196,147,93,.24);background:rgba(255,255,255,.86);color:#14213d;text-decoration:none;font-size:15px;line-height:1;font-weight:900;box-shadow:0 10px 24px rgba(60,43,25,.08)}.ysp-lesson-back-wrap{width:min(1180px,calc(100% - 36px));margin:28px auto 0}.ysp-lesson-back-link{min-height:48px;padding:13px 22px}@media(max-width:820px){.ysp-lesson-brand-wrap{align-items:flex-start;flex-direction:column;padding:14px 0}.ysp-lesson-nav{justify-content:flex-start}}@media(max-width:520px){.ysp-lesson-nav a{width:100%}.ysp-lesson-brand strong{font-size:20px}.ysp-lesson-brand span span{font-size:13px}}
+</style>
+<!-- YSP_LESSON_BRAND_NAV_STYLE_END -->'''
+
+          BRAND_NAV = '''<!-- YSP_LESSON_BRAND_NAV_START -->
+<header class="ysp-lesson-brand-header"><div class="ysp-lesson-brand-wrap"><a class="ysp-lesson-brand" href="../../" aria-label="YSP Learn & Shine home"><img src="../../assets/img/ysp-header-icon.png" alt="YSP Learn & Shine"><span><strong>YSP Learn & Shine</strong><span>Learn with Purpose. Shine with Confidence.</span></span></a><nav class="ysp-lesson-nav" aria-label="Lesson site navigation"><a href="../../">Home</a><a href="../">Lessons</a><a href="../../#about">About</a></nav></div></header><div class="ysp-lesson-back-wrap"><a class="ysp-lesson-back-link" href="../">← Back to Lessons</a></div>
+<!-- YSP_LESSON_BRAND_NAV_END -->'''
+
+          TOP_STYLE = '''<!-- YSP_CLEAN_TOP_STYLE_START -->
+<style>
+html{scroll-behavior:smooth}body{overflow-x:hidden}.ysp-page-top-button{position:fixed;right:22px;bottom:22px;z-index:99999;width:56px;height:56px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border-radius:999px;background:#1f1d1b;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.28);box-shadow:0 14px 34px rgba(60,43,25,.22);font-family:Inter,'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;font-weight:950}.ysp-page-top-arrow{font-size:20px;line-height:1}.ysp-page-top-label{margin-top:1px;font-size:10px;line-height:1;letter-spacing:.08em;text-transform:uppercase}@media(max-width:760px){.ysp-page-top-button{right:16px;bottom:16px;width:52px;height:52px}}
+</style>
+<!-- YSP_CLEAN_TOP_STYLE_END -->'''
+
+          TOP_BUTTON = '''<!-- YSP_CLEAN_TOP_BUTTON_START -->
+<a class="ysp-page-top-button" href="#top" aria-label="Back to top"><span class="ysp-page-top-arrow">↑</span><span class="ysp-page-top-label">Top</span></a>
+<!-- YSP_CLEAN_TOP_BUTTON_END -->'''
+
+          def insert_head(s, block):
+              return re.sub(r"</head\s*>", block+"\n</head>", s, count=1, flags=re.I) if re.search(r"</head\s*>", s, flags=re.I) else block+"\n"+s
+          def insert_body_start(s, block):
+              m = re.search(r"<body\b[^>]*>", s, flags=re.I)
+              return s[:m.end()]+"\n"+block+"\n"+s[m.end():] if m else block+"\n"+s
+          def insert_body_end(s, block):
+              return re.sub(r"</body\s*>", block+"\n</body>", s, count=1, flags=re.I) if re.search(r"</body\s*>", s, flags=re.I) else s+"\n"+block
+          def ensure_top_id(s):
+              m = re.search(r"<body\b([^>]*)>", s, flags=re.I)
+              if m and not re.search(r"\bid\s*=", m.group(0), flags=re.I):
+                  return s[:m.start()]+m.group(0)[:-1]+' id="top">'+s[m.end():]
+              return s
+
+          def normalize_page(s):
+              s = remove_internal_notes(remove_old_ui(s))
+              s = ensure_top_id(s)
+              s = insert_head(s, BRAND_STYLE)
+              s = insert_head(s, TOP_STYLE)
+              s = insert_body_start(s, BRAND_NAV)
+              s = insert_body_end(s, TOP_BUTTON)
+              return re.sub(r"\n{4,}", "\n\n\n", s)
+
+          def cards(items):
+              if not items:
+                  return '<article class="lesson-card"><span class="tag">Coming Soon</span><h3>New preview lessons are coming soon</h3><p>New lessons will appear here after lesson HTML files are uploaded.</p></article>'
+              out=[]
+              for it in items:
+                  anchor, short, label, tag, desc = COURSES[it["key"]]
+                  out.append(f'<article class="lesson-card"><span class="tag">{html_lib.escape(tag)} · {html_lib.escape(it["code"])}</span><h3>{html_lib.escape(it["title"])}</h3><p>{html_lib.escape(it["summary"])}</p><a href="{html_lib.escape(it["href"])}">View Preview →</a></article>')
+              return "\n".join(out)
+
+          def rebuild_index(lessons):
+              grouped = {k:[] for k in COURSES}
+              for it in lessons: grouped[it["key"]].append(it)
+              sections=[]
+              for k in ["ca-life","travel","business"]:
+                  anchor, short, label, tag, desc = COURSES[k]
+                  sections.append(f'<section id="{anchor}" class="course-section"><p class="eyebrow">{short}</p><h2>{label}</h2><p>{desc}</p><div class="lesson-grid">{cards(grouped[k])}</div></section>')
+              INDEX.write_text(f'''<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Lessons｜YSP Learn & Shine</title><link rel="icon" href="../assets/img/ysp-header-icon.png"><style>*{{box-sizing:border-box}}html{{scroll-behavior:smooth}}body{{margin:0;background:#fff8ed;color:#13213b;font-family:Inter,"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif}}a{{color:inherit}}.site-header{{position:sticky;top:0;z-index:50;background:rgba(255,248,237,.94);border-bottom:1px solid rgba(196,147,93,.24)}}.nav-wrap{{width:min(1180px,calc(100% - 36px));min-height:74px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px}}.brand{{display:flex;align-items:center;gap:12px;text-decoration:none}}.brand img{{width:42px}}.brand strong{{font-size:17px}}.brand span span{{display:block;color:#6f6257;font-size:12px}}.nav-links{{display:flex;gap:10px;flex-wrap:wrap}}.nav-links a,.btn{{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:11px 16px;border-radius:999px;border:1px solid rgba(196,147,93,.24);background:rgba(255,255,255,.86);text-decoration:none;font-weight:850}}.primary{{background:#162849!important;color:white!important}}main{{width:min(1180px,calc(100% - 36px));margin:0 auto}}section{{margin:72px 0}}.hero{{padding:clamp(38px,7vw,78px) clamp(22px,5vw,70px);border:1px solid rgba(196,147,93,.24);border-radius:36px;background:white;text-align:center;box-shadow:0 18px 50px rgba(60,43,25,.09)}}.eyebrow{{color:#c4935d;font-size:12px;font-weight:950;letter-spacing:.28em;text-transform:uppercase}}h1{{font-size:clamp(38px,6vw,74px);line-height:.98;letter-spacing:-.055em}}p{{color:#6f6257;line-height:1.7}}.actions{{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}}.path-grid,.lesson-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}}.path-card,.lesson-card,.course-section,.cta-card{{border:1px solid rgba(196,147,93,.24);border-radius:24px;background:rgba(255,255,255,.88);box-shadow:0 14px 34px rgba(60,43,25,.07);padding:24px}}.tag{{display:inline-flex;margin-bottom:12px;padding:6px 10px;border-radius:999px;background:#fff3df;color:#9c6a34;font-size:12px;font-weight:900}}.lesson-card a{{font-weight:900;text-decoration:none;color:#162849}}footer{{margin-top:72px;padding:36px 18px 46px;border-top:1px solid rgba(196,147,93,.24);text-align:center;color:#6f6257}}.footer-logo{{width:86px;margin:0 auto 12px}}.footer-est{{margin-top:18px;padding-top:14px;border-top:1px solid rgba(196,147,93,.24);color:#c4935d;font-size:12px;font-weight:950;letter-spacing:.28em}}.top-button{{position:fixed;right:22px;bottom:22px;z-index:80;width:56px;height:56px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border-radius:999px;background:#1f1d1b;color:#fff;text-decoration:none;font-weight:950}}@media(max-width:900px){{.path-grid,.lesson-grid{{grid-template-columns:1fr}}.nav-wrap{{flex-direction:column;align-items:flex-start;padding:14px 0}}}}</style></head><body id="top"><header class="site-header"><div class="nav-wrap"><a class="brand" href="../"><img src="../assets/img/ysp-header-icon.png" alt="YSP Learn & Shine"><span><strong>YSP Learn & Shine</strong><span>Learn with Purpose. Shine with Confidence.</span></span></a><nav class="nav-links"><a href="../">Home</a><a href="./">Lessons</a><a href="../#about">About</a><a class="primary" href="https://en.amazingtalker.com/teachers-and-tutors/jobi-pan#timeslots">Book a Trial Lesson</a></nav></div></header><main><section class="hero"><p class="eyebrow">Lessons</p><h1>Explore Your English Path and Find the Right Lesson for Your Next Step.</h1><p>Choose a lesson path that matches your goal. Each lesson is designed to help you use English in real situations.</p><div class="actions"><a class="btn primary" href="#available-lessons">View Preview Lessons</a><a class="btn" href="#learning-paths">Choose a Learning Path</a></div></section><section id="learning-paths"><p class="eyebrow">Learning Paths</p><h2>Pick the path that matches your goal</h2><div class="path-grid"><a class="path-card" href="#life-career"><span class="tag">Life & Career</span><h3>Canada Life & Career English</h3><p>Daily life, settling in, appointments, housing, work, and communication.</p></a><a class="path-card" href="#travel"><span class="tag">Travel</span><h3>Travel English</h3><p>Airports, hotels, directions, restaurants, transportation, and confidence.</p></a><a class="path-card" href="#business"><span class="tag">Business</span><h3>Business English</h3><p>Meetings, reception, interviews, and professional communication.</p></a></div></section><section id="available-lessons"><p class="eyebrow">Available Preview Lessons</p><h2>Start with one lesson today</h2>{''.join(sections)}</section><section><div class="cta-card"><p class="eyebrow">Practice Packs</p><h2>Full practice packs are coming next.</h2><p>Preview lessons stay public. Full review materials will be prepared for active students and future self-study learners.</p><div class="actions"><a class="btn primary" href="#available-lessons">View Preview Lessons</a><a class="btn" href="https://en.amazingtalker.com/teachers-and-tutors/jobi-pan#timeslots">Book a Trial Lesson</a></div></div></section></main><footer><img class="footer-logo" src="../assets/img/ysp-logo-script-overlay.png" alt="YSP signature logo"><strong>YSP Learn & Shine</strong><p>Learn with Purpose. Shine with Confidence.</p><p class="footer-est">EST. 2026</p></footer><a class="top-button" href="#top"><span>↑</span><span>Top</span></a></body></html>''', encoding="utf-8")
+
+          lessons=[]
+          for p in LESSONS.glob("**/*.html"):
+              if p.name.lower()=="index.html": continue
+              key = key_of(p)
+              if key not in COURSES: continue
+              lessons.append({"path":p,"key":key,"href":os.path.relpath(p, INDEX.parent).replace(os.sep,"/"),"title":title_of(p),"code":code_of(p),"summary":summary(title_of(p), key)})
+          lessons.sort(key=lambda it: (it["key"], [int(n) for n in re.findall(r"\d+", it["path"].stem)], it["path"].stem.lower()))
+
+          changed=[]
+          for it in lessons:
+              p=it["path"]; old=read(p); new=normalize_page(old)
+              if new != old:
+                  write(p,new); changed.append(p.relative_to(ROOT).as_posix())
+          rebuild_index(lessons)
+          print(f"Lessons discovered: {len(lessons)}")
+          print(f"Lesson pages normalized with fixed brand navigation: {len(changed)}")
+          for p in changed: print("-", p)
+          PY
+
+      - name: Commit and push automatic updates
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add lessons/index.html lessons/**/*.html
+          if git diff --cached --quiet; then
+            echo "No automatic updates to commit."
+          else
+            git commit -m "Auto update lessons with fixed brand navigation"
+            git push
+          fi
