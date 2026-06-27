@@ -160,6 +160,24 @@ html{scroll-behavior:smooth}body{overflow-x:hidden}
 @media(max-width:760px){.ysp-page-top-button{right:16px;bottom:16px;width:52px;height:52px}}
 </style>
 <!-- YSP_CLEAN_TOP_STYLE_END -->
+<!-- YSP_PRONUNCIATION_IMAGE_STYLE_START -->
+<style>
+.ysp-pronunciation-image-wrap{
+  width:min(1180px,calc(100% - 36px));
+  margin:24px auto 34px;
+  padding:0;
+}
+.ysp-pronunciation-image{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:22px;
+  border:1px solid rgba(196,147,93,.24);
+  background:#fff;
+  box-shadow:0 18px 46px rgba(60,43,25,.10);
+}
+</style>
+<!-- YSP_PRONUNCIATION_IMAGE_STYLE_END -->
 </head>
 <body id="top">
 <!-- YSP_LESSON_BRAND_NAV_START -->
@@ -296,6 +314,12 @@ document.getElementById('t4').innerHTML=`<h2>💬 Useful Phrases — 圖片版</
 // T5 Pronunciation
 function r5(){
 document.getElementById('t5').innerHTML=`<h2>🎯 Pronunciation Spotlight — 圖片版</h2>
+<!-- YSP_PRONUNCIATION_IMAGE_START -->
+<div class="ysp-pronunciation-image-wrap">
+  <img class="ysp-pronunciation-image" src="assets/pronunciation/l01-pronunciation-1.png" alt="Pronunciation Spotlight">
+</div>
+<!-- YSP_PRONUNCIATION_IMAGE_END -->
+
 <div class="ysp-image-section">
   <div class="ysp-image-card">
     <div class="ysp-image-head alert"><span>Pronunciation Spotlight</span><small>發音焦點圖片</small></div>
@@ -399,6 +423,7 @@ T = function(n){
 
 document.addEventListener('DOMContentLoaded',()=>{r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
 </script>
+
 
 <!-- YSP_CLEAN_TOP_BUTTON_START -->
 <a class="ysp-page-top-button" href="#top" aria-label="Back to top">

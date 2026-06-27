@@ -282,6 +282,24 @@ html{scroll-behavior:smooth}body{overflow-x:hidden}
 @media(max-width:760px){.ysp-page-top-button{right:16px;bottom:16px;width:52px;height:52px}}
 </style>
 <!-- YSP_CLEAN_TOP_STYLE_END -->
+<!-- YSP_PRONUNCIATION_IMAGE_STYLE_START -->
+<style>
+.ysp-pronunciation-image-wrap{
+  width:min(1180px,calc(100% - 36px));
+  margin:24px auto 34px;
+  padding:0;
+}
+.ysp-pronunciation-image{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:22px;
+  border:1px solid rgba(196,147,93,.24);
+  background:#fff;
+  box-shadow:0 18px 46px rgba(60,43,25,.10);
+}
+</style>
+<!-- YSP_PRONUNCIATION_IMAGE_STYLE_END -->
 </head>
 <body id="top">
 <!-- YSP_LESSON_BRAND_NAV_START -->
@@ -406,7 +424,13 @@ function rd(){var v=V[dI],z=document.getElementById('dz'),pr,w,s,a;if(dL===1){pr
 z.innerHTML='<div class="dc" onclick="this.classList.toggle(&#39;sa&#39;)"><div class="dp">'+pr+'</div><div class="dw">'+w+'</div><div class="ds">'+s+'</div><div class="da">💡 '+a+'</div><div style="font-size:.65rem;color:var(--c-muted);margin-top:8px">點擊翻牌看答案</div></div><div class="dn"><button class="dbtn" style="background:var(--c-divider);color:var(--c-text)" onclick="dI=Math.max(0,dI-1);rd()">← 上一個</button><span style="font-size:.78rem;color:var(--c-muted)">'+(dI+1)+' / '+V.length+'</span><button class="dbtn" style="background:var(--c-primary);color:#fff" onclick="dI=Math.min(V.length-1,dI+1);rd()">下一個 →</button></div>';}
 function r4(){var h='<h2>💬 Useful Phrases — 實用句型 (5)</h2>';PHRASES.forEach(function(p){var tg=p.t==='core'?'<div class="ptg" style="color:#1E8449">🏫 In-class</div>':'<div class="ptg" style="color:#2471A3">📖 Self-study</div>';h+='<div class="phr">'+tg+'<div class="pen">"'+p.en+'"</div><div class="pzh">'+p.zh+'</div><div class="pnt">💡 '+p.note+'</div></div>';});document.getElementById('t4').innerHTML=h;}
 function r5(){var pw='';PRON.words.forEach(function(w){pw+='<div class="wd"><b>'+w.w+'</b> '+w.ipa+'<br><span style="font-size:.7rem;color:var(--c-alert)">✗ '+w.bad+'</span> → <span style="color:var(--c-success)">✓ '+w.w+'</span><br><span style="font-size:.68rem;color:var(--c-muted)">'+w.tip+'</span></div>';});
-document.getElementById('t5').innerHTML='<h2>🎯 Pronunciation Spotlight</h2><div class="prc"><div style="font-size:.7rem;color:var(--c-accent);font-weight:600">🎯 PRONUNCIATION SPOTLIGHT</div><div class="fo">'+PRON.focus+'</div><div style="font-size:.8rem;color:var(--c-muted)">'+PRON.fz+'</div><div class="pw">'+pw+'</div><div class="ptip">💡 '+PRON.tip+'</div><div style="font-size:.85rem;color:var(--c-primary);font-weight:500;margin-top:6px">🗣️ '+PRON.prac+'</div></div>';}
+document.getElementById('t5').innerHTML='<h2>🎯 Pronunciation Spotlight</h2>
+<!-- YSP_PRONUNCIATION_IMAGE_START -->
+<div class="ysp-pronunciation-image-wrap">
+  <img class="ysp-pronunciation-image" src="assets/pronunciation/l01-pronunciation-1.png" alt="Pronunciation Spotlight">
+</div>
+<!-- YSP_PRONUNCIATION_IMAGE_END -->
+<div class="prc"><div style="font-size:.7rem;color:var(--c-accent);font-weight:600">🎯 PRONUNCIATION SPOTLIGHT</div><div class="fo">'+PRON.focus+'</div><div style="font-size:.8rem;color:var(--c-muted)">'+PRON.fz+'</div><div class="pw">'+pw+'</div><div class="ptip">💡 '+PRON.tip+'</div><div style="font-size:.85rem;color:var(--c-primary);font-weight:500;margin-top:6px">🗣️ '+PRON.prac+'</div></div>';}
 function r6(){var h='<h2>🎭 Dialogue Practice — 對話練習 (5)</h2><p style="font-size:.76rem;color:var(--c-muted);margin-bottom:10px">前 3 組必練 🏫，後 2 組選 1 組</p>';DIALOGUES.forEach(function(d){var tc=d.tag==='req'?'dtr':'dtc',tt=d.tag==='req'?'🏫 必練':'📖 選練';var ls='';d.lines.forEach(function(l){ls+='<div class="ln"><span class="wh '+(l[0]==='A'?'wa':'wb')+'">'+l[0]+'</span><div class="sp">"'+l[1]+'"</div></div>';});h+='<div class="dlg"><div class="dh"><h3 style="margin:0;font-size:.85rem">#'+d.id+' '+d.title+'<br><span style="font-size:.73rem;color:var(--c-muted)">'+d.tz+'</span></h3><span class="dtag '+tc+'">'+tt+'</span></div><div class="si">📍 '+d.sit+'</div><div class="rl"><div class="ro ra">🧑 '+d.rA+'</div><div class="ro rb">👤 '+d.rB+'</div></div><div class="ls">'+ls+'</div><div class="tr"><b>🎯 Now you try!</b><p>'+d.tp+'</p></div><div class="tg2" onclick="var t=this.nextElementSibling;t.classList.toggle(&#39;show&#39;);this.textContent=t.classList.contains(&#39;show&#39;)?&quot;Teacher notes ▴&quot;:&quot;Teacher notes ▾&quot;">Teacher notes ▾</div><div class="tn">📋 '+d.tn+'</div></div>';});document.getElementById('t6').innerHTML=h;}
 function r7(){var tl={1:['Tier 1 — Warm-up','s1'],2:['Tier 2 — Guided','s2'],3:['Tier 3 — Free','s3']};var h='<h2>🗣️ Speaking Questions — 口說練習 (5)</h2>';SPEAKING.forEach(function(s,i){var x=tl[s.t];h+='<div class="sq"><span class="stl '+x[1]+'">'+x[0]+'</span><div class="qq">Q'+(i+1)+'. '+s.q+'</div><div class="qh">💡 '+s.h+'</div></div>';});document.getElementById('t7').innerHTML=h;}
 function r8(){var h='<h2>🌍 Canadian Culture — 加拿大文化 (2)</h2>';CULTURE.forEach(function(c){var sl=c.slot==='warm-up'?'🌅 Warm-up（課堂開頭）':'🌇 Closing（課堂結尾）';var qs='';c.qs.forEach(function(q,i){qs+='<div class="cq">Q'+(i+1)+'. '+q+'</div>';});h+='<div class="cult"><div class="cs">'+sl+'</div><div class="ct">'+c.title+'</div><div style="font-size:.8rem;color:var(--c-muted);margin-bottom:6px">'+c.tz+'</div><div class="cp">'+c.photo+'</div><div class="cn">'+c.notes+'</div><h3 style="font-size:.78rem;margin:8px 0 4px">Discussion Questions</h3>'+qs+'</div>';});document.getElementById('t8').innerHTML=h;}
