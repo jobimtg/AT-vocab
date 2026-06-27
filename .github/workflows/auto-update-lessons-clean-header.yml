@@ -311,13 +311,119 @@ jobs:
               new_tag = tag[:-1] + ' id="top">'
               return text[:match.start()] + new_tag + text[match.end():]
 
-          def normalize_lesson_page(text: str) -> str:
+          def find_pronunciation_image(path: Path):
+              folder = path.parent / "assets" / "pronunciation"
+              if not folder.exists():
+                  return None
+
+              files = []
+              for pattern in ["*.png", "*.jpg", "*.jpeg", "*.webp"]:
+                  files.extend(sorted(folder.glob(pattern)))
+
+              if not files:
+                  return None
+
+              stem = path.stem.lower()
+              lesson_num = None
+
+              match = re.search(r"u\d+[-_]?l(\d+)", stem)
+              if match:
+                  lesson_num = int(match.group(1))
+              else:
+                  match = re.search(r"l(\d+)", stem)
+                  if match:
+                      lesson_num = int(match.group(1))
+
+              if lesson_num is not None:
+                  prefix = f"l{lesson_num:02d}-pronunciation"
+                  for item in files:
+                      if item.name.lower().startswith(prefix):
+                          return item
+
+              return files[0]
+
+          def add_pronunciation_image_style(text: str) -> str:
+              if "YSP_PRONUNCIATION_IMAGE_STYLE_START" in text:
+                  return text
+
+              style = """<!-- YSP_PRONUNCIATION_IMAGE_STYLE_START -->
+          <style>
+          .ysp-pronunciation-image-wrap{
+            width:min(1180px,calc(100% - 36px));
+            margin:24px auto 34px;
+            padding:0;
+          }
+          .ysp-pronunciation-image{
+            width:100%;
+            height:auto;
+            display:block;
+            border-radius:22px;
+            border:1px solid rgba(196,147,93,.24);
+            background:#fff;
+            box-shadow:0 18px 46px rgba(60,43,25,.10);
+          }
+          </style>
+          <!-- YSP_PRONUNCIATION_IMAGE_STYLE_END -->"""
+
+              return insert_before_head_end(text, style)
+
+          def fix_pronunciation_image(text: str, path: Path) -> str:
+              image = find_pronunciation_image(path)
+              if image is None:
+                  return text
+
+              src = os.path.relpath(image, start=path.parent).replace(os.sep, "/")
+              alt = "Pronunciation Spotlight"
+
+              text = strip_between(text, "<!-- YSP_PRONUNCIATION_IMAGE_START -->", "<!-- YSP_PRONUNCIATION_IMAGE_END -->")
+              text = strip_between(text, "<!-- YSP_PRONUNCIATION_IMAGE_STYLE_START -->", "<!-- YSP_PRONUNCIATION_IMAGE_STYLE_END -->")
+
+              # Remove button/link-only placeholders that should be replaced by the actual image.
+              text = re.sub(
+                  r"<a\b[^>]*>[^<]*(?:發音焦點圖片|Pronunciation Image|pronunciation image)[^<]*</a>",
+                  "",
+                  text,
+                  flags=re.I | re.S,
+              )
+              text = re.sub(
+                  r"<button\b[^>]*>[^<]*(?:發音焦點圖片|Pronunciation Image|pronunciation image)[^<]*</button>",
+                  "",
+                  text,
+                  flags=re.I | re.S,
+              )
+
+              if re.search(r"<img\b[^>]*src=[\"']" + re.escape(src) + r"[\"']", text, flags=re.I):
+                  return add_pronunciation_image_style(text)
+
+              block = f"""<!-- YSP_PRONUNCIATION_IMAGE_START -->
+          <div class="ysp-pronunciation-image-wrap">
+            <img class="ysp-pronunciation-image" src="{html_lib.escape(src)}" alt="{alt}">
+          </div>
+          <!-- YSP_PRONUNCIATION_IMAGE_END -->"""
+
+              # Insert after the Pronunciation Spotlight heading.
+              heading_pattern = re.compile(
+                  r"(<h[1-4]\b[^>]*>[^<]*(?:Pronunciation Spotlight|發音)[^<]*</h[1-4]>)",
+                  flags=re.I | re.S,
+              )
+              match = heading_pattern.search(text)
+
+              if match:
+                  text = text[:match.end()] + "\n" + block + "\n" + text[match.end():]
+              else:
+                  text = insert_before_body_end(text, block)
+
+              return add_pronunciation_image_style(text)
+
+
+          def normalize_lesson_page(text: str, path: Path) -> str:
               text = remove_old_generated_blocks(text)
               text = remove_internal_notes(text)
               text = ensure_body_id_top(text)
               text = insert_before_head_end(text, BRAND_STYLE)
               text = insert_before_head_end(text, TOP_STYLE)
               text = insert_after_body_start(text, BRAND_NAV)
+              text = fix_pronunciation_image(text, path)
               text = insert_before_body_end(text, TOP_BUTTON)
               return squeeze(text)
 
@@ -326,7 +432,7 @@ jobs:
               for item in lessons:
                   path = item["path"]
                   original = read(path)
-                  updated = normalize_lesson_page(original)
+                  updated = normalize_lesson_page(original, path)
                   if updated != original:
                       write(path, updated)
                       changed.append(path.relative_to(ROOT).as_posix())
@@ -420,7 +526,7 @@ jobs:
               rebuild_lessons_index(lessons)
               changed = clean_lesson_pages(lessons)
 
-              print("Auto Update Lessons Clean Header V4")
+              print("Auto Update Lessons Clean Header V5")
               print("===================================")
               print(f"Lessons discovered: {len(lessons)}")
               print("Lessons index rebuilt: lessons/index.html")
@@ -446,6 +552,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No automatic updates to commit."
           else
-            git commit -m "Auto update lessons with brand navigation"
+            git commit -m "Auto update lessons with brand nav and pronunciation image"
             git push
           fi
