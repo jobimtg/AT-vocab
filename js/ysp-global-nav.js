@@ -37,7 +37,7 @@ It also removes legacy duplicated buttons from older workflows.
     var style = document.createElement("style");
     style.id = "ysp-global-nav-style";
     style.textContent = [
-      "#ysp-global-nav{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;padding:12px 16px;background:#F7F0E6;border-bottom:1px solid rgba(27,42,74,.12);font-family:Montserrat,'Noto Sans TC',Arial,sans-serif}",
+      "#ysp-global-nav{position:sticky;top:0;z-index:9999;display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;padding:12px 16px;background:#F7F0E6;border-bottom:1px solid rgba(27,42,74,.12);font-family:Montserrat,'Noto Sans TC',Arial,sans-serif}",
       "#ysp-global-nav a{text-decoration:none;color:#1B2A4A;background:#fff;border:1px solid rgba(27,42,74,.12);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:800;box-shadow:0 2px 8px rgba(27,42,74,.06)}",
       "#ysp-global-nav a:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(27,42,74,.12)}",
       "#ysp-global-nav .trial{background:#1B2A4A;color:#fff;border-color:#1B2A4A}",
