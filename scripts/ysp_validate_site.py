@@ -82,10 +82,10 @@ LEGACY_CLASS_PATTERNS = [
     (r'class=["\'][^"\']*\bysp-top\b',          "Hard-coded .ysp-top element"),
 ]
 
-DUP_GENERATED = [
-    (r"#ysp-global-top",   "Duplicate generated Top button (id=ysp-global-top)"),
-    (r"#ysp-back-to-lessons", "Duplicate generated Back to Lessons (id=ysp-back-to-lessons)"),
-    (r"#ysp-global-nav",   "Duplicate generated nav (id=ysp-global-nav)"),
+DUP_GENERATED_IDS = [
+    "ysp-global-top",
+    "ysp-back-to-lessons",
+    "ysp-global-nav",
 ]
 
 
@@ -98,10 +98,13 @@ def check_legacy_nav(path, text):
         if re.search(pattern, text, re.I):
             warn(path, label)
 
-    for pattern, label in DUP_GENERATED:
-        hits = len(re.findall(re.escape(pattern), text))
+    # Check for duplicate generated element IDs
+    for elem_id in DUP_GENERATED_IDS:
+        # Match both id="..." and id='...'
+        pattern = r'id=["\']' + re.escape(elem_id) + r'["\']'
+        hits = len(re.findall(pattern, text, re.I))
         if hits > 1:
-            err(path, f"{label} ({hits} occurrences)")
+            err(path, f"Duplicate generated element (id={elem_id!r}, {hits} occurrences)")
 
 
 # ---------------------------------------------------------------------------
@@ -114,26 +117,45 @@ INTERNAL_NOTES = [
     "完整發音教學圖",
 ]
 
-# Matches plain-text instruction like "assets/pronunciation/..." outside a src= attribute
-ASSETS_INSTRUCTION_RE = re.compile(
-    r'(?<!src=["\'])(?<!src=)assets/pronunciation/[^\s<"\']*',
-    re.I,
-)
-
 
 def check_internal_notes(path, text):
     for note in INTERNAL_NOTES:
         if note in text:
             err(path, f"Internal production note visible in HTML: {note!r}")
 
-    # Check for bare assets/pronunciation/... text that is NOT inside a src attribute
-    for m in ASSETS_INSTRUCTION_RE.finditer(text):
-        # Confirm the match is not preceded by src=" or src='
-        start = max(0, m.start() - 10)
-        context = text[start:m.start()]
-        if "src=" not in context:
-            err(path, f"Internal instruction text visible: {m.group()!r}")
-            break
+    # Check for bare assets/pronunciation/... text that is NOT inside:
+    # - src= attribute
+    # - <code> tags (valid gallery placeholder documentation)
+    # - .ysp-image-placeholder div (valid gallery placeholder container)
+
+    # Find all occurrences of assets/pronunciation/...
+    for m in re.finditer(r'assets/pronunciation/[^\s<"\']*', text, re.I):
+        start_pos = m.start()
+
+        # Check if inside a src= attribute
+        pre_context = text[max(0, start_pos - 10):start_pos]
+        if "src=" in pre_context:
+            continue
+
+        # Check if inside <code>...</code> tags
+        code_start = text.rfind("<code", 0, start_pos)
+        code_end = text.find("</code>", start_pos)
+        if code_start != -1 and code_end != -1 and code_end > start_pos:
+            continue
+
+        # Check if inside .ysp-image-placeholder
+        placeholder_start = text.rfind('class="ysp-image-placeholder"', 0, start_pos)
+        if placeholder_start == -1:
+            placeholder_start = text.rfind("class='ysp-image-placeholder'", 0, start_pos)
+        if placeholder_start != -1:
+            # Find the closing </div> for this placeholder
+            div_start = text.rfind("<div", 0, start_pos)
+            div_end = text.find("</div>", start_pos)
+            if div_start != -1 and div_end != -1 and div_end > start_pos:
+                continue
+
+        # If we get here, it's a bare assets/pronunciation/... outside valid contexts
+        err(path, f"Internal instruction text visible: {m.group()!r}")
 
 
 # ---------------------------------------------------------------------------
