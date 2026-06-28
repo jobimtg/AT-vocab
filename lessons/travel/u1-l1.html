@@ -250,5 +250,8 @@ function renderProgress(){let h='';PRON_PROGRESS.forEach(p=>{const i=p.status===
 function initNav(){const lk=document.querySelectorAll('.nav a'),sc=[...lk].map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);lk.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'});}));window.addEventListener('scroll',()=>{let cur='';sc.forEach(s=>{if(s.getBoundingClientRect().top<120)cur='#'+s.id;});lk.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===cur));});}
 document.addEventListener('DOMContentLoaded',()=>{renderCore();renderExt();renderPhrases();renderPron();renderDlg();renderSpeak();renderCulture();renderProgress();updateStats();initNav();});
 </script>
+<!-- YSP_GLOBAL_NAV_LOADER_START -->
+<script src="../../js/ysp-global-nav.js" defer data-ysp-base="../../"></script>
+<!-- YSP_GLOBAL_NAV_LOADER_END -->
 </body>
 </html>
