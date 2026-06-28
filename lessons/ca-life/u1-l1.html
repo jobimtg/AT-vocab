@@ -149,7 +149,6 @@ h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bott
 <button class="tb" onclick="T(2)">📖 Extended (30)</button>
 <button class="tb" onclick="T(3)">🔁 Drilling</button>
 <button class="tb" onclick="T(4)">💬 Phrases (5)</button>
-<button class="tb" onclick="T(5)">🎯 發音</button>
 <button class="tb" onclick="T(6)">🎭 Dialogues (5)</button>
 <button class="tb" onclick="T(7)">🗣️ Speaking (5)</button>
 <button class="tb" onclick="T(8)">🌍 Culture (2)</button>
@@ -247,14 +246,6 @@ document.getElementById('t4').innerHTML=`<h2>💬 Useful Phrases — 圖片版</
 </div>`;
 }
 // T5 Pronunciation
-function r5(){
-document.getElementById('t5').innerHTML=`<h2>🎯 Pronunciation Spotlight — 圖片版</h2>
-<div class="ysp-image-section">
-  <div class="ysp-image-card">
-    <div class="ysp-image-head alert"><span>Pronunciation Spotlight</span><small>發音焦點圖片</small></div>
-  </div>
-</div>`;
-}
 // T6 Dialogues
 function r6(){
 const dialogueImages=[
@@ -350,7 +341,7 @@ T = function(n){
   }
 };
 
-document.addEventListener('DOMContentLoaded',()=>{r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
+document.addEventListener('DOMContentLoaded',()=>{r0();r1();r2();r3();r4();r6();r7();r8();r9();});
 </script>
 
 
