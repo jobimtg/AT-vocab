@@ -20,6 +20,7 @@ Final structure:
 ```text
 AT-vocab/
   CLAUDE.md
+  README_CLAUDE_CODE_HANDOFF.md
   docs/
     YSP_PROJECT_STATUS.md
     YSP_SITE_RULES.md
