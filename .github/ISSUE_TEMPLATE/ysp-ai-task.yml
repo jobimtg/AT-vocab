@@ -1,0 +1,93 @@
+name: YSP AI Task
+description: Safe task request for ChatGPT / Codex website maintenance
+title: "[YSP Task] "
+labels:
+  - ysp
+  - ai-task
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for small, safe YSP website tasks.
+        Keep each issue focused on one task only.
+
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: Task type
+      description: Choose the closest task category.
+      options:
+        - Docs update
+        - Workflow update
+        - Script maintenance
+        - Homepage / lessons page cleanup
+        - Lesson page technical fix
+        - Validation / testing
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be changed?
+      placeholder: "Example: Update the progress dashboard to reflect current workflow status."
+    validations:
+      required: true
+
+  - type: textarea
+    id: allowed_files
+    attributes:
+      label: Allowed files
+      description: List files that may be edited.
+      placeholder: |
+        .github/workflows/ysp-progress-dashboard.yml
+        scripts/ysp_site_maintenance.py
+    validations:
+      required: true
+
+  - type: textarea
+    id: do_not_change
+    attributes:
+      label: Do not change
+      description: These rules protect lesson content and site stability.
+      value: |
+        - Do not rewrite lesson content.
+        - Do not change vocabulary text.
+        - Do not change dialogue text.
+        - Do not change speaking questions.
+        - Do not change culture text.
+        - Do not restore old workflows.
+        - Do not create report folders.
+        - Do not add duplicate navigation or Top buttons.
+        - Do not push directly to main unless explicitly approved.
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification steps
+      description: How should the result be checked?
+      value: |
+        - Show changed files.
+        - Confirm no lesson content changed.
+        - Run or explain validation.
+        - Prefer PR-based changes.
+        - Check GitHub Pages if public pages changed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: Expected result
+      description: What should be true after this task is complete?
+      placeholder: |
+        The dashboard shows current project status.
+        No lesson content is changed.
+        The workflow runs successfully.
+    validations:
+      required: true
