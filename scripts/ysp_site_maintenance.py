@@ -104,6 +104,22 @@ def clean_text(text: str) -> str:
 def strip_between(text: str, start: str, end: str) -> str:
     return re.sub(re.escape(start) + r"[\s\S]*?" + re.escape(end) + r"\s*", "", text)
 
+def remove_managed_lesson_card_style(text: str) -> str:
+    return re.sub(
+        r"\s*<style\s+id=[\"']ysp-managed-lesson-card-style[\"'][\s\S]*?</style>\s*",
+        "\n",
+        text,
+        flags=re.I,
+    )
+
+def remove_managed_lesson_sections(text: str) -> str:
+    return re.sub(
+        r"\s*<section\b[^>]*class=[\"'][^\"']*\bysp-managed-lessons\b[^\"']*[\"'][^>]*>[\s\S]*?</section>\s*",
+        "\n",
+        text,
+        flags=re.I,
+    )
+
 def remove_legacy_generated_nav(text: str) -> str:
     for start, end in LEGACY_BLOCKS:
         text = strip_between(text, start, end)
@@ -233,6 +249,26 @@ def card_html(item, href_key: str) -> str:
   <p>{html_lib.escape(item["summary"])}</p>
 </a>"""
 
+def home_feature_card_html(item) -> str:
+    cfg = COURSES[item["key"]]
+    return f"""        <article class="lesson-card">
+          <div class="lesson-body">
+            <span class="tag">{html_lib.escape(cfg["short"])} &middot; {html_lib.escape(item["code"])}</span>
+            <h3>{html_lib.escape(item["title"])}</h3>
+            <p>{html_lib.escape(item["summary"])}</p>
+            <a href="{html_lib.escape(item["href_from_home"])}">View Preview &rarr;</a>
+          </div>
+        </article>"""
+
+def lessons_index_card_html(item) -> str:
+    cfg = COURSES[item["key"]]
+    return f"""<article class="lesson-card">
+  <span class="tag">{html_lib.escape(cfg["short"])} &middot; {html_lib.escape(item["code"])}</span>
+  <h3>{html_lib.escape(item["title"])}</h3>
+  <p>{html_lib.escape(item["summary"])}</p>
+  <a href="{html_lib.escape(item["href_from_lessons"])}">View Preview &rarr;</a>
+</article>"""
+
 def card_style() -> str:
     return """<style id="ysp-managed-lesson-card-style">
 .ysp-managed-lessons{max-width:1120px;margin:0 auto;padding:32px 20px;font-family:Inter,'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif}
@@ -282,14 +318,63 @@ def default_lessons_index() -> str:
 </body>
 </html>"""
 
-def update_lessons_index(lessons):
-    cards = "\n".join(card_html(item, "href_from_lessons") for item in lessons)
-    if not cards:
-        cards = '<article class="lesson-card"><span class="lesson-badge" style="background:#1B2A4A">Coming Soon</span><strong>New lessons are coming soon</strong><small>YSP Learn & Shine</small></article>'
+def find_matching_tag_end(text: str, open_start: int, tag: str):
+    open_end = text.find(">", open_start)
+    if open_end == -1:
+        return None
 
+    tag_re = re.compile(rf"</?{tag}\b[^>]*>", re.I)
+    depth = 1
+    for match in tag_re.finditer(text, open_end + 1):
+        markup = match.group(0)
+        if markup.startswith("</"):
+            depth -= 1
+            if depth == 0:
+                return match.start(), match.end()
+        elif not markup.rstrip().endswith("/>"):
+            depth += 1
+    return None
+
+def replace_first_grid_in_section(text: str, section_id: str, grid_class: str, inner_html: str) -> str:
+    section_re = re.compile(
+        r"<section\b(?=[^>]*\bid=[\"']" + re.escape(section_id) + r"[\"'])[^>]*>",
+        re.I,
+    )
+    section_match = section_re.search(text)
+    if not section_match:
+        return text
+
+    section_end = find_matching_tag_end(text, section_match.start(), "section")
+    if not section_end:
+        return text
+
+    grid_re = re.compile(
+        r"<div\b(?=[^>]*\bclass=[\"'][^\"']*\b" + re.escape(grid_class) + r"\b[^\"']*[\"'])[^>]*>",
+        re.I,
+    )
+    grid_match = grid_re.search(text, section_match.end(), section_end[0])
+    if not grid_match:
+        return text
+
+    grid_end = find_matching_tag_end(text, grid_match.start(), "div")
+    if not grid_end or grid_end[0] > section_end[0]:
+        return text
+
+    return text[:grid_match.end()] + "\n" + inner_html + "\n" + text[grid_end[0]:]
+
+def update_lessons_index(lessons):
     text = read(LESSONS_INDEX) if LESSONS_INDEX.exists() else default_lessons_index()
-    text = ensure_card_style(text)
-    text = replace_or_append_cards(text, LESSON_CARDS_START, LESSON_CARDS_END, cards, "Lessons")
+    text = remove_managed_lesson_card_style(text)
+    text = remove_managed_lesson_sections(text)
+
+    for course_key, cfg in COURSES.items():
+        course_lessons = [item for item in lessons if item["key"] == course_key]
+        if course_lessons:
+            cards = "\n".join(lessons_index_card_html(item) for item in course_lessons)
+        else:
+            cards = '<article class="lesson-card"><span class="tag">Coming Soon</span><h3>New lessons are coming soon</h3><p>Preview lessons will be added here.</p></article>'
+        text = replace_first_grid_in_section(text, cfg["anchor"], "lesson-grid", cards)
+
     write(LESSONS_INDEX, text)
 
 def update_home_index(lessons):
@@ -297,13 +382,15 @@ def update_home_index(lessons):
         return
 
     featured = lessons[:12]
-    cards = "\n".join(card_html(item, "href_from_home") for item in featured)
-    if not cards:
+    if not featured:
         return
 
     text = read(HOME_INDEX)
-    text = ensure_card_style(text)
-    text = replace_or_append_cards(text, HOME_CARDS_START, HOME_CARDS_END, cards, "Featured Lessons")
+    text = remove_managed_lesson_card_style(text)
+    text = remove_managed_lesson_sections(text)
+
+    featured_cards = "\n".join(home_feature_card_html(item) for item in featured[:3])
+    text = replace_first_grid_in_section(text, "featured-lessons", "grid-3", featured_cards)
     write(HOME_INDEX, text)
 
 def main():
