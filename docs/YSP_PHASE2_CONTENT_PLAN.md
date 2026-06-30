@@ -33,6 +33,10 @@ docs/YSP_PROJECT_STATUS.md
 docs/YSP_WORKFLOW_PLAN.md
 docs/YSP_CLAUDE_CODE_TASKS.md
 README_CLAUDE_CODE_HANDOFF.md
+docs/YSP_GOLDEN_LESSON_TEMPLATE.md
+docs/YSP_ESL_SKILL_SOURCE_MAP.md
+docs/YSP_LESSON_DATA_ARCHITECTURE.md
+docs/YSP_LESSON_REGISTRY.md
 ```
 
 For Phase 2 lesson production, the most important rules are:
@@ -46,13 +50,16 @@ Use course-level assets folders only.
 Use relative paths only.
 Keep YSP Site Maintenance idempotent.
 Run validation after technical changes.
+Use lesson-data source files as the long-term source of truth.
+Treat generated HTML as public website output, not the primary authoring source.
 ```
 
 ## Existing Lesson Inventory
 
 | Course | File | Current Status | Phase 2 Action |
 |---|---|---:|---|
-| Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview lesson | Use as current clean lesson reference after audit |
+| Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview lesson | Keep as public preview; do not use as final Golden source without audit |
+| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Build L02 JSON proof of concept from uploaded Golden L02 source |
 | Travel English | `lessons/travel/u1-l1.html` | Active preview lesson | Compare against future Travel template standard |
 | Business English | `lessons/business/u1-l1.html` | Partial / iframe-base64 structure | Refactor later into clean lesson template |
 
@@ -60,13 +67,15 @@ Run validation after technical changes.
 
 Do not start by generating many new lessons.
 
-Start by locking the lesson standard.
+Start by locking the lesson standard, registry, and source-data architecture.
 
 Phase 2 should proceed in this order:
 
 ```text
 Step 2.1 — Golden Lesson Template Audit
-Step 2.2 — Lesson Registry
+Step 2.2A — Lesson Data Architecture
+Step 2.2B — Lesson Registry
+Step 2.2C — L02 JSON Proof of Concept
 Step 2.3 — Course Production Rules
 Step 2.4 — Business L01 Refactor Plan
 Step 2.5 — First New Lesson Draft
@@ -82,63 +91,67 @@ Purpose:
 Identify the exact HTML structure that future lessons must follow.
 ```
 
-Audit targets:
-
-```text
-lessons/ca-life/u1-l1.html
-lessons/travel/u1-l1.html
-lessons/business/u1-l1.html
-```
-
-Audit checklist:
-
-```text
-Tab order
-Header structure
-Vocabulary card layout
-Core / Extended structure
-Drilling section
-Useful Phrases section
-Pronunciation Spotlight section
-Dialogue Practice section
-Speaking Questions section
-Culture section
-Review / wrap-up section
-Image gallery placement
-Relative path usage
-Global nav loader
-No duplicate Top button
-No internal production notes
-Validation result
-```
-
-Expected output:
+Primary output:
 
 ```text
 docs/YSP_GOLDEN_LESSON_TEMPLATE.md
 ```
 
-## Step 2.2 — Lesson Registry
+Status:
+
+```text
+Complete baseline.
+```
+
+## Step 2.2A — Lesson Data Architecture
 
 Purpose:
 
 ```text
-Track approved lesson files, course paths, image prefixes, and publish status.
+Decide that future lesson content should not be hand-authored directly as HTML.
 ```
 
-Recommended file:
+Primary output:
+
+```text
+docs/YSP_LESSON_DATA_ARCHITECTURE.md
+```
+
+Status:
+
+```text
+Complete.
+```
+
+## Step 2.2B — Lesson Registry
+
+Purpose:
+
+```text
+Track approved lesson files, course paths, source data paths, image prefixes, and publish status.
+```
+
+Primary output:
 
 ```text
 docs/YSP_LESSON_REGISTRY.md
+```
+
+Status:
+
+```text
+Complete baseline.
 ```
 
 Registry fields:
 
 ```text
 course
+course id
 unit
 lesson
 html path
+source data path
 public title
 CEFR
 image prefix
@@ -146,13 +159,29 @@ status
 notes
 ```
 
-Initial rows:
+## Step 2.2C — L02 JSON Proof of Concept
 
-| Course | Unit | Lesson | HTML Path | Image Prefix | Status |
-|---|---:|---:|---|---|---:|
-| Canada Life & Career | 1 | 1 | `lessons/ca-life/u1-l1.html` | `l01` | published |
-| Travel English | 1 | 1 | `lessons/travel/u1-l1.html` | `l01` | published |
-| Business English | 1 | 1 | `lessons/business/u1-l1.html` | `l01` | needs refactor |
+Purpose:
+
+```text
+Convert the uploaded Golden L02 lesson into source data format.
+```
+
+Recommended output:
+
+```text
+lesson-data/ca-life/u1-l2.json
+```
+
+This proves the future workflow:
+
+```text
+lesson-data JSON
+→ fixed L02 renderer / template
+→ generated HTML output
+```
+
+Do not generate new lessons until this proof of concept is stable.
 
 ## Step 2.3 — Course Production Rules
 
@@ -212,7 +241,7 @@ Only start after Steps 2.1–2.3 are done.
 Recommended first new lesson candidate:
 
 ```text
-Travel English U1-L2 or Canada Life & Career U1-L2
+Travel English U1-L2 or Canada Life & Career U1-L3
 ```
 
 Do not begin Business expansion until Business L01 has a clean template path.
@@ -271,8 +300,10 @@ YSP Progress Dashboard
 
 | Step | Task | Status |
 |---:|---|---:|
-| 2.1 | Golden Lesson Template Audit | In progress |
-| 2.2 | Lesson Registry | Not started |
+| 2.1 | Golden Lesson Template Audit | Complete baseline |
+| 2.2A | Lesson Data Architecture | Complete |
+| 2.2B | Lesson Registry | Complete baseline |
+| 2.2C | L02 JSON Proof of Concept | Not started |
 | 2.3 | Course Production Rules | Not started |
 | 2.4 | Business L01 Refactor Plan | Not started |
 | 2.5 | First New Lesson Draft | Not started |
@@ -284,7 +315,7 @@ YSP Progress Dashboard
 Create:
 
 ```text
-docs/YSP_GOLDEN_LESSON_TEMPLATE.md
+lesson-data/ca-life/u1-l2.json
 ```
 
-This should document the exact reusable lesson structure before any new lesson is generated.
+Use the uploaded Golden L02 source as the proof-of-concept lesson-data file before generating new lesson HTML.
