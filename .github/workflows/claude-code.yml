@@ -61,6 +61,8 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           trigger_phrase: "@claude"
+          track_progress: true
+          show_full_output: true
           claude_args: |
             --max-turns 8
             --append-system-prompt "Read CLAUDE.md and docs/YSP_*.md before making changes. Follow YSP rules strictly. Do not rewrite lesson content unless explicitly requested. Prefer PR-based, reviewable changes."
