@@ -88,9 +88,10 @@ GitHub Pages deployment may also appear as the system deployment workflow.
 
 | Course | Page | Current Status | Phase 2 Note |
 |---|---|---:|---|
-| Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active | Current reference candidate after audit. |
-| Travel English | `lessons/travel/u1-l1.html` | Active | Compare with future Travel template standard. |
-| Business English | `lessons/business/u1-l1.html` | Partial | Uses iframe/base64 structure and should be refactored later. |
+| Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview | Registered as `active-preview`; not final Golden source. |
+| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Uploaded L02 is Golden source; next step is JSON proof of concept. |
+| Travel English | `lessons/travel/u1-l1.html` | Active preview | Registered as `active-preview`; older structure should not drive future lessons. |
+| Business English | `lessons/business/u1-l1.html` | Partial / needs refactor | Uses iframe/base64 structure and should be refactored later. |
 
 ## Phase 2 Status
 
@@ -100,20 +101,26 @@ Phase 2 — Content production and lesson expansion: Started
 
 Phase 2 should not begin with mass lesson generation.
 
-First, lock the reusable lesson standard and content-production rules.
+First, lock the reusable lesson standard, source-data architecture, registry, and content-production rules.
 
-Primary Phase 2 planning document:
+Primary Phase 2 planning documents:
 
 ```text
 docs/YSP_PHASE2_CONTENT_PLAN.md
+docs/YSP_GOLDEN_LESSON_TEMPLATE.md
+docs/YSP_ESL_SKILL_SOURCE_MAP.md
+docs/YSP_LESSON_DATA_ARCHITECTURE.md
+docs/YSP_LESSON_REGISTRY.md
 ```
 
 ## Phase 2 Recommended Order
 
 | Step | Task | Status |
 |---:|---|---:|
-| 2.1 | Golden Lesson Template Audit | In progress |
-| 2.2 | Lesson Registry | Not started |
+| 2.1 | Golden Lesson Template Audit | Complete baseline |
+| 2.2A | Lesson Data Architecture | Complete |
+| 2.2B | Lesson Registry | Complete baseline |
+| 2.2C | L02 JSON Proof of Concept | Not started |
 | 2.3 | Course Production Rules | Not started |
 | 2.4 | Business L01 Refactor Plan | Not started |
 | 2.5 | First New Lesson Draft | Not started |
@@ -137,12 +144,30 @@ student-facing lesson content
 
 unless the task explicitly allows content editing.
 
-## Next Action
+## Current Lesson Production Decision
 
-Create the Golden Lesson Template audit document:
+Future lesson content should not be authored directly as HTML.
+
+Current target architecture:
 
 ```text
-docs/YSP_GOLDEN_LESSON_TEMPLATE.md
+lesson-data JSON / Markdown source
+        ↓
+fixed L02 renderer / template
+        ↓
+generated lesson HTML
+        ↓
+GitHub Pages
 ```
 
-This document should define the exact reusable lesson structure before new lessons are created.
+HTML is the public output, not the main editing source.
+
+## Next Action
+
+Create the L02 JSON proof of concept:
+
+```text
+lesson-data/ca-life/u1-l2.json
+```
+
+Use the uploaded Golden L02 source as the first source-data conversion before generating new lessons.
