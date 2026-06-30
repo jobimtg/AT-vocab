@@ -7,8 +7,9 @@ on:
       - "index.html"
       - "lessons/index.html"
       - "lessons/**/*.html"
-      - "practice-packs/**"
-      - "products/practice-packs/**"
+      - "js/ysp-global-nav.js"
+      - "scripts/**/*.py"
+      - "docs/**/*.md"
       - ".github/workflows/*.yml"
 
 permissions:
@@ -24,7 +25,7 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Show progress dashboard
+      - name: Show YSP progress dashboard
         shell: bash
         run: |
           python3 - <<'PY'
@@ -48,159 +49,191 @@ jobs:
           def contains(path, text):
               return text in read_text(path)
 
-          def any_file_under(*folders):
-              for folder in folders:
-                  p = root / folder
-                  if p.exists():
-                      for item in p.rglob("*"):
-                          if item.is_file():
-                              return True
-              return False
-
-          def lesson_preview_exists():
-              lessons = root / "lessons"
-              if not lessons.exists():
-                  return False
-              for item in lessons.rglob("*.html"):
-                  if item.name.lower() == "index.html":
-                      continue
-                  text = item.read_text(encoding="utf-8", errors="ignore")
-                  if "YSP_PREVIEW_LESSON" in text or "Free Preview" in text:
-                      return True
-              return False
+          def contains_any(path, items):
+              text = read_text(path)
+              return any(item in text for item in items)
 
           def mark(done):
               return "✅ Done" if done else "⏳ Pending"
 
+          def warn(done):
+              return "✅ OK" if done else "⚠️ Needs attention"
+
           def percent(values):
+              values = list(values)
               if not values:
                   return 0
               return round(sum(1 for value in values if value) * 100 / len(values))
 
-          old_workflows = [
-              ".github/workflows/auto-update-lessons-after-upload.yml",
-              ".github/workflows/refresh-lesson-navigation.yml",
-              ".github/workflows/check-course-links-v3-report-only.yml",
-              ".github/workflows/check-course-links-v2.yml",
-              ".github/workflows/check-site-links.yml",
-              ".github/workflows/add-lesson-navigation.yml",
-              ".github/workflows/add-lesson-navigation-v2.yml",
-              ".github/workflows/update-ysp-progress-tracker.yml",
-          ]
+          def lesson_pages():
+              lessons = root / "lessons"
+              if not lessons.exists():
+                  return []
+              return [p for p in lessons.rglob("*.html") if p.name.lower() != "index.html"]
+
+          def lesson_loader_count():
+              count = 0
+              for page in lesson_pages():
+                  text = page.read_text(encoding="utf-8", errors="ignore")
+                  if "YSP_GLOBAL_NAV_LOADER_START" in text and "js/ysp-global-nav.js" in text:
+                      count += 1
+              return count
+
+          def old_workflows_removed():
+              old_workflows = [
+                  ".github/workflows/auto-update-lessons-after-upload.yml",
+                  ".github/workflows/refresh-lesson-navigation.yml",
+                  ".github/workflows/check-course-links-v3-report-only.yml",
+                  ".github/workflows/check-course-links-v2.yml",
+                  ".github/workflows/check-site-links.yml",
+                  ".github/workflows/add-lesson-navigation.yml",
+                  ".github/workflows/add-lesson-navigation-v2.yml",
+                  ".github/workflows/auto-update-lessons-clean-header.yml",
+                  ".github/workflows/clean-homepage-layout.yml",
+                  ".github/workflows/clean-lessons-layout.yml",
+                  ".github/workflows/fix-top-button-overlap.yml",
+                  ".github/workflows/fix-practice-pack-placement.yml",
+                  ".github/workflows/fix-revenue-sections-placement-combined.yml",
+                  ".github/workflows/step1-revenue-positioning.yml",
+                  ".github/workflows/update-ysp-progress-tracker.yml",
+              ]
+              return not any(exists_file(item) for item in old_workflows)
+
+          lesson_count = len(lesson_pages())
+          loader_count = lesson_loader_count()
 
           homepage_exists = exists_file("index.html")
-          lessons_exists = exists_file("lessons/index.html")
-          step1_workflow_exists = exists_file(".github/workflows/step1-revenue-positioning.yml")
-          clean_lesson_workflow_exists = exists_file(".github/workflows/auto-update-lessons-clean-header.yml")
-          old_workflows_removed = not any(exists_file(item) for item in old_workflows)
+          lessons_index_exists = exists_file("lessons/index.html")
+          global_nav_exists = exists_file("js/ysp-global-nav.js")
+          maintenance_workflow_exists = exists_file(".github/workflows/ysp-site-maintenance.yml")
+          dashboard_workflow_exists = exists_file(".github/workflows/ysp-progress-dashboard.yml")
+          maintenance_script_exists = exists_file("scripts/ysp_site_maintenance.py")
+          validation_script_exists = exists_file("scripts/ysp_validate_site.py")
+          site_rules_exist = exists_file("docs/YSP_SITE_RULES.md")
+          project_status_exists = exists_file("docs/YSP_PROJECT_STATUS.md")
+          workflow_plan_exists = exists_file("docs/YSP_WORKFLOW_PLAN.md")
+          task_list_exists = exists_file("docs/YSP_CLAUDE_CODE_TASKS.md")
+          handoff_exists = exists_file("README_CLAUDE_CODE_HANDOFF.md")
+
+          duplicate_tokens = [
+              "ysp-managed-lessons",
+              "ysp-managed-lesson-card-style",
+              "YSP_HOME_FEATURED_LESSONS_START",
+              "YSP_HOME_FEATURED_LESSONS_END",
+              "YSP_LESSON_CARDS_START",
+              "YSP_LESSON_CARDS_END",
+          ]
+          homepage_duplicates_clean = homepage_exists and not contains_any("index.html", duplicate_tokens)
+          lessons_duplicates_clean = lessons_index_exists and not contains_any("lessons/index.html", duplicate_tokens)
+
+          site_maintenance_text = read_text(".github/workflows/ysp-site-maintenance.yml")
+          validation_wired = "ysp_validate_site.py" in site_maintenance_text
+          maintenance_calls_script = "scripts/ysp_site_maintenance.py" in site_maintenance_text
+
+          workflow_plan_text = read_text("docs/YSP_WORKFLOW_PLAN.md")
+          handoff_text = read_text("README_CLAUDE_CODE_HANDOFF.md")
+          codex_path_documented = "C:\\Users\\rose_\\Desktop\\Claude Skills\\GitHub\\AT-vocab" in workflow_plan_text or "C:\\Users\\rose_\\Desktop\\Claude Skills\\GitHub\\AT-vocab" in handoff_text
+          chatgpt_codex_documented = "ChatGPT" in workflow_plan_text and "Local Codex" in workflow_plan_text
+          claude_paused_documented = "Claude GitHub Action" in workflow_plan_text and "Paused" in workflow_plan_text
+
+          issue_template_exists = exists_file(".github/ISSUE_TEMPLATE/ysp-ai-task.yml")
           no_workflow_reports = not exists_dir(".github/workflow-reports")
 
-          home_section = (
-              contains("index.html", "YSP_STEP1_REVENUE_HOME_START")
-              or contains("index.html", "practice-packs")
-              or contains("index.html", "Practice Packs")
-          )
-
-          lessons_section = (
-              contains("lessons/index.html", "YSP_STEP1_REVENUE_LESSONS_START")
-              or contains("lessons/index.html", "how-lessons-work")
-              or contains("lessons/index.html", "Practice Pack")
-          )
-
-          step1_sections_done = home_section and lessons_section
-          preview_exists = lesson_preview_exists()
-          pack_exists = any_file_under("practice-packs", "products/practice-packs")
-
-          homepage_text = read_text("index.html").lower()
-          payment_link = (
-              "payhip.com" in homepage_text
-              or "ko-fi.com" in homepage_text
-              or "gumroad.com" in homepage_text
-          )
-
-          revenue_items = [
-              ("Reframe website positioning", True, "Website becomes preview + practice pack gateway."),
-              ("Keep GitHub Pages as brand entrance", homepage_exists, "index.html exists."),
-              ("Avoid Substack as main system", True, "No weekly email/content burden."),
-              ("Avoid AdSense as first income source", True, "No need to publish all content free."),
-              ("Choose practice pack model", home_section, "Homepage contains practice pack positioning."),
+          architecture_items = [
+              ("Homepage exists", homepage_exists, "index.html"),
+              ("Lessons index exists", lessons_index_exists, "lessons/index.html"),
+              ("Lesson pages exist", lesson_count > 0, f"{lesson_count} lesson page(s) found"),
+              ("Global nav script exists", global_nav_exists, "js/ysp-global-nav.js"),
+              ("Maintenance workflow exists", maintenance_workflow_exists, ".github/workflows/ysp-site-maintenance.yml"),
+              ("Progress dashboard workflow exists", dashboard_workflow_exists, ".github/workflows/ysp-progress-dashboard.yml"),
+              ("Maintenance script exists", maintenance_script_exists, "scripts/ysp_site_maintenance.py"),
+              ("Validation script exists", validation_script_exists, "scripts/ysp_validate_site.py"),
           ]
 
-          timeline_items = [
-              ("Upload Step 1 workflow", step1_workflow_exists, "Add step1-revenue-positioning.yml."),
-              ("Run Step 1 workflow", step1_sections_done, "Homepage and Lessons positioning sections exist."),
-              ("Check homepage", home_section, "Homepage has Preview + Practice Pack section."),
-              ("Check Lessons page", lessons_section, "Lessons explains Preview / Practice Pack / Guided Lesson."),
-              ("Select first preview lesson", False, "Manual choice: recommended L01 Welcome to Canada."),
-              ("Convert first lesson to preview", preview_exists, "A lesson contains YSP_PREVIEW_LESSON or Free Preview."),
-              ("Create first practice pack", pack_exists, "practice-packs/ or products/practice-packs/ contains a file."),
+          cleanup_items = [
+              ("Homepage duplicate managed section removed", homepage_duplicates_clean, "No post-footer ysp-managed-lessons block in index.html"),
+              ("Lessons page duplicate managed section removed", lessons_duplicates_clean, "No post-footer ysp-managed-lessons block in lessons/index.html"),
+              ("Old patch workflows removed", old_workflows_removed(), "Do not restore old one-off patch workflows"),
+              ("No workflow report folder", no_workflow_reports, "No .github/workflow-reports directory"),
+              ("Lesson pages have global nav loader", lesson_count > 0 and loader_count == lesson_count, f"{loader_count}/{lesson_count} lesson pages with loader"),
           ]
 
-          checklist_items = [
-              ("Keep lesson content unchanged at first", True, "Step 1 only changes positioning."),
-              ("Add Practice Pack CTA", home_section or lessons_section, "Practice pack CTA exists."),
-              ("Keep one clean automation workflow", clean_lesson_workflow_exists and old_workflows_removed, "Old workflow files removed."),
-              ("Remove duplicate reports", no_workflow_reports, "No .github/workflow-reports folder."),
-              ("Test with current 3 students", False, "Manual confirmation after first pack."),
-              ("Decide payment platform later", payment_link, "Payhip / Ko-fi / Gumroad link appears."),
+          ai_items = [
+              ("ChatGPT + Local Codex documented", chatgpt_codex_documented, "docs/YSP_WORKFLOW_PLAN.md"),
+              ("Local Codex path documented", codex_path_documented, "C:\\Users\\rose_\\Desktop\\Claude Skills\\GitHub\\AT-vocab"),
+              ("Claude GitHub Action paused in docs", claude_paused_documented, "Do not rely on Anthropic API credit"),
+              ("Handoff README exists", handoff_exists, "README_CLAUDE_CODE_HANDOFF.md"),
           ]
 
-          next_action = None
-          for name, done, target in timeline_items + checklist_items:
-              if not done:
-                  next_action = (name, target)
-                  break
-          if next_action is None:
-              next_action = ("Ready for next phase", "Step 1 is complete.")
+          next_items = [
+              ("Connect validation script to maintenance workflow", validation_wired, "Add scripts/ysp_validate_site.py after confirming current validation status"),
+              ("Add YSP AI task issue template", issue_template_exists, ".github/ISSUE_TEMPLATE/ysp-ai-task.yml"),
+              ("Keep maintenance workflow centralized", maintenance_calls_script, "Workflow should call scripts/ysp_site_maintenance.py"),
+              ("Keep current docs available", site_rules_exist and project_status_exists and workflow_plan_exists and task_list_exists and handoff_exists, "CLAUDE/YSP docs are the source of truth"),
+          ]
 
-          def table(title, rows, second_label):
+          content_hold_items = [
+              ("Do not add many new lessons yet", True, "Wait until validation/idempotency are stable"),
+              ("Business lesson refactor", False, "Later task after workflow safety"),
+              ("Travel lesson image-gallery standardization", False, "Later task after workflow safety"),
+              ("Practice Pack product path", False, "Later task after engineering stabilization"),
+          ]
+
+          all_current = [item[1] for item in architecture_items + cleanup_items + ai_items]
+          all_next = [item[1] for item in next_items]
+
+          def table(title, rows, status_func=mark):
               output = []
               output.append(f"## {title}")
               output.append("")
-              output.append(f"| Status | {second_label} | Target / Check |")
+              output.append("| Status | Item | Check |")
               output.append("|---|---|---|")
-              for name, done, target in rows:
-                  output.append(f"| {mark(done)} | {name} | {target} |")
+              for name, done, check in rows:
+                  output.append(f"| {status_func(done)} | {name} | {check} |")
               output.append("")
               return output
 
-          all_values = [item[1] for item in revenue_items + timeline_items + checklist_items]
+          next_action = "Connect validation script to maintenance workflow"
+          if not issue_template_exists and validation_wired:
+              next_action = "Add YSP AI task issue template"
+          elif all(item[1] for item in next_items):
+              next_action = "Ready for next content-production planning phase"
 
           lines = []
           lines.append("# YSP Learn & Shine — Progress Dashboard")
           lines.append("")
-          lines.append("This dashboard is display-only. It does not create reports, does not edit files, and does not push commits.")
+          lines.append("This dashboard is display-only. It does not create reports, edit files, commit, or push.")
           lines.append("")
-          lines.append("## Current Dashboard")
+          lines.append("## Current Summary")
           lines.append("")
           lines.append("| Area | Progress |")
           lines.append("|---|---:|")
-          lines.append(f"| Revenue Strategy | {percent([item[1] for item in revenue_items])}% |")
-          lines.append(f"| Step 1 Website Positioning | {percent([item[1] for item in timeline_items])}% |")
-          lines.append(f"| Next-Step Readiness | {percent([item[1] for item in checklist_items])}% |")
-          lines.append(f"| Overall | {percent(all_values)}% |")
+          lines.append(f"| Current Website / Automation Architecture | {percent(all_current)}% |")
+          lines.append(f"| Next Engineering Readiness | {percent(all_next)}% |")
+          lines.append(f"| Lesson Pages With Global Loader | {loader_count}/{lesson_count} |")
           lines.append("")
           lines.append("## Next Action Before Moving Forward")
           lines.append("")
-          lines.append("| Priority | Next Step | Why / Target |")
+          lines.append("| Priority | Next Step | Why |")
           lines.append("|---:|---|---|")
-          lines.append(f"| 1 | {next_action[0]} | {next_action[1]} |")
+          lines.append(f"| 1 | {next_action} | Keep automation safe before creating more lesson content. |")
           lines.append("")
-          lines.extend(table("Revenue Strategy Tracker", revenue_items, "Item"))
-          lines.extend(table("Step 1 Timeline Tracker", timeline_items, "Step"))
-          lines.extend(table("Step 1 Checklist Tracker", checklist_items, "Task"))
+          lines.extend(table("Current Architecture", architecture_items))
+          lines.extend(table("Cleanup / Safety Checks", cleanup_items, warn))
+          lines.extend(table("AI Workflow Status", ai_items))
+          lines.extend(table("Next Engineering Tasks", next_items))
+          lines.extend(table("Content Tasks On Hold", content_hold_items))
           lines.append("## Notes")
           lines.append("")
-          lines.append("- This workflow replaces the failing `update-ysp-progress-tracker.yml` approach.")
-          lines.append("- It shows the dashboard in the GitHub Actions Summary only.")
-          lines.append("- It does not create `docs/YSP_PROGRESS_TRACKER.md` and does not create `.github/workflow-reports/`.")
-          lines.append("- This is the lowest-maintenance version.")
+          lines.append("- Claude GitHub Action is paused by project decision because the user does not want to add Anthropic API credit.")
+          lines.append("- Primary workflow is now ChatGPT GitHub connector plus local Codex.")
+          lines.append("- Duplicate post-footer managed sections were fixed in Step 3.")
+          lines.append("- Do not restore old one-off patch workflows.")
+          lines.append("- Do not start large lesson production until validation and idempotency checks are stable.")
 
           result = "\n".join(lines) + "\n"
-
           summary_file = os.environ.get("GITHUB_STEP_SUMMARY")
           if summary_file:
               Path(summary_file).write_text(result, encoding="utf-8")
-
           print(result)
           PY
