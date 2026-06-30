@@ -1,19 +1,41 @@
 # YSP Workflow Plan
 
-_Last checked: 2026-06-29_
+_Last checked: 2026-06-30_
 
 ## Current Workflow Strategy
 
-The project should keep a small workflow system. Do not restore the older patch-workflow setup.
+The project should keep a small, low-cost workflow system. Do not restore the older patch-workflow setup.
 
-Current custom workflows:
+Current active custom workflows:
 
 ```text
 .github/workflows/ysp-site-maintenance.yml
 .github/workflows/ysp-progress-dashboard.yml
 ```
 
-GitHub Pages deployment may also appear as a system deployment workflow.
+GitHub Pages deployment may also appear as the system deployment workflow.
+
+## Current AI Development Strategy
+
+Anthropic Claude GitHub Action was tested successfully at the GitHub setup level, but the run failed because the Anthropic API account had insufficient API credit.
+
+The project is not using Anthropic API credit now.
+
+Current AI workflow:
+
+```text
+Primary: ChatGPT GitHub connector for repo inspection, branches, PRs, and safe edits
+Secondary: Local Codex on the user's computer for larger repo edits and local validation
+Paused: Claude GitHub Action / @claude issue automation
+```
+
+Local Codex repo path:
+
+```text
+C:\Users\rose_\Desktop\Claude Skills\GitHub\AT-vocab
+```
+
+Do not use `@claude` Issue automation unless Anthropic API billing is intentionally re-enabled later.
 
 ## Workflow 1 — YSP Site Maintenance
 
@@ -110,41 +132,113 @@ update-ysp-progress-tracker.yml
 
 ## Workflow 3 — Claude Code GitHub Action
 
-Path to add later:
+Path:
 
 ```text
 .github/workflows/claude-code.yml
 ```
 
-Purpose:
-
-```text
-Allow GitHub Issues / PRs to trigger Claude Code with @claude.
-Claude should read CLAUDE.md and docs/YSP_*.md first.
-Claude should create PRs, not push directly to main.
-```
-
 Current status:
 
 ```text
-Not done
+Paused / not recommended for current project budget
 ```
 
-Before adding this workflow, confirm the repo has the required Anthropic secret in GitHub Actions secrets:
+Reason:
 
 ```text
-ANTHROPIC_API_KEY
+GitHub App installation worked.
+ANTHROPIC_API_KEY was detected.
+OIDC permission was fixed.
+But Claude Code returned: Credit balance is too low.
+The user does not want to add Anthropic API credit.
 ```
 
-Do not put the API key in the repo.
-
-## Recommended AI Development Flow
+Decision:
 
 ```text
-GitHub Issue → @claude → Claude creates branch/PR → Actions validate → user reviews → merge
+Do not continue relying on Claude GitHub Action.
+Use ChatGPT GitHub connector and local Codex instead.
 ```
 
-Use ChatGPT / Codex for review and planning. Use Claude Code GitHub Action for repo-editing tasks once configured.
+Note:
+
+```text
+The workflow file may still exist in the repository, but @claude issue automation should not be used unless API billing is re-enabled later.
+```
+
+## Recommended ChatGPT + Local Codex Flow
+
+### ChatGPT GitHub Flow
+
+Use this when the user wants a safe remote PR:
+
+```text
+User gives task in ChatGPT
+ChatGPT inspects repo
+ChatGPT creates branch
+ChatGPT edits limited files
+ChatGPT opens PR
+User reviews
+User or ChatGPT merges
+```
+
+Best for:
+
+```text
+Docs updates
+Small workflow fixes
+Small HTML/script changes
+Repo review
+PR planning
+```
+
+### Local Codex Flow
+
+Use this when the user wants to work from their computer:
+
+```powershell
+cd "C:\Users\rose_\Desktop\Claude Skills\GitHub\AT-vocab"
+git pull origin main
+git checkout -b codex/<task-name>
+codex
+```
+
+Codex should always read first:
+
+```text
+CLAUDE.md
+docs/YSP_PROJECT_STATUS.md
+docs/YSP_WORKFLOW_PLAN.md
+docs/YSP_CLAUDE_CODE_TASKS.md
+docs/YSP_SITE_RULES.md
+README_CLAUDE_CODE_HANDOFF.md
+```
+
+Codex must not change:
+
+```text
+lesson content
+vocabulary text
+dialogue text
+speaking questions
+culture text
+brand wording unless requested
+unrelated workflows
+```
+
+After Codex edits locally:
+
+```powershell
+git status
+git diff
+python scripts/ysp_validate_site.py
+git add <changed-files>
+git commit -m "<clear message>"
+git push -u origin codex/<task-name>
+```
+
+Then open a PR on GitHub.
 
 ## Old Workflows Not To Restore
 
@@ -163,23 +257,22 @@ clean-homepage-layout.yml
 clean-lessons-layout.yml
 fix-top-button-overlap.yml
 fix-practice-pack-placement.yml
-fix-revenue-sections-placement.yml
-fix-step1-sections-placement-combined.yml
+fix-revenue-sections-placement-combined.yml
 step1-revenue-positioning.yml
 update-ysp-progress-tracker.yml
 ```
 
 ## Next Workflow Tasks
 
-| Order | Task | Files | Status |
-|---:|---|---|---:|
-| 1 | Update project tracking docs | `docs/*.md`, `README_CLAUDE_CODE_HANDOFF.md` | In progress |
-| 2 | Add Claude Code workflow | `.github/workflows/claude-code.yml` | Not done |
-| 3 | Add YSP task issue template | `.github/ISSUE_TEMPLATE/ysp-ai-task.yml` | Not done |
-| 4 | Add validation to maintenance workflow | `.github/workflows/ysp-site-maintenance.yml` | Not done |
-| 5 | Update progress dashboard checks | `.github/workflows/ysp-progress-dashboard.yml` | Not done |
-| 6 | Clean duplicate managed card placement | `scripts/ysp_site_maintenance.py`, `index.html`, `lessons/index.html` | Not done |
-| 7 | Run idempotency test | Workflow + local script behavior | Not done |
+| Order | Task | Files | Preferred tool | Status |
+|---:|---|---|---|---:|
+| 1 | Update project tracking docs | `docs/*.md`, `README_CLAUDE_CODE_HANDOFF.md` | ChatGPT | Done |
+| 2 | Pause Claude GitHub Action usage | GitHub Actions settings / `.github/workflows/claude-code.yml` | GitHub UI or Codex | In progress |
+| 3 | Add YSP task issue template for ChatGPT/Codex tasks | `.github/ISSUE_TEMPLATE/ysp-ai-task.yml` | ChatGPT | Not done |
+| 4 | Add validation to maintenance workflow | `.github/workflows/ysp-site-maintenance.yml` | ChatGPT / Codex | Not done |
+| 5 | Update progress dashboard checks | `.github/workflows/ysp-progress-dashboard.yml` | ChatGPT / Codex | Not done |
+| 6 | Clean duplicate managed card placement | `scripts/ysp_site_maintenance.py`, `index.html`, `lessons/index.html` | Codex local preferred | Not done |
+| 7 | Run idempotency test | Workflow + local script behavior | Codex local preferred | Not done |
 
 ## Do Not Do Yet
 

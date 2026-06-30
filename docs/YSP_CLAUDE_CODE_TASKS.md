@@ -1,12 +1,36 @@
-# YSP Claude Code Tasks
+# YSP AI / Codex Task List
 
-_Last checked: 2026-06-29_
+_Last checked: 2026-06-30_
+
+## Current AI Tool Decision
+
+Claude GitHub Action was tested, but it is paused because the Anthropic API account returned:
+
+```text
+Credit balance is too low
+```
+
+The project will not add Anthropic API credit now.
+
+Current tool strategy:
+
+```text
+ChatGPT GitHub connector = remote repo inspection, safe branches, PRs, small edits
+Local Codex = larger local edits, script refactors, validation, and controlled commits
+Claude GitHub Action = paused
+```
+
+Local Codex repo path:
+
+```text
+C:\Users\rose_\Desktop\Claude Skills\GitHub\AT-vocab
+```
 
 ## Important Working Rule
 
 Do one task at a time.
 
-Before editing, Claude Code should show:
+Before editing, ChatGPT or Codex should show:
 
 ```text
 Files to modify
@@ -15,22 +39,117 @@ What will not be changed
 How to verify the result
 ```
 
-Claude Code must not rewrite lesson content unless the user explicitly asks.
+No AI tool should rewrite lesson content unless the user explicitly asks.
 
 ## Current Task Status
 
-| Task | Status | Notes |
-|---|---:|---|
-| Task 1 — Refactor Site Maintenance | Done | Workflow now calls `scripts/ysp_site_maintenance.py`. |
-| Task 2 — Verify or Create Global Nav JS | Done / needs validation | `js/ysp-global-nav.js` exists. Validate behavior on lesson pages. |
-| Task 3 — Pronunciation Image Logic | Partial | Some lesson pages use image logic; full automation should be improved later. |
-| Task 4 — Update Progress Dashboard | Not done | Dashboard still needs current-architecture checks. |
-| Task 5 — Add Validation Script | Done / needs workflow integration | `scripts/ysp_validate_site.py` exists. Add workflow step later. |
-| Task 6 — Add or Confirm Site Rules | Done | `docs/YSP_SITE_RULES.md` exists. |
-| Task 7 — Idempotency Test | Not done | Run maintenance twice and confirm second run has no changes. |
-| Task 8 — Content Product Step | Not started | Wait until engineering is stable. |
-| Task 9 — Add Claude Code GitHub Action | Not done | Add `.github/workflows/claude-code.yml`. |
-| Task 10 — Add YSP AI Issue Template | Not done | Add `.github/ISSUE_TEMPLATE/ysp-ai-task.yml`. |
+| Task | Status | Preferred tool | Notes |
+|---|---:|---|---|
+| Task 1 — Refactor Site Maintenance | Done | Already completed | Workflow now calls `scripts/ysp_site_maintenance.py`. |
+| Task 2 — Verify or Create Global Nav JS | Done / needs validation | Codex local | `js/ysp-global-nav.js` exists. Validate behavior on lesson pages. |
+| Task 3 — Pronunciation Image Logic | Partial | Codex local | Some lesson pages use image logic; full automation should be improved later. |
+| Task 4 — Update Progress Dashboard | Not done | ChatGPT / Codex | Dashboard still needs current-architecture checks. |
+| Task 5 — Add Validation Script | Done / needs workflow integration | ChatGPT / Codex | `scripts/ysp_validate_site.py` exists. Add workflow step later. |
+| Task 6 — Add or Confirm Site Rules | Done | Already completed | `docs/YSP_SITE_RULES.md` exists. |
+| Task 7 — Idempotency Test | Not done | Codex local | Run maintenance twice and confirm second run has no changes. |
+| Task 8 — Content Product Step | Not started | Later | Wait until engineering is stable. |
+| Task 9 — Claude Code GitHub Action | Paused | Not recommended | Setup worked, but Anthropic API credit is insufficient. |
+| Task 10 — Add YSP AI Issue Template | Not done | ChatGPT | Create a template for ChatGPT/Codex-safe tasks. |
+| Task 11 — Clean Duplicate Managed Sections | Not done | Codex local preferred | Fix extra homepage / lessons-page managed card sections. |
+
+---
+
+## Standard Local Codex Start Command
+
+In PowerShell:
+
+```powershell
+cd "C:\Users\rose_\Desktop\Claude Skills\GitHub\AT-vocab"
+git pull origin main
+git checkout -b codex/<task-name>
+codex
+```
+
+Use a clear branch name, for example:
+
+```powershell
+git checkout -b codex/fix-duplicate-managed-sections
+```
+
+## Standard Local Codex Prompt
+
+```text
+Read these files first:
+- CLAUDE.md
+- docs/YSP_PROJECT_STATUS.md
+- docs/YSP_WORKFLOW_PLAN.md
+- docs/YSP_CLAUDE_CODE_TASKS.md
+- docs/YSP_SITE_RULES.md
+- README_CLAUDE_CODE_HANDOFF.md
+
+Task:
+<one clear task only>
+
+Allowed files to modify:
+- <file 1>
+- <file 2>
+
+Do not change:
+- lesson content
+- vocabulary text
+- dialogue text
+- speaking questions
+- culture text
+- brand wording unless explicitly requested
+- unrelated workflows
+
+Before editing, summarize:
+1. Files you will modify
+2. Why they need modification
+3. What will not be changed
+4. How you will verify
+
+After editing:
+1. Show changed files
+2. Show validation result
+3. Do not push until I approve
+```
+
+## Standard Local Verification Commands
+
+```powershell
+git status
+git diff
+python scripts/ysp_validate_site.py
+```
+
+If the task changes site maintenance logic, also run:
+
+```powershell
+python scripts/ysp_site_maintenance.py
+git status
+python scripts/ysp_site_maintenance.py
+git status
+```
+
+Expected result:
+
+```text
+First run may update generated sections.
+Second run should not create new duplicate changes.
+```
+
+## Standard Commit / PR Commands
+
+After reviewing the diff:
+
+```powershell
+git add <changed-files>
+git commit -m "<clear message>"
+git push -u origin codex/<task-name>
+```
+
+Then open a pull request on GitHub.
 
 ---
 
@@ -55,15 +174,6 @@ Files:
 scripts/ysp_site_maintenance.py
 ```
 
-Acceptance criteria:
-
-```text
-Workflow YAML is short.
-Python logic is in scripts/ysp_site_maintenance.py.
-Workflow still runs maintenance.
-No lesson content is rewritten.
-```
-
 Current note:
 
 ```text
@@ -83,24 +193,7 @@ Done / needs visual validation
 Goal:
 
 ```text
-Ensure `js/ysp-global-nav.js` exists and renders stable lesson navigation.
-```
-
-Files:
-
-```text
-js/ysp-global-nav.js
-```
-
-It should render:
-
-```text
-Home
-Lessons
-About
-Book a Trial Lesson
-Back to Lessons
-Top
+Ensure `js/ysp-global-nav.js` renders stable lesson navigation.
 ```
 
 Acceptance criteria:
@@ -171,7 +264,7 @@ Not done
 Goal:
 
 ```text
-Update `.github/workflows/ysp-progress-dashboard.yml` to reflect the current two-workflow system and current scripts.
+Update `.github/workflows/ysp-progress-dashboard.yml` to reflect the current architecture and the ChatGPT + local Codex workflow.
 ```
 
 Remove checks for obsolete workflow names.
@@ -199,67 +292,35 @@ Dashboard clearly shows next action.
 
 ---
 
-## Task 5 — Add Validation Script
+## Task 5 — Add Validation Script to Maintenance Workflow
 
 Status:
 
 ```text
-Done / needs workflow integration
+Script done / workflow integration not done
 ```
 
 Goal:
 
 ```text
-Create `scripts/ysp_validate_site.py`.
+Run `scripts/ysp_validate_site.py` from `.github/workflows/ysp-site-maintenance.yml`.
 ```
 
-Validation should check:
+Warning:
 
 ```text
-Every lesson page has global nav loader
-No duplicate Top button
-No duplicate Back to Lessons
-No internal production notes
-No obvious broken local image paths
-Dynamic image gallery markers and attributes
-Pronunciation image naming rules
-```
-
-Acceptance criteria:
-
-```text
-Readable output.
-Clear failure messages.
-Can run locally with python3 scripts/ysp_validate_site.py.
-```
-
-Next action:
-
-```text
-Add it to `.github/workflows/ysp-site-maintenance.yml`.
+Before making validation blocking, confirm the current repo passes validation.
+If it does not pass, first run it in report-only mode.
 ```
 
 ---
 
-## Task 6 — Add or Confirm Site Rules
+## Task 6 — Site Rules
 
 Status:
 
 ```text
 Done
-```
-
-Goal:
-
-```text
-Keep `docs/YSP_SITE_RULES.md` as the source of truth.
-```
-
-Acceptance criteria:
-
-```text
-Rules match actual workflow behavior.
-Rules help prevent future accidental changes.
 ```
 
 Current note:
@@ -318,44 +379,34 @@ Create L01 Full Practice Pack.
 Test with current students.
 ```
 
-Do not start this before Tasks 4, 7, 9, and 10 are complete.
+Do not start this before Tasks 4, 7, 10, and 11 are complete.
 
 ---
 
-## Task 9 — Add Claude Code GitHub Action
+## Task 9 — Claude Code GitHub Action
 
 Status:
 
 ```text
-Not done
+Paused
 ```
 
-Goal:
+Result from testing:
 
 ```text
-Allow the user to create GitHub Issues and tag @claude so Claude Code can edit the repo and open PRs.
+GitHub App installed.
+ANTHROPIC_API_KEY detected.
+OIDC permission fixed.
+Workflow can start.
+Claude API call fails because credit balance is too low.
 ```
 
-Files:
+Decision:
 
 ```text
-.github/workflows/claude-code.yml
-```
-
-Before editing, confirm:
-
-```text
-Claude GitHub App is installed.
-ANTHROPIC_API_KEY exists in GitHub Actions secrets.
-```
-
-Acceptance criteria:
-
-```text
-@claude can respond in an issue or PR.
-Claude reads CLAUDE.md and docs/YSP_*.md first.
-Claude creates PRs instead of pushing directly to main.
-Claude does not rewrite lesson content unless explicitly instructed.
+Do not use @claude Issue automation now.
+Do not add Anthropic API credit.
+Use ChatGPT GitHub connector and local Codex instead.
 ```
 
 ---
@@ -371,7 +422,7 @@ Not done
 Goal:
 
 ```text
-Create a reusable GitHub Issue form for YSP website tasks.
+Create a reusable GitHub Issue form for ChatGPT / Codex website tasks.
 ```
 
 Files:
@@ -391,10 +442,41 @@ Validation steps
 Expected PR summary
 ```
 
-Acceptance criteria:
+---
+
+## Task 11 — Clean Duplicate Managed Sections
+
+Status:
 
 ```text
-Future AI tasks are clear and safe.
-User does not need to rewrite long prompts every time.
-Claude has enough context to work without guessing.
+Not done
+```
+
+Goal:
+
+```text
+Fix the extra auto-managed Featured Lessons / Lesson Library sections appearing after the footer on homepage and lessons page.
+```
+
+Preferred tool:
+
+```text
+Local Codex
+```
+
+Allowed files:
+
+```text
+scripts/ysp_site_maintenance.py
+index.html
+lessons/index.html
+```
+
+Do not change:
+
+```text
+lesson content
+vocabulary/dialogue/speaking/culture text
+brand wording unless required
+course descriptions unless required
 ```
