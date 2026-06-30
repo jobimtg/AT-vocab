@@ -12,6 +12,7 @@ on:
       - "js/ysp-global-nav.js"
       - ".github/workflows/ysp-site-maintenance.yml"
       - "scripts/ysp_site_maintenance.py"
+      - "scripts/ysp_validate_site.py"
 
 permissions:
   contents: write
@@ -31,6 +32,35 @@ jobs:
         run: |
           python3 scripts/ysp_site_maintenance.py
 
+      - name: Validate site after maintenance
+        shell: bash
+        run: |
+          set +e
+          validation_output="$(python3 scripts/ysp_validate_site.py 2>&1)"
+          validation_status=$?
+          set -e
+
+          printf '%s\n' "$validation_output"
+
+          {
+            echo "## YSP Site Validation"
+            echo
+            if [[ "$validation_status" -eq 0 ]]; then
+              echo "✅ Validation completed with no blocking errors."
+            else
+              echo "⚠️ Validation found issues."
+              echo
+              echo "This step is currently report-only, so maintenance can continue."
+              echo "Review the output below before starting large lesson production."
+            fi
+            echo
+            echo '```text'
+            printf '%s\n' "$validation_output"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          exit 0
+
       - name: Commit safe maintenance changes
         shell: bash
         run: |
@@ -49,4 +79,3 @@ jobs:
           else
             echo "No changes to commit."
           fi
-          
