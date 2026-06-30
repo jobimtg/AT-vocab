@@ -74,7 +74,7 @@ GitHub Pages deployment may also appear as the system deployment workflow.
 | Area | Current Status | Notes |
 |---|---:|---|
 | GitHub Pages website | Done | Public site is live. |
-| Homepage | Done | Hero, course paths, featured preview lessons, About, CTA, footer, and Top button exist. |
+| Homepage | Done | Homepage now has a clearer product path for courses, free previews, practice packs, and trial lessons. |
 | Lessons index | Done | Course sections and lesson cards exist. |
 | Course folders | Done | `lessons/ca-life/`, `lessons/travel/`, and `lessons/business/` exist. |
 | Global lesson navigation | Done | `js/ysp-global-nav.js` renders shared lesson nav, Back to Lessons, and Top button. |
@@ -163,20 +163,45 @@ lesson-data/ca-life/u1-l2.schema-proof.json
 
 This avoids manually retyping large L02 arrays and SVG strings through the GitHub connector.
 
+## Phase 3 Status
+
+```text
+Phase 3 — Product + Marketing website implementation: Complete in repo
+```
+
+Completed in repo:
+
+| Task | Status |
+|---|---:|
+| Homepage monetization update | Done |
+| Hero CTA update | Done |
+| Courses / Free Preview / Trial Lesson path | Done |
+| Free Preview / Practice Pack / Guided Trial Lesson explanation | Done |
+| Phase 3 completion report | Done |
+
+External manual tasks still required:
+
+```text
+YSP social profile setup
+Link-in-bio setup
+Payment / product platform setup
+Practice Pack product upload
+```
+
 ## Next Phase
 
 Recommended next phase:
 
 ```text
-Phase 3 — Product + Marketing Implementation
+Phase 4 — External Launch Setup
 ```
 
-First Phase 3 candidates:
+First Phase 4 candidates:
 
 ```text
-1. Homepage monetization update
-2. New YSP English IG + Beacons setup
-3. Full L02 JSON extraction with local Codex
-4. Build script / renderer proof of concept
-5. First source-data generated lesson
+1. Create YSP social profile manually.
+2. Create link-in-bio page manually.
+3. Choose payment / product platform.
+4. Add real external links to homepage after they exist.
+5. Use local Codex to extract full L02 JSON source.
 ```
