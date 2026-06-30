@@ -63,6 +63,7 @@ LEGACY_BLOCKS = [
     (GLOBAL_LOADER_START, GLOBAL_LOADER_END),
 ]
 
+
 class TitleParser(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -91,18 +92,23 @@ class TitleParser(HTMLParser):
         if self.in_h1:
             self.h1.append(data)
 
+
 def read(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="ignore")
+
 
 def write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
 
+
 def clean_text(text: str) -> str:
     return re.sub(r"\s+", " ", text or "").strip()
 
+
 def strip_between(text: str, start: str, end: str) -> str:
     return re.sub(re.escape(start) + r"[\s\S]*?" + re.escape(end) + r"\s*", "", text)
+
 
 def remove_legacy_generated_nav(text: str) -> str:
     for start, end in LEGACY_BLOCKS:
@@ -120,6 +126,37 @@ def remove_legacy_generated_nav(text: str) -> str:
         text = re.sub(pattern, "", text, flags=re.I)
     return text
 
+
+def strip_managed_card_section(text: str, marker_start: str, marker_end: str) -> str:
+    """Remove old auto-appended managed card sections.
+
+    Older versions appended a ysp-managed-lessons section immediately before </body>.
+    On custom pages, that put duplicate lesson cards after the footer. This cleanup
+    removes only managed sections that contain the target marker pair.
+    """
+    section_pattern = (
+        r"\n?\s*<section\b"
+        r"(?=[^>]*\bclass=[\"'][^\"']*\bysp-managed-lessons\b[^\"']*[\"'])"
+        r"[^>]*>[\s\S]*?"
+        + re.escape(marker_start)
+        + r"[\s\S]*?"
+        + re.escape(marker_end)
+        + r"[\s\S]*?</section>\s*"
+    )
+    return re.sub(section_pattern, "\n", text, flags=re.I)
+
+
+def remove_managed_card_style_if_unused(text: str) -> str:
+    if "ysp-managed-lessons" in text:
+        return text
+    return re.sub(
+        r"\n?\s*<style id=[\"']ysp-managed-lesson-card-style[\"'][\s\S]*?</style>\s*",
+        "\n",
+        text,
+        flags=re.I,
+    )
+
+
 def parse_title(path: Path) -> str:
     parser = TitleParser()
     parser.feed(read(path))
@@ -128,6 +165,7 @@ def parse_title(path: Path) -> str:
     raw = re.sub(r"\s*[-–—]\s*YSP.*$", "", raw, flags=re.I)
     return raw or path.stem
 
+
 def lesson_code(path: Path) -> str:
     stem = path.stem.lower()
     m = re.search(r"u(\d+)[-_]?l(\d+)", stem)
@@ -135,6 +173,7 @@ def lesson_code(path: Path) -> str:
         return f"U{m.group(1)}-L{m.group(2)}"
     nums = re.findall(r"\d+", stem)
     return "L" + nums[-1] if nums else "Preview"
+
 
 def lesson_order(path: Path):
     stem = path.stem.lower()
@@ -145,6 +184,7 @@ def lesson_order(path: Path):
     if nums:
         return (0, nums[-1])
     return (999, 999)
+
 
 def lesson_summary(title: str, key: str) -> str:
     lower = title.lower()
@@ -166,11 +206,13 @@ def lesson_summary(title: str, key: str) -> str:
         return "Practice useful English for workplace and professional communication."
     return "Practice useful English for real situations."
 
+
 def relative_prefix_from_lesson(path: Path) -> str:
     # Example: lessons/travel/u1-l1.html -> ../../
     rel_parent = path.parent.relative_to(ROOT)
     depth = len(rel_parent.parts)
     return "../" * depth
+
 
 def loader_block(path: Path) -> str:
     prefix = relative_prefix_from_lesson(path)
@@ -178,10 +220,12 @@ def loader_block(path: Path) -> str:
 <script src="{prefix}js/ysp-global-nav.js" defer data-ysp-base="{prefix}"></script>
 {GLOBAL_LOADER_END}"""
 
+
 def insert_before_body_end(text: str, block: str) -> str:
     if re.search(r"</body\s*>", text, flags=re.I):
         return re.sub(r"</body\s*>", block + "\n</body>", text, count=1, flags=re.I)
     return text + "\n" + block + "\n"
+
 
 def normalize_lesson_page(path: Path) -> bool:
     original = read(path)
@@ -191,6 +235,7 @@ def normalize_lesson_page(path: Path) -> bool:
         write(path, text)
         return True
     return False
+
 
 def discover_lessons():
     lessons = []
@@ -224,6 +269,7 @@ def discover_lessons():
     lessons.sort(key=lambda item: (COURSES[item["key"]]["order"], item["order"], item["path"].name.lower()))
     return lessons
 
+
 def card_html(item, href_key: str) -> str:
     cfg = COURSES[item["key"]]
     return f"""<a class="lesson-card" href="{html_lib.escape(item[href_key])}">
@@ -232,6 +278,7 @@ def card_html(item, href_key: str) -> str:
   <small>{html_lib.escape(cfg["label"])} · {html_lib.escape(item["code"])}</small>
   <p>{html_lib.escape(item["summary"])}</p>
 </a>"""
+
 
 def card_style() -> str:
     return """<style id="ysp-managed-lesson-card-style">
@@ -246,6 +293,7 @@ def card_style() -> str:
 .lesson-badge{display:inline-block;color:#fff;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:800}
 </style>"""
 
+
 def ensure_card_style(text: str) -> str:
     if 'id="ysp-managed-lesson-card-style"' in text or "id='ysp-managed-lesson-card-style'" in text:
         return text
@@ -253,10 +301,21 @@ def ensure_card_style(text: str) -> str:
         return re.sub(r"</head\s*>", card_style() + "\n</head>", text, count=1, flags=re.I)
     return card_style() + "\n" + text
 
-def replace_or_append_cards(text: str, start: str, end: str, block: str, title: str) -> str:
+
+def replace_or_append_cards(
+    text: str,
+    start: str,
+    end: str,
+    block: str,
+    title: str,
+    append_if_missing: bool = False,
+) -> str:
     full_block = f"{start}\n{block}\n{end}"
     if start in text and end in text:
         return re.sub(re.escape(start) + r"[\s\S]*?" + re.escape(end), full_block, text)
+
+    if not append_if_missing:
+        return text
 
     section = f"""<section class="ysp-managed-lessons" id="lessons">
   <h2>{html_lib.escape(title)}</h2>
@@ -268,6 +327,7 @@ def replace_or_append_cards(text: str, start: str, end: str, block: str, title: 
     if re.search(r"</body\s*>", text, flags=re.I):
         return re.sub(r"</body\s*>", section + "\n</body>", text, count=1, flags=re.I)
     return text + "\n" + section + "\n"
+
 
 def default_lessons_index() -> str:
     return f"""<!doctype html>
@@ -282,15 +342,28 @@ def default_lessons_index() -> str:
 </body>
 </html>"""
 
+
 def update_lessons_index(lessons):
     cards = "\n".join(card_html(item, "href_from_lessons") for item in lessons)
     if not cards:
         cards = '<article class="lesson-card"><span class="lesson-badge" style="background:#1B2A4A">Coming Soon</span><strong>New lessons are coming soon</strong><small>YSP Learn & Shine</small></article>'
 
+    created_default = not LESSONS_INDEX.exists()
     text = read(LESSONS_INDEX) if LESSONS_INDEX.exists() else default_lessons_index()
-    text = ensure_card_style(text)
-    text = replace_or_append_cards(text, LESSON_CARDS_START, LESSON_CARDS_END, cards, "Lessons")
+    text = strip_managed_card_section(text, LESSON_CARDS_START, LESSON_CARDS_END)
+    if created_default or (LESSON_CARDS_START in text and LESSON_CARDS_END in text):
+        text = ensure_card_style(text)
+    text = replace_or_append_cards(
+        text,
+        LESSON_CARDS_START,
+        LESSON_CARDS_END,
+        cards,
+        "Lessons",
+        append_if_missing=created_default,
+    )
+    text = remove_managed_card_style_if_unused(text)
     write(LESSONS_INDEX, text)
+
 
 def update_home_index(lessons):
     if not HOME_INDEX.exists():
@@ -302,9 +375,20 @@ def update_home_index(lessons):
         return
 
     text = read(HOME_INDEX)
-    text = ensure_card_style(text)
-    text = replace_or_append_cards(text, HOME_CARDS_START, HOME_CARDS_END, cards, "Featured Lessons")
+    text = strip_managed_card_section(text, HOME_CARDS_START, HOME_CARDS_END)
+    if HOME_CARDS_START in text and HOME_CARDS_END in text:
+        text = ensure_card_style(text)
+    text = replace_or_append_cards(
+        text,
+        HOME_CARDS_START,
+        HOME_CARDS_END,
+        cards,
+        "Featured Lessons",
+        append_if_missing=False,
+    )
+    text = remove_managed_card_style_if_unused(text)
     write(HOME_INDEX, text)
+
 
 def main():
     js_file = ROOT / "js" / "ysp-global-nav.js"
@@ -332,6 +416,7 @@ def main():
     print("Updated: lessons/index.html")
     if HOME_INDEX.exists():
         print("Updated: index.html")
+
 
 if __name__ == "__main__":
     main()
