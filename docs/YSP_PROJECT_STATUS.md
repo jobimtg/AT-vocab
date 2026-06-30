@@ -89,21 +89,19 @@ GitHub Pages deployment may also appear as the system deployment workflow.
 | Course | Page | Current Status | Phase 2 Note |
 |---|---|---:|---|
 | Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview | Registered as `active-preview`; not final Golden source. |
-| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Uploaded L02 is Golden source; next step is JSON proof of concept. |
+| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Uploaded L02 is Golden source; schema-proof manifest exists. |
 | Travel English | `lessons/travel/u1-l1.html` | Active preview | Registered as `active-preview`; older structure should not drive future lessons. |
-| Business English | `lessons/business/u1-l1.html` | Partial / needs refactor | Uses iframe/base64 structure and should be refactored later. |
+| Business English | `lessons/business/u1-l1.html` | Partial / needs refactor | Refactor plan complete; implementation later. |
 
 ## Phase 2 Status
 
 ```text
-Phase 2 — Content production and lesson expansion: Started
+Phase 2 — Content production foundation: Complete
 ```
 
-Phase 2 should not begin with mass lesson generation.
+Phase 2 completed the planning and production foundation needed before mass lesson generation.
 
-First, lock the reusable lesson standard, source-data architecture, registry, and content-production rules.
-
-Primary Phase 2 planning documents:
+Primary Phase 2 documents:
 
 ```text
 docs/YSP_PHASE2_CONTENT_PLAN.md
@@ -111,38 +109,29 @@ docs/YSP_GOLDEN_LESSON_TEMPLATE.md
 docs/YSP_ESL_SKILL_SOURCE_MAP.md
 docs/YSP_LESSON_DATA_ARCHITECTURE.md
 docs/YSP_LESSON_REGISTRY.md
+docs/YSP_COURSE_PRODUCTION_RULES.md
+docs/YSP_BUSINESS_L01_REFACTOR_PLAN.md
+docs/YSP_FIRST_NEW_LESSON_DRAFT.md
+docs/YSP_IMAGE_WORKFLOW_AND_ASSET_CHECKLIST.md
+docs/YSP_PRACTICE_PACK_TEMPLATE.md
+docs/YSP_HOMEPAGE_REVISION_PLAN.md
+docs/YSP_PHASE2_COMPLETION_REPORT.md
 ```
 
-## Phase 2 Recommended Order
+## Phase 2 Completion Table
 
 | Step | Task | Status |
 |---:|---|---:|
 | 2.1 | Golden Lesson Template Audit | Complete baseline |
 | 2.2A | Lesson Data Architecture | Complete |
 | 2.2B | Lesson Registry | Complete baseline |
-| 2.2C | L02 JSON Proof of Concept | Not started |
-| 2.3 | Course Production Rules | Not started |
-| 2.4 | Business L01 Refactor Plan | Not started |
-| 2.5 | First New Lesson Draft | Not started |
-| 2.6 | Image Gallery / Asset Checklist | Not started |
-| 2.7 | Practice Pack Template | Not started |
-
-## Phase 2 Safety Rule
-
-Do not rewrite lesson content unless the user explicitly approves a content update task.
-
-Do not modify:
-
-```text
-vocabulary text
-dialogue text
-speaking questions
-culture text
-lesson JavaScript data
-student-facing lesson content
-```
-
-unless the task explicitly allows content editing.
+| 2.2C | L02 Source-Data Proof | Complete schema proof |
+| 2.3 | Course Production Rules | Complete |
+| 2.4 | Business L01 Refactor Plan | Complete |
+| 2.5 | First New Lesson Draft Plan | Complete |
+| 2.6 | Image Gallery / Asset Checklist | Complete |
+| 2.7 | Practice Pack Template | Complete |
+| Homepage | Homepage Revision Plan | Complete |
 
 ## Current Lesson Production Decision
 
@@ -162,12 +151,32 @@ GitHub Pages
 
 HTML is the public output, not the main editing source.
 
-## Next Action
+## Important Limitation
 
-Create the L02 JSON proof of concept:
+The full L02 data extraction into `lesson-data/ca-life/u1-l2.json` should be done by local Codex or a repo extraction script from the uploaded Golden L02 file.
+
+The current repo contains a schema-proof manifest:
 
 ```text
-lesson-data/ca-life/u1-l2.json
+lesson-data/ca-life/u1-l2.schema-proof.json
 ```
 
-Use the uploaded Golden L02 source as the first source-data conversion before generating new lessons.
+This avoids manually retyping large L02 arrays and SVG strings through the GitHub connector.
+
+## Next Phase
+
+Recommended next phase:
+
+```text
+Phase 3 — Product + Marketing Implementation
+```
+
+First Phase 3 candidates:
+
+```text
+1. Homepage monetization update
+2. New YSP English IG + Beacons setup
+3. Full L02 JSON extraction with local Codex
+4. Build script / renderer proof of concept
+5. First source-data generated lesson
+```

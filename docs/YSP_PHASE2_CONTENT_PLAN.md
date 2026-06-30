@@ -2,11 +2,15 @@
 
 _Last updated: 2026-06-30_
 
-## Phase 2 Goal
+## Phase 2 Result
 
-Phase 2 moves the project from website automation foundation into controlled lesson production.
+```text
+Phase 2 Foundation: Complete
+```
 
-The goal is not to publish many lessons quickly. The goal is to create a repeatable, safe lesson-production system that keeps every lesson visually consistent, technically valid, and aligned with YSP Learn & Shine.
+Phase 2 moved the project from website automation foundation into controlled lesson-production planning.
+
+The goal was not to publish many new lessons quickly. The goal was to create a repeatable, safe lesson-production system that keeps every lesson visually consistent, technically valid, pedagogically useful, and aligned with YSP Learn & Shine.
 
 ## Phase 1 Completion Gate
 
@@ -24,7 +28,7 @@ YSP Site Maintenance: idempotent, no repeated changes
 
 ## Current Source of Truth
 
-The current technical source of truth is:
+The current technical and production source of truth is:
 
 ```text
 CLAUDE.md
@@ -37,6 +41,13 @@ docs/YSP_GOLDEN_LESSON_TEMPLATE.md
 docs/YSP_ESL_SKILL_SOURCE_MAP.md
 docs/YSP_LESSON_DATA_ARCHITECTURE.md
 docs/YSP_LESSON_REGISTRY.md
+docs/YSP_COURSE_PRODUCTION_RULES.md
+docs/YSP_BUSINESS_L01_REFACTOR_PLAN.md
+docs/YSP_FIRST_NEW_LESSON_DRAFT.md
+docs/YSP_IMAGE_WORKFLOW_AND_ASSET_CHECKLIST.md
+docs/YSP_PRACTICE_PACK_TEMPLATE.md
+docs/YSP_HOMEPAGE_REVISION_PLAN.md
+docs/YSP_PHASE2_COMPLETION_REPORT.md
 ```
 
 For Phase 2 lesson production, the most important rules are:
@@ -59,263 +70,70 @@ Treat generated HTML as public website output, not the primary authoring source.
 | Course | File | Current Status | Phase 2 Action |
 |---|---|---:|---|
 | Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview lesson | Keep as public preview; do not use as final Golden source without audit |
-| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Build L02 JSON proof of concept from uploaded Golden L02 source |
+| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Uploaded L02 is Golden source; schema-proof manifest exists |
 | Travel English | `lessons/travel/u1-l1.html` | Active preview lesson | Compare against future Travel template standard |
-| Business English | `lessons/business/u1-l1.html` | Partial / iframe-base64 structure | Refactor later into clean lesson template |
+| Business English | `lessons/business/u1-l1.html` | Partial / iframe-base64 structure | Refactor plan complete; implementation later |
 
 ## Important Phase 2 Decision
 
 Do not start by generating many new lessons.
 
-Start by locking the lesson standard, registry, and source-data architecture.
-
-Phase 2 should proceed in this order:
+Use this future production flow:
 
 ```text
-Step 2.1 — Golden Lesson Template Audit
-Step 2.2A — Lesson Data Architecture
-Step 2.2B — Lesson Registry
-Step 2.2C — L02 JSON Proof of Concept
-Step 2.3 — Course Production Rules
-Step 2.4 — Business L01 Refactor Plan
-Step 2.5 — First New Lesson Draft
-Step 2.6 — Image Gallery / Asset Checklist
-Step 2.7 — Practice Pack Template
-```
-
-## Step 2.1 — Golden Lesson Template Audit
-
-Purpose:
-
-```text
-Identify the exact HTML structure that future lessons must follow.
-```
-
-Primary output:
-
-```text
-docs/YSP_GOLDEN_LESSON_TEMPLATE.md
-```
-
-Status:
-
-```text
-Complete baseline.
-```
-
-## Step 2.2A — Lesson Data Architecture
-
-Purpose:
-
-```text
-Decide that future lesson content should not be hand-authored directly as HTML.
-```
-
-Primary output:
-
-```text
-docs/YSP_LESSON_DATA_ARCHITECTURE.md
-```
-
-Status:
-
-```text
-Complete.
-```
-
-## Step 2.2B — Lesson Registry
-
-Purpose:
-
-```text
-Track approved lesson files, course paths, source data paths, image prefixes, and publish status.
-```
-
-Primary output:
-
-```text
-docs/YSP_LESSON_REGISTRY.md
-```
-
-Status:
-
-```text
-Complete baseline.
-```
-
-Registry fields:
-
-```text
-course
-course id
-unit
-lesson
-html path
-source data path
-public title
-CEFR
-image prefix
-status
-notes
-```
-
-## Step 2.2C — L02 JSON Proof of Concept
-
-Purpose:
-
-```text
-Convert the uploaded Golden L02 lesson into source data format.
-```
-
-Recommended output:
-
-```text
-lesson-data/ca-life/u1-l2.json
-```
-
-This proves the future workflow:
-
-```text
-lesson-data JSON
-→ fixed L02 renderer / template
-→ generated HTML output
-```
-
-Do not generate new lessons until this proof of concept is stable.
-
-## Step 2.3 — Course Production Rules
-
-Purpose:
-
-```text
-Separate course planning from technical site rules.
-```
-
-Recommended file:
-
-```text
-docs/YSP_COURSE_PRODUCTION_RULES.md
-```
-
-Should include:
-
-```text
-Course track definitions
-CEFR target per course
-Vocabulary count rules
-Dialogue count rules
-Image requirements
-Free Preview vs Full Practice Pack boundaries
-What public HTML may show
-What belongs only in paid practice packs
-```
-
-## Step 2.4 — Business L01 Refactor Plan
-
-Current issue:
-
-```text
-Business L01 exists, but it uses an iframe/base64 combined structure.
-```
-
-Risk:
-
-```text
-Harder to validate
-Harder to maintain
-Harder to reuse as a clean template
-Not aligned with the public lesson-page architecture
-```
-
-Action:
-
-```text
-Create a refactor plan first.
-Do not rewrite it directly until the target template is approved.
-```
-
-## Step 2.5 — First New Lesson Draft
-
-Only start after Steps 2.1–2.3 are done.
-
-Recommended first new lesson candidate:
-
-```text
-Travel English U1-L2 or Canada Life & Career U1-L3
-```
-
-Do not begin Business expansion until Business L01 has a clean template path.
-
-## Step 2.6 — Image Gallery / Asset Checklist
-
-Before adding lesson images, confirm:
-
-```text
-Image prefix is registered.
-Assets use course-level folders.
-No per-lesson asset folders are created.
-Gallery prefix includes trailing hyphen.
-Dialogue images use per-dialogue prefixes: l01-d01-, l01-d02-, etc.
-Images are optional; missing images must not create broken img tags.
-```
-
-## Step 2.7 — Practice Pack Template
-
-Do not build the paid/full pack before the public preview lesson structure is stable.
-
-Practice Pack should later include:
-
-```text
-Full vocabulary review
-Dialogue practice
-Speaking drills
-Pronunciation review
-Answer key
-Printable PDF format
-Optional student homework version
-```
-
-## Phase 2 Safety Rules
-
-Every Phase 2 task must state:
-
-```text
-Allowed files
-Do-not-change files
-Whether lesson content may be edited
-Whether only docs are being changed
-Validation method
-Expected result
-```
-
-Every technical change must pass:
-
-```text
+lesson-data JSON / Markdown source
+        ↓
+fixed L02 renderer / template
+        ↓
+generated lesson HTML
+        ↓
 YSP Site Maintenance
+        ↓
 YSP Site Validator
-YSP Progress Dashboard
+        ↓
+GitHub Pages
 ```
 
-## Phase 2 Current Status
+HTML is public output, not the primary authoring source.
 
-| Step | Task | Status |
-|---:|---|---:|
-| 2.1 | Golden Lesson Template Audit | Complete baseline |
-| 2.2A | Lesson Data Architecture | Complete |
-| 2.2B | Lesson Registry | Complete baseline |
-| 2.2C | L02 JSON Proof of Concept | Not started |
-| 2.3 | Course Production Rules | Not started |
-| 2.4 | Business L01 Refactor Plan | Not started |
-| 2.5 | First New Lesson Draft | Not started |
-| 2.6 | Image Gallery / Asset Checklist | Not started |
-| 2.7 | Practice Pack Template | Not started |
+## Phase 2 Completed Outputs
 
-## Next Action
+| Step | Task | Output | Status |
+|---:|---|---|---:|
+| 2.1 | Golden Lesson Template Audit | `docs/YSP_GOLDEN_LESSON_TEMPLATE.md` | Complete baseline |
+| 2.2A | Lesson Data Architecture | `docs/YSP_LESSON_DATA_ARCHITECTURE.md` | Complete |
+| 2.2B | Lesson Registry | `docs/YSP_LESSON_REGISTRY.md` | Complete baseline |
+| 2.2C | L02 Source-Data Proof | `lesson-data/ca-life/u1-l2.schema-proof.json` | Complete schema proof |
+| 2.3 | Course Production Rules | `docs/YSP_COURSE_PRODUCTION_RULES.md` | Complete |
+| 2.4 | Business L01 Refactor Plan | `docs/YSP_BUSINESS_L01_REFACTOR_PLAN.md` | Complete |
+| 2.5 | First New Lesson Draft Plan | `docs/YSP_FIRST_NEW_LESSON_DRAFT.md` | Complete |
+| 2.6 | Image Gallery / Asset Checklist | `docs/YSP_IMAGE_WORKFLOW_AND_ASSET_CHECKLIST.md` | Complete |
+| 2.7 | Practice Pack Template | `docs/YSP_PRACTICE_PACK_TEMPLATE.md` | Complete |
+| Homepage | Homepage Revision Plan | `docs/YSP_HOMEPAGE_REVISION_PLAN.md` | Complete |
+| Report | Phase 2 Completion Report | `docs/YSP_PHASE2_COMPLETION_REPORT.md` | Complete |
 
-Create:
+## Important Limitation
+
+The uploaded L02 file was verified as the Golden Template source. A schema-proof manifest exists in the repo.
+
+The full L02 data extraction into `lesson-data/ca-life/u1-l2.json` should be done with local Codex or a repo extraction script because the full source contains large JavaScript arrays and SVG strings.
+
+Do not manually retype the full L02 arrays in chat.
+
+## Phase 3 Recommended Start
+
+Recommended next phase:
 
 ```text
-lesson-data/ca-life/u1-l2.json
+Phase 3 — Product + Marketing Implementation
 ```
 
-Use the uploaded Golden L02 source as the proof-of-concept lesson-data file before generating new lesson HTML.
+First candidates:
+
+```text
+1. Homepage monetization update
+2. New YSP English IG + Beacons setup
+3. Full L02 JSON extraction with local Codex
+4. Build script / renderer proof of concept
+5. First source-data generated lesson
+```

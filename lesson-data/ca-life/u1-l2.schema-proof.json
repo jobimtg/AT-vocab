@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "course_id": "canada-en",
+    "course_name": "Canada Life & Career English",
+    "course_folder": "ca-life",
+    "unit": 1,
+    "lesson": 2,
+    "lesson_code": "L02",
+    "title_en": "Transportation in Canada",
+    "title_zh": "加拿大交通",
+    "cefr": "A2",
+    "html_path": "lessons/ca-life/u1-l2.html",
+    "image_prefix": "l02",
+    "status": "golden-reference",
+    "source_file": "L02_transportation_fixed_teacher_notes.html"
+  },
+  "conversion_status": "schema-proof",
+  "important_note": "This file proves the target lesson-data schema and stores verified L02 counts. It is not the full extracted lesson-data file yet. The full conversion should be done by local Codex or a repo extraction script from the uploaded Golden L02 HTML to avoid hand-copying large arrays.",
+  "verified_from_uploaded_l02": {
+    "html_lang": "zh-Hant",
+    "tabs": 10,
+    "categories": 5,
+    "core": 25,
+    "extended": 30,
+    "phrases": 5,
+    "dialogues": 5,
+    "speaking": 5,
+    "culture": 2,
+    "pronunciation_spotlight": 1,
+    "pronunciation_words": 5,
+    "legacy_classes_absent": true
+  },
+  "expected_full_schema": {
+    "meta": "object",
+    "categories": "array of 5 strings",
+    "core": "array of 25 A2 core vocabulary objects",
+    "extended": "array of 30 reference vocabulary objects",
+    "phrases": "array of 5 phrase objects",
+    "dialogues": "array of 5 dialogue objects",
+    "speaking": "array of 5 speaking question objects",
+    "culture": "array of 2 culture objects",
+    "pronunciation": "object with focus, words, tip, and practice sentence",
+    "previously_learned": "object based on real prior lesson data",
+    "validation": "object with required counts and pass/fail checks"
+  },
+  "next_conversion_step": {
+    "preferred_method": "local Codex",
+    "why": "The uploaded L02 HTML contains large JavaScript arrays and SVG strings. Automated extraction is safer than manual copy/paste through the GitHub connector.",
+    "target_output": "lesson-data/ca-life/u1-l2.json"
+  }
+}
