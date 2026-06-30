@@ -146,8 +146,22 @@ def strip_managed_card_section(text: str, marker_start: str, marker_end: str) ->
     return re.sub(section_pattern, "\n", text, flags=re.I)
 
 
+def has_managed_card_section(text: str) -> bool:
+    """Return True only when a real managed section exists in the HTML body.
+
+    CSS selectors inside <style> blocks must not count as a managed card section.
+    This prevents stale ysp-managed-lesson-card-style blocks from keeping
+    themselves alive forever.
+    """
+    return re.search(
+        r"<section\b(?=[^>]*\bclass=[\"'][^\"']*\bysp-managed-lessons\b[^\"']*[\"'])",
+        text,
+        flags=re.I,
+    ) is not None
+
+
 def remove_managed_card_style_if_unused(text: str) -> str:
-    if "ysp-managed-lessons" in text:
+    if has_managed_card_section(text):
         return text
     return re.sub(
         r"\n?\s*<style id=[\"']ysp-managed-lesson-card-style[\"'][\s\S]*?</style>\s*",
