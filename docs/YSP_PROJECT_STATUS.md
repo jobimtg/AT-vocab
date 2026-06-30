@@ -1,6 +1,6 @@
 # YSP Project Status
 
-_Last checked: 2026-06-29_
+_Last checked: 2026-06-30_
 
 ## Current Project
 
@@ -25,50 +25,42 @@ Full Practice Packs
 Guided Trial Lessons
 ```
 
-## Current Architecture
+## Phase 1 Status
 
-| Area | Current Status | Notes |
-|---|---:|---|
-| GitHub Pages website | Done | Public site is live. |
-| Homepage | Mostly done | Hero, course paths, featured preview lessons, About, CTA, footer, and Top button exist. |
-| Lessons index | Mostly done | Course sections and auto-managed lesson cards exist. Some duplicate/placement cleanup may still be needed. |
-| Course folders | Done | `lessons/ca-life/`, `lessons/travel/`, and `lessons/business/` exist. |
-| Global lesson navigation | Mostly done | `js/ysp-global-nav.js` exists and renders shared lesson nav, Back to Lessons, and Top button. |
-| Site maintenance script | Done | `scripts/ysp_site_maintenance.py` exists and is called by the maintenance workflow. |
-| Site validation script | Done / needs workflow integration | `scripts/ysp_validate_site.py` exists, but should be connected to the workflow. |
-| Progress dashboard | Exists / needs update | The workflow exists but still checks some older Step 1 items. |
-| Claude Code workflow | Not done | Dedicated `.github/workflows/claude-code.yml` still needs to be added. |
-| Issue template for AI tasks | Not done | Needed so future `@claude` tasks are structured and safe. |
+```text
+Phase 1 — Website automation foundation: Complete
+```
 
-## Completed
+Confirmed Phase 1 completion:
 
-### Brand
-
-| Item | Status |
+| Area | Status |
 |---|---:|
-| Brand name: YSP Learn & Shine | Done |
-| Slogan: Learn with Purpose. Shine with Confidence. | Done |
-| Footer brand year: EST. 2026 | Done |
-| Public positioning: Preview + Practice Pack + Trial Lesson | Done |
+| Website automation architecture | Done |
+| Progress dashboard | Done |
+| YSP Site Maintenance workflow | Done |
+| YSP Site Validator | Done |
+| Validation connected to maintenance workflow | Done |
+| Global lesson loader | Done |
+| Duplicate footer managed sections | Fixed |
+| Managed stylesheet cleanup | Fixed |
+| Maintenance idempotency | Verified |
+| Claude GitHub Action | Paused by project decision |
+| ChatGPT + Local Codex workflow | Active workflow |
+| YSP AI task issue template | Done |
 
-### Website Pages
+Final Phase 1 verification:
 
-| Page / Area | Status | Notes |
-|---|---:|---|
-| Homepage clean layout | Mostly done | Public layout is strong; auto-managed cards may need placement cleanup. |
-| Homepage CTA structure | Done | Preview lesson and trial lesson CTAs exist. |
-| Lessons page clean layout | Mostly done | Course sections exist; auto-managed lesson card section may need cleanup. |
-| Course folders | Done | Canada Life, Travel, Business folders exist. |
-| Canada Life L01 | Done / active | `lessons/ca-life/u1-l1.html` exists. |
-| Travel L01 | Done / active | `lessons/travel/u1-l1.html` exists. |
-| Business L01 | Partial | Page exists but uses an iframe/base64 structure and should later be refactored to the cleaner lesson template. |
-| Lesson page global navigation | Mostly done | Shared JS loader exists on lesson pages. |
-| Top button duplicate issue | Mostly done | Global nav JS removes legacy duplicates; needs validation after each workflow run. |
-| Pronunciation image display | Partial | Some pages use direct image logic; automation and validation should be tightened. |
+```text
+Current Website / Automation Architecture: 100%
+Next Engineering Readiness: 100%
+Lesson Pages With Global Loader: 3/3
+YSP Site Validator: 0 errors, 0 warnings
+YSP Site Maintenance: no repeated changes
+```
 
-### Workflows
+## Current Active Workflows
 
-Current active custom workflows should remain:
+Only these custom workflows should remain active:
 
 ```text
 .github/workflows/ysp-site-maintenance.yml
@@ -77,73 +69,80 @@ Current active custom workflows should remain:
 
 GitHub Pages deployment may also appear as the system deployment workflow.
 
-| Item | Status | Notes |
+## Current Architecture
+
+| Area | Current Status | Notes |
 |---|---:|---|
-| Many patch workflows removed | Mostly done | Do not restore old patch workflows. |
-| Maintenance workflow centralized | Done | Workflow now calls `scripts/ysp_site_maintenance.py`. |
-| Progress dashboard display-only | Done / needs update | It displays status only but should be updated to current architecture. |
-| Python moved out of maintenance YAML | Done | The maintenance YAML is short and calls the script. |
-| Dedicated maintenance script | Done | `scripts/ysp_site_maintenance.py` exists. |
-| Dedicated validation script | Done | `scripts/ysp_validate_site.py` exists. |
-| Validation connected to workflow | Not done | Add workflow step later. |
-| Dedicated Claude Code workflow | Not done | Add after docs are updated. |
+| GitHub Pages website | Done | Public site is live. |
+| Homepage | Done | Hero, course paths, featured preview lessons, About, CTA, footer, and Top button exist. |
+| Lessons index | Done | Course sections and lesson cards exist. |
+| Course folders | Done | `lessons/ca-life/`, `lessons/travel/`, and `lessons/business/` exist. |
+| Global lesson navigation | Done | `js/ysp-global-nav.js` renders shared lesson nav, Back to Lessons, and Top button. |
+| Site maintenance script | Done | `scripts/ysp_site_maintenance.py` exists and is called by the maintenance workflow. |
+| Site validation script | Done | `scripts/ysp_validate_site.py` is connected to the maintenance workflow in report-only mode. |
+| Progress dashboard | Done | Display-only dashboard shows current architecture and readiness. |
+| Claude Code workflow | Paused | Not used because the project does not currently use Anthropic API credit. |
+| ChatGPT + Local Codex workflow | Active | Primary workflow for future repo changes. |
 
-## Not Completed Yet
+## Existing Lesson Inventory
 
-### Engineering
+| Course | Page | Current Status | Phase 2 Note |
+|---|---|---:|---|
+| Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active | Current reference candidate after audit. |
+| Travel English | `lessons/travel/u1-l1.html` | Active | Compare with future Travel template standard. |
+| Business English | `lessons/business/u1-l1.html` | Partial | Uses iframe/base64 structure and should be refactored later. |
 
-| Item | Priority | Status |
-|---|---:|---:|
-| Update outdated project docs | High | In progress |
-| Update `ysp-progress-dashboard.yml` for current architecture | High | Not done |
-| Add validation step to maintenance workflow | High | Not done |
-| Add dedicated Claude Code GitHub Action workflow | High | Not done |
-| Add GitHub Issue template for YSP AI tasks | High | Not done |
-| Add PR checklist for Claude/Codex changes | Medium | Not done |
-| Prove maintenance idempotency by running it twice | High | Not done |
-| Clean duplicate managed lesson-card placement on homepage / lessons page | High | Not done |
-| Improve pronunciation / dynamic image gallery automation | Medium | Not done |
-
-### Content Product
-
-| Item | Priority | Status |
-|---|---:|---:|
-| First Free Preview Lesson model | High | Partial |
-| First Full Practice Pack | High | Not done |
-| Practice Pack PDF template | Medium | Not done |
-| Test with existing students | Medium | Not done |
-| Payment / purchase path | Low | Not done |
-
-### Marketing / Conversion
-
-| Item | Priority | Status |
-|---|---:|---:|
-| Beacons integration | Medium | Not done |
-| Contact or waitlist form | Medium | Not done |
-| SEO / Open Graph metadata | Medium | Not done |
-| Payhip / Ko-fi / Gumroad decision | Low | Not done |
-
-## Recommended Current Focus
-
-Do not create more course pages yet.
-
-Stabilize the AI + GitHub engineering system first:
+## Phase 2 Status
 
 ```text
-1. Update docs so Claude reads the correct project status.
-2. Add Claude Code GitHub Action workflow.
-3. Add GitHub Issue template for safe AI tasks.
-4. Connect `scripts/ysp_validate_site.py` to the workflow.
-5. Update the progress dashboard.
-6. Clean duplicate managed lesson-card placement.
-7. Run maintenance twice to confirm idempotency.
+Phase 2 — Content production and lesson expansion: Started
 ```
 
-Then move to content production:
+Phase 2 should not begin with mass lesson generation.
+
+First, lock the reusable lesson standard and content-production rules.
+
+Primary Phase 2 planning document:
 
 ```text
-L01 Free Preview Lesson
-L01 Full Practice Pack
-Student testing
-Purchase or contact pathway
+docs/YSP_PHASE2_CONTENT_PLAN.md
 ```
+
+## Phase 2 Recommended Order
+
+| Step | Task | Status |
+|---:|---|---:|
+| 2.1 | Golden Lesson Template Audit | In progress |
+| 2.2 | Lesson Registry | Not started |
+| 2.3 | Course Production Rules | Not started |
+| 2.4 | Business L01 Refactor Plan | Not started |
+| 2.5 | First New Lesson Draft | Not started |
+| 2.6 | Image Gallery / Asset Checklist | Not started |
+| 2.7 | Practice Pack Template | Not started |
+
+## Phase 2 Safety Rule
+
+Do not rewrite lesson content unless the user explicitly approves a content update task.
+
+Do not modify:
+
+```text
+vocabulary text
+dialogue text
+speaking questions
+culture text
+lesson JavaScript data
+student-facing lesson content
+```
+
+unless the task explicitly allows content editing.
+
+## Next Action
+
+Create the Golden Lesson Template audit document:
+
+```text
+docs/YSP_GOLDEN_LESSON_TEMPLATE.md
+```
+
+This document should define the exact reusable lesson structure before new lessons are created.
