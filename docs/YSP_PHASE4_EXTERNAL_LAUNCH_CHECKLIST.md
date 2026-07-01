@@ -23,14 +23,21 @@ View Courses
 Try Free Preview Lessons
 All YSP Links
 Book a Trial Lesson
+Instagram
 ```
 
-## Confirmed External URL
+## Confirmed External URLs
 
 The confirmed link-in-bio URL is:
 
 ```text
 https://beacons.ai/ysp_learn_and_shine
+```
+
+The confirmed Instagram URL is:
+
+```text
+https://www.instagram.com/ysp_learnandshine/
 ```
 
 ## Important Rule
@@ -43,8 +50,8 @@ Only add external links after the user has created and confirmed the real URLs.
 
 | Step | Task | Location | Repo Action Needed Now | Status |
 |---:|---|---|---:|---:|
-| 4.1 | Choose YSP social account name | External platform | No | Pending |
-| 4.2 | Create YSP social profile | External platform | No | Pending |
+| 4.1 | Choose YSP social account name | External platform | No | Done |
+| 4.2 | Create YSP social profile | External platform | No | Done |
 | 4.3 | Create link-in-bio page | External platform | No | Done |
 | 4.4 | Add website link to link-in-bio page | External platform | No | User check needed |
 | 4.5 | Add Free Preview Lessons link | External platform | No | User check needed |
@@ -52,7 +59,8 @@ Only add external links after the user has created and confirmed the real URLs.
 | 4.7 | Choose product/payment platform | External platform | No | Pending |
 | 4.8 | Create first Practice Pack product | External platform | No | Pending |
 | 4.9 | Add real link-in-bio URL to homepage | GitHub repo | Complete | Done |
-| 4.10 | Launch first content campaign | External platform | No | Pending |
+| 4.10 | Add real Instagram URL to homepage | GitHub repo | Complete | Done |
+| 4.11 | Launch first content campaign | External platform | No | Pending |
 
 ## Recommended Link-in-Bio Order
 
@@ -105,12 +113,12 @@ YSP website URL
 Free preview lesson URLs
 Trial lesson booking URL
 Confirmed link-in-bio URL
+Confirmed Instagram URL
 ```
 
 Add later after confirmed:
 
 ```text
-Social profile URL
 Practice Pack payment URL
 Email list URL
 ```
@@ -123,11 +131,33 @@ The confirmed link-in-bio URL has been added to:
 Header navigation: YSP Links
 Hero CTA: All YSP Links
 Final CTA: All YSP Links
+Footer: YSP Links
+```
+
+The confirmed Instagram URL has been added to:
+
+```text
+Header navigation: Instagram
+Footer: Instagram
+```
+
+## Beacons Page Check Needed
+
+The current Beacons screenshot shows Instagram and subscription elements, but the main YSP buttons still need to be checked or added:
+
+```text
+YSP Learn & Shine Website
+Free Preview Lessons
+View Courses
+Book a Guided Trial Lesson
+Canada Life & Career English
+Travel English
+Business English
 ```
 
 ## Next Repo Action
 
-After the YSP social profile or payment/product links exist, update:
+After payment/product links exist, update:
 
 ```text
 index.html
@@ -140,6 +170,7 @@ Add only real links. Do not add placeholders.
 ## Current Phase 4 Status
 
 ```text
-Link-in-bio URL confirmed and connected to homepage.
+Link-in-bio URL and Instagram URL confirmed and connected to homepage.
+Beacons button contents still need user confirmation.
 Manual external setup continues.
 ```
