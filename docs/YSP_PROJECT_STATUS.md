@@ -1,6 +1,6 @@
 # YSP Project Status
 
-_Last checked: 2026-06-30_
+_Last checked: 2026-07-01_
 
 ## Current Project
 
@@ -101,37 +101,45 @@ Phase 2 — Content production foundation: Complete
 
 Phase 2 completed the planning and production foundation needed before mass lesson generation.
 
-Primary Phase 2 documents:
+## Phase 3 Status
 
 ```text
-docs/YSP_PHASE2_CONTENT_PLAN.md
-docs/YSP_GOLDEN_LESSON_TEMPLATE.md
-docs/YSP_ESL_SKILL_SOURCE_MAP.md
-docs/YSP_LESSON_DATA_ARCHITECTURE.md
-docs/YSP_LESSON_REGISTRY.md
-docs/YSP_COURSE_PRODUCTION_RULES.md
-docs/YSP_BUSINESS_L01_REFACTOR_PLAN.md
-docs/YSP_FIRST_NEW_LESSON_DRAFT.md
-docs/YSP_IMAGE_WORKFLOW_AND_ASSET_CHECKLIST.md
-docs/YSP_PRACTICE_PACK_TEMPLATE.md
-docs/YSP_HOMEPAGE_REVISION_PLAN.md
-docs/YSP_PHASE2_COMPLETION_REPORT.md
+Phase 3 — Product + Marketing website implementation: Complete in repo
 ```
 
-## Phase 2 Completion Table
+Completed in repo:
 
-| Step | Task | Status |
-|---:|---|---:|
-| 2.1 | Golden Lesson Template Audit | Complete baseline |
-| 2.2A | Lesson Data Architecture | Complete |
-| 2.2B | Lesson Registry | Complete baseline |
-| 2.2C | L02 Source-Data Proof | Complete schema proof |
-| 2.3 | Course Production Rules | Complete |
-| 2.4 | Business L01 Refactor Plan | Complete |
-| 2.5 | First New Lesson Draft Plan | Complete |
-| 2.6 | Image Gallery / Asset Checklist | Complete |
-| 2.7 | Practice Pack Template | Complete |
-| Homepage | Homepage Revision Plan | Complete |
+| Task | Status |
+|---|---:|
+| Homepage monetization update | Done |
+| Hero CTA update | Done |
+| Courses / Free Preview / Trial Lesson path | Done |
+| Free Preview / Practice Pack / Guided Trial Lesson explanation | Done |
+| Phase 3 completion report | Done |
+
+## Phase 4 Status
+
+```text
+Phase 4 — External Launch Setup: Started
+```
+
+Completed in repo:
+
+| Task | Status |
+|---|---:|
+| External launch checklist | Done |
+| Homepage link rule documented | Done |
+| No placeholder external links rule | Done |
+
+Manual external tasks still required:
+
+| Task | Status |
+|---|---:|
+| YSP social profile setup | Pending |
+| Link-in-bio page setup | Pending |
+| Payment / product platform setup | Pending |
+| Practice Pack product upload | Pending |
+| Add real external links to homepage | Waiting for real URLs |
 
 ## Current Lesson Production Decision
 
@@ -163,45 +171,14 @@ lesson-data/ca-life/u1-l2.schema-proof.json
 
 This avoids manually retyping large L02 arrays and SVG strings through the GitHub connector.
 
-## Phase 3 Status
+## Next Action
+
+Manual external setup:
 
 ```text
-Phase 3 — Product + Marketing website implementation: Complete in repo
-```
-
-Completed in repo:
-
-| Task | Status |
-|---|---:|
-| Homepage monetization update | Done |
-| Hero CTA update | Done |
-| Courses / Free Preview / Trial Lesson path | Done |
-| Free Preview / Practice Pack / Guided Trial Lesson explanation | Done |
-| Phase 3 completion report | Done |
-
-External manual tasks still required:
-
-```text
-YSP social profile setup
-Link-in-bio setup
-Payment / product platform setup
-Practice Pack product upload
-```
-
-## Next Phase
-
-Recommended next phase:
-
-```text
-Phase 4 — External Launch Setup
-```
-
-First Phase 4 candidates:
-
-```text
-1. Create YSP social profile manually.
-2. Create link-in-bio page manually.
-3. Choose payment / product platform.
-4. Add real external links to homepage after they exist.
-5. Use local Codex to extract full L02 JSON source.
+1. Set up the YSP social profile.
+2. Set up the link-in-bio page.
+3. Add the website, free preview, and trial lesson links.
+4. Choose the product/payment platform.
+5. Return with the real URLs so the homepage can be updated safely.
 ```
