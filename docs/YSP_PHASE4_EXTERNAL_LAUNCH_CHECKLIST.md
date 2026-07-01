@@ -58,11 +58,12 @@ Only add external links after the user has created and confirmed the real URLs.
 | 4.6 | Add Trial Lesson booking link | External platform | No | Done |
 | 4.7 | Add course links to link-in-bio page | External platform | No | Done |
 | 4.8 | Add Beacons link to Instagram bio | External platform | No | Done |
-| 4.9 | Choose product/payment platform | External platform | No | Pending |
-| 4.10 | Create first Practice Pack product | External platform | No | Pending |
-| 4.11 | Add real link-in-bio URL to homepage | GitHub repo | Complete | Done |
-| 4.12 | Add real Instagram URL to homepage | GitHub repo | Complete | Done |
-| 4.13 | Launch first content campaign | External platform | No | Pending |
+| 4.9 | Schedule first IG soft campaign | External platform | No | Done |
+| 4.10 | Choose product/payment platform | External platform | No | Pending |
+| 4.11 | Create first Practice Pack product | External platform | No | Pending |
+| 4.12 | Add real link-in-bio URL to homepage | GitHub repo | Complete | Done |
+| 4.13 | Add real Instagram URL to homepage | GitHub repo | Complete | Done |
+| 4.14 | Launch first content campaign | External platform | No | Scheduled |
 
 ## Confirmed Link-in-Bio Button Order
 
@@ -78,6 +79,21 @@ The Beacons page currently uses this confirmed order:
 7. Business English
 8. Instagram
 ```
+
+## Confirmed First IG Campaign Schedule
+
+The first soft-launch campaign is scheduled with morning Stories and evening Feed posts.
+
+| Post | Date | Feed Time | Topic |
+|---:|---|---:|---|
+| 1 | 2026-07-01 | 7:30 PM | Welcome to YSP Learn & Shine |
+| 2 | 2026-07-03 | 7:30 PM | 5 Useful Phrases for Arriving in Canada |
+| 3 | 2026-07-05 | 7:30 PM | Airport English: Check-In |
+| 4 | 2026-07-08 | 7:30 PM | Pronunciation Tip: TH |
+| 5 | 2026-07-10 | 7:30 PM | Phone Plan English |
+| 6 | 2026-07-13 | 7:30 PM | Try a Free Preview Lesson |
+
+Morning Stories are scheduled as previews or reminders. Evening Feed posts are the permanent profile-grid content.
 
 ## Recommended Public Profile Positioning
 
@@ -169,5 +185,6 @@ Add only real links. Do not add placeholders.
 
 ```text
 IG + Beacons basic traffic flow complete.
+First IG soft campaign scheduled.
 Manual external setup continues only for product/payment launch.
 ```
