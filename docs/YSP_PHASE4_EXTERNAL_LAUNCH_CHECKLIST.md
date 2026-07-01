@@ -53,28 +53,30 @@ Only add external links after the user has created and confirmed the real URLs.
 | 4.1 | Choose YSP social account name | External platform | No | Done |
 | 4.2 | Create YSP social profile | External platform | No | Done |
 | 4.3 | Create link-in-bio page | External platform | No | Done |
-| 4.4 | Add website link to link-in-bio page | External platform | No | User check needed |
-| 4.5 | Add Free Preview Lessons link | External platform | No | User check needed |
-| 4.6 | Add Trial Lesson booking link | External platform | No | User check needed |
-| 4.7 | Choose product/payment platform | External platform | No | Pending |
-| 4.8 | Create first Practice Pack product | External platform | No | Pending |
-| 4.9 | Add real link-in-bio URL to homepage | GitHub repo | Complete | Done |
-| 4.10 | Add real Instagram URL to homepage | GitHub repo | Complete | Done |
-| 4.11 | Launch first content campaign | External platform | No | Pending |
+| 4.4 | Add website link to link-in-bio page | External platform | No | Done |
+| 4.5 | Add Free Preview Lessons link | External platform | No | Done |
+| 4.6 | Add Trial Lesson booking link | External platform | No | Done |
+| 4.7 | Add course links to link-in-bio page | External platform | No | Done |
+| 4.8 | Add Beacons link to Instagram bio | External platform | No | Done |
+| 4.9 | Choose product/payment platform | External platform | No | Pending |
+| 4.10 | Create first Practice Pack product | External platform | No | Pending |
+| 4.11 | Add real link-in-bio URL to homepage | GitHub repo | Complete | Done |
+| 4.12 | Add real Instagram URL to homepage | GitHub repo | Complete | Done |
+| 4.13 | Launch first content campaign | External platform | No | Pending |
 
-## Recommended Link-in-Bio Order
+## Confirmed Link-in-Bio Button Order
 
-Use this order after the link page is created:
+The Beacons page currently uses this confirmed order:
 
 ```text
 1. YSP Learn & Shine Website
 2. Free Preview Lessons
-3. Book a Guided Trial Lesson
-4. Full Practice Packs — Coming Soon
+3. View Courses
+4. Book a Guided Trial Lesson
 5. Canada Life & Career English
 6. Travel English
 7. Business English
-8. About YSP
+8. Instagram
 ```
 
 ## Recommended Public Profile Positioning
@@ -85,11 +87,11 @@ Use one clear brand message:
 Practical English for real life, travel, and career communication.
 ```
 
-Suggested short bio structure:
+Current Instagram bio:
 
 ```text
 Practical English for real life
-Travel · Canada Life · Career English
+Travel · Canada Life · Career
 Free previews + guided lessons
 ```
 
@@ -141,18 +143,14 @@ Header navigation: Instagram
 Footer: Instagram
 ```
 
-## Beacons Page Check Needed
+## Current Completed Launch Flow
 
-The current Beacons screenshot shows Instagram and subscription elements, but the main YSP buttons still need to be checked or added:
+The basic launch flow is now complete:
 
 ```text
-YSP Learn & Shine Website
-Free Preview Lessons
-View Courses
-Book a Guided Trial Lesson
-Canada Life & Career English
-Travel English
-Business English
+Instagram
+→ Beacons
+→ YSP website / Free Preview Lessons / View Courses / Trial Lesson
 ```
 
 ## Next Repo Action
@@ -170,7 +168,6 @@ Add only real links. Do not add placeholders.
 ## Current Phase 4 Status
 
 ```text
-Link-in-bio URL and Instagram URL confirmed and connected to homepage.
-Beacons button contents still need user confirmation.
-Manual external setup continues.
+IG + Beacons basic traffic flow complete.
+Manual external setup continues only for product/payment launch.
 ```
