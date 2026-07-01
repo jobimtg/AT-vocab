@@ -122,7 +122,7 @@ Completed in repo:
 ## Phase 4 Status
 
 ```text
-Phase 4 — External Launch Setup: IG + Beacons basic traffic flow complete
+Phase 4 — External Launch Setup: First IG soft campaign scheduled
 ```
 
 Completed in repo:
@@ -137,6 +137,7 @@ Completed in repo:
 | Confirmed Instagram link documented | Done |
 | Instagram link added to homepage | Done |
 | IG + Beacons flow documented complete | Done |
+| First IG campaign schedule documented | Done |
 
 Completed externally by user:
 
@@ -147,6 +148,8 @@ Completed externally by user:
 | Beacons main buttons added | Done |
 | Beacons button order checked | Done |
 | Beacons link added to Instagram bio | Done |
+| First 6 IG feed posts scheduled | Done |
+| First campaign Stories scheduled | Done |
 
 Manual external tasks still required:
 
@@ -162,6 +165,16 @@ Manual external tasks still required:
 Instagram
 → Beacons
 → YSP website / Free Preview Lessons / View Courses / Trial Lesson
+```
+
+## Current Campaign Flow
+
+```text
+Morning Stories
+→ Evening Feed Posts
+→ Link in bio
+→ Beacons
+→ Website / Free Preview / Trial Lesson
 ```
 
 ## Current Lesson Production Decision
@@ -199,7 +212,7 @@ This avoids manually retyping large L02 arrays and SVG strings through the GitHu
 Recommended next step:
 
 ```text
-Create first Instagram content set and launch the first soft campaign.
+Prepare IG Content Set 2: Posts 7–12.
 ```
 
 Product/payment links should wait until the first Practice Pack is ready.
