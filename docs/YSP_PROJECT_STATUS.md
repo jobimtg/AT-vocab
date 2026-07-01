@@ -12,6 +12,7 @@ Website: https://jobimtg.github.io/AT-vocab/
 Brand: YSP Learn & Shine
 Slogan: Learn with Purpose. Shine with Confidence.
 Link-in-bio: https://beacons.ai/ysp_learn_and_shine
+Instagram: https://www.instagram.com/ysp_learnandshine/
 ```
 
 ## Current Direction
@@ -75,7 +76,7 @@ GitHub Pages deployment may also appear as the system deployment workflow.
 | Area | Current Status | Notes |
 |---|---:|---|
 | GitHub Pages website | Done | Public site is live. |
-| Homepage | Done | Homepage now links to courses, free previews, Beacons link hub, and trial lesson booking. |
+| Homepage | Done | Homepage now links to courses, free previews, Beacons link hub, Instagram, and trial lesson booking. |
 | Lessons index | Done | Course sections and lesson cards exist. |
 | Course folders | Done | `lessons/ca-life/`, `lessons/travel/`, and `lessons/business/` exist. |
 | Global lesson navigation | Done | `js/ysp-global-nav.js` renders shared lesson nav, Back to Lessons, and Top button. |
@@ -133,16 +134,17 @@ Completed in repo:
 | No placeholder external links rule | Done |
 | Confirmed Beacons link documented | Done |
 | Beacons link added to homepage | Done |
+| Confirmed Instagram link documented | Done |
+| Instagram link added to homepage | Done |
 
 Manual external tasks still required:
 
 | Task | Status |
 |---|---:|
-| YSP social profile setup | Pending |
-| Link-in-bio page setup | Done / user confirmation needed for button contents |
+| Beacons button contents | User confirmation needed |
 | Payment / product platform setup | Pending |
 | Practice Pack product upload | Pending |
-| Add future social/profile/product links to homepage | Waiting for real URLs |
+| Add future product/payment links to homepage | Waiting for real URLs |
 
 ## Current Lesson Production Decision
 
@@ -180,8 +182,7 @@ Manual external setup:
 
 ```text
 1. Confirm Beacons button contents and links.
-2. Set up the YSP social profile.
-3. Add the Beacons link to the YSP social profile bio.
-4. Choose the product/payment platform.
-5. Return with the real social/profile/product URLs so the homepage can be updated safely.
+2. Add the Beacons link to the YSP Instagram bio.
+3. Choose the product/payment platform.
+4. Return with real product/payment URLs when available so the homepage can be updated safely.
 ```
