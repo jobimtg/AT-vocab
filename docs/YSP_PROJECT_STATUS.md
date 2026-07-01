@@ -122,7 +122,7 @@ Completed in repo:
 ## Phase 4 Status
 
 ```text
-Phase 4 — External Launch Setup: In progress
+Phase 4 — External Launch Setup: IG + Beacons basic traffic flow complete
 ```
 
 Completed in repo:
@@ -136,15 +136,33 @@ Completed in repo:
 | Beacons link added to homepage | Done |
 | Confirmed Instagram link documented | Done |
 | Instagram link added to homepage | Done |
+| IG + Beacons flow documented complete | Done |
+
+Completed externally by user:
+
+| Task | Status |
+|---|---:|
+| YSP Instagram profile created | Done |
+| Beacons link-in-bio page created | Done |
+| Beacons main buttons added | Done |
+| Beacons button order checked | Done |
+| Beacons link added to Instagram bio | Done |
 
 Manual external tasks still required:
 
 | Task | Status |
 |---|---:|
-| Beacons button contents | User confirmation needed |
 | Payment / product platform setup | Pending |
 | Practice Pack product upload | Pending |
 | Add future product/payment links to homepage | Waiting for real URLs |
+
+## Current Launch Flow
+
+```text
+Instagram
+→ Beacons
+→ YSP website / Free Preview Lessons / View Courses / Trial Lesson
+```
 
 ## Current Lesson Production Decision
 
@@ -178,11 +196,10 @@ This avoids manually retyping large L02 arrays and SVG strings through the GitHu
 
 ## Next Action
 
-Manual external setup:
+Recommended next step:
 
 ```text
-1. Confirm Beacons button contents and links.
-2. Add the Beacons link to the YSP Instagram bio.
-3. Choose the product/payment platform.
-4. Return with real product/payment URLs when available so the homepage can be updated safely.
+Create first Instagram content set and launch the first soft campaign.
 ```
+
+Product/payment links should wait until the first Practice Pack is ready.
