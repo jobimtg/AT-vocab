@@ -11,6 +11,7 @@ Repository: jobimtg/AT-vocab
 Website: https://jobimtg.github.io/AT-vocab/
 Brand: YSP Learn & Shine
 Slogan: Learn with Purpose. Shine with Confidence.
+Link-in-bio: https://beacons.ai/ysp_learn_and_shine
 ```
 
 ## Current Direction
@@ -74,7 +75,7 @@ GitHub Pages deployment may also appear as the system deployment workflow.
 | Area | Current Status | Notes |
 |---|---:|---|
 | GitHub Pages website | Done | Public site is live. |
-| Homepage | Done | Homepage now has a clearer product path for courses, free previews, practice packs, and trial lessons. |
+| Homepage | Done | Homepage now links to courses, free previews, Beacons link hub, and trial lesson booking. |
 | Lessons index | Done | Course sections and lesson cards exist. |
 | Course folders | Done | `lessons/ca-life/`, `lessons/travel/`, and `lessons/business/` exist. |
 | Global lesson navigation | Done | `js/ysp-global-nav.js` renders shared lesson nav, Back to Lessons, and Top button. |
@@ -120,7 +121,7 @@ Completed in repo:
 ## Phase 4 Status
 
 ```text
-Phase 4 — External Launch Setup: Started
+Phase 4 — External Launch Setup: In progress
 ```
 
 Completed in repo:
@@ -130,16 +131,18 @@ Completed in repo:
 | External launch checklist | Done |
 | Homepage link rule documented | Done |
 | No placeholder external links rule | Done |
+| Confirmed Beacons link documented | Done |
+| Beacons link added to homepage | Done |
 
 Manual external tasks still required:
 
 | Task | Status |
 |---|---:|
 | YSP social profile setup | Pending |
-| Link-in-bio page setup | Pending |
+| Link-in-bio page setup | Done / user confirmation needed for button contents |
 | Payment / product platform setup | Pending |
 | Practice Pack product upload | Pending |
-| Add real external links to homepage | Waiting for real URLs |
+| Add future social/profile/product links to homepage | Waiting for real URLs |
 
 ## Current Lesson Production Decision
 
@@ -176,9 +179,9 @@ This avoids manually retyping large L02 arrays and SVG strings through the GitHu
 Manual external setup:
 
 ```text
-1. Set up the YSP social profile.
-2. Set up the link-in-bio page.
-3. Add the website, free preview, and trial lesson links.
+1. Confirm Beacons button contents and links.
+2. Set up the YSP social profile.
+3. Add the Beacons link to the YSP social profile bio.
 4. Choose the product/payment platform.
-5. Return with the real URLs so the homepage can be updated safely.
+5. Return with the real social/profile/product URLs so the homepage can be updated safely.
 ```

@@ -16,12 +16,21 @@ Phase 2 — Content production foundation: Complete
 Phase 3 — Homepage product path: Complete in repo
 ```
 
-The homepage already supports this conversion path:
+The homepage supports this conversion path:
 
 ```text
 View Courses
 Try Free Preview Lessons
+All YSP Links
 Book a Trial Lesson
+```
+
+## Confirmed External URL
+
+The confirmed link-in-bio URL is:
+
+```text
+https://beacons.ai/ysp_learn_and_shine
 ```
 
 ## Important Rule
@@ -36,13 +45,13 @@ Only add external links after the user has created and confirmed the real URLs.
 |---:|---|---|---:|---:|
 | 4.1 | Choose YSP social account name | External platform | No | Pending |
 | 4.2 | Create YSP social profile | External platform | No | Pending |
-| 4.3 | Create link-in-bio page | External platform | No | Pending |
-| 4.4 | Add website link to link-in-bio page | External platform | No | Pending |
-| 4.5 | Add Free Preview Lessons link | External platform | No | Pending |
-| 4.6 | Add Trial Lesson booking link | External platform | No | Pending |
+| 4.3 | Create link-in-bio page | External platform | No | Done |
+| 4.4 | Add website link to link-in-bio page | External platform | No | User check needed |
+| 4.5 | Add Free Preview Lessons link | External platform | No | User check needed |
+| 4.6 | Add Trial Lesson booking link | External platform | No | User check needed |
 | 4.7 | Choose product/payment platform | External platform | No | Pending |
 | 4.8 | Create first Practice Pack product | External platform | No | Pending |
-| 4.9 | Add real external links to homepage | GitHub repo | Yes, after links exist | Waiting |
+| 4.9 | Add real link-in-bio URL to homepage | GitHub repo | Complete | Done |
 | 4.10 | Launch first content campaign | External platform | No | Pending |
 
 ## Recommended Link-in-Bio Order
@@ -95,23 +104,35 @@ Allowed now:
 YSP website URL
 Free preview lesson URLs
 Trial lesson booking URL
+Confirmed link-in-bio URL
 ```
 
 Add later after confirmed:
 
 ```text
 Social profile URL
-Link-in-bio URL
 Practice Pack payment URL
 Email list URL
 ```
 
+## Homepage Link Placement
+
+The confirmed link-in-bio URL has been added to:
+
+```text
+Header navigation: YSP Links
+Hero CTA: All YSP Links
+Final CTA: All YSP Links
+```
+
 ## Next Repo Action
 
-After external links exist, update:
+After the YSP social profile or payment/product links exist, update:
 
 ```text
 index.html
+docs/YSP_PHASE4_EXTERNAL_LAUNCH_CHECKLIST.md
+docs/YSP_PROJECT_STATUS.md
 ```
 
 Add only real links. Do not add placeholders.
@@ -119,6 +140,6 @@ Add only real links. Do not add placeholders.
 ## Current Phase 4 Status
 
 ```text
-External launch checklist created.
-Manual external setup is pending.
+Link-in-bio URL confirmed and connected to homepage.
+Manual external setup continues.
 ```
