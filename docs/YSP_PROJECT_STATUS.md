@@ -189,8 +189,8 @@ Current Phase 5 work:
 |---:|---|---:|
 | 5.1 | Full L02 source-data JSON | Done via PR #29 |
 | 5.2 | Lesson data validator | Done via PR #30 |
-| 5.3 | Fixed L02 template / renderer | In PR |
-| 5.4 | Lesson HTML builder | Not started |
+| 5.3 | Fixed L02 template / renderer | Done via PR #31 |
+| 5.4 | Lesson HTML builder | In PR |
 | 5.5 | First generated proof lesson | Not started |
 | 5.6 | Canada Life L03 source-data draft | Not started |
 
@@ -222,12 +222,14 @@ HTML is the public output, not the main editing source.
 lesson-data/ca-life/u1-l2.json exists.
 Raw Golden L02 HTML is not committed to the public repo.
 The JSON file includes a validation block with passed counts.
+templates/lesson-l02-template.html exists.
+scripts/validate_lesson_data.py exists.
 ```
 
 ## Next Action
 
-Recommended next step after Phase 5.3 merges:
+Recommended next step after Phase 5.4 merges:
 
 ```text
-Phase 5.4 — Create build_lesson_html.py
+Phase 5.5 — Generate first safe proof lesson.
 ```
