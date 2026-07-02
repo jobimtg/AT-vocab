@@ -188,8 +188,8 @@ Current Phase 5 work:
 | Step | Task | Status |
 |---:|---|---:|
 | 5.1 | Full L02 source-data JSON | Done via PR #29 |
-| 5.2 | Lesson data validator | In PR |
-| 5.3 | Fixed L02 template / renderer | Not started |
+| 5.2 | Lesson data validator | Done via PR #30 |
+| 5.3 | Fixed L02 template / renderer | In PR |
 | 5.4 | Lesson HTML builder | Not started |
 | 5.5 | First generated proof lesson | Not started |
 | 5.6 | Canada Life L03 source-data draft | Not started |
@@ -226,8 +226,8 @@ The JSON file includes a validation block with passed counts.
 
 ## Next Action
 
-Recommended next step after Phase 5.2 merges:
+Recommended next step after Phase 5.3 merges:
 
 ```text
-Phase 5.3 — Store fixed L02 template / renderer.
+Phase 5.4 — Create build_lesson_html.py
 ```
