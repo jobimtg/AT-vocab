@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "course_id": "canada-en",
+    "course_folder": "ca-life",
+    "unit": 1,
+    "lesson": 2,
+    "lesson_code": "L02",
+    "title_en": "Transportation in Canada",
+    "title_zh": "加拿大交通",
+    "cefr": "A2",
+    "source_file_confirmed_by_user": "L02_transportation_fixed_teacher_notes.html",
+    "raw_html_committed_to_public_repo": false,
+    "full_json_target": "lesson-data/ca-life/u1-l2.json"
+  },
+  "local_extraction": {
+    "status": "passed",
+    "note": "Full JSON was generated locally from the confirmed Golden L02 HTML source. Raw HTML was not committed. Full JSON commit is pending a local/Codex-safe file operation to avoid chat copy/paste corruption."
+  },
+  "counts": {
+    "expected": {
+      "categories": 5,
+      "core": 25,
+      "extended": 30,
+      "phrases": 5,
+      "dialogues": 5,
+      "speaking": 5,
+      "culture": 2,
+      "pronunciation_words": 5
+    },
+    "actual": {
+      "categories": 5,
+      "core": 25,
+      "extended": 30,
+      "phrases": 5,
+      "dialogues": 5,
+      "speaking": 5,
+      "culture": 2,
+      "pronunciation_words": 5
+    }
+  },
+  "sample_checks": {
+    "first_core_word": "bus",
+    "last_core_word": "map",
+    "dialogue_titles": [
+      "Asking About the Bus",
+      "Riding the Bus",
+      "Getting Directions",
+      "Buying a Transit Pass",
+      "Talking About Commuting"
+    ],
+    "useful_phrases": [
+      "Excuse me, which bus goes to downtown?",
+      "How much is the fare?",
+      "Where do I transfer?",
+      "Is this the right bus to the mall?",
+      "How many stops until Main Street?"
+    ]
+  },
+  "next_required_file": "lesson-data/ca-life/u1-l2.json",
+  "do_not_commit": [
+    "L02_transportation_fixed_teacher_notes.html"
+  ]
+}
