@@ -91,7 +91,7 @@ GitHub Pages deployment may also appear as the system deployment workflow.
 | Course | Page | Current Status | Phase 5 Note |
 |---|---|---:|---|
 | Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview | Public preview exists; full JSON conversion pending. |
-| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Uploaded L02 is Golden source; full JSON extraction is Phase 5.1. |
+| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Full source-data JSON now exists at `lesson-data/ca-life/u1-l2.json`; raw Golden HTML is not committed. |
 | Travel English | `lessons/travel/u1-l1.html` | Active preview | Existing content should be converted later. |
 | Business English | `lessons/business/u1-l1.html` | Partial / needs refactor | Refactor after pipeline proof. |
 
@@ -166,7 +166,7 @@ Morning Stories
 ## Phase 5 Status
 
 ```text
-Phase 5 — Lesson Factory: Started
+Phase 5 — Lesson Factory: In progress
 ```
 
 User-approved production direction:
@@ -187,8 +187,8 @@ Current Phase 5 work:
 
 | Step | Task | Status |
 |---:|---|---:|
-| 5.1 | Full L02 source-data JSON | Started |
-| 5.2 | Lesson data validator | Not started |
+| 5.1 | Full L02 source-data JSON | Done via PR #29 |
+| 5.2 | Lesson data validator | In PR |
 | 5.3 | Fixed L02 template / renderer | Not started |
 | 5.4 | Lesson HTML builder | Not started |
 | 5.5 | First generated proof lesson | Not started |
@@ -216,27 +216,18 @@ GitHub Pages
 
 HTML is the public output, not the main editing source.
 
-## Manual Action Needed Now
-
-The user only needs to confirm:
+## Current Phase 5 Data Status
 
 ```text
-1. The correct Golden L02 HTML file is L02_transportation_fixed_teacher_notes.html.
-2. Whether the raw Golden L02 HTML is allowed to be stored in the public repo.
-```
-
-Recommended safe path:
-
-```text
-Keep raw Golden L02 HTML local.
-Use local extraction.
-Commit only validated lesson-data JSON.
+lesson-data/ca-life/u1-l2.json exists.
+Raw Golden L02 HTML is not committed to the public repo.
+The JSON file includes a validation block with passed counts.
 ```
 
 ## Next Action
 
-Recommended next auto step:
+Recommended next step after Phase 5.2 merges:
 
 ```text
-Run L02 extraction and commit lesson-data/ca-life/u1-l2.json after validation.
+Phase 5.3 — Store fixed L02 template / renderer.
 ```
