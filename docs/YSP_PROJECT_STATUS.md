@@ -1,6 +1,6 @@
 # YSP Project Status
 
-_Last checked: 2026-07-01_
+_Last checked: 2026-07-02_
 
 ## Current Project
 
@@ -88,12 +88,12 @@ GitHub Pages deployment may also appear as the system deployment workflow.
 
 ## Existing Lesson Inventory
 
-| Course | Page | Current Status | Phase 2 Note |
+| Course | Page | Current Status | Phase 5 Note |
 |---|---|---:|---|
-| Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview | Registered as `active-preview`; not final Golden source. |
-| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Uploaded L02 is Golden source; schema-proof manifest exists. |
-| Travel English | `lessons/travel/u1-l1.html` | Active preview | Registered as `active-preview`; older structure should not drive future lessons. |
-| Business English | `lessons/business/u1-l1.html` | Partial / needs refactor | Refactor plan complete; implementation later. |
+| Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview | Public preview exists; full JSON conversion pending. |
+| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Uploaded L02 is Golden source; full JSON extraction is Phase 5.1. |
+| Travel English | `lessons/travel/u1-l1.html` | Active preview | Existing content should be converted later. |
+| Business English | `lessons/business/u1-l1.html` | Partial / needs refactor | Refactor after pipeline proof. |
 
 ## Phase 2 Status
 
@@ -125,20 +125,6 @@ Completed in repo:
 Phase 4 — External Launch Setup: First IG soft campaign scheduled
 ```
 
-Completed in repo:
-
-| Task | Status |
-|---|---:|
-| External launch checklist | Done |
-| Homepage link rule documented | Done |
-| No placeholder external links rule | Done |
-| Confirmed Beacons link documented | Done |
-| Beacons link added to homepage | Done |
-| Confirmed Instagram link documented | Done |
-| Instagram link added to homepage | Done |
-| IG + Beacons flow documented complete | Done |
-| First IG campaign schedule documented | Done |
-
 Completed externally by user:
 
 | Task | Status |
@@ -151,7 +137,7 @@ Completed externally by user:
 | First 6 IG feed posts scheduled | Done |
 | First campaign Stories scheduled | Done |
 
-Manual external tasks still required:
+Manual external tasks still required later:
 
 | Task | Status |
 |---|---:|
@@ -177,6 +163,37 @@ Morning Stories
 → Website / Free Preview / Trial Lesson
 ```
 
+## Phase 5 Status
+
+```text
+Phase 5 — Lesson Factory: Started
+```
+
+User-approved production direction:
+
+```text
+Future lessons should not be authored directly as HTML.
+Use lesson-data JSON → fixed template → automatically generated HTML.
+```
+
+Phase 5 documents:
+
+```text
+docs/YSP_COURSE_ARCHITECTURE_REMAINING_WORK.md
+docs/YSP_PHASE5_LESSON_FACTORY_GUIDE.md
+```
+
+Current Phase 5 work:
+
+| Step | Task | Status |
+|---:|---|---:|
+| 5.1 | Full L02 source-data JSON | Started |
+| 5.2 | Lesson data validator | Not started |
+| 5.3 | Fixed L02 template / renderer | Not started |
+| 5.4 | Lesson HTML builder | Not started |
+| 5.5 | First generated proof lesson | Not started |
+| 5.6 | Canada Life L03 source-data draft | Not started |
+
 ## Current Lesson Production Decision
 
 Future lesson content should not be authored directly as HTML.
@@ -186,7 +203,11 @@ Current target architecture:
 ```text
 lesson-data JSON / Markdown source
         ↓
+validate_lesson_data.py
+        ↓
 fixed L02 renderer / template
+        ↓
+build_lesson_html.py
         ↓
 generated lesson HTML
         ↓
@@ -195,24 +216,27 @@ GitHub Pages
 
 HTML is the public output, not the main editing source.
 
-## Important Limitation
+## Manual Action Needed Now
 
-The full L02 data extraction into `lesson-data/ca-life/u1-l2.json` should be done by local Codex or a repo extraction script from the uploaded Golden L02 file.
-
-The current repo contains a schema-proof manifest:
+The user only needs to confirm:
 
 ```text
-lesson-data/ca-life/u1-l2.schema-proof.json
+1. The correct Golden L02 HTML file is L02_transportation_fixed_teacher_notes.html.
+2. Whether the raw Golden L02 HTML is allowed to be stored in the public repo.
 ```
 
-This avoids manually retyping large L02 arrays and SVG strings through the GitHub connector.
+Recommended safe path:
+
+```text
+Keep raw Golden L02 HTML local.
+Use local extraction.
+Commit only validated lesson-data JSON.
+```
 
 ## Next Action
 
-Recommended next step:
+Recommended next auto step:
 
 ```text
-Prepare IG Content Set 2: Posts 7–12.
+Run L02 extraction and commit lesson-data/ca-life/u1-l2.json after validation.
 ```
-
-Product/payment links should wait until the first Practice Pack is ready.
