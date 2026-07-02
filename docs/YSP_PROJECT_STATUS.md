@@ -91,7 +91,7 @@ GitHub Pages deployment may also appear as the system deployment workflow.
 | Course | Page | Current Status | Phase 5 Note |
 |---|---|---:|---|
 | Canada Life & Career | `lessons/ca-life/u1-l1.html` | Active preview | Public preview exists; full JSON conversion pending. |
-| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Uploaded L02 is Golden source; full JSON extraction is Phase 5.1. |
+| Canada Life & Career | `lessons/ca-life/u1-l2.html` | Golden reference target | Local extraction passed; JSON commit pending through local/Codex-safe path. |
 | Travel English | `lessons/travel/u1-l1.html` | Active preview | Existing content should be converted later. |
 | Business English | `lessons/business/u1-l1.html` | Partial / needs refactor | Refactor after pipeline proof. |
 
@@ -181,14 +181,17 @@ Phase 5 documents:
 ```text
 docs/YSP_COURSE_ARCHITECTURE_REMAINING_WORK.md
 docs/YSP_PHASE5_LESSON_FACTORY_GUIDE.md
+docs/YSP_PHASE5_L02_EXTRACTION_REPORT.md
 ```
 
 Current Phase 5 work:
 
 | Step | Task | Status |
 |---:|---|---:|
-| 5.1 | Full L02 source-data JSON | Started |
-| 5.2 | Lesson data validator | Not started |
+| 5.1A | Confirm Golden L02 source handling | Done |
+| 5.1B | Local L02 extraction count check | Passed |
+| 5.1C | Commit full L02 JSON | Pending local/Codex-safe file commit |
+| 5.2 | Lesson data validator | Added |
 | 5.3 | Fixed L02 template / renderer | Not started |
 | 5.4 | Lesson HTML builder | Not started |
 | 5.5 | First generated proof lesson | Not started |
@@ -218,14 +221,14 @@ HTML is the public output, not the main editing source.
 
 ## Manual Action Needed Now
 
-The user only needs to confirm:
+The user confirmed:
 
 ```text
 1. The correct Golden L02 HTML file is L02_transportation_fixed_teacher_notes.html.
-2. Whether the raw Golden L02 HTML is allowed to be stored in the public repo.
+2. The raw Golden L02 HTML must not be stored in the public repo.
 ```
 
-Recommended safe path:
+Recommended safe path remains:
 
 ```text
 Keep raw Golden L02 HTML local.
@@ -235,8 +238,8 @@ Commit only validated lesson-data JSON.
 
 ## Next Action
 
-Recommended next auto step:
+Recommended next step:
 
 ```text
-Run L02 extraction and commit lesson-data/ca-life/u1-l2.json after validation.
+Use local/Codex-safe path to commit lesson-data/ca-life/u1-l2.json, then run scripts/validate_lesson_data.py.
 ```
