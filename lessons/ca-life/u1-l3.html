@@ -30,7 +30,10 @@
   <div class="ysp-image-gallery-head accent"><span>Useful Phrases — 圖片版</span><small>Workflow image mount</small></div>
   <div class="ysp-image-gallery-mount">
     <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
-    <div class="ysp-image-placeholder">圖片尚未更新<code>assets/phrases/l03-phrases-*</code></div>
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/phrases/l03-phrases-*</code>
+    </div>
     <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
   </div>
 </section>
@@ -42,7 +45,10 @@
   <div class="ysp-image-gallery-head"><span>Pronunciation Spotlight — 圖片版</span><small>Workflow image mount</small></div>
   <div class="ysp-image-gallery-mount">
     <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
-    <div class="ysp-image-placeholder">圖片尚未更新<code>assets/pronunciation/l03-pronunciation-*</code></div>
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/pronunciation/l03-pronunciation-*</code>
+    </div>
     <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
   </div>
 </section>
@@ -54,7 +60,10 @@
   <div class="ysp-image-gallery-head"><span>Dialogue 1 — 圖片版</span><small>Workflow image mount</small></div>
   <div class="ysp-image-gallery-mount">
     <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
-    <div class="ysp-image-placeholder">圖片尚未更新<code>assets/dialogues/l03-d01-*</code></div>
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/dialogues/l03-d01-*</code>
+    </div>
     <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
   </div>
 </section>
@@ -64,7 +73,10 @@
   <div class="ysp-image-gallery-head"><span>Dialogue 2 — 圖片版</span><small>Workflow image mount</small></div>
   <div class="ysp-image-gallery-mount">
     <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
-    <div class="ysp-image-placeholder">圖片尚未更新<code>assets/dialogues/l03-d02-*</code></div>
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/dialogues/l03-d02-*</code>
+    </div>
     <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
   </div>
 </section>
@@ -77,7 +89,10 @@
   <div class="ysp-image-gallery-head accent"><span>Speaking Questions — 圖片版</span><small>Workflow image mount</small></div>
   <div class="ysp-image-gallery-mount">
     <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
-    <div class="ysp-image-placeholder">圖片尚未更新<code>assets/speaking/l03-speaking-*</code></div>
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/speaking/l03-speaking-*</code>
+    </div>
     <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
   </div>
 </section>
@@ -89,7 +104,10 @@
   <div class="ysp-image-gallery-head green"><span>Canadian Culture — 圖片版</span><small>Workflow image mount</small></div>
   <div class="ysp-image-gallery-mount">
     <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
-    <div class="ysp-image-placeholder">圖片尚未更新<code>assets/culture/l03-culture-*</code></div>
+    <div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>assets/culture/l03-culture-*</code>
+    </div>
     <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
   </div>
 </section>
@@ -121,5 +139,8 @@ function card(w){return `<button class="vcard" type="button"><div class="vinner"
 function render(){document.getElementById('coreGrid').innerHTML=core.map(card).join('');document.getElementById('extendedGrid').innerHTML=ext.map(x=>`<div class="mini"><span class="tag">extended</span><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join('');document.getElementById('phraseGrid').innerHTML=phrases.map(x=>`<div class="mini phrase"><strong>${x[0]}</strong><p>${x[1]}</p></div>`).join('');document.getElementById('dialogueList').innerHTML=dialogues.map((d,i)=>`<div class="dialogue"><span class="tag">Dialogue ${i+1}</span><h3>${d[0]}</h3>${d[1].map(l=>`<p class="line"><span class="speaker">${l[0]}:</span> ${l[1]}</p>`).join('')}</div>`).join('');document.getElementById('speakingList').innerHTML=speaking.map((q,i)=>`<div class="q"><strong>${i+1}.</strong> ${q}</div>`).join('');document.querySelectorAll('.vcard').forEach(c=>c.addEventListener('click',()=>c.classList.toggle('flip')))}
 document.querySelectorAll('.tb').forEach(btn=>btn.addEventListener('click',()=>{const n=btn.dataset.tab;document.querySelectorAll('.tb').forEach(b=>b.classList.toggle('on',b===btn));document.querySelectorAll('.tp').forEach((p,i)=>p.classList.toggle('on',String(i)===n));window.scrollTo({top:0,behavior:'smooth'});}));render();
 </script>
+<!-- YSP_GLOBAL_NAV_LOADER_START -->
+<script src="../../js/ysp-global-nav.js" defer data-ysp-base="../../"></script>
+<!-- YSP_GLOBAL_NAV_LOADER_END -->
 </body>
 </html>
