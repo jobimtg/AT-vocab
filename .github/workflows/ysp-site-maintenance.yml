@@ -32,6 +32,21 @@ jobs:
       - name: Scan lessons, add global nav loader, update lesson cards and image galleries
         shell: bash
         run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("scripts/ysp_site_maintenance.py")
+          text = path.read_text(encoding="utf-8")
+          old = '''for name, value in re.findall(r"([a-zA-Z_:][-a-zA-Z0-9_:.]*)\\s*=\\s*([\\"'])(.*?)\\2", tag_text, flags=re.S):
+                  attrs[name.lower()] = html_lib.unescape(value)'''
+          new = '''for name, _quote, value in re.findall(r"([a-zA-Z_:][-a-zA-Z0-9_:.]*)\\s*=\\s*([\\"'])(.*?)\\2", tag_text, flags=re.S):
+                  attrs[name.lower()] = html_lib.unescape(value)'''
+          if old in text:
+              path.write_text(text.replace(old, new), encoding="utf-8")
+              print("Applied parser hotfix to scripts/ysp_site_maintenance.py")
+          else:
+              print("Parser hotfix already present or pattern not found")
+          PY
           python3 scripts/ysp_site_maintenance.py
 
       - name: Validate site after maintenance
@@ -70,7 +85,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
 
-            git add -A index.html lessons/index.html lessons image-inbox
+            git add -A index.html lessons/index.html lessons image-inbox scripts/ysp_site_maintenance.py
 
             if git diff --cached --quiet; then
               echo "No staged changes."
