@@ -587,6 +587,70 @@ def update_home_index(lessons):
     return write_if_changed(HOME_INDEX, text)
 
 
+def parse_inbox_lesson_html(path: Path):
+    """Parse lesson HTML files uploaded to image-inbox.
+
+    Supported names:
+    - ca-life-u1-l3.html
+    - travel-u1-l2.html
+    - business-u2-l1.html
+
+    Existing lesson HTML files are never overwritten by this automation.
+    """
+    if path.suffix.lower() != ".html":
+        return None
+
+    stem = path.stem.lower()
+    for course in sorted(COURSES.keys(), key=len, reverse=True):
+        prefix = f"{course}-"
+        if not stem.startswith(prefix):
+            continue
+
+        rest = stem[len(prefix):]
+        if not re.fullmatch(r"u\d+-l\d+", rest):
+            return None
+
+        return {
+            "course": course,
+            "filename": f"{rest}.html",
+        }
+
+    return None
+
+
+def process_lesson_html_inbox():
+    moved = []
+    skipped = []
+    if not IMAGE_INBOX.exists():
+        return moved, skipped
+
+    for path in sorted(IMAGE_INBOX.iterdir()):
+        if not path.is_file() or path.suffix.lower() != ".html":
+            continue
+
+        parsed = parse_inbox_lesson_html(path)
+        if not parsed:
+            skipped.append((path.name, "filename must match <course>-u<number>-l<number>.html"))
+            continue
+
+        content = read(path)
+        if not re.search(r"<html\b", content, flags=re.I) or not re.search(r"</html\s*>", content, flags=re.I):
+            skipped.append((path.name, "file does not look like a complete HTML document"))
+            continue
+
+        dest_dir = LESSONS_ROOT / parsed["course"]
+        dest_path = dest_dir / parsed["filename"]
+        if dest_path.exists():
+            skipped.append((path.name, f"target already exists: {dest_path.relative_to(ROOT).as_posix()}"))
+            continue
+
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        path.replace(dest_path)
+        moved.append((path.name, dest_path.relative_to(ROOT).as_posix()))
+
+    return moved, skipped
+
+
 def parse_inbox_image(path: Path):
     ext = path.suffix.lower()
     if ext not in IMAGE_EXTENSIONS:
@@ -629,6 +693,9 @@ def process_image_inbox():
     for path in sorted(IMAGE_INBOX.iterdir()):
         if not path.is_file():
             continue
+        if path.suffix.lower() == ".html":
+            continue
+
         parsed = parse_inbox_image(path)
         if not parsed:
             skipped.append((path.name, "filename does not match supported YSP image-inbox rules"))
@@ -653,6 +720,7 @@ def main():
         print("WARNING: js/ysp-global-nav.js does not exist.")
         print("The loader will be added, but navigation buttons will not appear until js/ysp-global-nav.js is uploaded.")
 
+    moved_lessons, skipped_lessons = process_lesson_html_inbox()
     moved_images, skipped_images = process_image_inbox()
 
     lessons = discover_lessons()
@@ -667,6 +735,13 @@ def main():
 
     print("YSP Site Maintenance")
     print("====================")
+    print(f"Lesson HTML inbox files published: {len(moved_lessons)}")
+    for source, dest in moved_lessons:
+        print(f"- {source} -> {dest}")
+    if skipped_lessons:
+        print(f"Lesson HTML inbox files skipped: {len(skipped_lessons)}")
+        for source, reason in skipped_lessons:
+            print(f"- {source}: {reason}")
     print(f"Lessons discovered: {len(lessons)}")
     print("Scanned folders: lessons/ca-life, lessons/travel, lessons/business")
     print(f"Image inbox files moved: {len(moved_images)}")
