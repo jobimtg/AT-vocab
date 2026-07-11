@@ -263,7 +263,7 @@ def insert_before_body_end(text: str, block: str) -> str:
 
 def parse_attrs(tag_text: str) -> dict:
     attrs = {}
-    for name, value in re.findall(r"([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*([\"'])(.*?)\2", tag_text, flags=re.S):
+    for name, _quote, value in re.findall(r"([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*([\"'])(.*?)\2", tag_text, flags=re.S):
         attrs[name.lower()] = html_lib.unescape(value)
     return attrs
 
