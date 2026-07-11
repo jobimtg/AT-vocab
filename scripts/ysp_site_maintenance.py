@@ -8,6 +8,7 @@ ROOT = Path.cwd()
 LESSONS_ROOT = ROOT / "lessons"
 LESSONS_INDEX = LESSONS_ROOT / "index.html"
 HOME_INDEX = ROOT / "index.html"
+IMAGE_INBOX = ROOT / "image-inbox"
 
 COURSES = {
     "ca-life": {
@@ -47,6 +48,17 @@ LESSON_CARDS_END = "<!-- YSP_LESSON_CARDS_END -->"
 
 HOME_CARDS_START = "<!-- YSP_HOME_FEATURED_LESSONS_START -->"
 HOME_CARDS_END = "<!-- YSP_HOME_FEATURED_LESSONS_END -->"
+
+GALLERY_MOUNT_START = "<!-- YSP_IMAGE_GALLERY_MOUNT_START -->"
+GALLERY_MOUNT_END = "<!-- YSP_IMAGE_GALLERY_MOUNT_END -->"
+
+IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp"}
+IMAGE_SECTION_FOLDERS = {
+    "pronunciation": "pronunciation",
+    "phrases": "phrases",
+    "speaking": "speaking",
+    "culture": "culture",
+}
 
 LEGACY_BLOCKS = [
     ("<!-- YSP_SITE_NAV_START -->", "<!-- YSP_SITE_NAV_END -->"),
@@ -100,6 +112,14 @@ def read(path: Path) -> str:
 def write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
+
+
+def write_if_changed(path: Path, text: str) -> bool:
+    old = read(path) if path.exists() else ""
+    if text != old:
+        write(path, text)
+        return True
+    return False
 
 
 def clean_text(text: str) -> str:
@@ -241,9 +261,125 @@ def insert_before_body_end(text: str, block: str) -> str:
     return text + "\n" + block + "\n"
 
 
+def parse_attrs(tag_text: str) -> dict:
+    attrs = {}
+    for name, value in re.findall(r"([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*([\"'])(.*?)\2", tag_text, flags=re.S):
+        attrs[name.lower()] = html_lib.unescape(value)
+    return attrs
+
+
+def valid_gallery_image_name(filename: str, prefix: str) -> bool:
+    stem = Path(filename).stem
+    suffix = Path(filename).suffix.lower()
+    if suffix not in IMAGE_EXTENSIONS:
+        return False
+    if not stem.startswith(prefix):
+        return False
+
+    rest = stem[len(prefix):]
+    lower_prefix = prefix.lower()
+    if re.search(r"-d\d{2}-$", lower_prefix):
+        return bool(re.fullmatch(r"model|practice|extra-\d+", rest, flags=re.I))
+    return bool(re.fullmatch(r"\d+", rest))
+
+
+def gallery_sort_key(path: Path, prefix: str):
+    stem = path.stem
+    rest = stem[len(prefix):]
+    m = re.fullmatch(r"(\d+)", rest)
+    if m:
+        return (0, int(m.group(1)), stem)
+    if rest == "model":
+        return (0, 0, stem)
+    if rest == "practice":
+        return (0, 1, stem)
+    m = re.fullmatch(r"extra-(\d+)", rest)
+    if m:
+        return (1, int(m.group(1)), stem)
+    return (9, 999, stem)
+
+
+def matching_gallery_images(lesson_path: Path, image_dir_attr: str, prefix: str):
+    image_dir_attr = image_dir_attr.strip().strip("/")
+    if not image_dir_attr or ".." in Path(image_dir_attr).parts:
+        return []
+
+    image_dir = lesson_path.parent / image_dir_attr
+    if not image_dir.exists() or not image_dir.is_dir():
+        return []
+
+    images = [
+        path for path in image_dir.iterdir()
+        if path.is_file() and valid_gallery_image_name(path.name, prefix)
+    ]
+    return sorted(images, key=lambda item: gallery_sort_key(item, prefix))
+
+
+def gallery_placeholder(image_dir_attr: str, prefix: str) -> str:
+    pattern = f"{image_dir_attr.rstrip('/')}/{prefix}*"
+    return f"""<div class="ysp-image-placeholder">
+      圖片尚未更新
+      <code>{html_lib.escape(pattern)}</code>
+    </div>"""
+
+
+def gallery_grid(lesson_path: Path, images) -> str:
+    lines = ['<div class="ysp-image-gallery-grid">']
+    for image in images:
+        src = image.relative_to(lesson_path.parent).as_posix()
+        alt = image.stem
+        lines.append(
+            f'  <img src="{html_lib.escape(src)}" alt="{html_lib.escape(alt)}" loading="lazy">'
+        )
+    lines.append("</div>")
+    return "\n".join(lines)
+
+
+def update_image_galleries(lesson_path: Path, text: str) -> str:
+    """Render existing Dynamic Image Gallery v3 mount areas.
+
+    This function intentionally does not create new gallery sections. It only updates
+    pages that already contain a persistent `.ysp-image-gallery` section with
+    `data-ysp-image-dir`, `data-ysp-image-prefix`, and mount markers.
+    """
+    section_pattern = re.compile(
+        r"(<section\b(?=[^>]*\bclass=[\"'][^\"']*\bysp-image-gallery\b[^\"']*[\"'])(?P<attrs>[^>]*)>)"
+        r"(?P<body>[\s\S]*?)"
+        r"(</section>)",
+        flags=re.I,
+    )
+
+    def replace_section(match):
+        start = match.group(1)
+        attrs = parse_attrs(start)
+        body = match.group("body")
+        end = match.group(4)
+        image_dir_attr = attrs.get("data-ysp-image-dir", "")
+        prefix = attrs.get("data-ysp-image-prefix", "")
+
+        if not image_dir_attr or not prefix:
+            return match.group(0)
+        if GALLERY_MOUNT_START not in body or GALLERY_MOUNT_END not in body:
+            return match.group(0)
+
+        images = matching_gallery_images(lesson_path, image_dir_attr, prefix)
+        inner = gallery_grid(lesson_path, images) if images else gallery_placeholder(image_dir_attr, prefix)
+        replacement = f"{GALLERY_MOUNT_START}\n    {inner}\n    {GALLERY_MOUNT_END}"
+        new_body = re.sub(
+            re.escape(GALLERY_MOUNT_START) + r"[\s\S]*?" + re.escape(GALLERY_MOUNT_END),
+            replacement,
+            body,
+            count=1,
+        )
+        return start + new_body + end
+
+    return section_pattern.sub(replace_section, text)
+
+
 def normalize_lesson_page(path: Path) -> bool:
     original = read(path)
     text = remove_legacy_generated_nav(original)
+    text = update_image_galleries(path, text)
     text = insert_before_body_end(text, loader_block(path))
     if text != original:
         write(path, text)
@@ -284,14 +420,26 @@ def discover_lessons():
     return lessons
 
 
-def card_html(item, href_key: str) -> str:
+def managed_card_html(item, href_key: str) -> str:
     cfg = COURSES[item["key"]]
+    accent = cfg["accent"]
     return f"""<a class="lesson-card" href="{html_lib.escape(item[href_key])}">
-  <span class="lesson-badge" style="background:{cfg["accent"]}">{html_lib.escape(cfg["tag"])}</span>
+  <span class="lesson-badge" style="background:{accent}">{html_lib.escape(cfg["tag"])}</span>
   <strong>{html_lib.escape(item["title"])}</strong>
   <small>{html_lib.escape(cfg["label"])} · {html_lib.escape(item["code"])}</small>
   <p>{html_lib.escape(item["summary"])}</p>
 </a>"""
+
+
+def static_lesson_card_html(item) -> str:
+    cfg = COURSES[item["key"]]
+    code = html_lib.escape(item["code"])
+    return f"""<article class="lesson-card">
+  <span class="tag">{html_lib.escape(cfg["tag"])} · {code}</span>
+  <h3>{html_lib.escape(item["title"])}</h3>
+  <p>{html_lib.escape(item["summary"])}</p>
+  <a href="{html_lib.escape(item["href_from_lessons"])}">View Preview →</a>
+</article>"""
 
 
 def card_style() -> str:
@@ -343,6 +491,17 @@ def replace_or_append_cards(
     return text + "\n" + section + "\n"
 
 
+def replace_course_lesson_grid(text: str, anchor: str, cards: str):
+    pattern = re.compile(
+        r"(<section\b(?=[^>]*\bid=[\"']" + re.escape(anchor) + r"[\"'])(?=[^>]*\bclass=[\"'][^\"']*\bcourse-section\b[^\"']*[\"'])[^>]*>[\s\S]*?"
+        r"<div\b(?=[^>]*\bclass=[\"'][^\"']*\blesson-grid\b[^\"']*[\"'])[^>]*>)"
+        r"[\s\S]*?"
+        r"(</div>\s*</section>)",
+        flags=re.I,
+    )
+    return pattern.subn(r"\1\n" + cards + r"\n\2", text, count=1)
+
+
 def default_lessons_index() -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -358,40 +517,64 @@ def default_lessons_index() -> str:
 
 
 def update_lessons_index(lessons):
-    cards = "\n".join(card_html(item, "href_from_lessons") for item in lessons)
-    if not cards:
-        cards = '<article class="lesson-card"><span class="lesson-badge" style="background:#1B2A4A">Coming Soon</span><strong>New lessons are coming soon</strong><small>YSP Learn & Shine</small></article>'
+    cards_by_course = {course: [] for course in COURSES}
+    for item in lessons:
+        cards_by_course[item["key"]].append(item)
 
     created_default = not LESSONS_INDEX.exists()
     text = read(LESSONS_INDEX) if LESSONS_INDEX.exists() else default_lessons_index()
     text = strip_managed_card_section(text, LESSON_CARDS_START, LESSON_CARDS_END)
-    if created_default or (LESSON_CARDS_START in text and LESSON_CARDS_END in text):
-        text = ensure_card_style(text)
-    text = replace_or_append_cards(
-        text,
-        LESSON_CARDS_START,
-        LESSON_CARDS_END,
-        cards,
-        "Lessons",
-        append_if_missing=created_default,
-    )
-    text = remove_managed_card_style_if_unused(text)
-    write(LESSONS_INDEX, text)
+
+    custom_sections_updated = 0
+    for course, cfg in COURSES.items():
+        course_lessons = cards_by_course.get(course, [])
+        if not course_lessons:
+            continue
+        cards = "\n".join(static_lesson_card_html(item) for item in course_lessons)
+        text, count = replace_course_lesson_grid(text, cfg["anchor"], cards)
+        custom_sections_updated += count
+
+    if custom_sections_updated == 0:
+        cards = "\n".join(managed_card_html(item, "href_from_lessons") for item in lessons)
+        if not cards:
+            cards = '<article class="lesson-card"><span class="lesson-badge" style="background:#1B2A4A">Coming Soon</span><strong>New lessons are coming soon</strong><small>YSP Learn & Shine</small></article>'
+
+        if created_default or (LESSON_CARDS_START in text and LESSON_CARDS_END in text):
+            text = ensure_card_style(text)
+        text = replace_or_append_cards(
+            text,
+            LESSON_CARDS_START,
+            LESSON_CARDS_END,
+            cards,
+            "Lessons",
+            append_if_missing=created_default,
+        )
+        text = remove_managed_card_style_if_unused(text)
+
+    return write_if_changed(LESSONS_INDEX, text)
 
 
 def update_home_index(lessons):
-    if not HOME_INDEX.exists():
-        return
+    """Update only explicitly managed home lesson card blocks.
 
-    featured = lessons[:12]
-    cards = "\n".join(card_html(item, "href_from_home") for item in featured)
-    if not cards:
-        return
+    The current homepage has custom curated cards and no managed markers. To avoid
+    overwriting that design, this function updates the homepage only when the
+    YSP_HOME_FEATURED_LESSONS markers are present.
+    """
+    if not HOME_INDEX.exists():
+        return False
 
     text = read(HOME_INDEX)
+    if HOME_CARDS_START not in text or HOME_CARDS_END not in text:
+        return False
+
+    featured = lessons[:12]
+    cards = "\n".join(managed_card_html(item, "href_from_home") for item in featured)
+    if not cards:
+        return False
+
     text = strip_managed_card_section(text, HOME_CARDS_START, HOME_CARDS_END)
-    if HOME_CARDS_START in text and HOME_CARDS_END in text:
-        text = ensure_card_style(text)
+    text = ensure_card_style(text)
     text = replace_or_append_cards(
         text,
         HOME_CARDS_START,
@@ -401,7 +584,67 @@ def update_home_index(lessons):
         append_if_missing=False,
     )
     text = remove_managed_card_style_if_unused(text)
-    write(HOME_INDEX, text)
+    return write_if_changed(HOME_INDEX, text)
+
+
+def parse_inbox_image(path: Path):
+    ext = path.suffix.lower()
+    if ext not in IMAGE_EXTENSIONS:
+        return None
+
+    stem = path.stem.lower()
+    for course in sorted(COURSES.keys(), key=len, reverse=True):
+        prefix = f"{course}-"
+        if not stem.startswith(prefix):
+            continue
+
+        rest = stem[len(prefix):]
+        m = re.fullmatch(r"(l\d{2})-(pronunciation|phrases|speaking|culture)-(\d+)", rest)
+        if m:
+            lesson_prefix, section, number = m.groups()
+            return {
+                "course": course,
+                "folder": IMAGE_SECTION_FOLDERS[section],
+                "filename": f"{lesson_prefix}-{section}-{number}{ext}",
+            }
+
+        m = re.fullmatch(r"(l\d{2})-(d\d{2})-(model|practice|extra-\d+)", rest)
+        if m:
+            lesson_prefix, dialogue, suffix = m.groups()
+            return {
+                "course": course,
+                "folder": "dialogues",
+                "filename": f"{lesson_prefix}-{dialogue}-{suffix}{ext}",
+            }
+
+    return None
+
+
+def process_image_inbox():
+    moved = []
+    skipped = []
+    if not IMAGE_INBOX.exists():
+        return moved, skipped
+
+    for path in sorted(IMAGE_INBOX.iterdir()):
+        if not path.is_file():
+            continue
+        parsed = parse_inbox_image(path)
+        if not parsed:
+            skipped.append((path.name, "filename does not match supported YSP image-inbox rules"))
+            continue
+
+        dest_dir = LESSONS_ROOT / parsed["course"] / "assets" / parsed["folder"]
+        dest_path = dest_dir / parsed["filename"]
+        if dest_path.exists():
+            skipped.append((path.name, f"target already exists: {dest_path.relative_to(ROOT).as_posix()}"))
+            continue
+
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        path.replace(dest_path)
+        moved.append((path.name, dest_path.relative_to(ROOT).as_posix()))
+
+    return moved, skipped
 
 
 def main():
@@ -410,6 +653,8 @@ def main():
         print("WARNING: js/ysp-global-nav.js does not exist.")
         print("The loader will be added, but navigation buttons will not appear until js/ysp-global-nav.js is uploaded.")
 
+    moved_images, skipped_images = process_image_inbox()
+
     lessons = discover_lessons()
     changed_pages = []
 
@@ -417,19 +662,26 @@ def main():
         if normalize_lesson_page(item["path"]):
             changed_pages.append(item["path"].relative_to(ROOT).as_posix())
 
-    update_lessons_index(lessons)
-    update_home_index(lessons)
+    lessons_index_changed = update_lessons_index(lessons)
+    home_index_changed = update_home_index(lessons)
 
     print("YSP Site Maintenance")
     print("====================")
     print(f"Lessons discovered: {len(lessons)}")
     print("Scanned folders: lessons/ca-life, lessons/travel, lessons/business")
-    print(f"Lesson pages with loader updated: {len(changed_pages)}")
+    print(f"Image inbox files moved: {len(moved_images)}")
+    for source, dest in moved_images:
+        print(f"- {source} -> {dest}")
+    if skipped_images:
+        print(f"Image inbox files skipped: {len(skipped_images)}")
+        for source, reason in skipped_images:
+            print(f"- {source}: {reason}")
+    print(f"Lesson pages with loader/gallery updated: {len(changed_pages)}")
     for path in changed_pages:
         print(f"- {path}")
-    print("Updated: lessons/index.html")
+    print(f"Updated: lessons/index.html ({'changed' if lessons_index_changed else 'no changes'})")
     if HOME_INDEX.exists():
-        print("Updated: index.html")
+        print(f"Updated: index.html ({'changed' if home_index_changed else 'no changes'})")
 
 
 if __name__ == "__main__":
