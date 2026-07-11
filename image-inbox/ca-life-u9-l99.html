@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TEST ONLY — Workflow Automation Check</title>
+<style>
+:root{--c-primary:#1B2A4A;--c-accent:#C8956C;--c-bg:#FAF8F5;--c-muted:#7A7A6E;--c-surface:#fff;--c-divider:#E8E4DE}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,'Noto Sans TC',sans-serif;background:var(--c-bg);color:#2C2C2C}.header{text-align:center;padding:28px 16px;border-bottom:2px solid var(--c-accent)}.brand{font-size:.7rem;letter-spacing:3px;color:var(--c-accent);text-transform:uppercase}.tabs{display:flex;background:var(--c-primary);position:sticky;top:0;z-index:100;overflow-x:auto}.tb{color:#fff;background:none;border:0;padding:10px 12px;white-space:nowrap}.tb.on{border-bottom:3px solid var(--c-accent)}.tp{display:none;max-width:1040px;margin:0 auto;padding:20px 16px}.tp.on{display:block}.ysp-image-gallery{max-width:1040px;margin:18px auto}.ysp-image-gallery-head{display:flex;justify-content:space-between;gap:12px;padding:11px 16px;background:var(--c-primary);color:#fff;border-radius:16px 16px 0 0;font-weight:800}.ysp-image-gallery-head.accent{background:var(--c-accent)}.ysp-image-gallery-head.green{background:#5B8C5A}.ysp-image-gallery-mount{border:1px solid var(--c-divider);border-top:0;border-radius:0 0 16px 16px;background:#fff;overflow:hidden}.ysp-image-gallery-grid{display:grid;gap:14px}.ysp-image-gallery-grid img{display:block;width:100%;height:auto;background:#fff}.ysp-image-placeholder{min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#F8F8F8;color:var(--c-muted);padding:22px;font-size:.9rem}.footer{text-align:center;padding:20px;color:var(--c-muted);border-top:1px solid var(--c-divider)}
+</style>
+</head>
+<body id="top">
+<div class="header"><div class="brand">YSP Learn &amp; Shine</div><h1>TEST ONLY — Workflow Automation Check</h1><p>Temporary test lesson for image-inbox HTML publishing and gallery mount verification.</p></div>
+<div class="tabs"><button class="tb on" onclick="T(0)">📊 Test</button><button class="tb" onclick="T(1)">💬 Phrases Gallery</button><button class="tb" onclick="T(2)">🌍 Culture Gallery</button></div>
+<section class="tp on" id="t0"><h2>Workflow Test Page</h2><p>This temporary page checks whether an HTML file uploaded to image-inbox is published to the correct course folder.</p></section>
+<section class="tp" id="t1"><div id="t1c"><h2>Useful Phrases — 圖片版測試</h2><p>This text container is separate from the gallery block.</p></div>
+<!-- YSP_IMAGE_GALLERY_START: l99-phrases -->
+<section class="ysp-image-gallery" data-ysp-gallery="l99-phrases" data-ysp-image-dir="assets/phrases" data-ysp-image-prefix="l99-phrases-" data-ysp-image-title="Useful Phrases — 圖片版" data-ysp-image-subtitle="Workflow test placeholder">
+  <div class="ysp-image-gallery-head accent"><span>Useful Phrases — 圖片版</span><small>Workflow test placeholder</small></div>
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">圖片尚未更新<code>assets/phrases/l99-phrases-*.png</code></div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
+</section>
+<!-- YSP_IMAGE_GALLERY_END: l99-phrases -->
+</section>
+<section class="tp" id="t2"><div id="t2c"><h2>Canadian Culture — 圖片版測試</h2><p>This tab verifies a second gallery block.</p></div>
+<!-- YSP_IMAGE_GALLERY_START: l99-culture -->
+<section class="ysp-image-gallery" data-ysp-gallery="l99-culture" data-ysp-image-dir="assets/culture" data-ysp-image-prefix="l99-culture-" data-ysp-image-title="Canadian Culture — 圖片版" data-ysp-image-subtitle="Workflow test placeholder">
+  <div class="ysp-image-gallery-head green"><span>Canadian Culture — 圖片版</span><small>Workflow test placeholder</small></div>
+  <div class="ysp-image-gallery-mount">
+    <!-- YSP_IMAGE_GALLERY_MOUNT_START -->
+    <div class="ysp-image-placeholder">圖片尚未更新<code>assets/culture/l99-culture-*.png</code></div>
+    <!-- YSP_IMAGE_GALLERY_MOUNT_END -->
+  </div>
+</section>
+<!-- YSP_IMAGE_GALLERY_END: l99-culture -->
+</section>
+<div class="footer">TEMPORARY TEST FILE — DELETE AFTER USER CONFIRMATION</div>
+<script>function T(n){document.querySelectorAll('.tp').forEach((p,i)=>p.classList.toggle('on',i===n));document.querySelectorAll('.tb').forEach((b,i)=>b.classList.toggle('on',i===n));}</script>
+</body>
+</html>
