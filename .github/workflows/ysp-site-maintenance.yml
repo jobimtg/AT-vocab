@@ -17,6 +17,7 @@ on:
       - "scripts/ysp_validate_site.py"
       - "scripts/ysp_image_inbox_guard.py"
       - "scripts/ysp_gallery_quality_check.py"
+      - "scripts/ysp_lesson_contract_check.py"
 
 permissions:
   contents: write
@@ -40,6 +41,11 @@ jobs:
         shell: bash
         run: |
           python3 scripts/ysp_site_maintenance.py
+
+      - name: Validate generated lesson content contract
+        shell: bash
+        run: |
+          python3 scripts/ysp_lesson_contract_check.py
 
       - name: Validate site after maintenance
         shell: bash
