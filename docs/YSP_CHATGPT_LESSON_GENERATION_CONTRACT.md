@@ -81,6 +81,48 @@ Each Core item must include:
 
 Short word cards without explanations and examples are invalid.
 
+## Drilling Practice rules
+
+The Drilling Practice tab must use the Golden L02 interactive flip-card system. A static list of sentence patterns plus visible answers is invalid.
+
+Required three modes:
+
+1. `L1 單字跟唸` / `L1 跟唸`
+   - Show the Core English word.
+   - Show IPA/pronunciation.
+   - Hidden answer reveals the Traditional Chinese meaning.
+   - Teacher reads and the student repeats three times.
+
+2. `L2 整句跟唸`
+   - Show one complete Core example sentence, normally `e1`.
+   - Hidden answer reveals the target Core word and Traditional Chinese meaning.
+   - Teacher reads the complete sentence and the student repeats it.
+
+3. `L3 中翻英`
+   - Show the Traditional Chinese meaning.
+   - Hidden answer reveals the English word and IPA.
+   - Student must produce the English before revealing the answer.
+
+Interaction requirements:
+
+- Use one flip/reveal card at a time.
+- Clicking the card must reveal/hide the answer.
+- Include Previous and Next controls.
+- Show the current position, for example `3 / 15`.
+- Iterate through the complete Core vocabulary set, not only the first 10 words.
+- Reuse the same Core fields used by the vocabulary cards: `en`, `zh`, `pr`, and `e1`.
+- The required short CSS/interaction tokens are `.dzone`, `.dc`, `.da`, `.dn`, `.dbtn`, `.lt`, and `.lb`.
+
+Forbidden shallow format:
+
+```text
+Pattern 1
+Could I have a _______ room?
+Answer: quiet
+```
+
+The drill must behave like a student practice tool, not an answer sheet.
+
 ## Dialogue rules
 
 Each generated lesson must include exactly 5 dialogues.
@@ -171,6 +213,7 @@ The workflow runs:
 
 ```bash
 python3 scripts/ysp_lesson_contract_check.py
+python3 scripts/ysp_drilling_contract_check.py
 ```
 
-This blocks generated/contract-aware lesson commits when the lesson fails the content contract.
+These block generated/contract-aware lesson commits when lesson content or the three-mode Drilling Practice system fails the production contract.
