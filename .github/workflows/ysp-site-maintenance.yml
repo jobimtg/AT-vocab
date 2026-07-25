@@ -18,6 +18,7 @@ on:
       - "scripts/ysp_image_inbox_guard.py"
       - "scripts/ysp_gallery_quality_check.py"
       - "scripts/ysp_lesson_contract_check.py"
+      - "scripts/ysp_drilling_contract_check.py"
 
 permissions:
   contents: write
@@ -46,6 +47,11 @@ jobs:
         shell: bash
         run: |
           python3 scripts/ysp_lesson_contract_check.py
+
+      - name: Validate three-mode Drilling Practice contract
+        shell: bash
+        run: |
+          python3 scripts/ysp_drilling_contract_check.py
 
       - name: Validate site after maintenance
         shell: bash
