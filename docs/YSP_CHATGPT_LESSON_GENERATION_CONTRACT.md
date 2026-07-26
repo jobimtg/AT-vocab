@@ -217,3 +217,58 @@ python3 scripts/ysp_drilling_contract_check.py
 ```
 
 These block generated/contract-aware lesson commits when lesson content or the three-mode Drilling Practice system fails the production contract.
+
+---
+
+## v4 Addendum — Image & Content Fidelity Contract (2026-07-26)
+
+This addendum was added after a Travel L04 comparison between an earlier ChatGPT draft and a corrected Claude draft surfaced three gaps in this contract: dialogue line counts were not locked to source data, the image-prompt count was underspecified, and Tab 10 Previously Learned was not required to be collapsible. It extends, and does not replace, the sections above.
+
+Full detail lives in two companion files kept in sync with this document:
+
+- Notion: `📋 ESL Skill Backup` → `🔒 ChatGPT 課程產出強制執行合約`
+- Repo: this file (source of truth for CI-facing rules) plus `scripts/ysp_lesson_contract_check.py` (blocking validator)
+
+### Content lock
+
+Dialogue, phrase, vocabulary, speaking-question, and culture-note **text** must come only from the user-provided lesson JSON/HTML. No rewriting, no adding or removing lines, no reordering, no summarizing. The only permitted transformation is applying the `tp` (Try again) field's described substitution in the Practice-version dialogue image, using the exact wording from `tp` — never an invented substitution.
+
+### Mandatory fifteen image prompts
+
+Every lesson must produce exactly 15 image prompts:
+
+| Type | Count | Source array |
+|---|---:|---|
+| A — Useful Phrases | 1 | `phrases[]` |
+| B — Dialogue Practice (Model + Practice × 5) | 10 | `dialogues[]` |
+| C — Pronunciation Spotlight | 1 | `pronunciation` |
+| D — Speaking Questions | 1 | `speaking[]` |
+| E — Culture Notes (warm-up + closing) | 2 | `culture[]` |
+
+Producing only Types A–C (12 prompts) is an incomplete delivery.
+
+Each Dialogue Practice image must render **every line** in that dialogue's `lines[]` array — the count is whatever the source data contains (this contract does not fix it at 6 or 8; earlier text in this document illustrating "8 lines per dialogue" was a description of the L03 reference lesson, not a hard ceiling). Line-count mismatches between source data and rendered image content are a CRITICAL violation.
+
+### Progress Check accordion (Tab 10)
+
+`Previously Learned` must render as a collapsible accordion — one expandable/collapsible block per prior lesson (`.pvh` header + `.pvb` body, toggled via `classList.toggle('open')`) — never a fully expanded flat word list. See Notion Skill Backup §10.2 for the canonical `totalShown` safe-sum formula and reference markup.
+
+### No generic filler sentences
+
+Core `m1`/`m2`/`e1`/`e2` and Extended `m`/`ex` fields must never use template patterns such as:
+
+- `"A useful [topic] word or expression for {word}."`
+- `"Please help me with {word}."`
+
+Definitions and examples must be specific, situational sentences (ideally including a name, number, place, or time), matching the standard already used in the corrected Travel L04 lesson.
+
+### Filename dual convention
+
+- Lesson HTML filenames: no zero-padding — `lessons/<course>/u{unit}-l{lesson}.html` (e.g. `u1-l4.html`)
+- Image filename prefixes: zero-padded — `l{lesson:02d}-{section}-{n}.png` (e.g. `l04-phrases-1.png`)
+
+Do not invent a third convention (e.g. do not name a lesson HTML file `u1-l04.html`).
+
+### Mandatory self-check before delivery
+
+Before delivering any lesson HTML or image prompt set, output a self-check block covering: dialogue line-count match (per dialogue), image count (must equal 15), Progress Check accordion presence, generic-filler scan result, and filename convention compliance. Any "✗" blocks delivery until fixed.
