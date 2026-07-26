@@ -2,6 +2,17 @@
 #
 # Blocking validator for ChatGPT/Claude-generated YSP lesson pages.
 # It validates v3.9 contract pages without blocking older legacy pages.
+#
+# v4 (2026-07-26): added two checks, both CRITICAL/blocking:
+#   1. check_progress_accordion — Tab 10 Previously Learned must be a
+#      collapsible accordion (.pvh/.pvb + toggle('open')), never a fully
+#      expanded flat list. See Notion Skill Backup §10.2.
+#   2. check_generic_filler — rejects canned template sentences such as
+#      "A useful X word or expression for Y." / "Please help me with Y."
+#      in Core/Extended meaning and example fields.
+# These two checks were added following the Travel L04 ChatGPT-vs-Claude
+# comparison (2026-07-26) and are documented in the Notion page
+# "🔒 ChatGPT 課程產出強制執行合約" under 📋 ESL Skill Backup.
 
 from __future__ import annotations
 
@@ -39,6 +50,19 @@ LESSON_DATA_RE = re.compile(
     r"<script\b[^>]*\bid=[\"']lesson-data[\"'][^>]*>(?P<body>[\s\S]*?)</script>",
     re.I,
 )
+
+# v4 addendum (2026-07-26): generic template-filler sentence detection.
+# These patterns are the exact "canned sentence" shapes found in rejected
+# ChatGPT output (e.g. Travel L04 draft) and must never appear in Core `m1/m2`,
+# Extended `m`, or example `e1/e2/ex` fields.
+GENERIC_FILLER_PATTERNS = [
+    re.compile(r"A useful [^.\"]{0,40} word or expression for", re.I),
+    re.compile(r"Please help me with\s+\S", re.I),
+]
+
+# v4 addendum (2026-07-26): Tab 10 Previously Learned must be a collapsible
+# accordion (per Skill Backup §10.2), never a fully expanded flat list.
+PROGRESS_ACCORDION_TOKENS = ["pvh", "pvb"]
 
 
 def rel(path: Path) -> str:
@@ -161,6 +185,46 @@ def expected_core_count(course_id: str, cefr: str) -> int | None:
     return None
 
 
+def check_progress_accordion(path: Path, text: str) -> None:
+    """v4 addendum (2026-07-26): Tab 10 Previously Learned must use the
+    collapsible accordion pattern (`.pvh` header + `.pvb` body, toggled via
+    `classList.toggle('open')` / `toggle(&#39;open&#39;)`), per Skill Backup §10.2.
+    A fully expanded flat word list is a CRITICAL violation."""
+    if "previously_learned" not in text and "PREV" not in text:
+        # No Previously Learned data at all (e.g. a course's first lesson) —
+        # nothing to check here.
+        return
+
+    has_tokens = all(f'"{tok}' in text or f"'{tok}" in text or tok in text for tok in PROGRESS_ACCORDION_TOKENS)
+    has_toggle = bool(re.search(r"toggle\((&#39;|'|\")open(&#39;|'|\")\)", text))
+
+    if not (has_tokens and has_toggle):
+        err(
+            path,
+            "Tab 10 Previously Learned is not a collapsible accordion "
+            "(missing .pvh/.pvb structure or toggle('open') interaction); "
+            "a fully expanded flat word list is forbidden per §10.2",
+        )
+
+
+def check_generic_filler(path: Path, text: str) -> None:
+    """v4 addendum (2026-07-26): reject canned template sentences such as
+    'A useful hotel word or expression for X.' or 'Please help me with X.'
+    in place of a real, situational definition/example sentence."""
+    lesson_data = LESSON_DATA_RE.search(text)
+    scope = lesson_data.group("body") if lesson_data else text
+
+    for pattern in GENERIC_FILLER_PATTERNS:
+        hits = pattern.findall(scope)
+        if hits:
+            err(
+                path,
+                f"generic template-filler sentence found ({len(hits)}x): "
+                f"pattern '{pattern.pattern}' — meaning/example fields must "
+                "be specific, situational sentences, not word-substituted templates",
+            )
+
+
 def check_common_html(path: Path, text: str) -> None:
     stripped = strip_scripts(text)
 
@@ -199,6 +263,10 @@ def check_common_html(path: Path, text: str) -> None:
 
     if "YSP_IMAGE_GALLERY_MOUNT_START" not in stripped or "YSP_IMAGE_GALLERY_MOUNT_END" not in stripped:
         err(path, "gallery mount markers are missing")
+
+    # v4 addendum (2026-07-26): Progress Check accordion + generic filler checks.
+    check_progress_accordion(path, text)
+    check_generic_filler(path, text)
 
 
 def validate_json_contract(path: Path, text: str, data: dict) -> None:
