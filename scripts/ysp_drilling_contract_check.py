@@ -75,8 +75,8 @@ def validate(path: Path) -> None:
     if "data-ysp-contract" not in text and "lesson-data" not in text:
         return
 
-    if "Drilling Practice｜句型替換練習" not in text:
-        err(path, "missing Drilling Practice tab/content")
+    if not contains_any(text, ["🔁 Drilling", "Drilling Practice｜句型替換練習"]):
+        err(path, "missing Drilling tab/content")
 
     # Labels may use the older Golden L02 wording "L1 跟唸" or the clearer
     # production wording "L1 單字跟唸". The behavior requirements below are strict.
