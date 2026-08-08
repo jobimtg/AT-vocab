@@ -19,6 +19,7 @@ on:
       - "scripts/ysp_gallery_quality_check.py"
       - "scripts/ysp_lesson_contract_check.py"
       - "scripts/ysp_drilling_contract_check.py"
+      - "scripts/ysp_functional_smoke_test.js"
 
 permissions:
   contents: write
@@ -52,6 +53,17 @@ jobs:
         shell: bash
         run: |
           python3 scripts/ysp_drilling_contract_check.py
+
+      - name: Functional smoke test (runtime click simulation — catches bugs node --check and content checks cannot)
+        shell: bash
+        run: |
+          set -e
+          files=$(find lessons -type f -name "u*-l*.html")
+          if [[ -z "$files" ]]; then
+            echo "No lesson HTML files found; skipping."
+          else
+            node scripts/ysp_functional_smoke_test.js $files
+          fi
 
       - name: Validate site after maintenance
         shell: bash
