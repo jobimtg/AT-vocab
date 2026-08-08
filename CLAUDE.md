@@ -1,5 +1,9 @@
 # CLAUDE.md — YSP Learn & Shine / AT-vocab
 
+@AGENTS.md
+
+> Shared YSP Agent Loop, Reviewer, validator, Git/Notion completion rules are maintained in `AGENTS.md`. The Claude-specific website guidance below remains additive and must not override newer dated YSP rules fetched from Notion.
+
 ## Role
 
 You are maintaining the GitHub Pages repository for the YSP Learn & Shine English-learning website.
