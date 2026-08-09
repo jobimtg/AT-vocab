@@ -188,7 +188,8 @@ def expected_core_count(course_id: str, cefr: str) -> int | None:
 def check_progress_accordion(path: Path, text: str) -> None:
     """v4 addendum (2026-07-26): Tab 10 Previously Learned must use the
     collapsible accordion pattern (`.pvh` header + `.pvb` body, toggled via
-    `classList.toggle('open')` / `toggle(&#39;open&#39;)`), per Skill Backup §10.2.
+    `classList.toggle('open')`, JavaScript-string escaped
+    `classList.toggle(\'open\')`, or `toggle(&#39;open&#39;)`), per Skill Backup §10.2.
     A fully expanded flat word list is a CRITICAL violation."""
     if "previously_learned" not in text and "PREV" not in text:
         # No Previously Learned data at all (e.g. a course's first lesson) —
@@ -196,7 +197,13 @@ def check_progress_accordion(path: Path, text: str) -> None:
         return
 
     has_tokens = all(f'"{tok}' in text or f"'{tok}" in text or tok in text for tok in PROGRESS_ACCORDION_TOKENS)
-    has_toggle = bool(re.search(r"toggle\((&#39;|'|\")open(&#39;|'|\")\)", text))
+    # Generated lesson renderers build the accordion markup inside a
+    # single-quoted JavaScript string, so the quotes around ``open`` are
+    # escaped in the HTML source (``toggle(\'open\')``). At runtime this is
+    # the same onclick handler as ``toggle('open')``. Accept both source
+    # representations, double quotes, and the existing HTML-entity form.
+    quote = r"(?:\\?['\"]|&#39;)"
+    has_toggle = bool(re.search(rf"toggle\({quote}open{quote}\)", text))
 
     if not (has_tokens and has_toggle):
         err(
@@ -342,8 +349,14 @@ def validate_file(path: Path) -> None:
 
     lesson_data = LESSON_DATA_RE.search(text)
     if lesson_data:
+        body = lesson_data.group("body").strip()
+        # The fixed HTML template intentionally contains the exact data
+        # placeholder. Its structure is checked above; generated pages still
+        # have their embedded lesson JSON parsed and validated below.
+        if body == "{{LESSON_DATA_JSON}}":
+            return
         try:
-            data = json.loads(lesson_data.group("body"))
+            data = json.loads(body)
         except json.JSONDecodeError as exc:
             err(path, f"lesson-data JSON is invalid: {exc}")
             return

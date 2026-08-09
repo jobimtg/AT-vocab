@@ -44,6 +44,7 @@ PLACEHOLDERS = [
     "CORE_COUNT",
     "EXTENDED_COUNT",
     "DIALOGUE_COUNT",
+    "IMAGE_PREFIX",
     "ROOT_PREFIX",
     "LESSON_DATA_JSON",
 ]
@@ -132,6 +133,7 @@ def build_replacements(data: dict[str, Any], output_path: Path) -> dict[str, str
         "CORE_COUNT": str(len(data.get("core", [])) if isinstance(data.get("core"), list) else 0),
         "EXTENDED_COUNT": str(len(data.get("extended", [])) if isinstance(data.get("extended"), list) else 0),
         "DIALOGUE_COUNT": str(len(data.get("dialogues", [])) if isinstance(data.get("dialogues"), list) else 0),
+        "IMAGE_PREFIX": str(meta.get("image_prefix", "")),
         "ROOT_PREFIX": root_prefix_for_output(output_path),
         "LESSON_DATA_JSON": json.dumps(data, ensure_ascii=False, indent=2),
     }
@@ -169,7 +171,9 @@ def write_output(output_path: Path, html: str, *, force: bool, allow_public_outp
         raise RuntimeError(f"Output file already exists. Use --force to overwrite: {output_path}")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(html, encoding="utf-8")
+    # Keep generated lessons byte-stable across Windows/macOS/Linux. The
+    # canonical lesson HTML uses UTF-8 without BOM and LF line endings.
+    output_path.write_text(html, encoding="utf-8", newline="\n")
 
 
 def main() -> int:
