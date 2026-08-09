@@ -115,6 +115,12 @@ Validate at minimum:
 - Generate every requested image from the corresponding Image_Prompts section and
   any user-designated Golden Style Reference; do not replace that specification
   with a generic shared layout.
+- For Travel English, also read and follow `docs/TRAVEL_IMAGE_PROMPT_STANDARD.md`.
+  This standard is Travel-only and must not be reused for Canada Life or other courses.
+  If a future Travel lesson lacks its lesson-specific Image_Prompts file, this shared
+  Travel standard authorizes creating that file from the approved lesson JSON/HTML
+  before generation. This Travel-only route is the exception to the general missing-
+  prompt stop; it does not authorize generating without first creating the prompt artifact.
 - exact expected image count for the lesson;
 - exact 16:9 and at least 1920×1080 for final release images;
 - warning for files over 2 MB;
