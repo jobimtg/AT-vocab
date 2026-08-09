@@ -64,6 +64,25 @@ GENERIC_FILLER_PATTERNS = [
 # accordion (per Skill Backup §10.2), never a fully expanded flat list.
 PROGRESS_ACCORDION_TOKENS = ["pvh", "pvb"]
 
+GALLERY_RESPONSIVE_REQUIREMENTS = {
+    ".ysp-image-gallery-mount": {
+        "min-width": "0",
+        "overflow": {"hidden", "clip"},
+    },
+    ".ysp-image-gallery-grid": {
+        "display": "grid",
+        "width": "100%",
+        "grid-template-columns": {"minmax(0,1fr)", "minmax(0px,1fr)"},
+    },
+    ".ysp-image-gallery-grid img": {
+        "width": "100%",
+        "max-width": "100%",
+        "height": "auto",
+        "aspect-ratio": "16/9",
+        "object-fit": "contain",
+    },
+}
+
 
 def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
@@ -83,6 +102,44 @@ def read(path: Path) -> str:
 
 def strip_scripts(text: str) -> str:
     return SCRIPT_RE.sub("", text)
+
+
+def css_declarations(text: str, selector: str) -> dict[str, str]:
+    matches = re.findall(
+        rf"{re.escape(selector)}\s*\{{(?P<body>[^}}]*)\}}",
+        text,
+        flags=re.I,
+    )
+    declarations: dict[str, str] = {}
+    for body in matches:
+        for item in body.split(";"):
+            if ":" not in item:
+                continue
+            name, value = item.split(":", 1)
+            declarations[name.strip().lower()] = re.sub(r"\s+", "", value).lower()
+    return declarations
+
+
+def check_responsive_gallery_images(path: Path, text: str) -> None:
+    """Gallery images must scale inside the lesson content mount.
+
+    Added after the Travel L02 publication exposed intrinsic-width 1920 px
+    images overflowing the 960 px lesson panel.
+    """
+    if "ysp-image-gallery" not in strip_scripts(text):
+        return
+
+    for selector, requirements in GALLERY_RESPONSIVE_REQUIREMENTS.items():
+        declarations = css_declarations(text, selector)
+        for name, expected in requirements.items():
+            actual = declarations.get(name)
+            allowed = expected if isinstance(expected, set) else {expected}
+            if actual not in allowed:
+                err(
+                    path,
+                    f"responsive Gallery CSS missing or invalid: {selector} "
+                    f"requires {name}={sorted(allowed)!r}; found {actual!r}",
+                )
 
 
 def changed_html_candidates() -> set[Path]:
@@ -270,6 +327,8 @@ def check_common_html(path: Path, text: str) -> None:
 
     if "YSP_IMAGE_GALLERY_MOUNT_START" not in stripped or "YSP_IMAGE_GALLERY_MOUNT_END" not in stripped:
         err(path, "gallery mount markers are missing")
+
+    check_responsive_gallery_images(path, text)
 
     # v4 addendum (2026-07-26): Progress Check accordion + generic filler checks.
     check_progress_accordion(path, text)

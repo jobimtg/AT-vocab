@@ -971,6 +971,9 @@ Running maintenance twice should produce no diff on the second run.
 [ ] Every gallery id is unique within the lesson page
 [ ] Gallery data attributes remain after maintenance workflow runs
 [ ] YSP_IMAGE_GALLERY_MOUNT markers remain after image rendering
+[ ] Gallery mount prevents horizontal overflow and the gallery grid uses a single `minmax(0, 1fr)` column
+[ ] Rendered Gallery images use `width: 100%`, `max-width: 100%`, `height: auto`, `aspect-ratio: 16/9`, and `object-fit: contain`
+[ ] A 1920×1080 source image stays inside the lesson content panel at desktop and mobile widths
 [ ] data-ysp-image-dir uses a relative path such as assets/culture
 [ ] data-ysp-image-dir does not use a trailing slash
 [ ] data-ysp-image-prefix includes the correct l01 / l02 / l03 prefix and trailing hyphen

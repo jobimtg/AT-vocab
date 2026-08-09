@@ -143,6 +143,10 @@ These are a compact reminder only; latest Notion rules remain authoritative.
 - Familiarity marking must support toggle-off to unassessed.
 - Progress Check Previously Learned is one collapsible accordion per prior lesson.
 - Gallery sections must be nested in the matching `.tpn`; renderers write to dedicated content mounts only.
+- Gallery images must be responsive and contained: the mount prevents overflow,
+  the grid is a single `minmax(0, 1fr)` column, and rendered images use
+  `width: 100%`, `max-width: 100%`, `height: auto`, `aspect-ratio: 16/9`,
+  and `object-fit: contain`. Intrinsic 1920 px images must never overflow the lesson panel.
 - Global nav markers use `YSP_GLOBAL_NAV_LOADER_START` / `YSP_GLOBAL_NAV_LOADER_END` and include `data-ysp-base`.
 - Final tab buttons are exactly:
   - `📊 Learning Overview`

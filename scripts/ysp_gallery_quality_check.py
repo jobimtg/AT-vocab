@@ -23,6 +23,14 @@ ATTR_RE = re.compile(r"([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*([\"'])(.*?)\2", re.S)
 IMG_SRC_RE = re.compile(r"<img[^>]+src=[\"']([^\"']+)[\"']", re.I)
 SCRIPT_BLOCK_RE = re.compile(r"<script[\s\S]*?</script>", re.I)
 
+RESPONSIVE_IMAGE_RULES = {
+    "width": "100%",
+    "max-width": "100%",
+    "height": "auto",
+    "aspect-ratio": "16/9",
+    "object-fit": "contain",
+}
+
 
 def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
@@ -47,6 +55,17 @@ def attrs_from_tag(tag: str) -> dict:
     return attrs
 
 
+def css_declarations(text: str, selector: str) -> dict:
+    declarations = {}
+    for body in re.findall(rf"{re.escape(selector)}\s*\{{([^}}]*)\}}", text, re.I):
+        for item in body.split(";"):
+            if ":" not in item:
+                continue
+            name, value = item.split(":", 1)
+            declarations[name.strip().lower()] = re.sub(r"\s+", "", value).lower()
+    return declarations
+
+
 def check_gallery_blocks(path: Path, text: str) -> None:
     stripped = SCRIPT_BLOCK_RE.sub("", text)
     galleries = list(GALLERY_SECTION_RE.finditer(stripped))
@@ -55,6 +74,16 @@ def check_gallery_blocks(path: Path, text: str) -> None:
         err(path, "Gallery markers are present, but no .ysp-image-gallery section was found outside script blocks")
 
     seen_gallery_ids = set()
+    if galleries:
+        image_css = css_declarations(text, ".ysp-image-gallery-grid img")
+        for name, expected in RESPONSIVE_IMAGE_RULES.items():
+            if image_css.get(name) != expected:
+                err(
+                    path,
+                    "Gallery images are not safely contained: "
+                    f".ysp-image-gallery-grid img requires {name}:{expected}",
+                )
+
     for match in galleries:
         tag = match.group("tag")
         body = match.group("body")
