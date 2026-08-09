@@ -1,0 +1,875 @@
+{
+  "meta": {
+    "course_id": "travel-en",
+    "course_name": "Travel English",
+    "course_folder": "travel",
+    "unit": 1,
+    "lesson": 2,
+    "lesson_code": "L02",
+    "title_en": "Security & Immigration",
+    "title_zh": "安檢與入境",
+    "cefr": "A1",
+    "html_path": "lessons/travel/u1-l2.html",
+    "image_prefix": "l02",
+    "status": "generated",
+    "source_note": "Content sourced from Notion Proof v3.8.1 (2026-07-25 17:27); rebuilt via the official lesson-data JSON pipeline (validate_lesson_data.py + build_lesson_html.py) on the fixed content-mount template, 2026-07-26."
+  },
+  "categories": [
+    "Security Screening",
+    "Items & Actions",
+    "Immigration & Documents",
+    "Customs & Declarations",
+    "Airport Connections"
+  ],
+  "core": [
+    {
+      "en": "security check",
+      "zh": "安檢",
+      "pr": "/sɪˈkjʊrəti tʃek/",
+      "cat": 0,
+      "m1": "A security check is an airport safety inspection.",
+      "m2": "Passengers and bags are checked before entering the boarding area.",
+      "e1": "The security check is on the second floor.",
+      "e2": "Please arrive early for the security check.",
+      "p1": "The _______ is on the second floor.",
+      "p2": "Please arrive early for the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "X-ray machine",
+      "zh": "X光機",
+      "pr": "/ˈeks reɪ məˌʃiːn/",
+      "cat": 0,
+      "m1": "An X-ray machine looks inside bags.",
+      "m2": "It helps officers find restricted items.",
+      "e1": "Put your backpack in the X-ray machine.",
+      "e2": "The X-ray machine checks every carry-on bag.",
+      "p1": "Put your backpack in the _______.",
+      "p2": "The _______ checks every carry-on bag.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "metal detector",
+      "zh": "金屬探測器",
+      "pr": "/ˈmetl dɪˌtektər/",
+      "cat": 0,
+      "m1": "A metal detector finds metal on your body.",
+      "m2": "You walk through it during airport security.",
+      "e1": "Walk slowly through the metal detector.",
+      "e2": "My belt made the metal detector beep.",
+      "p1": "Walk slowly through the _______.",
+      "p2": "My belt made the _______ beep.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "liquid",
+      "zh": "液體",
+      "pr": "/ˈlɪkwɪd/",
+      "cat": 1,
+      "m1": "A liquid is something that can flow, such as water.",
+      "m2": "Airport rules limit liquids in carry-on bags.",
+      "e1": "This bottle has liquid inside.",
+      "e2": "Put small liquids in a clear bag.",
+      "p1": "This bottle has _______ inside.",
+      "p2": "Put small _______ in a clear bag.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "remove",
+      "zh": "拿出／脫掉",
+      "pr": "/rɪˈmuːv/",
+      "cat": 1,
+      "m1": "Remove means to take something away or off.",
+      "m2": "At security, you may remove a jacket or laptop.",
+      "e1": "Please remove your shoes.",
+      "e2": "I need to remove my laptop from the bag.",
+      "p1": "Please _______ your shoes.",
+      "p2": "I need to _______ my laptop from the bag.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "security officer",
+      "zh": "安檢人員",
+      "pr": "/sɪˈkjʊrəti ˌɔːfɪsər/",
+      "cat": 1,
+      "m1": "A security officer checks passengers and bags.",
+      "m2": "The officer gives instructions at the security checkpoint.",
+      "e1": "The security officer asked me to open my bag.",
+      "e2": "Please listen to the security officer.",
+      "p1": "The _______ asked me to open my bag.",
+      "p2": "Please listen to the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "immigration",
+      "zh": "入境審查",
+      "pr": "/ˌɪmɪˈɡreɪʃn/",
+      "cat": 2,
+      "m1": "Immigration is the border check when you enter a country.",
+      "m2": "An officer asks about your trip and documents.",
+      "e1": "We go to immigration after landing.",
+      "e2": "The immigration line is very long.",
+      "p1": "We go to _______ after landing.",
+      "p2": "The _______ line is very long.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "visa",
+      "zh": "簽證",
+      "pr": "/ˈviːzə/",
+      "cat": 2,
+      "m1": "A visa is permission to enter or stay in a country.",
+      "m2": "Some travelers need one before their trip.",
+      "e1": "My visa is in my passport.",
+      "e2": "The officer checked my visa.",
+      "p1": "My _______ is in my passport.",
+      "p2": "The officer checked my _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "entry stamp",
+      "zh": "入境章",
+      "pr": "/ˈentri stæmp/",
+      "cat": 2,
+      "m1": "An entry stamp is a mark placed in a passport.",
+      "m2": "It can show when you entered a country.",
+      "e1": "The officer gave me an entry stamp.",
+      "e2": "My entry stamp shows today's date.",
+      "p1": "The officer gave me an _______.",
+      "p2": "My _______ shows today's date.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "customs",
+      "zh": "海關",
+      "pr": "/ˈkʌstəmz/",
+      "cat": 3,
+      "m1": "Customs checks goods that enter a country.",
+      "m2": "You may need to report food, gifts, or expensive items.",
+      "e1": "We went through customs after immigration.",
+      "e2": "The customs officer asked about my food.",
+      "p1": "We went through _______ after immigration.",
+      "p2": "The _______ officer asked about my food.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "declare",
+      "zh": "申報",
+      "pr": "/dɪˈkler/",
+      "cat": 3,
+      "m1": "Declare means to officially report an item.",
+      "m2": "Travelers declare goods when the rules require it.",
+      "e1": "I need to declare this food.",
+      "e2": "Do I have to declare these gifts?",
+      "p1": "I need to _______ this food.",
+      "p2": "Do I have to _______ these gifts?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "passport control",
+      "zh": "護照查驗",
+      "pr": "/ˈpæspɔːrt kənˌtroʊl/",
+      "cat": 3,
+      "m1": "Passport control is where an officer checks your passport.",
+      "m2": "It is part of entering or leaving a country.",
+      "e1": "Passport control is straight ahead.",
+      "e2": "We waited twenty minutes at passport control.",
+      "p1": "_______ is straight ahead.",
+      "p2": "We waited twenty minutes at _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "boarding area",
+      "zh": "候機區",
+      "pr": "/ˈbɔːrdɪŋ ˌeriə/",
+      "cat": 4,
+      "m1": "The boarding area is where passengers wait for a flight.",
+      "m2": "It is usually near the departure gate.",
+      "e1": "Our boarding area is beside Gate 12.",
+      "e2": "Food is available near the boarding area.",
+      "p1": "Our _______ is beside Gate 12.",
+      "p2": "Food is available near the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "connecting flight",
+      "zh": "轉機航班",
+      "pr": "/kəˈnektɪŋ flaɪt/",
+      "cat": 4,
+      "m1": "A connecting flight is the next flight in a multi-flight trip.",
+      "m2": "You change planes before reaching your final destination.",
+      "e1": "My connecting flight leaves in one hour.",
+      "e2": "Where do I go for my connecting flight?",
+      "p1": "My _______ leaves in one hour.",
+      "p2": "Where do I go for my _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "line up",
+      "zh": "排隊",
+      "pr": "/laɪn ʌp/",
+      "cat": 4,
+      "m1": "Line up means to stand in a queue.",
+      "m2": "Passengers line up before security and boarding.",
+      "e1": "Please line up behind the blue sign.",
+      "e2": "We need to line up for passport control.",
+      "p1": "Please _______ behind the blue sign.",
+      "p2": "We need to _______ for passport control.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    }
+  ],
+  "extended": [
+    {
+      "en": "pat-down",
+      "zh": "搜身檢查",
+      "pr": "/pat-down/",
+      "cat": 0,
+      "m": "A pat-down is a manual check by a security officer.",
+      "ex": "The officer gave me a quick pat-down."
+    },
+    {
+      "en": "laptop",
+      "zh": "筆記型電腦",
+      "pr": "/laptop/",
+      "cat": 0,
+      "m": "A laptop is a portable computer.",
+      "ex": "Please take your laptop out of the bag."
+    },
+    {
+      "en": "restricted item",
+      "zh": "受限制物品",
+      "pr": "/restricted · item/",
+      "cat": 0,
+      "m": "A restricted item is something not allowed through security.",
+      "ex": "Scissors are a restricted item in carry-on bags."
+    },
+    {
+      "en": "sharp object",
+      "zh": "尖銳物品",
+      "pr": "/sharp · object/",
+      "cat": 0,
+      "m": "A sharp object can cut or injure someone.",
+      "ex": "Pack sharp objects in your checked luggage."
+    },
+    {
+      "en": "random check",
+      "zh": "隨機檢查",
+      "pr": "/random · check/",
+      "cat": 0,
+      "m": "A random check is an unplanned extra inspection.",
+      "ex": "I was chosen for a random check today."
+    },
+    {
+      "en": "body scanner",
+      "zh": "人體掃描器",
+      "pr": "/body · scanner/",
+      "cat": 0,
+      "m": "A body scanner checks passengers without touching them.",
+      "ex": "Step into the body scanner, please."
+    },
+    {
+      "en": "tray",
+      "zh": "托盤",
+      "pr": "/tray/",
+      "cat": 0,
+      "m": "A tray holds your items as they go through the X-ray machine.",
+      "ex": "Put your phone and keys in the tray."
+    },
+    {
+      "en": "conveyor belt",
+      "zh": "輸送帶",
+      "pr": "/conveyor · belt/",
+      "cat": 0,
+      "m": "A conveyor belt moves bags through the X-ray machine.",
+      "ex": "Watch your bag move along the conveyor belt."
+    },
+    {
+      "en": "ID check",
+      "zh": "身分查驗",
+      "pr": "/ID · check/",
+      "cat": 1,
+      "m": "An ID check confirms who you are.",
+      "ex": "There is an ID check before the gate."
+    },
+    {
+      "en": "duty-free",
+      "zh": "免稅的",
+      "pr": "/duty-free/",
+      "cat": 1,
+      "m": "Duty-free means no local tax is charged on the item.",
+      "ex": "I bought perfume at the duty-free shop."
+    },
+    {
+      "en": "seat belt sign",
+      "zh": "安全帶指示燈",
+      "pr": "/seat · belt · sign/",
+      "cat": 1,
+      "m": "The seat belt sign tells passengers to stay seated.",
+      "ex": "The seat belt sign turned on during landing."
+    },
+    {
+      "en": "safety demonstration",
+      "zh": "安全示範",
+      "pr": "/safety · demonstration/",
+      "cat": 1,
+      "m": "A safety demonstration shows what to do in an emergency.",
+      "ex": "Please watch the safety demonstration before takeoff."
+    },
+    {
+      "en": "overhead bin",
+      "zh": "頭頂置物櫃",
+      "pr": "/overhead · bin/",
+      "cat": 1,
+      "m": "An overhead bin stores bags above your seat.",
+      "ex": "There is no space left in the overhead bin."
+    },
+    {
+      "en": "standby",
+      "zh": "候補",
+      "pr": "/standby/",
+      "cat": 1,
+      "m": "Standby means waiting for a seat that may become available.",
+      "ex": "I am on standby for the next flight."
+    },
+    {
+      "en": "fingerprint",
+      "zh": "指紋",
+      "pr": "/fingerprint/",
+      "cat": 2,
+      "m": "A fingerprint is the unique pattern on your finger.",
+      "ex": "The officer scanned my fingerprint at the counter."
+    },
+    {
+      "en": "biometric photo",
+      "zh": "生物辨識照片",
+      "pr": "/biometric · photo/",
+      "cat": 2,
+      "m": "A biometric photo records your face for identity checks.",
+      "ex": "The kiosk took a biometric photo of me."
+    },
+    {
+      "en": "entry requirement",
+      "zh": "入境要求",
+      "pr": "/entry · requirement/",
+      "cat": 2,
+      "m": "An entry requirement is something you must have to enter a country.",
+      "ex": "A valid visa is an entry requirement here."
+    },
+    {
+      "en": "length of stay",
+      "zh": "停留期間",
+      "pr": "/length · of · stay/",
+      "cat": 2,
+      "m": "Length of stay means how long you plan to remain.",
+      "ex": "My length of stay is ten days."
+    },
+    {
+      "en": "purpose of visit",
+      "zh": "入境目的",
+      "pr": "/purpose · of · visit/",
+      "cat": 2,
+      "m": "Purpose of visit means the reason for your trip.",
+      "ex": "My purpose of visit is a family wedding."
+    },
+    {
+      "en": "arrival card",
+      "zh": "入境卡",
+      "pr": "/arrival · card/",
+      "cat": 2,
+      "m": "An arrival card is a form filled out on entry.",
+      "ex": "Please complete the arrival card before landing."
+    },
+    {
+      "en": "immigration officer",
+      "zh": "入境官員",
+      "pr": "/immigration · officer/",
+      "cat": 2,
+      "m": "An immigration officer checks passports and travel documents.",
+      "ex": "The immigration officer asked how long I would stay."
+    },
+    {
+      "en": "customs form",
+      "zh": "海關申報表",
+      "pr": "/customs · form/",
+      "cat": 3,
+      "m": "A customs form lists items you are bringing into a country.",
+      "ex": "I filled out the customs form on the plane."
+    },
+    {
+      "en": "nothing to declare",
+      "zh": "無物品需申報",
+      "pr": "/nothing · to · declare/",
+      "cat": 3,
+      "m": "Nothing to declare means you have no restricted or taxable items.",
+      "ex": "I chose the nothing to declare lane."
+    },
+    {
+      "en": "transit passenger",
+      "zh": "過境旅客",
+      "pr": "/transit · passenger/",
+      "cat": 4,
+      "m": "A transit passenger stops at an airport without leaving it.",
+      "ex": "Transit passengers can wait in the lounge."
+    },
+    {
+      "en": "layover",
+      "zh": "轉機停留",
+      "pr": "/layover/",
+      "cat": 4,
+      "m": "A layover is a stop between two flights.",
+      "ex": "I have a two-hour layover in Tokyo."
+    },
+    {
+      "en": "gate change",
+      "zh": "登機門變更",
+      "pr": "/gate · change/",
+      "cat": 4,
+      "m": "A gate change means your departure gate has been switched.",
+      "ex": "There was a last-minute gate change to B14."
+    },
+    {
+      "en": "final call",
+      "zh": "最後登機廣播",
+      "pr": "/final · call/",
+      "cat": 4,
+      "m": "A final call is the last announcement before boarding closes.",
+      "ex": "This is the final call for Flight 582."
+    },
+    {
+      "en": "boarding group",
+      "zh": "登機組別",
+      "pr": "/boarding · group/",
+      "cat": 4,
+      "m": "A boarding group is the order in which passengers board.",
+      "ex": "My boarding group is called first."
+    },
+    {
+      "en": "priority boarding",
+      "zh": "優先登機",
+      "pr": "/priority · boarding/",
+      "cat": 4,
+      "m": "Priority boarding lets certain passengers board early.",
+      "ex": "Priority boarding starts in five minutes."
+    },
+    {
+      "en": "boarding pass",
+      "zh": "登機證",
+      "pr": "/boarding · pass/",
+      "cat": 4,
+      "m": "A boarding pass shows your flight, seat, and gate.",
+      "ex": "Please have your boarding pass ready."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Do I need to remove my shoes?",
+      "zh": "我需要脫鞋嗎？",
+      "note": "Ask this before you walk through the metal detector.",
+      "t": "core"
+    },
+    {
+      "en": "I have nothing to declare.",
+      "zh": "我沒有需要申報的物品。",
+      "note": "Use this at customs if you are not carrying restricted items.",
+      "t": "core"
+    },
+    {
+      "en": "I am here for tourism.",
+      "zh": "我是來旅遊的。",
+      "note": "A common answer at passport control about your purpose of visit.",
+      "t": "core"
+    },
+    {
+      "en": "Where do I go for my connecting flight?",
+      "zh": "我要去哪裡搭轉機航班？",
+      "note": "Ask airport staff for directions after landing.",
+      "t": "ext"
+    },
+    {
+      "en": "Could you please repeat the question?",
+      "zh": "可以請您再說一次問題嗎？",
+      "note": "Use this politely if you do not understand an officer.",
+      "t": "ext"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1,
+      "title": "At the Security Check",
+      "tz": "通過安檢",
+      "tag": "req",
+      "sit": "You are preparing your bags for airport security.",
+      "rA": "Traveler",
+      "rB": "Security Officer",
+      "lines": [
+        [
+          "A",
+          "Excuse me, do I need to remove my shoes?"
+        ],
+        [
+          "B",
+          "No, but please remove your jacket."
+        ],
+        [
+          "A",
+          "Should I take out my laptop?"
+        ],
+        [
+          "B",
+          "Yes. Put it in a separate tray."
+        ],
+        [
+          "A",
+          "What about this small bottle?"
+        ],
+        [
+          "B",
+          "That is fine. Please place it in the clear bag."
+        ]
+      ],
+      "tp": "Try again: ask whether you need to remove your belt.",
+      "tn": "Focus on polite security questions with Do I need to...?"
+    },
+    {
+      "id": 2,
+      "title": "At Passport Control",
+      "tz": "護照查驗",
+      "tag": "req",
+      "sit": "You arrive at passport control after landing.",
+      "rA": "Immigration Officer",
+      "rB": "Traveler",
+      "lines": [
+        [
+          "A",
+          "May I see your passport, please?"
+        ],
+        [
+          "B",
+          "Yes, here you are."
+        ],
+        [
+          "A",
+          "What is the purpose of your visit?"
+        ],
+        [
+          "B",
+          "I am here for tourism."
+        ],
+        [
+          "A",
+          "How long will you stay?"
+        ],
+        [
+          "B",
+          "I will stay for ten days."
+        ],
+        [
+          "A",
+          "Where are you staying?"
+        ],
+        [
+          "B",
+          "At the City Centre Hotel."
+        ]
+      ],
+      "tp": "Try again: say you are visiting friends for one week.",
+      "tn": "Practice short factual answers about purpose and length of stay."
+    },
+    {
+      "id": 3,
+      "title": "A Liquid Problem",
+      "tz": "液體物品問題",
+      "tag": "ch",
+      "sit": "Your carry-on bag has a liquid that is too large.",
+      "rA": "Security Officer",
+      "rB": "Traveler",
+      "lines": [
+        [
+          "A",
+          "This bottle is too large for your carry-on bag."
+        ],
+        [
+          "B",
+          "Oh, I did not know. Can I keep it?"
+        ],
+        [
+          "A",
+          "You cannot take it through security."
+        ],
+        [
+          "B",
+          "What can I do?"
+        ],
+        [
+          "A",
+          "You can throw it away or return to check it in."
+        ],
+        [
+          "B",
+          "I understand. I will throw it away."
+        ],
+        [
+          "A",
+          "Thank you. Please continue to the metal detector."
+        ],
+        [
+          "B",
+          "Okay. Thank you for your help."
+        ]
+      ],
+      "tp": "Try again: ask if you can put the bottle in checked luggage.",
+      "tn": "Problem scenario: stay calm and ask about your options."
+    },
+    {
+      "id": 4,
+      "title": "At Customs",
+      "tz": "通過海關",
+      "tag": "req",
+      "sit": "You are asked questions after collecting your luggage.",
+      "rA": "Customs Officer",
+      "rB": "Traveler",
+      "lines": [
+        [
+          "A",
+          "Are you carrying any food?"
+        ],
+        [
+          "B",
+          "Yes, I have some packaged snacks."
+        ],
+        [
+          "A",
+          "Did you declare them on your form?"
+        ],
+        [
+          "B",
+          "Yes, I did."
+        ],
+        [
+          "A",
+          "Thank you. Please show them to me."
+        ],
+        [
+          "B",
+          "Of course. They are in this bag."
+        ],
+        [
+          "A",
+          "Everything is fine. You may continue."
+        ],
+        [
+          "B",
+          "Thank you."
+        ]
+      ],
+      "tp": "Try again: say that you have no food and nothing to declare.",
+      "tn": "Practice honest, calm answers about declared items."
+    },
+    {
+      "id": 5,
+      "title": "Finding a Connecting Flight",
+      "tz": "尋找轉機航班",
+      "tag": "req",
+      "sit": "You need directions to your connecting flight.",
+      "rA": "Traveler",
+      "rB": "Airport Staff",
+      "lines": [
+        [
+          "A",
+          "Excuse me, where do I go for my connecting flight?"
+        ],
+        [
+          "B",
+          "What is your flight number?"
+        ],
+        [
+          "A",
+          "It is Flight 582 to Osaka."
+        ],
+        [
+          "B",
+          "Please follow the purple signs to Terminal B."
+        ],
+        [
+          "A",
+          "Do I need to pass security again?"
+        ],
+        [
+          "B",
+          "Yes. The security check is before Gate B12."
+        ],
+        [
+          "A",
+          "Thank you. Is it far from here?"
+        ],
+        [
+          "B",
+          "It is about a ten-minute walk."
+        ]
+      ],
+      "tp": "Try again: ask about a gate change and the boarding time.",
+      "tn": "Ask for directions using Where do I go for...?"
+    }
+  ],
+  "speaking": [
+    {
+      "t": 1,
+      "q": "What do you put in a security tray?",
+      "h": "I put my phone, keys, and laptop in the tray."
+    },
+    {
+      "t": 1,
+      "q": "Do you usually travel with liquids?",
+      "h": "Yes, I do. / No, I don't."
+    },
+    {
+      "t": 2,
+      "q": "What questions can an immigration officer ask?",
+      "h": "An officer can ask about your purpose of visit and length of stay."
+    },
+    {
+      "t": 2,
+      "q": "What should you do if you do not understand an officer?",
+      "h": "Use: Could you please repeat the question?"
+    },
+    {
+      "t": 3,
+      "q": "Describe each step from airport security to your connecting gate.",
+      "h": "First I go through security, then..."
+    }
+  ],
+  "culture": [
+    {
+      "slot": "warm-up",
+      "title": "Clear and Honest Border Answers",
+      "tz": "清楚且誠實地回答入境問題",
+      "photo": "📷 An illustrated immigration officer asking a traveler simple questions at a counter.",
+      "notes": "Border officers often ask short, direct questions. Travelers should answer truthfully, use simple language, and show the requested documents. This is communication practice, not legal or immigration advice.",
+      "qs": [
+        "What documents do travelers usually prepare?",
+        "How can you ask an officer to repeat a question?",
+        "Why are short and truthful answers important?"
+      ]
+    },
+    {
+      "slot": "closing",
+      "title": "Security Procedures Can Vary",
+      "tz": "各機場安檢流程可能不同",
+      "photo": "📷 An illustrated airport security line with signs guiding passengers through different steps.",
+      "notes": "The exact procedure may change by airport, country, or current security rules. Watch the signs and follow the officer's instructions instead of assuming every airport is the same.",
+      "qs": [
+        "Which items do travelers often place in a tray?",
+        "What should you do when a rule is unclear?",
+        "How can arriving early reduce stress?"
+      ]
+    }
+  ],
+  "pronunciation": {
+    "focus": "Don't Add an Extra Vowel",
+    "fz": "尾音後不要多加母音",
+    "words": [
+      {
+        "w": "check",
+        "ipa": "/tʃek/",
+        "bad": "check-uh",
+        "tip": "Stop right after the /k/ sound; don't add \"uh\"."
+      },
+      {
+        "w": "stamp",
+        "ipa": "/stæmp/",
+        "bad": "stamp-uh",
+        "tip": "Close your lips on the final /p/; no extra vowel."
+      },
+      {
+        "w": "flight",
+        "ipa": "/flaɪt/",
+        "bad": "flight-uh",
+        "tip": "Finish with a crisp /t/, then stop completely."
+      },
+      {
+        "w": "desk",
+        "ipa": "/desk/",
+        "bad": "desk-uh",
+        "tip": "Let the /sk/ cluster end cleanly, no vowel after."
+      },
+      {
+        "w": "passport",
+        "ipa": "/ˈpæspɔːrt/",
+        "bad": "passport-uh",
+        "tip": "End on /t/ without releasing an extra sound."
+      }
+    ],
+    "tip": "Chinese speakers may add an \"uh\" sound after a final consonant. Finish the final sound and stop.",
+    "prac": "Please check my passport and entry stamp before the flight."
+  },
+  "previously_learned": {
+    "lessons": [
+      {
+        "lesson_code": "Travel L01",
+        "title_en": "Airport Check-In",
+        "words": [
+          {
+            "en": "check in",
+            "zh": "報到"
+          },
+          {
+            "en": "counter",
+            "zh": "櫃檯"
+          },
+          {
+            "en": "boarding pass",
+            "zh": "登機證"
+          },
+          {
+            "en": "passport",
+            "zh": "護照"
+          },
+          {
+            "en": "ticket",
+            "zh": "機票"
+          },
+          {
+            "en": "ID",
+            "zh": "身分證"
+          },
+          {
+            "en": "luggage",
+            "zh": "行李"
+          },
+          {
+            "en": "suitcase",
+            "zh": "行李箱"
+          },
+          {
+            "en": "carry-on",
+            "zh": "隨身行李"
+          },
+          {
+            "en": "gate",
+            "zh": "登機門"
+          },
+          {
+            "en": "terminal",
+            "zh": "航廈"
+          },
+          {
+            "en": "departure",
+            "zh": "出發"
+          },
+          {
+            "en": "window seat",
+            "zh": "靠窗座位"
+          },
+          {
+            "en": "aisle seat",
+            "zh": "走道座位"
+          },
+          {
+            "en": "help",
+            "zh": "幫忙"
+          }
+        ]
+      }
+    ]
+  }
+}
