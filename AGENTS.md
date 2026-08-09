@@ -106,6 +106,15 @@ If the repository workflow defines additional blocking checks, run or verify tho
 
 Validate at minimum:
 
+- Before generating any lesson image, locate and fully read the lesson folder's
+  `*Image_Prompts*.md` file. Treat it as the mandatory visual-production contract.
+- If no lesson-specific Image_Prompts file exists, STOP before image generation,
+  warn the user that the prompt contract is missing, and ask for a new prompt file
+  following `L03_On_the_Airplane_Image_Prompts.md` in structure and rules. Never
+  improvise lesson images from JSON/HTML alone.
+- Generate every requested image from the corresponding Image_Prompts section and
+  any user-designated Golden Style Reference; do not replace that specification
+  with a generic shared layout.
 - exact expected image count for the lesson;
 - exact 16:9 and at least 1920×1080 for final release images;
 - warning for files over 2 MB;

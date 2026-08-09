@@ -969,6 +969,9 @@ Running maintenance twice should produce no diff on the second run.
 [ ] Each image-based section has an outer YSP_IMAGE_GALLERY_START / END block when that section exists
 [ ] Each image-based section has an inner YSP_IMAGE_GALLERY_MOUNT_START / END block
 [ ] Every gallery id is unique within the lesson page
+[ ] Before lesson-image generation, a lesson-specific `*Image_Prompts*.md` file was found and read in full
+[ ] If Image_Prompts was absent, generation stopped and the user was asked to create one following `L03_On_the_Airplane_Image_Prompts.md`
+[ ] Every output follows its matching Image_Prompts section and the designated Golden Style Reference; no generic substitute layout was used
 [ ] Gallery data attributes remain after maintenance workflow runs
 [ ] YSP_IMAGE_GALLERY_MOUNT markers remain after image rendering
 [ ] Gallery mount prevents horizontal overflow and the gallery grid uses a single `minmax(0, 1fr)` column
