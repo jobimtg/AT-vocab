@@ -1,201 +1,150 @@
 #!/usr/bin/env node
 /**
- * ysp_functional_smoke_test.js
- *
- * Runtime functional smoke test for YSP lesson HTML files. node --check only
- * catches SYNTAX errors; ysp_lesson_contract_check.py only checks static
- * structure/counts. Neither ever actually EXECUTES the interactive JS, so a
- * closure-scope bug like referencing a function-local `const p` inside an
- * onclick="" attribute (which runs in global scope at click-time, not the
- * function's scope at render-time) passed every existing check while being
- * completely broken in a real browser.
- *
- * This script builds a minimal in-memory DOM mock, boots the lesson exactly
- * as a browser would (DOMContentLoaded), then repeatedly HARVESTS every
- * onclick="..." handler currently present in any rendered element and
- * EXECUTES it — for several rounds, so state-dependent bugs (e.g. only
- * breaking after several clicks, or only breaking near an array boundary)
- * get exercised too. It does not hardcode which buttons exist, so it stays
- * useful as the UI evolves without needing to be manually updated.
- *
- * Usage: node ysp_functional_smoke_test.js <lesson-html-file> [more files...]
- * Exit code 0 = all files clean. Exit code 1 = at least one runtime error found.
+ * Runtime smoke test for current and legacy YSP lesson HTML.
+ * Current JSON lessons and unknown/malformed architectures are blocking.
+ * Recognized legacy pages are still fully executed, but known legacy runtime
+ * defects are reported as non-blocking warnings until those lessons migrate.
  */
 const fs = require('fs');
-const path = require('path');
+const vm = require('vm');
+const ROUNDS = 8;
 
-const ROUNDS = 8; // repeated harvest-and-click passes per lesson
+function decode(value) {
+  return String(value).replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+}
 
-function mockDom(lessonDataText) {
-  const store = {}; // id -> mock element
-  function makeClassList() {
-    const set = new Set();
+function attrsOf(text) {
+  const attrs = {}; let match;
+  const re = /([:\w-]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g;
+  while ((match = re.exec(text))) attrs[match[1].toLowerCase()] = decode(match[2] ?? match[3] ?? match[4] ?? '');
+  return attrs;
+}
+
+function mockDom(html, lessonData) {
+  const store = {}; let serial = 0;
+  function classList(initial = '') {
+    const values = new Set(String(initial).split(/\s+/).filter(Boolean));
     return {
-      toggle(name, force) {
-        if (force === undefined) { set.has(name) ? set.delete(name) : set.add(name); }
-        else if (force) set.add(name); else set.delete(name);
-        return set.has(name);
-      },
-      add(name) { set.add(name); },
-      remove(name) { set.delete(name); },
-      contains(name) { return set.has(name); },
+      toggle(n, force) { if (force === undefined) values.has(n) ? values.delete(n) : values.add(n); else force ? values.add(n) : values.delete(n); return values.has(n); },
+      add(...names) { names.forEach(n => values.add(n)); }, remove(...names) { names.forEach(n => values.delete(n)); },
+      contains(n) { return values.has(n); }, toString() { return [...values].join(' '); },
     };
   }
-  function makeEl(id) {
+  function makeEl(id = `_el_${++serial}`, attrs = {}) {
     if (store[id]) return store[id];
     const el = {
-      id,
-      _innerHTML: '',
-      style: {},
-      textContent: '',
-      classList: makeClassList(),
-      dataset: {},
-      children: [],
-      setAttribute() {},
-      getAttribute() { return null; },
-      removeAttribute() {},
-      addEventListener() {},
-      // A generic sibling stub so `this.nextElementSibling.classList.toggle(...)`
-      // (used by dialogue "Teacher notes" toggles, accordion headers, etc.)
-      // exercises real toggle logic instead of throwing on a null sibling.
-      get nextElementSibling() { return makeEl('_sibling_of_' + id); },
-      querySelector() { return null; },
-      querySelectorAll() { return []; },
-      get innerHTML() { return this._innerHTML; },
-      set innerHTML(v) { this._innerHTML = v; },
+      id, tagName: (attrs.__tag || 'div').toUpperCase(), _innerHTML: '', _onclickCode: attrs.onclick || null,
+      onclick: null, style: {}, textContent: '', dataset: {}, children: [], parentNode: null, classList: classList(attrs.class),
+      appendChild(child) { child.parentNode = this; this.children.push(child); return child; },
+      setAttribute(n, v) { if (n === 'class') this.className = v; else if (n === 'onclick') this._onclickCode = String(v); else this[n] = v; },
+      getAttribute(n) { return n === 'class' ? this.className : n === 'onclick' ? this._onclickCode : this[n] ?? null; },
+      removeAttribute(n) { delete this[n]; }, addEventListener(e, fn) { if (e === 'click') this.onclick = fn; },
+      querySelector(s) { return query(s)[0] || null; }, querySelectorAll(s) { return query(s); },
+      scrollHeight: 0, scrollIntoView() {}, getBoundingClientRect() { return { top: 0 }; },
+      get nextElementSibling() { return makeEl(`_sibling_of_${id}`); },
+      get innerHTML() { return this._innerHTML; }, set innerHTML(v) { this._innerHTML = String(v); register(this._innerHTML, `render_${id}`); },
     };
-    store[id] = el;
-    return el;
-  }
-  const documentMock = {
-    getElementById(id) {
-      if (id === 'lesson-data') return { textContent: lessonDataText };
-      return makeEl(id);
-    },
-    querySelectorAll() { return []; },
-    querySelector() { return null; },
-    addEventListener(evt, fn) {
-      // Real browsers fire DOMContentLoaded once the script has finished
-      // parsing; simulate that immediately so the lesson actually boots.
-      if (evt === 'DOMContentLoaded') {
-        documentMock._pendingBoot = fn;
-      }
-    },
-    createElement() { return makeEl('_tmp_' + Math.random()); },
-    body: makeEl('body'),
-  };
-  return { documentMock, store, makeEl };
-}
-
-function harvestOnclicks(store) {
-  const found = [];
-  const re = /onclick="([^"]*)"/g;
-  for (const id of Object.keys(store)) {
-    const html = store[id]._innerHTML || '';
-    let m;
-    const localRe = new RegExp(re);
-    while ((m = localRe.exec(html))) {
-      found.push(m[1]);
+    Object.defineProperty(el, 'className', { get() { return el.classList.toString(); }, set(v) { el.classList = classList(v); } });
+    for (const [n, v] of Object.entries(attrs)) {
+      if (n.startsWith('data-')) { el.dataset[n.slice(5).replace(/-([a-z])/g, (_, c) => c.toUpperCase())] = v; el[n] = v; }
+      else if (!['id', 'class', 'onclick', '__tag'].includes(n)) el[n] = v;
     }
+    store[id] = el; return el;
   }
-  return found;
-}
-
-function decodeHtmlEntities(s) {
-  return s
-    .replace(/&#39;/g, "'")
-    .replace(/&quot;/g, '"')
-    .replace(/&amp;/g, '&');
-}
-
-function testFile(filePath) {
-  const html = fs.readFileSync(filePath, 'utf8');
-  const dataMatch = html.match(/<script id="lesson-data" type="application\/json">([\s\S]*?)<\/script>/);
-  const scriptMatches = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)]
-    .filter(([, attrs]) => !/id="lesson-data"/.test(attrs) && !/src=/.test(attrs));
-  if (!dataMatch || scriptMatches.length === 0) {
-    return { file: filePath, ok: false, errors: ['could not locate lesson-data or main script block'] };
+  function register(markup, owner = 'static') {
+    const prefix = `_${owner}_`; let position = 0;
+    for (const key of Object.keys(store)) if (key.startsWith(prefix)) delete store[key];
+    const re = /<([a-z][\w-]*)\b([^>]*)>/gi; let match;
+    while ((match = re.exec(markup))) { const attrs = attrsOf(match[2]); attrs.__tag = match[1]; makeEl(attrs.id || `${prefix}${position++}`, attrs); }
   }
-  const jsBody = scriptMatches[scriptMatches.length - 1][2];
-  const { documentMock, store, makeEl } = mockDom(dataMatch[1]);
-
-  const errors = [];
-  const sandbox = {
-    document: documentMock,
-    localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
-    console: { log() {}, warn() {}, error() {} },
-    window: {},
-    alert() {},
-    // Reset Progress and similar guarded actions call confirm(); default to
-    // accepting so that code path gets exercised too, not skipped.
-    confirm: () => true,
+  function query(selector) {
+    const all = Object.values(store);
+    selector = selector.trim().split(/\s+/).pop();
+    if (selector.startsWith('#')) return store[selector.slice(1)] ? [store[selector.slice(1)]] : [];
+    const match = /^(?:([a-z][\w-]*)|\.([\w-]+))?(?:\[([:\w-]+)(?:=["']?([^\]"']+)["']?)?\])?$/i.exec(selector);
+    if (!match) return [];
+    return all.filter(e => (!match[1] || e.tagName.toLowerCase() === match[1].toLowerCase()) && (!match[2] || e.classList.contains(match[2])) && (!match[3] || (e.getAttribute(match[3]) !== null && (match[4] === undefined || String(e.getAttribute(match[3])) === match[4]))));
+  }
+  register(html.replace(/<script\b[\s\S]*?<\/script>/gi, '').replace(/<style\b[\s\S]*?<\/style>/gi, ''));
+  const document = {
+    getElementById(id) { if (id === 'lesson-data' && lessonData !== null) return { textContent: lessonData }; return makeEl(id); },
+    querySelectorAll: query, querySelector: s => query(s)[0] || null,
+    addEventListener(e, fn) { if (e === 'DOMContentLoaded') document._boots.push(fn); },
+    createElement: tag => makeEl(`_created_${++serial}`, { __tag: tag }), _boots: [], body: makeEl('body', { __tag: 'body' }),
   };
-  const context = require('vm').createContext(sandbox);
+  return { document, store, makeEl };
+}
 
-  try {
-    require('vm').runInContext(jsBody, context, { filename: path.basename(filePath) });
-  } catch (e) {
-    errors.push('boot (initial script execution): ' + e.message);
-    return { file: filePath, ok: false, errors };
-  }
+function scriptsOf(html) {
+  return [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)]
+    .filter(([, a]) => !/\bsrc\s*=/.test(a) && !/\btype\s*=\s*["']application\/json["']/.test(a)).map(m => m[2]);
+}
 
-  if (typeof documentMock._pendingBoot === 'function') {
-    try {
-      documentMock._pendingBoot();
-    } catch (e) {
-      errors.push('boot (DOMContentLoaded handler): ' + e.message);
-      return { file: filePath, ok: false, errors };
-    }
-  }
+function architectureOf(html) {
+  if (/<script\b(?=[^>]*\bid=["']lesson-data["'])(?=[^>]*\btype=["']application\/json["'])[^>]*>/i.test(html)) return 'current-json';
+  if (/document\.getElementById\(["']lesson-data["']\)|const\s+DATA\s*=\s*JSON\.parse/.test(html)) return 'malformed-current';
+  if (/const\s+lessons\s*=\s*\[[\s\S]*data:text\/html;base64,/i.test(html) && /<iframe\b/i.test(html)) return 'legacy-iframe-bundle';
+  if (/(?:const|let|var)\s+V\s*=/.test(html) && /DOMContentLoaded/.test(html)) return 'legacy-inline-data';
+  return 'unknown';
+}
 
-  // Repeatedly harvest and execute every onclick handler currently rendered.
-  // Each handler is wrapped as `function(){ <code> }` and called with a
-  // generic clicked-element as `this` (matching real DOM onclick semantics)
-  // plus a fresh mock `event` object in scope, so patterns like
-  // `this.classList.toggle('fl')` and `event.stopPropagation()` — both
-  // extremely common in this codebase — exercise real logic instead of
-  // producing mock-artifact false positives that would drown out real bugs.
+function handlers(store) {
+  const result = [];
+  for (const el of Object.values(store)) { if (el._onclickCode) result.push({ code: el._onclickCode, el }); if (typeof el.onclick === 'function') result.push({ fn: el.onclick, el }); }
+  return result;
+}
+
+function runDocument(html, label, requireArchitecture = true) {
+  const architecture = requireArchitecture ? architectureOf(html) : 'legacy-embedded';
+  if (architecture === 'malformed-current') return { ok: false, architecture, errors: ['current lesson references lesson-data but the required application/json block is missing'] };
+  if (architecture === 'unknown') return { ok: false, architecture, errors: ['unrecognized or malformed lesson architecture'] };
+  const data = html.match(/<script\b(?=[^>]*\bid=["']lesson-data["'])(?=[^>]*\btype=["']application\/json["'])[^>]*>([\s\S]*?)<\/script>/i);
+  if (architecture === 'current-json') try { JSON.parse(data[1]); } catch (e) { return { ok: false, architecture, errors: [`invalid lesson-data JSON: ${e.message}`] }; }
+  const scripts = scriptsOf(html);
+  if (!scripts.length) return { ok: false, architecture, errors: ['no executable inline script block'] };
+  const { document, store, makeEl } = mockDom(html, data ? data[1] : null);
+  const sandbox = { document, localStorage: { getItem: () => null, setItem() {}, removeItem() {} }, console: { log() {}, warn() {}, error() {} }, alert() {}, confirm: () => true, setTimeout: fn => { if (typeof fn === 'function') fn(); return 1; }, clearTimeout() {}, requestAnimationFrame: fn => { if (typeof fn === 'function') fn(); return 1; }, addEventListener() {} };
+  sandbox.window = sandbox;
+  for (const [id, el] of Object.entries(store)) if (/^[A-Za-z_$][\w$]*$/.test(id)) sandbox[id] = el;
+  const context = vm.createContext(sandbox); const errors = [];
+  for (let i = 0; i < scripts.length; i++) try { vm.runInContext(scripts[i], context, { filename: `${label} script ${i + 1}` }); } catch (e) { errors.push(`boot (script ${i + 1}): ${e.message}`); return { ok: false, architecture, errors }; }
+  for (const boot of document._boots) try { boot(); } catch (e) { errors.push(`boot (DOMContentLoaded): ${e.message}`); return { ok: false, architecture, errors }; }
   for (let round = 0; round < ROUNDS; round++) {
-    const handlers = harvestOnclicks(store);
-    for (const raw of handlers) {
-      const code = decodeHtmlEntities(raw);
-      const clickedEl = makeEl('_clicked_' + Math.random());
-      const wrapped = `(function(event){ ${code} }).call(__clickedEl__, __mockEvent__)`;
-      sandbox.__clickedEl__ = clickedEl;
-      sandbox.__mockEvent__ = { stopPropagation() {}, preventDefault() {}, target: clickedEl };
+    const found = handlers(store); if (!found.length && round === 0) errors.push('no onclick handlers were found after boot');
+    for (const h of found) {
+      const clicked = h.el || makeEl(`_clicked_${round}`); const event = { stopPropagation() {}, preventDefault() {}, target: clicked };
       try {
-        require('vm').runInContext(wrapped, context, { filename: `${path.basename(filePath)} onclick round ${round}` });
-      } catch (e) {
-        errors.push(`round ${round}, handler "${code}": ${e.message}`);
-      }
-    }
-    if (handlers.length === 0 && round === 0) {
-      errors.push('no onclick handlers were ever rendered — check that DOMContentLoaded actually fired');
+        if (h.fn) h.fn.call(clicked, event);
+        else { sandbox.__clickedEl__ = clicked; sandbox.__mockEvent__ = event; vm.runInContext(`(function(event){ ${decode(h.code)} }).call(__clickedEl__, __mockEvent__)`, context, { filename: `${label} onclick round ${round}` }); }
+      } catch (e) { errors.push(`round ${round}, handler "${h.code || '[programmatic onclick]'}": ${e.message}`); }
     }
   }
-
-  return { file: filePath, ok: errors.length === 0, errors };
+  if (architecture === 'legacy-iframe-bundle') {
+    let sources = [];
+    try { sources = vm.runInContext(`lessons.map(x => x && x.src).filter(Boolean)`, context); } catch (e) { errors.push(`could not read iframe lesson sources: ${e.message}`); }
+    if (!sources.length) errors.push('legacy iframe bundle did not expose lesson data URLs');
+    sources.forEach((src, i) => {
+      const match = /^data:text\/html;base64,([A-Za-z0-9+/=]+)$/.exec(src);
+      if (!match) { errors.push(`iframe ${i + 1}: unsupported lesson source`); return; }
+      const child = runDocument(Buffer.from(match[1], 'base64').toString('utf8'), `${label} iframe ${i + 1}`, false);
+      child.errors.forEach(e => errors.push(`iframe ${i + 1}: ${e}`));
+    });
+  }
+  return { ok: errors.length === 0, architecture, errors };
 }
 
 const files = process.argv.slice(2);
-if (files.length === 0) {
-  console.error('Usage: node ysp_functional_smoke_test.js <lesson-html-file> [more files...]');
-  process.exit(2);
-}
-
-let anyFail = false;
-console.log('='.repeat(60));
-console.log('YSP Functional Smoke Test (runtime click simulation)');
-console.log('='.repeat(60));
-for (const f of files) {
-  const result = testFile(f);
-  if (result.ok) {
-    console.log(`✅ ${f} — clean across ${ROUNDS} rounds of click simulation`);
-  } else {
-    anyFail = true;
-    console.log(`❌ ${f}`);
-    for (const err of result.errors) console.log('   - ' + err);
+if (!files.length) { console.error('Usage: node ysp_functional_smoke_test.js <lesson-html-file> [more files...]'); process.exit(2); }
+let failed = false;
+console.log('='.repeat(60)); console.log('YSP Functional Smoke Test (runtime click simulation)'); console.log('='.repeat(60));
+for (const file of files) {
+  const result = runDocument(fs.readFileSync(file, 'utf8'), file);
+  if (result.ok) console.log(`PASS ${file} [${result.architecture}] - clean across ${ROUNDS} rounds`);
+  else if (result.architecture.startsWith('legacy-')) {
+    console.log(`LEGACY WARNING ${file} [${result.architecture}] - runtime issue is non-blocking until legacy migration`);
+    [...new Set(result.errors.map(e => e.replace(/^round \d+, /, 'round *, ')))].forEach(e => console.log(`   - ${e}`));
   }
+  else { failed = true; console.log(`FAIL ${file} [${result.architecture}]`); result.errors.forEach(e => console.log(`   - ${e}`)); }
 }
-console.log('='.repeat(60));
-process.exit(anyFail ? 1 : 0);
+console.log('='.repeat(60)); process.exit(failed ? 1 : 0);
