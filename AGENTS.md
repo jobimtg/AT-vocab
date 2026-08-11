@@ -121,6 +121,12 @@ Validate at minimum:
   Travel standard authorizes creating that file from the approved lesson JSON/HTML
   before generation. This Travel-only route is the exception to the general missing-
   prompt stop; it does not authorize generating without first creating the prompt artifact.
+- For Canada Life & Career English, read and follow
+  `docs/CANADA_LIFE_IMAGE_PROMPT_STANDARD.md`. It is Canada-Life-only and must not
+  inherit Travel's non-pronunciation visual system.
+- For pronunciation images in either Travel English or Canada Life, also read
+  `docs/YSP_PRONUNCIATION_IMAGE_STANDARD.md`. This controls teaching structure;
+  each course standard still controls its surface visual finish.
 - exact expected image count for the lesson;
 - exact 16:9 and at least 1920×1080 for final release images;
 - warning for files over 2 MB;

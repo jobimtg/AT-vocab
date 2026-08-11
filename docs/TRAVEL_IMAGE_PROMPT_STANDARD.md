@@ -130,11 +130,13 @@ Practice rules:
 
 ## 7. Pronunciation card contract
 
-- Header: `PRONUNCIATION SPOTLIGHT｜發音焦點`.
-- Large bilingual focus title.
-- Five equal rows with target word, source IPA, red incorrect form → green correct form, side-profile mouth/tongue icon, and exact tip.
-- Bottom copper TIP and navy PRACTICE boxes.
-- Lowest decorative strip uses Canadian mountains, skyline, maple leaves, and landmark silhouettes.
+- Read `YSP_PRONUNCIATION_IMAGE_STANDARD.md`; it is the structural authority shared with Canada Life.
+- Match the pronunciation family established jointly by `travel-l02-pronunciation-1.png`, `travel-l03-pronunciation-1.png`, and `Pronunciation_U1L1.png`.
+- Keep the Travel clean premium finish while using the shared teaching structure.
+- Header: `PRONUNCIATION SPOTLIGHT｜發音焦點` and large bilingual focus title.
+- Use five horizontal rows for long tips or five vertical cards for short tips and larger articulation diagrams.
+- Every module includes word, source IPA, red incorrect → green correct, articulation diagram, and exact tip.
+- Include overall TIP, PRACTICE sentence, and Canadian mountain/skyline/maple/landmark decoration.
 - IPA format follows the approved lesson JSON/HTML exactly. Image, JSON, and HTML must match one another.
 - Never silently normalize punctuation or substitute Unicode IPA marks unless the user explicitly authorizes source synchronization.
 
@@ -176,6 +178,7 @@ Before reporting PASS:
 - Practice substitutions match only `tp` authorization.
 - Golden Travel style fidelity checked across all 15 images.
 - JSON/HTML/image pronunciation data agree.
+- Shared pronunciation compliance against `YSP_PRONUNCIATION_IMAGE_STANDARD.md`.
 - Independent Reviewer records CRITICAL, WARNING, and Proposal findings.
 - Two-failure stop-loss remains mandatory.
 
@@ -183,4 +186,4 @@ Before reporting PASS:
 
 This file is exclusively for Travel English.
 
-Canada Life images require a separate `CANADA_LIFE_IMAGE_PROMPT_STANDARD.md`, created only after the user supplies reference images and approves the distinct visual direction. Until that discussion is complete, do not derive Canada Life image style from this Travel standard.
+Canada Life images use the separate `CANADA_LIFE_IMAGE_PROMPT_STANDARD.md`. Do not derive Canada Life non-pronunciation style from this Travel standard. The two course families share only the teaching structure in `YSP_PRONUNCIATION_IMAGE_STANDARD.md` while retaining their own surface finishes.
