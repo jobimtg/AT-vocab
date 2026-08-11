@@ -58,5 +58,7 @@ Include exact filename; bilingual focus; five complete word/IPA/incorrect/correc
 - Articulation diagrams match the target.
 - Tips, overall tip, and practice sentence exact.
 - No clipping, missing glyph, or punctuation drift unless source-authorized.
+- The full header, all five teaching modules, right-side tips/diagrams, TIP panel, PRACTICE panel, and footer must be visibly inside the canvas safe area. A 1920x1080 file with internally cropped content is a BLOCKING failure.
+- Reopen and inspect the final PNG at magnification, then verify its rendered desktop and narrow/mobile gallery bounds before release.
 - Dimensions/file-size gates pass.
 - Two-failure stop-loss applies.

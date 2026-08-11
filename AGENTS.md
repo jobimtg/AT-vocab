@@ -168,6 +168,7 @@ These are a compact reminder only; latest Notion rules remain authoritative.
   the grid is a single `minmax(0, 1fr)` column, and rendered images use
   `width: 100%`, `max-width: 100%`, `height: auto`, `aspect-ratio: 16/9`,
   and `object-fit: contain`. Intrinsic 1920 px images must never overflow the lesson panel.
+- Before any image update or lesson-image publication passes review, reopen every final lesson image and confirm no title, row, side note, bottom panel, brand element, or footer is cropped by the raster canvas. Then verify every rendered image stays within its gallery mount at desktop and narrow/mobile widths. Dimensions alone never prove this gate.
 - Global nav markers use `YSP_GLOBAL_NAV_LOADER_START` / `YSP_GLOBAL_NAV_LOADER_END` and include `data-ysp-base`.
 - Final tab buttons are exactly:
   - `📊 Learning Overview`

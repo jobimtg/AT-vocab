@@ -31,6 +31,14 @@ RESPONSIVE_IMAGE_RULES = {
     "object-fit": "contain",
 }
 
+GALLERY_CONTAINER_RULES = {
+    ".ysp-image-gallery-mount": {"min-width": "0", "overflow": "hidden"},
+    ".ysp-image-gallery-grid": {
+        "grid-template-columns": "minmax(0,1fr)",
+        "width": "100%",
+    },
+}
+
 
 def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
@@ -75,6 +83,11 @@ def check_gallery_blocks(path: Path, text: str) -> None:
 
     seen_gallery_ids = set()
     if galleries:
+        for selector, rules in GALLERY_CONTAINER_RULES.items():
+            declarations = css_declarations(text, selector)
+            for name, expected in rules.items():
+                if declarations.get(name) != expected:
+                    err(path, f"Gallery container requires {selector} {name}:{expected}")
         image_css = css_declarations(text, ".ysp-image-gallery-grid img")
         for name, expected in RESPONSIVE_IMAGE_RULES.items():
             if image_css.get(name) != expected:

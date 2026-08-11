@@ -75,6 +75,8 @@ Use `YSP_PRONUNCIATION_IMAGE_STANDARD.md` structurally. Canada Life adds aged-pa
 - One generation call per asset, using its Golden reference and exact lesson prompt.
 - No generic template, variants, or contact sheets inside the lesson folder.
 - Magnified review for English, Traditional Chinese, IPA, and numbers.
+- Before release, visually reopen all 15 final images. Every border, title, teaching row, right-side note, bottom panel, branding mark, and footer must remain fully inside the 1920x1080 canvas; intrinsic crop or edge overflow is BLOCKING.
+- After routing images into lesson HTML, inspect every rendered gallery image at desktop and narrow/mobile widths. The image bounding box and scroll width must remain within its gallery mount; source-dimension checks alone are insufficient.
 - Exact 1920×1080; over 2 MB warning, over 5 MB block.
 - Validate source text, line counts, `tp`, branding, Canadian context, and style fidelity.
 - Two-failure stop-loss applies.
