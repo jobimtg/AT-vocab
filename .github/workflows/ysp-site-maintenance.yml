@@ -65,6 +65,11 @@ jobs:
             node scripts/ysp_functional_smoke_test.js $files
           fi
 
+      - name: Validate gallery image bounds (blocking)
+        shell: bash
+        run: |
+          python3 scripts/ysp_gallery_quality_check.py
+
       - name: Validate site after maintenance
         shell: bash
         run: |
