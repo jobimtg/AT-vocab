@@ -1,6 +1,6 @@
 # YSP Canada Life & Career English Image Prompt Standard
 
-**Version:** 1.0
+**Version:** 1.1
 
 **Effective:** 2026-08-09 (America/Vancouver)
 
@@ -12,6 +12,11 @@
 - Dialogue Practice: `Dialogue Practice_U1L1_2-2.png`
 - Phrases: `l01-phrases.png`
 - Pronunciation: `Pronunciation_U1L1.png`
+- Dialogue illustration-size references:
+  - `ca-life-l02-illustration-size-SAMPLE-A-COMPACT.png`
+  - `ca-life-l02-illustration-size-SAMPLE-B-BALANCED.png`
+  - `ca-life-l02-illustration-size-SAMPLE-C-UPPER-RANGE.png`
+- Approved published application: `ca-life-l02-d01-model-REFERENCE-v2.png`
 
 Pronunciation also follows `YSP_PRONUNCIATION_IMAGE_STANDARD.md` and its Travel L02/L03 references.
 
@@ -45,10 +50,52 @@ Pronunciation also follows `YSP_PRONUNCIATION_IMAGE_STANDARD.md` and its Travel 
 - Numbered bilingual scene ribbon and Canadian panorama.
 - Left: Situation plus Person A/B identity cards and small portraits.
 - Center: full Model or Practice dialogue with every source line and A/B badges.
-- Right: large detailed Canadian-life situation illustration.
+- Right: detailed Canadian-life situation illustration using the A/B/C adaptive
+  illustration-size system below. A large illustration is not mandatory when it
+  would reduce teaching-text size or safe margins.
 - Bottom: Key Vocabulary strip with icons/Chinese.
 - Bottom-right: `NOW YOU TRY! 換你說` with exact `tp` and matching vignette.
 - Model/Practice retain scene and characters; Practice changes only `tp`-authorized text and only that text receives rust/orange emphasis.
+
+## Adaptive A/B/C illustration-size system
+
+All three approved illustration sizes are valid. Select the size from the actual
+teaching-text density of each image; do not choose randomly and do not force every
+lesson image into one fixed ratio.
+
+| Level | Target illustration footprint | Use when |
+| --- | --- | --- |
+| A — Compact | about 29% of canvas width; about 35% of canvas height | Long dialogue, long bilingual labels, dense notes, long `tp`, or any layout where text needs maximum width |
+| B — Balanced | about 33% of canvas width; about 39% of canvas height | Normal dialogue/text density; default starting choice and closest to the approved D01 Reference v2 balance |
+| C — Upper-range | about 37% of canvas width; about 43% of canvas height | Short dialogue or light text density with ample safe space; use when the scene materially supports comprehension |
+
+These percentages are visual targets, not permission to crop or stretch artwork.
+Small adjustments are allowed to preserve the Golden layout, but the illustration
+must remain within the A-to-C range unless the user explicitly approves an exception.
+
+### Required selection procedure
+
+1. Place all source-locked teaching text first: title, situation, characters, every
+   dialogue line, Key Vocabulary, `NOW YOU TRY`, branding, and footer.
+2. Estimate the longest lines and total line count, including Traditional Chinese.
+3. Start with B. Move to A if any teaching text must shrink, wrap awkwardly, crowd a
+   border, or lose safe margins. Move to C only when all text remains comfortably
+   readable and the extra scene area improves instruction.
+4. Text hierarchy takes priority over illustration size. Never omit, paraphrase,
+   compress, or recolor source-locked text to make room for a larger illustration.
+5. Model and Practice images for the same dialogue should normally use the same size
+   level. They may differ by one level only when the Practice substitution materially
+   changes text density; record the reason in the lesson-specific prompt.
+6. The lesson-specific `Image_Prompts` file must declare `Illustration size: A`, `B`,
+   or `C` for every dialogue asset, with a one-line density reason.
+7. Reviewer verifies the chosen level against the final raster, readable text size,
+   safe margins, and 1920x1080 gallery rendering. A larger illustration that causes
+   cramped or smaller teaching text is a blocking failure.
+
+This adaptive system applies to Canada Life non-pronunciation scene illustrations.
+Pronunciation continues to follow `YSP_PRONUNCIATION_IMAGE_STANDARD.md`; Phrases,
+Speaking, and Culture retain their own contracts, but may use the same principle that
+teaching text and safe margins take priority over decorative illustration area.
 
 ## Phrases contract
 

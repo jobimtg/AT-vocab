@@ -124,6 +124,10 @@ Validate at minimum:
 - For Canada Life & Career English, read and follow
   `docs/CANADA_LIFE_IMAGE_PROMPT_STANDARD.md`. It is Canada-Life-only and must not
   inherit Travel's non-pronunciation visual system.
+- Canada Life dialogue images use the approved adaptive A/B/C illustration-size
+  system in that standard. Select A, B, or C from actual teaching-text density;
+  lesson prompts must record the chosen level and reason. Never enlarge illustration
+  at the cost of source-locked text size, completeness, or safe margins.
 - For pronunciation images in either Travel English or Canada Life, also read
   `docs/YSP_PRONUNCIATION_IMAGE_STANDARD.md`. This controls teaching structure;
   each course standard still controls its surface visual finish.
