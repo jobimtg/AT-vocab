@@ -933,8 +933,42 @@
     "prac": "Turn right on Railway Road to reach the rental lot."
   },
   "previously_learned": {
-    "source": "L01 required before cumulative tracking is finalized",
-    "items": []
+    "source": "Notion ESL Vocab Master Tracker — Canada Life CORE L01",
+    "items": [
+      {
+        "lesson_code": "L01",
+        "title_en": "Welcome to Canada",
+        "title_zh": "歡迎來到加拿大",
+        "pronunciation": "/θ/ /ð/ th 音",
+        "words": [
+          {"en": "passport", "zh": "護照"},
+          {"en": "customs", "zh": "海關"},
+          {"en": "declare", "zh": "申報"},
+          {"en": "immigration", "zh": "入境檢查"},
+          {"en": "arrival", "zh": "抵達"},
+          {"en": "visa", "zh": "簽證"},
+          {"en": "work permit", "zh": "工作許可"},
+          {"en": "employer", "zh": "雇主"},
+          {"en": "duration", "zh": "期間"},
+          {"en": "apply", "zh": "申請"},
+          {"en": "province", "zh": "省份"},
+          {"en": "downtown", "zh": "市中心"},
+          {"en": "multicultural", "zh": "多元文化的"},
+          {"en": "bilingual", "zh": "雙語的"},
+          {"en": "suburb", "zh": "郊區"},
+          {"en": "introduce", "zh": "介紹"},
+          {"en": "greeting", "zh": "問候"},
+          {"en": "nickname", "zh": "暱稱"},
+          {"en": "polite", "zh": "有禮貌的"},
+          {"en": "friendly", "zh": "友善的"},
+          {"en": "accommodation", "zh": "住宿"},
+          {"en": "schedule", "zh": "行程"},
+          {"en": "currency", "zh": "貨幣"},
+          {"en": "exchange", "zh": "兌換"},
+          {"en": "luggage", "zh": "行李"}
+        ]
+      }
+    ]
   },
   "validation": {
     "expected": {
