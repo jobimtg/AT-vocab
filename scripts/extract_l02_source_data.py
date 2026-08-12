@@ -38,33 +38,40 @@ REQUIRED_COUNTS = {
 DATA_KEYS = ["CATS", "V", "EXT", "PHRASES", "DIALOGUES", "SPEAKING", "CULTURE", "PRON"]
 
 
-def extract_first_script(html: str) -> str:
-    start = html.find("<script>")
-    if start == -1:
-        raise ValueError("No <script> block found in input HTML.")
-    start += len("<script>")
-    end = html.find("</script>", start)
-    if end == -1:
-        raise ValueError("No closing </script> found for first script block.")
-    script = html[start:end].strip()
-    if "var CATS" not in script or "var V" not in script:
-        raise ValueError("First script block does not contain expected L02 data variables.")
-    return script
+def extract_data_script(html: str) -> str:
+    position = 0
+    while True:
+        tag = html.find("<script", position)
+        if tag == -1:
+            break
+        start = html.find(">", tag)
+        if start == -1:
+            break
+        start += 1
+        end = html.find("</script>", start)
+        if end == -1:
+            break
+        script = html[start:end].strip()
+        if any(marker in script for marker in ("var CATS", "const CATS")) and any(
+            marker in script for marker in ("var V", "const V")
+        ):
+            return script
+        position = end + len("</script>")
+    raise ValueError("No script block contains the expected lesson data variables.")
 
 
 def evaluate_js_data(script: str) -> dict:
+    # The legacy source may keep renderer code after the data declarations.
+    # It is neither required nor safe to execute that browser-only section.
+    browser_marker = script.find("document.addEventListener")
+    if browser_marker != -1:
+        script = script[:browser_marker]
     node_code = f"""
 const vm = require('vm');
 const ctx = {{}};
 vm.createContext(ctx);
-vm.runInContext({json.dumps(script)}, ctx);
-const out = {{}};
-for (const key of {json.dumps(DATA_KEYS)}) {{
-  if (!(key in ctx)) {{
-    throw new Error(`Missing variable ${{key}}`);
-  }}
-  out[key] = ctx[key];
-}}
+vm.runInContext({json.dumps(script + ';globalThis.__YSP_DATA__ = {' + ','.join(DATA_KEYS) + '};')}, ctx);
+const out = ctx.__YSP_DATA__;
 console.log(JSON.stringify(out));
 """
 
@@ -90,31 +97,51 @@ console.log(JSON.stringify(out));
     return json.loads(result.stdout)
 
 
-def build_lesson_json(data: dict, source_file: str) -> dict:
-    pron = data["PRON"]
+def build_lesson_json(data: dict, source_file: str, meta: dict) -> dict:
+    def pick(value: dict, *names: str, default=""):
+        for name in names:
+            if name in value:
+                return value[name]
+        return default
+
+    core = [{
+        "en": item["en"], "zh": item["zh"], "pr": pick(item, "pr", "pron"), "cat": item["cat"],
+        "m1": pick(item, "m1", "meaning1"), "m2": pick(item, "m2", "meaning2"),
+        "e1": pick(item, "e1", "ex1"), "e2": pick(item, "e2", "ex2"),
+        "p1": pick(item, "p1", "pr1"), "p2": pick(item, "p2", "pr2"),
+        **({"svg": item["svg"]} if "svg" in item else {}),
+    } for item in data["V"]]
+    extended = [{
+        "en": item["en"], "zh": item["zh"], "pr": pick(item, "pr", "pron"),
+        "cat": item["cat"], "m": pick(item, "m", "meaning"), "ex": pick(item, "ex"),
+    } for item in data["EXT"]]
+    phrases = [{"en": item["en"], "zh": item["zh"], "note": item["note"], "t": pick(item, "t", "tier")} for item in data["PHRASES"]]
+    dialogues = [{
+        "id": item["id"], "title": item["title"], "tz": pick(item, "tz", "titleZh"),
+        "tag": item["tag"], "sit": pick(item, "sit", "situationA"),
+        "rA": pick(item, "rA", "roleA"), "rB": pick(item, "rB", "roleB"),
+        "lines": item["lines"], "tp": pick(item, "tp", "tryPrompt"), "tn": pick(item, "tn", "teacherNotes"),
+    } for item in data["DIALOGUES"]]
+    speaking = [{"t": pick(item, "t", "tier"), "q": item["q"], "h": pick(item, "h", "hint")} for item in data["SPEAKING"]]
+    culture = [{
+        "slot": item["slot"], "title": item["title"], "tz": pick(item, "tz", "titleZh"),
+        "photo": item["photo"], "notes": item["notes"], "qs": pick(item, "qs", "questions", default=[]),
+    } for item in data["CULTURE"]]
+    raw_pron = data["PRON"]
+    pron = {
+        "focus": raw_pron["focus"], "fz": pick(raw_pron, "fz", "focusZh"),
+        "words": [{"w": pick(word, "w", "word"), "ipa": word["ipa"], "bad": pick(word, "bad", "wrong"), "tip": word["tip"]} for word in raw_pron["words"]],
+        "tip": raw_pron["tip"], "prac": pick(raw_pron, "prac", "practice"),
+    }
     lesson = {
-        "meta": {
-            "course_id": "canada-en",
-            "course_name": "Canada Life & Career English",
-            "course_folder": "ca-life",
-            "unit": 1,
-            "lesson": 2,
-            "lesson_code": "L02",
-            "title_en": "Transportation in Canada",
-            "title_zh": "加拿大交通",
-            "cefr": "A2",
-            "html_path": "lessons/ca-life/u1-l2.html",
-            "image_prefix": "l02",
-            "status": "golden-reference",
-            "source_file": source_file,
-        },
+        "meta": {**meta, "source_file": source_file},
         "categories": data["CATS"],
-        "core": data["V"],
-        "extended": data["EXT"],
-        "phrases": data["PHRASES"],
-        "dialogues": data["DIALOGUES"],
-        "speaking": data["SPEAKING"],
-        "culture": data["CULTURE"],
+        "core": core,
+        "extended": extended,
+        "phrases": phrases,
+        "dialogues": dialogues,
+        "speaking": speaking,
+        "culture": culture,
         "pronunciation": pron,
         "previously_learned": {
             "source": "L01 required before cumulative tracking is finalized",
@@ -147,6 +174,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Extract Golden L02 source-data JSON from HTML.")
     parser.add_argument("--input", required=True, help="Path to Golden L02 HTML file")
     parser.add_argument("--output", required=True, help="Path to output lesson-data JSON")
+    parser.add_argument("--unit", type=int, default=1)
+    parser.add_argument("--lesson", type=int, default=2)
+    parser.add_argument("--title-en", default="Transportation in Canada")
+    parser.add_argument("--title-zh", default="加拿大交通")
     args = parser.parse_args()
 
     input_path = Path(args.input)
@@ -157,9 +188,22 @@ def main() -> int:
         return 1
 
     html = input_path.read_text(encoding="utf-8")
-    script = extract_first_script(html)
+    script = extract_data_script(html)
     data = evaluate_js_data(script)
-    lesson = build_lesson_json(data, input_path.name)
+    lesson = build_lesson_json(data, input_path.name, {
+        "course_id": "canada-en",
+        "course_name": "Canada Life & Career English",
+        "course_folder": "ca-life",
+        "unit": args.unit,
+        "lesson": args.lesson,
+        "lesson_code": f"L{args.lesson:02d}",
+        "title_en": args.title_en,
+        "title_zh": args.title_zh,
+        "cefr": "A2",
+        "html_path": f"lessons/ca-life/u{args.unit}-l{args.lesson}.html",
+        "image_prefix": f"l{args.lesson:02d}",
+        "status": "approved-source",
+    })
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(lesson, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
