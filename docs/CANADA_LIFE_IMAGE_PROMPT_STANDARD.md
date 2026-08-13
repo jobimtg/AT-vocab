@@ -121,6 +121,14 @@ Use `YSP_PRONUNCIATION_IMAGE_STANDARD.md` structurally. Canada Life adds aged-pa
 - Current padded `lNN-...` convention and repository routing apply.
 - One generation call per asset, using its Golden reference and exact lesson prompt.
 - No generic template, variants, or contact sheets inside the lesson folder.
+- A deterministic text-only/card template is not an acceptable substitute for the
+  required vintage Canadian editorial illustration. Dimension, file-size, and text
+  checks cannot produce a style-fidelity PASS by themselves.
+- When a lesson folder already contains content-approved Golden raster artwork, the
+  Builder may preserve that artwork and perform only lossless/high-quality resizing
+  to the required canvas. It must not redraw it as a generic template.
+- Reviewer evidence must include an actual visual reopen of every final raster and a
+  comparison with the declared Golden reference. Style fidelity is a blocking gate.
 - Magnified review for English, Traditional Chinese, IPA, and numbers.
 - Before release, visually reopen all 15 final images. Every border, title, teaching row, right-side note, bottom panel, branding mark, and footer must remain fully inside the 1920x1080 canvas; intrinsic crop or edge overflow is BLOCKING.
 - After routing images into lesson HTML, inspect every rendered gallery image at desktop and narrow/mobile widths. The image bounding box and scroll width must remain within its gallery mount; source-dimension checks alone are insufficient.
