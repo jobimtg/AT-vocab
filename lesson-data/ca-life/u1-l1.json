@@ -997,7 +997,8 @@
     "prac": "Practice sentence: 'I think this is the third Thursday of the month.'"
   },
   "previously_learned": {
-    "source": "L01 required before cumulative tracking is finalized",
+    "source": "This is the first lesson; there is no previously learned vocabulary.",
+    "empty_message": "這是第一堂課，尚無已學詞彙。從 L02 開始會顯示。",
     "items": []
   },
   "validation": {
