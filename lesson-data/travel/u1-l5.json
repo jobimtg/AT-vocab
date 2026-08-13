@@ -1,0 +1,1049 @@
+{
+  "meta": {
+    "course_id": "travel-en",
+    "course_name": "Travel English",
+    "course_folder": "travel",
+    "unit": 1,
+    "lesson": 5,
+    "lesson_code": "L05",
+    "title_en": "Transportation & Directions",
+    "title_zh": "交通與方向",
+    "cefr": "A1",
+    "html_path": "lessons/travel/u1-l5.html",
+    "image_prefix": "l05",
+    "status": "generated",
+    "source_note": "Content (core/extended/phrases/dialogues/speaking/culture/pronunciation) recovered verbatim from a user-provided prior-session Proof file (u1-l5.html) and content-locked (no rewriting). Only top-level schema keys were remapped to match the v4.0 pipeline (cats->categories, pron->pronunciation, meta expanded). previously_learned rebuilt using verified real L01-L04 data (the original file only had L01+L02, predating L03/L04)."
+  },
+  "categories": [
+    "Public Transit",
+    "Tickets & Stops",
+    "Directions",
+    "Street Travel",
+    "Travel Actions"
+  ],
+  "core": [
+    {
+      "en": "bus",
+      "zh": "公車",
+      "pr": "/bʌs/",
+      "cat": 0,
+      "m1": "a large road vehicle",
+      "m2": "public transportation",
+      "e1": "I take the bus downtown.",
+      "e2": "The bus is here.",
+      "p1": "Where is the _______?",
+      "p2": "I need a _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><rect x='7' y='8' width='50' height='29' rx='6' fill='#1B2A4A'/><circle cx='18' cy='40' r='5' fill='#C8956C'/><circle cx='47' cy='40' r='5' fill='#C8956C'/></g></svg>"
+    },
+    {
+      "en": "train",
+      "zh": "火車",
+      "pr": "/treɪn/",
+      "cat": 0,
+      "m1": "a vehicle that runs on rails",
+      "m2": "rail transportation",
+      "e1": "The train leaves at nine.",
+      "e2": "We are on the train.",
+      "p1": "Is this the _______?",
+      "p2": "I take the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><rect x='12' y='5' width='40' height='34' rx='8' fill='#1B2A4A'/><path d='M18 44h28' stroke='#C8956C' stroke-width='4'/></g></svg>"
+    },
+    {
+      "en": "subway",
+      "zh": "地鐵",
+      "pr": "/ˈsʌb.weɪ/",
+      "cat": 0,
+      "m1": "an underground city train",
+      "m2": "metro transportation",
+      "e1": "We took the subway yesterday.",
+      "e2": "The subway is fast.",
+      "p1": "Where is the _______?",
+      "p2": "I use the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><circle cx='32' cy='24' r='21' fill='#1B2A4A'/><path d='M21 34V14h22v20' stroke='#C8956C' stroke-width='4'/></g></svg>"
+    },
+    {
+      "en": "taxi",
+      "zh": "計程車",
+      "pr": "/ˈtæk.si/",
+      "cat": 0,
+      "m1": "a car with a driver for hire",
+      "m2": "paid private transportation",
+      "e1": "We called a taxi.",
+      "e2": "The taxi is outside.",
+      "p1": "Can I call a _______?",
+      "p2": "I need a _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M8 31l7-15h34l7 15v9H8z' fill='#1B2A4A'/><rect x='25' y='9' width='14' height='6' fill='#C8956C'/></g></svg>"
+    },
+    {
+      "en": "ticket",
+      "zh": "車票",
+      "pr": "/ˈtɪk.ɪt/",
+      "cat": 1,
+      "m1": "a pass for a journey",
+      "m2": "proof of payment",
+      "e1": "I bought a ticket.",
+      "e2": "Keep your ticket.",
+      "p1": "One _______, please.",
+      "p2": "Where is my _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M8 13h48v22H8a6 6 0 000-12 6 6 0 000-10z' fill='#C8956C'/><path d='M31 13v22' stroke='#1B2A4A' stroke-width='3' stroke-dasharray='3 3'/></g></svg>"
+    },
+    {
+      "en": "station",
+      "zh": "車站",
+      "pr": "/ˈsteɪ.ʃən/",
+      "cat": 1,
+      "m1": "a place where trains stop",
+      "m2": "a transit building",
+      "e1": "We arrived at the station.",
+      "e2": "The station is busy.",
+      "p1": "Where is the _______?",
+      "p2": "Meet me at the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M8 20L32 5l24 15v22H8z' fill='#1B2A4A'/><rect x='26' y='27' width='12' height='15' fill='#C8956C'/></g></svg>"
+    },
+    {
+      "en": "stop",
+      "zh": "站；停靠站",
+      "pr": "/stɒp/",
+      "cat": 1,
+      "m1": "a place where a vehicle stops",
+      "m2": "a point on a route",
+      "e1": "I waited at the bus stop.",
+      "e2": "This is my stop.",
+      "p1": "Is this your _______?",
+      "p2": "Which _______ is next?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><rect x='29' y='8' width='5' height='36' fill='#1B2A4A'/><circle cx='32' cy='12' r='10' fill='#D4735E'/></g></svg>"
+    },
+    {
+      "en": "map",
+      "zh": "地圖",
+      "pr": "/mæp/",
+      "cat": 2,
+      "m1": "a picture of an area",
+      "m2": "a navigation guide",
+      "e1": "She used a map.",
+      "e2": "Look at the map.",
+      "p1": "Do you have a _______?",
+      "p2": "Show me the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M6 10l17-5 18 6 17-5v32l-17 5-18-6-17 5z' fill='#F5F0E8' stroke='#1B2A4A' stroke-width='3'/></g></svg>"
+    },
+    {
+      "en": "left",
+      "zh": "左邊",
+      "pr": "/left/",
+      "cat": 2,
+      "m1": "the side opposite right",
+      "m2": "a direction",
+      "e1": "We turned left.",
+      "e2": "The bank is on the left.",
+      "p1": "Turn _______ here.",
+      "p2": "Is it on the _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M54 24H14m0 0l13-13M14 24l13 13' stroke='#1B2A4A' stroke-width='6' fill='none'/></g></svg>"
+    },
+    {
+      "en": "right",
+      "zh": "右邊",
+      "pr": "/raɪt/",
+      "cat": 2,
+      "m1": "the side opposite left",
+      "m2": "a direction",
+      "e1": "We turned right.",
+      "e2": "The hotel is on the right.",
+      "p1": "Turn _______ here.",
+      "p2": "Is it on the _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M10 24h40m0 0L37 11m13 13L37 37' stroke='#1B2A4A' stroke-width='6' fill='none'/></g></svg>"
+    },
+    {
+      "en": "straight",
+      "zh": "直走",
+      "pr": "/streɪt/",
+      "cat": 2,
+      "m1": "without turning",
+      "m2": "directly ahead",
+      "e1": "We walked straight ahead.",
+      "e2": "Go straight for two blocks.",
+      "p1": "Do I go _______?",
+      "p2": "Please go _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M32 43V8m0 0L20 20M32 8l12 12' stroke='#1B2A4A' stroke-width='6' fill='none'/></g></svg>"
+    },
+    {
+      "en": "street",
+      "zh": "街道",
+      "pr": "/striːt/",
+      "cat": 3,
+      "m1": "a road in a town or city",
+      "m2": "an urban road",
+      "e1": "We crossed the street.",
+      "e2": "The café is on this street.",
+      "p1": "What _______ is this?",
+      "p2": "Cross the _______ here.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M22 48L29 0h6l7 48z' fill='#1B2A4A'/><path d='M32 5v8m0 8v8m0 8v8' stroke='#F5F0E8' stroke-width='2'/></g></svg>"
+    },
+    {
+      "en": "corner",
+      "zh": "街角；轉角",
+      "pr": "/ˈkɔː.nər/",
+      "cat": 3,
+      "m1": "where two streets meet",
+      "m2": "the end of a block",
+      "e1": "We stopped at the corner.",
+      "e2": "The shop is on the corner.",
+      "p1": "Is it near the _______?",
+      "p2": "Wait at the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M8 8v32h48' stroke='#1B2A4A' stroke-width='10' fill='none'/><circle cx='16' cy='32' r='5' fill='#C8956C'/></g></svg>"
+    },
+    {
+      "en": "walk",
+      "zh": "步行",
+      "pr": "/wɔːk/",
+      "cat": 4,
+      "m1": "to travel on foot",
+      "m2": "move by taking steps",
+      "e1": "We walked to the museum.",
+      "e2": "I walk every day.",
+      "p1": "Can we _______ there?",
+      "p2": "Let's _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><circle cx='34' cy='8' r='5' fill='#1B2A4A'/><path d='M32 15l-7 13 10 6-8 13m6-28l10 9 8-1m-16 7l12 12' stroke='#1B2A4A' stroke-width='4' fill='none'/></g></svg>"
+    },
+    {
+      "en": "transfer",
+      "zh": "轉乘",
+      "pr": "/trænsˈfɜːr/",
+      "cat": 4,
+      "m1": "to change to another vehicle",
+      "m2": "switch transit services",
+      "e1": "I transferred at Central Station.",
+      "e2": "Transfer to bus number ten.",
+      "p1": "Where do I _______?",
+      "p2": "Do I need to _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><g transform=\"translate(8,16)\"><path d='M10 17h38l-9-9m15 23H16l9 9' stroke='#1B2A4A' stroke-width='5' fill='none'/></g></svg>"
+    }
+  ],
+  "extended": [
+    {
+      "en": "route",
+      "zh": "路線",
+      "pr": "/ruːt/",
+      "cat": 0,
+      "m": "the way a bus or train travels",
+      "ex": "This route goes downtown."
+    },
+    {
+      "en": "platform",
+      "zh": "月台",
+      "pr": "/ˈplæt.fɔːm/",
+      "cat": 0,
+      "m": "the place beside a train",
+      "ex": "The train is at platform two."
+    },
+    {
+      "en": "tram",
+      "zh": "路面電車",
+      "pr": "/træm/",
+      "cat": 0,
+      "m": "a rail vehicle on city streets",
+      "ex": "We rode the tram."
+    },
+    {
+      "en": "ferry",
+      "zh": "渡輪",
+      "pr": "/ˈfer.i/",
+      "cat": 0,
+      "m": "a boat for people and vehicles",
+      "ex": "The ferry crossed the harbour."
+    },
+    {
+      "en": "shuttle",
+      "zh": "接駁車",
+      "pr": "/ˈʃʌt.əl/",
+      "cat": 0,
+      "m": "a vehicle on a short regular route",
+      "ex": "The hotel has a shuttle."
+    },
+    {
+      "en": "fare",
+      "zh": "車資",
+      "pr": "/feər/",
+      "cat": 1,
+      "m": "money paid for a ride",
+      "ex": "The fare is three dollars."
+    },
+    {
+      "en": "pass",
+      "zh": "交通票卡",
+      "pr": "/pɑːs/",
+      "cat": 1,
+      "m": "a ticket valid for many rides",
+      "ex": "I bought a day pass."
+    },
+    {
+      "en": "schedule",
+      "zh": "時刻表",
+      "pr": "/ˈʃed.juːl/",
+      "cat": 1,
+      "m": "a list of departure times",
+      "ex": "Check the bus schedule."
+    },
+    {
+      "en": "machine",
+      "zh": "機器；售票機",
+      "pr": "/məˈʃiːn/",
+      "cat": 1,
+      "m": "equipment that does a task",
+      "ex": "Use the ticket machine."
+    },
+    {
+      "en": "change",
+      "zh": "零錢",
+      "pr": "/tʃeɪndʒ/",
+      "cat": 1,
+      "m": "coins or small money",
+      "ex": "I need exact change."
+    },
+    {
+      "en": "north",
+      "zh": "北方",
+      "pr": "/nɔːθ/",
+      "cat": 2,
+      "m": "the direction opposite south",
+      "ex": "The bus goes north."
+    },
+    {
+      "en": "south",
+      "zh": "南方",
+      "pr": "/saʊθ/",
+      "cat": 2,
+      "m": "the direction opposite north",
+      "ex": "Drive south for five minutes."
+    },
+    {
+      "en": "east",
+      "zh": "東方",
+      "pr": "/iːst/",
+      "cat": 2,
+      "m": "the direction of sunrise",
+      "ex": "The station is east of here."
+    },
+    {
+      "en": "west",
+      "zh": "西方",
+      "pr": "/west/",
+      "cat": 2,
+      "m": "the direction of sunset",
+      "ex": "Walk west on Main Street."
+    },
+    {
+      "en": "across from",
+      "zh": "在……對面",
+      "pr": "/əˈkrɒs frəm/",
+      "cat": 2,
+      "m": "on the opposite side",
+      "ex": "The stop is across from the bank."
+    },
+    {
+      "en": "next to",
+      "zh": "在……旁邊",
+      "pr": "/nekst tuː/",
+      "cat": 2,
+      "m": "beside something",
+      "ex": "The café is next to the station."
+    },
+    {
+      "en": "between",
+      "zh": "在……之間",
+      "pr": "/bɪˈtwiːn/",
+      "cat": 2,
+      "m": "in the middle of two things",
+      "ex": "It is between the hotel and bank."
+    },
+    {
+      "en": "near",
+      "zh": "在……附近",
+      "pr": "/nɪər/",
+      "cat": 2,
+      "m": "not far away",
+      "ex": "The station is near the park."
+    },
+    {
+      "en": "block",
+      "zh": "街區",
+      "pr": "/blɒk/",
+      "cat": 3,
+      "m": "a section of street between crossings",
+      "ex": "Walk two blocks."
+    },
+    {
+      "en": "intersection",
+      "zh": "十字路口",
+      "pr": "/ˌɪn.təˈsek.ʃən/",
+      "cat": 3,
+      "m": "where roads cross",
+      "ex": "Turn at the intersection."
+    },
+    {
+      "en": "crosswalk",
+      "zh": "行人穿越道",
+      "pr": "/ˈkrɒs.wɔːk/",
+      "cat": 3,
+      "m": "a marked place to cross a road",
+      "ex": "Use the crosswalk."
+    },
+    {
+      "en": "traffic light",
+      "zh": "紅綠燈",
+      "pr": "/ˈtræf.ɪk laɪt/",
+      "cat": 3,
+      "m": "a signal controlling traffic",
+      "ex": "Stop at the traffic light."
+    },
+    {
+      "en": "sidewalk",
+      "zh": "人行道",
+      "pr": "/ˈsaɪd.wɔːk/",
+      "cat": 3,
+      "m": "a path for people beside a road",
+      "ex": "Walk on the sidewalk."
+    },
+    {
+      "en": "entrance",
+      "zh": "入口",
+      "pr": "/ˈen.trəns/",
+      "cat": 3,
+      "m": "a way into a place",
+      "ex": "The entrance is on King Street."
+    },
+    {
+      "en": "exit",
+      "zh": "出口",
+      "pr": "/ˈek.sɪt/",
+      "cat": 3,
+      "m": "a way out of a place",
+      "ex": "Take exit three."
+    },
+    {
+      "en": "board",
+      "zh": "上車",
+      "pr": "/bɔːd/",
+      "cat": 4,
+      "m": "to get onto a vehicle",
+      "ex": "We boarded the bus."
+    },
+    {
+      "en": "get off",
+      "zh": "下車",
+      "pr": "/ɡet ɒf/",
+      "cat": 4,
+      "m": "to leave a vehicle",
+      "ex": "Get off at the next stop."
+    },
+    {
+      "en": "miss",
+      "zh": "錯過",
+      "pr": "/mɪs/",
+      "cat": 4,
+      "m": "to be too late for transport",
+      "ex": "I missed the train."
+    },
+    {
+      "en": "arrive",
+      "zh": "抵達",
+      "pr": "/əˈraɪv/",
+      "cat": 4,
+      "m": "to reach a place",
+      "ex": "We arrived at noon."
+    },
+    {
+      "en": "depart",
+      "zh": "出發",
+      "pr": "/dɪˈpɑːt/",
+      "cat": 4,
+      "m": "to leave a place",
+      "ex": "The bus departs at eight."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "How do I get to the train station?",
+      "zh": "我要怎麼去火車站？",
+      "note": "Use “How do I get to…?” to ask for directions.",
+      "t": "core"
+    },
+    {
+      "en": "Does this bus go downtown?",
+      "zh": "這班公車有到市中心嗎？",
+      "note": "Confirm the destination before boarding.",
+      "t": "core"
+    },
+    {
+      "en": "Where do I transfer?",
+      "zh": "我要在哪裡轉乘？",
+      "note": "Ask this when your trip needs more than one vehicle.",
+      "t": "core"
+    },
+    {
+      "en": "Please tell me when we reach my stop.",
+      "zh": "到我的站時請告訴我。",
+      "note": "Useful when you are worried about missing your stop.",
+      "t": "ext"
+    },
+    {
+      "en": "Is it within walking distance?",
+      "zh": "走路可以到嗎？",
+      "note": "Ask whether a place is close enough to walk.",
+      "t": "ext"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1,
+      "title": "Finding the Train Station",
+      "tz": "尋找火車站",
+      "tag": "req",
+      "sit": "A traveler asks a local for directions.",
+      "rA": "Traveler",
+      "rB": "Local",
+      "lines": [
+        [
+          "A",
+          "Excuse me. How do I get to the train station?"
+        ],
+        [
+          "B",
+          "Go straight for two blocks."
+        ],
+        [
+          "A",
+          "Do I turn at the traffic light?"
+        ],
+        [
+          "B",
+          "Yes. Turn left there."
+        ],
+        [
+          "A",
+          "Is the station on the right?"
+        ],
+        [
+          "B",
+          "Yes. It is next to the bank."
+        ]
+      ],
+      "tp": "Ask for the bus station instead.",
+      "tn": "Replace “train station” with “bus station” and change one direction."
+    },
+    {
+      "id": 2,
+      "title": "Taking the Right Bus",
+      "tz": "搭對公車",
+      "tag": "req",
+      "sit": "A traveler checks a bus route with the driver.",
+      "rA": "Traveler",
+      "rB": "Driver",
+      "lines": [
+        [
+          "A",
+          "Does this bus go downtown?"
+        ],
+        [
+          "B",
+          "Yes, it does."
+        ],
+        [
+          "A",
+          "Does it stop near City Hall?"
+        ],
+        [
+          "B",
+          "Yes. Get off at the fifth stop."
+        ],
+        [
+          "A",
+          "Do I need to transfer?"
+        ],
+        [
+          "B",
+          "No. This bus goes directly there."
+        ]
+      ],
+      "tp": "Ask about the museum instead.",
+      "tn": "Replace “City Hall” with “the museum” and choose a new stop number."
+    },
+    {
+      "id": 3,
+      "title": "Missing the Stop",
+      "tz": "坐過站",
+      "tag": "req",
+      "sit": "A traveler missed the correct bus stop and asks the driver for help.",
+      "rA": "Traveler",
+      "rB": "Driver",
+      "lines": [
+        [
+          "A",
+          "Excuse me. I missed my stop."
+        ],
+        [
+          "B",
+          "Which stop did you need?"
+        ],
+        [
+          "A",
+          "Central Station."
+        ],
+        [
+          "B",
+          "Get off at the next stop."
+        ],
+        [
+          "A",
+          "How can I go back?"
+        ],
+        [
+          "B",
+          "Cross the street and take bus twelve."
+        ],
+        [
+          "A",
+          "Do I need a new ticket?"
+        ],
+        [
+          "B",
+          "No. You can use your transfer."
+        ]
+      ],
+      "tp": "Change the problem to taking the wrong bus.",
+      "tn": "Use “I took the wrong bus” and ask how to reach the hotel."
+    },
+    {
+      "id": 4,
+      "title": "Buying a Subway Ticket",
+      "tz": "購買地鐵票",
+      "tag": "ch",
+      "sit": "A traveler buys a subway ticket at a station counter.",
+      "rA": "Traveler",
+      "rB": "Staff",
+      "lines": [
+        [
+          "A",
+          "One ticket downtown, please."
+        ],
+        [
+          "B",
+          "A single ticket or a day pass?"
+        ],
+        [
+          "A",
+          "A single ticket, please."
+        ],
+        [
+          "B",
+          "That is three dollars."
+        ],
+        [
+          "A",
+          "Which platform do I need?"
+        ],
+        [
+          "B",
+          "Platform two, on your left."
+        ]
+      ],
+      "tp": "Buy a day pass instead.",
+      "tn": "Replace “single ticket” with “day pass” and ask the price."
+    },
+    {
+      "id": 5,
+      "title": "Calling a Taxi",
+      "tz": "叫計程車",
+      "tag": "ch",
+      "sit": "A hotel guest asks staff to arrange transportation.",
+      "rA": "Guest",
+      "rB": "Hotel Staff",
+      "lines": [
+        [
+          "A",
+          "Could you call a taxi for me?"
+        ],
+        [
+          "B",
+          "Of course. Where are you going?"
+        ],
+        [
+          "A",
+          "To the ferry terminal."
+        ],
+        [
+          "B",
+          "What time do you need to leave?"
+        ],
+        [
+          "A",
+          "At eight thirty, please."
+        ],
+        [
+          "B",
+          "The taxi will meet you at the entrance."
+        ]
+      ],
+      "tp": "Ask for an airport shuttle instead.",
+      "tn": "Replace “taxi” with “airport shuttle” and choose a departure time."
+    }
+  ],
+  "speaking": [
+    {
+      "t": 1,
+      "q": "How do you usually travel in a city?",
+      "h": "I usually take the… / I usually walk…"
+    },
+    {
+      "t": 2,
+      "q": "How do you ask if a bus goes to your destination?",
+      "h": "Does this bus go to…?"
+    },
+    {
+      "t": 2,
+      "q": "Give directions from your hotel to a nearby café.",
+      "h": "Go straight… Turn… It is next to…"
+    },
+    {
+      "t": 3,
+      "q": "What would you do if you missed your stop?",
+      "h": "First, I would… Then, I would ask…"
+    },
+    {
+      "t": 3,
+      "q": "Compare taking public transit and taking a taxi while traveling.",
+      "h": "Public transit is… A taxi is… I prefer… because…"
+    }
+  ],
+  "culture": [
+    {
+      "slot": "warm-up",
+      "title": "Transit Etiquette",
+      "tz": "大眾運輸禮儀",
+      "photo": "An illustrated city bus interior with priority seats.",
+      "notes": "In many cities, travelers line up, let passengers exit first, keep doors clear, and offer priority seats to people who need them.",
+      "qs": [
+        "Do people line up for buses where you live?",
+        "Who should use priority seats?",
+        "What should you do before entering a train?"
+      ]
+    },
+    {
+      "slot": "closing",
+      "title": "Tickets and Transfers",
+      "tz": "車票與轉乘",
+      "photo": "An illustrated ticket machine, transit card, and route map.",
+      "notes": "Ticket systems differ by city. Before traveling, check whether you need exact change, a transit card, a paper ticket, or a transfer. Keep proof of payment until the trip ends.",
+      "qs": [
+        "How do travelers pay for transit in your city?",
+        "When might you need a transfer?",
+        "Why should you keep your ticket?"
+      ]
+    }
+  ],
+  "pronunciation": {
+    "focus": "-ed Endings — /t/, /d/, /ɪd/",
+    "fz": "字尾子音 -ed",
+    "words": [
+      {
+        "w": "walked",
+        "ipa": "/wɔːkt/",
+        "bad": "walk-ed",
+        "tip": "After the unvoiced /k/ sound, -ed is /t/."
+      },
+      {
+        "w": "missed",
+        "ipa": "/mɪst/",
+        "bad": "miss-ed",
+        "tip": "After the unvoiced /s/ sound, -ed is /t/."
+      },
+      {
+        "w": "called",
+        "ipa": "/kɔːld/",
+        "bad": "call-ed",
+        "tip": "After the voiced /l/ sound, -ed is /d/."
+      },
+      {
+        "w": "arrived",
+        "ipa": "/əˈraɪvd/",
+        "bad": "arrive-ed",
+        "tip": "After the voiced /v/ sound, -ed is /d/."
+      },
+      {
+        "w": "waited",
+        "ipa": "/ˈweɪ.tɪd/",
+        "bad": "wait-ed",
+        "tip": "After /t/, -ed adds a full /ɪd/ syllable."
+      }
+    ],
+    "tip": "Do not pronounce every -ed ending as a separate “ed” syllable. Listen to the final sound of the base verb: use /t/, /d/, or /ɪd/.",
+    "prac": "We walked to the station, waited for the bus, called a taxi, and arrived on time."
+  },
+  "previously_learned": {
+    "lessons": [
+      {
+        "lesson_code": "Travel L01",
+        "title_en": "Airport Check-In",
+        "words": [
+          {
+            "en": "check in",
+            "zh": "報到"
+          },
+          {
+            "en": "counter",
+            "zh": "櫃檯"
+          },
+          {
+            "en": "boarding pass",
+            "zh": "登機證"
+          },
+          {
+            "en": "passport",
+            "zh": "護照"
+          },
+          {
+            "en": "ticket",
+            "zh": "機票"
+          },
+          {
+            "en": "ID",
+            "zh": "身分證"
+          },
+          {
+            "en": "luggage",
+            "zh": "行李"
+          },
+          {
+            "en": "suitcase",
+            "zh": "行李箱"
+          },
+          {
+            "en": "carry-on",
+            "zh": "隨身行李"
+          },
+          {
+            "en": "gate",
+            "zh": "登機門"
+          },
+          {
+            "en": "terminal",
+            "zh": "航廈"
+          },
+          {
+            "en": "departure",
+            "zh": "出發"
+          },
+          {
+            "en": "window seat",
+            "zh": "靠窗座位"
+          },
+          {
+            "en": "aisle seat",
+            "zh": "走道座位"
+          },
+          {
+            "en": "help",
+            "zh": "幫忙"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Travel L02",
+        "title_en": "Security & Immigration",
+        "words": [
+          {
+            "en": "security check",
+            "zh": "安檢"
+          },
+          {
+            "en": "X-ray machine",
+            "zh": "X光機"
+          },
+          {
+            "en": "metal detector",
+            "zh": "金屬探測器"
+          },
+          {
+            "en": "liquid",
+            "zh": "液體"
+          },
+          {
+            "en": "remove",
+            "zh": "拿出/脫掉"
+          },
+          {
+            "en": "immigration",
+            "zh": "入境審查"
+          },
+          {
+            "en": "customs",
+            "zh": "海關"
+          },
+          {
+            "en": "declare",
+            "zh": "申報"
+          },
+          {
+            "en": "visa",
+            "zh": "簽證"
+          },
+          {
+            "en": "passport control",
+            "zh": "護照查驗"
+          },
+          {
+            "en": "entry stamp",
+            "zh": "入境章"
+          },
+          {
+            "en": "boarding area",
+            "zh": "候機區"
+          },
+          {
+            "en": "connecting flight",
+            "zh": "轉機航班"
+          },
+          {
+            "en": "security officer",
+            "zh": "安檢人員"
+          },
+          {
+            "en": "line up",
+            "zh": "排隊"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Travel L03",
+        "title_en": "On the Airplane",
+        "words": [
+          {
+            "en": "seatbelt",
+            "zh": "安全帶"
+          },
+          {
+            "en": "flight attendant",
+            "zh": "空服員"
+          },
+          {
+            "en": "tray table",
+            "zh": "餐桌板"
+          },
+          {
+            "en": "headphones",
+            "zh": "耳機"
+          },
+          {
+            "en": "blanket",
+            "zh": "毛毯"
+          },
+          {
+            "en": "turbulence",
+            "zh": "亂流"
+          },
+          {
+            "en": "in-flight meal",
+            "zh": "飛機餐"
+          },
+          {
+            "en": "beverage",
+            "zh": "飲料"
+          },
+          {
+            "en": "aisle",
+            "zh": "走道"
+          },
+          {
+            "en": "overhead compartment",
+            "zh": "頭頂置物櫃"
+          },
+          {
+            "en": "safety card",
+            "zh": "安全須知卡"
+          },
+          {
+            "en": "emergency exit",
+            "zh": "緊急出口"
+          },
+          {
+            "en": "landing",
+            "zh": "降落"
+          },
+          {
+            "en": "takeoff",
+            "zh": "起飛"
+          },
+          {
+            "en": "call button",
+            "zh": "服務按鈕"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Travel L04",
+        "title_en": "Hotel Check-In & Room Requests",
+        "words": [
+          {
+            "en": "hotel",
+            "zh": "旅館／飯店"
+          },
+          {
+            "en": "reservation",
+            "zh": "預訂"
+          },
+          {
+            "en": "check in",
+            "zh": "辦理入住"
+          },
+          {
+            "en": "passport",
+            "zh": "護照"
+          },
+          {
+            "en": "room key",
+            "zh": "房卡／鑰匙"
+          },
+          {
+            "en": "single room",
+            "zh": "單人房"
+          },
+          {
+            "en": "double room",
+            "zh": "雙人房"
+          },
+          {
+            "en": "bed",
+            "zh": "床"
+          },
+          {
+            "en": "bathroom",
+            "zh": "浴室"
+          },
+          {
+            "en": "Wi-Fi",
+            "zh": "無線網路"
+          },
+          {
+            "en": "breakfast",
+            "zh": "早餐"
+          },
+          {
+            "en": "elevator",
+            "zh": "電梯"
+          },
+          {
+            "en": "towel",
+            "zh": "毛巾"
+          },
+          {
+            "en": "air conditioning",
+            "zh": "冷氣"
+          },
+          {
+            "en": "check out",
+            "zh": "退房"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Practice practical English for Hotel Check-In & Room Requests in Travel English.">
+<title>L04 — Hotel Check-In & Room Requests 旅館入住與房間需求</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--c-primary:#1B2A4A;--c-secondary:#F5F0E8;--c-accent:#C8956C;--c-bg:#FAF8F5;--c-teal:#2A7A6E;--c-success:#5B8C5A;--c-alert:#D4735E;--c-cat1:#C4887A;--c-cat2:#C49A5C;--c-cat3:#8BA888;--c-cat4:#7A8EB0;--c-cat5:#A08AAC;--c-text:#2C2C2C;--c-muted:#7A7A6E;--c-surface:#FFFFFF;--c-divider:#E8E4DE;--font-b:'Montserrat','Noto Sans TC',sans-serif;--font-c:'Open Sans','Noto Sans TC',Arial,sans-serif;--font-h:'Playfair Display',Georgia,serif}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-c);background:var(--c-bg);color:var(--c-text);line-height:1.6}.brand{font-family:var(--font-b);font-size:.65rem;letter-spacing:3px;color:var(--c-accent);text-transform:uppercase;margin-bottom:4px}h1{font-family:var(--font-h);font-size:1.4rem;color:var(--c-primary);margin-bottom:2px}h2{font-family:var(--font-b);font-size:.95rem;font-weight:700;color:var(--c-primary);margin:0 0 12px}h3{font-family:var(--font-b);font-size:.82rem;font-weight:600;margin:12px 0 6px}.sub{font-size:.8rem;color:var(--c-muted)}.header{text-align:center;padding:20px 16px 14px;border-bottom:2px solid var(--c-accent)}.tabs{display:flex;background:var(--c-primary);position:sticky;top:0;z-index:100;overflow-x:auto;-webkit-overflow-scrolling:touch}.tb{color:#fff;background:none;border:none;font-family:var(--font-b);font-size:.64rem;font-weight:500;padding:10px 11px;cursor:pointer;white-space:nowrap;opacity:.68;border-bottom:3px solid transparent;transition:all .2s}.tb.on{opacity:1;border-bottom-color:var(--c-accent);background:rgba(200,149,108,.1)}.tpn{display:none;max-width:960px;margin:0 auto;padding:20px 16px}.tpn.on{display:block}.sbar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.stat{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:10px;padding:10px 14px;flex:1;min-width:80px;text-align:center}.sn{font-family:var(--font-b);font-size:1.3rem;font-weight:700;color:var(--c-primary)}.sl{font-size:.68rem;color:var(--c-muted);margin-top:2px}.pbar{height:8px;background:var(--c-divider);border-radius:4px;overflow:hidden;margin:6px 0}.pfill{height:100%;border-radius:4px;transition:width .5s;background:var(--c-success)}.fbar{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px;align-items:center}.fb{border:1px solid var(--c-divider);background:var(--c-surface);border-radius:6px;padding:4px 10px;font-size:.7rem;font-family:var(--font-b);font-weight:500;cursor:pointer;transition:all .2s}.fb.on{background:var(--c-primary);color:#fff;border-color:var(--c-primary)}.fb.f1.on{background:var(--c-alert);border-color:var(--c-alert)}.fb.f2.on{background:var(--c-accent);border-color:var(--c-accent)}.fb.f3.on{background:var(--c-success);border-color:var(--c-success);color:#fff}.sbx{border:1px solid var(--c-divider);border-radius:6px;padding:4px 10px;font-size:.73rem;font-family:var(--font-c);min-width:100px;max-width:160px}.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:768px){.cg{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.cg{grid-template-columns:1fr}}.vc{cursor:pointer;border-radius:12px;background:var(--c-surface);border:1px solid var(--c-divider);overflow:hidden;box-shadow:0 3px 10px rgba(27,42,74,.06);transition:box-shadow .2s}.vc:hover{box-shadow:0 4px 16px rgba(27,42,74,.12)}.va{height:5px}.bdg{float:right;font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:4px;background:#D5F5E3;color:#1E8449;margin:6px 6px 0 0}.vf{padding:16px 14px;text-align:center}.vf .pic svg{width:40px;height:40px;opacity:.85}.vf .pr{font-size:.85rem;color:var(--c-muted);margin:6px 0}.vf .ew{font-size:42px;font-family:var(--font-b);font-weight:700;color:var(--c-primary);line-height:1.2;word-break:break-word}.vf .fh{font-size:.62rem;color:var(--c-muted);opacity:.6;margin-top:10px}.vb{display:none;padding:14px 14px 16px}.vc.fl .vf{display:none}.vc.fl .vb{display:block}.vb .eb{font-size:18px;font-family:var(--font-b);font-weight:700;color:var(--c-primary);line-height:1.4}.vb .zb{font-size:18px;font-weight:600;color:var(--c-accent);line-height:1.4;margin:2px 0 6px}.vb .dv{height:1px;background:var(--c-divider);margin:6px 0}.vb .mg{font-size:18px;color:var(--c-text);line-height:1.5;margin:4px 0}.vb .ex{font-size:18px;color:var(--c-muted);font-style:italic;line-height:1.5;margin:4px 0}.vb .pl{font-size:14px;font-weight:600;color:var(--c-accent);margin:4px 0 2px}.vb .pi{font-size:18px;color:var(--c-text);line-height:1.5;margin:3px 0}.famb{display:flex;gap:3px;justify-content:center;padding:6px;background:var(--c-secondary);border-top:1px solid var(--c-divider)}.fm{border:none;border-radius:4px;padding:3px 8px;font-size:.62rem;cursor:pointer;font-family:var(--font-b);font-weight:600;opacity:.5;transition:all .2s}.fm:hover{opacity:.8}.fm.sel{opacity:1}.f1c{background:#FDECEA;color:var(--c-alert)}.f2c{background:#FFF3E0;color:#B8860B}.f3c{background:#E8F5E9;color:var(--c-success)}.vc[data-fam="1"]{border-left:4px solid var(--c-alert)}.vc[data-fam="2"]{border-left:4px solid var(--c-accent)}.vc[data-fam="3"]{border-left:4px solid var(--c-success)}.eg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}@media(max-width:768px){.eg{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.eg{grid-template-columns:1fr}}.ec{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:8px;padding:10px 12px;border-left:4px solid var(--c-divider)}.ec .een{font-family:var(--font-b);font-weight:600;color:var(--c-primary);font-size:.85rem}.ec .epr{font-size:.68rem;color:var(--c-muted)}.ec .ezh{font-size:.8rem;color:var(--c-accent);font-weight:500;margin:2px 0}.ec .emg{font-size:.72rem;color:var(--c-text)}.ec .eex{font-size:.7rem;color:var(--c-muted);font-style:italic}.dzone{max-width:500px;margin:0 auto}.dc{background:var(--c-surface);border:2px solid var(--c-divider);border-radius:14px;padding:30px 20px;text-align:center;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:14px 0;cursor:pointer;transition:border-color .3s}.dc:hover{border-color:var(--c-accent)}.dc .dp{font-size:.75rem;color:var(--c-muted);margin-bottom:8px}.dc .dw{font-family:var(--font-h);font-size:1.6rem;color:var(--c-primary);margin:6px 0}.dc .ds{font-size:.85rem;color:var(--c-muted)}.dc .da{font-size:1.2rem;color:var(--c-accent);font-weight:700;margin:10px 0;display:none}.dc.sa .da{display:block}.dn{display:flex;justify-content:space-between;align-items:center;margin:10px 0}.dbtn{padding:8px 20px;border:none;border-radius:8px;font-family:var(--font-b);font-weight:600;font-size:.78rem;cursor:pointer}.dtally{text-align:center;font-size:.74rem;color:var(--c-muted);margin:8px 0 4px}.ffbar{display:flex;gap:8px;margin:10px 0;flex-wrap:wrap}.ff{padding:6px 14px;border:1px solid var(--c-divider);border-radius:20px;background:#fff;font-family:var(--font-b);font-size:.74rem;cursor:pointer;opacity:.45;transition:opacity .15s}.ff.on{opacity:1;border-color:var(--c-primary);font-weight:600}.dempty{text-align:center;padding:40px 20px;color:var(--c-muted);font-size:.85rem}.ysp-image-gallery{margin-top:14px;border:1px dashed var(--c-divider);border-radius:8px;padding:10px 14px}.ysp-image-gallery-head{font-size:.68rem;color:var(--c-muted);display:flex;justify-content:space-between;margin-bottom:6px}.ysp-image-gallery-mount{min-height:4px}.lt{display:flex;gap:6px;margin-bottom:16px;justify-content:center}.lb{padding:6px 16px;border:2px solid var(--c-divider);border-radius:8px;background:var(--c-surface);font-family:var(--font-b);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s}.lb.on{background:var(--c-primary);color:#fff;border-color:var(--c-primary)}.phr{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:8px;padding:12px 16px;margin:6px 0}.phr .ptg{font-size:.58rem;font-weight:700;margin-bottom:3px}.phr .pen{font-size:.9rem;font-weight:600;color:var(--c-primary);margin:3px 0}.phr .pzh{font-size:.82rem;color:var(--c-accent)}.phr .pnt{font-size:.74rem;color:var(--c-muted);margin-top:3px}.prc{background:var(--c-surface);border:2px solid var(--c-accent);border-radius:10px;padding:18px 20px}.prc .fo{font-family:var(--font-h);font-size:1rem;color:var(--c-primary);margin:6px 0}.prc .pw{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}.prc .wd{background:var(--c-secondary);padding:6px 12px;border-radius:6px;font-size:.85rem}.prc .ptip{background:#FFF8E1;padding:8px 12px;border-radius:6px;font-size:.8rem;margin:8px 0}.dlg{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:10px;margin:10px 0;overflow:hidden}.dlg .dh{padding:10px 16px;display:flex;justify-content:space-between;align-items:center}.dlg .dtag{font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:4px}.dtr{background:#D5F5E3;color:#1E8449}.dtc{background:#D6EAF8;color:#2471A3}.dlg .si{font-size:.78rem;color:var(--c-muted);padding:0 16px 8px}.dlg .rl{display:flex;gap:8px;padding:0 16px 8px}.dlg .ro{flex:1;padding:8px 12px;border-radius:6px;font-size:.75rem}.ra{background:var(--c-primary);color:#fff}.rb{background:var(--c-teal);color:#fff}.dlg .ls{padding:6px 16px 12px}.dlg .ln{display:flex;gap:6px;margin:3px 0;align-items:flex-start}.dlg .wh{font-family:var(--font-b);font-weight:700;font-size:.7rem;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}.wa{background:var(--c-primary);color:#fff}.wb{background:var(--c-teal);color:#fff}.dlg .sp{font-size:.8rem;line-height:1.5}.dlg .tr{background:var(--c-secondary);padding:10px 16px;border-top:1px solid var(--c-divider)}.dlg .tr b{color:var(--c-accent);font-size:.8rem}.dlg .tr p{font-size:.78rem;margin-top:3px}.dlg .tn{padding:10px 16px;background:#F8F9FA;border-top:1px solid var(--c-divider);font-size:.74rem;color:var(--c-muted);display:none}.dlg .tn.show{display:block}.dlg .tg2{text-align:center;padding:5px;font-size:.7rem;color:var(--c-muted);cursor:pointer;border-top:1px solid var(--c-divider)}.sq{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:8px;padding:12px 16px;margin:6px 0}.sq .stl{font-size:.63rem;font-weight:700;padding:2px 6px;border-radius:4px;display:inline-block;margin-bottom:4px}.s1{background:#E8F5E9;color:#2E7D32}.s2{background:#FFF3E0;color:#E65100}.s3{background:#FCE4EC;color:#C62828}.sq .qq{font-size:.88rem;font-weight:500;color:var(--c-primary);margin:3px 0}.sq .qh{font-size:.76rem;color:var(--c-muted);font-style:italic}.cult{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:10px;padding:16px 20px;margin:8px 0}.cult .cs{font-size:.63rem;font-weight:700;color:var(--c-accent)}.cult .ct{font-family:var(--font-h);font-size:.95rem;color:var(--c-primary);margin:4px 0 6px}.cult .cp{background:var(--c-secondary);border-radius:6px;padding:16px;text-align:center;font-size:.76rem;color:var(--c-muted);margin-bottom:8px}.cult .cn{font-size:.8rem;line-height:1.6;margin-bottom:8px}.cult .cq{font-size:.8rem;color:var(--c-primary);margin:3px 0;padding-left:10px;border-left:2px solid var(--c-accent)}.pvh{padding:8px 14px;background:var(--c-secondary);cursor:pointer;font-family:var(--font-b);font-size:.8rem;font-weight:600;color:var(--c-primary);display:flex;justify-content:space-between;border-radius:8px;margin:4px 0}.pvb{max-height:0;overflow:hidden;transition:max-height .3s}.pvb.open{max-height:2400px}.pvl{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0}.pvc{background:var(--c-surface);border:1px solid var(--c-divider);border-radius:6px;padding:4px 10px;font-size:.74rem}.pvc .pe{font-weight:600;color:var(--c-primary)}.pvc .pz{color:var(--c-muted);margin-left:4px}.note{background:var(--c-surface);border:1px solid var(--c-divider);border-left:4px solid var(--c-accent);border-radius:8px;padding:12px 14px;margin:8px 0;font-size:.8rem;color:var(--c-muted)}.footer{text-align:center;padding:20px;color:var(--c-muted);font-family:var(--font-b);font-size:.68rem;border-top:1px solid var(--c-divider);margin-top:20px}
+.ysp-image-gallery{min-width:0;max-width:100%;overflow:hidden}
+.ysp-image-gallery-mount{min-width:0;max-width:100%;overflow:hidden}
+.ysp-image-gallery-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;width:100%;max-width:100%}
+.ysp-image-gallery-grid img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:contain}
+</style>
+</head>
+<body data-course="travel-en">
+<!-- YSP_GLOBAL_NAV_LOADER_START -->
+<script src="../../js/ysp-global-nav.js" defer data-ysp-base="../../"></script>
+<!-- YSP_GLOBAL_NAV_LOADER_END -->
+<div class="header"><div class="brand">YSP Learn &amp; Shine</div><h1>L04 — Hotel Check-In & Room Requests 旅館入住與房間需求</h1><p class="sub">Travel English · CEFR A1 · 15 Core ★ + 30 Extended ◇ · 5 Dialogues</p></div>
+<div class="tabs"><button class="tb on" onclick="T(0)">📊 Learning Overview</button><button class="tb" onclick="T(1)">📚 Core</button><button class="tb" onclick="T(2)">📖 Extended</button><button class="tb" onclick="T(3)">🔁 Drilling</button><button class="tb" onclick="T(4)">💬 Phrases</button><button class="tb" onclick="T(5)">🎯 Pronunciation Spotlight</button><button class="tb" onclick="T(6)">🎭 Dialogues</button><button class="tb" onclick="T(7)">🗣️ Speaking</button><button class="tb" onclick="T(8)">🌍 Culture</button><button class="tb" onclick="T(9)">📋 Progress Check</button></div>
+<div class="tpn on" id="t0"></div><div class="tpn" id="t1"></div><div class="tpn" id="t2"></div><div class="tpn" id="t3"></div><div class="tpn" id="t4"><div id="t4c"></div><!-- YSP_IMAGE_GALLERY_START: phrases --><section class="ysp-image-gallery" data-ysp-gallery="phrases" data-ysp-image-dir="assets/phrases" data-ysp-image-prefix="l04-phrases-"><div class="ysp-image-gallery-head"><span>Useful Phrases — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: phrases --></div><div class="tpn" id="t5"><div id="t5c"></div><!-- YSP_IMAGE_GALLERY_START: pronunciation --><section class="ysp-image-gallery" data-ysp-gallery="pronunciation" data-ysp-image-dir="assets/pronunciation" data-ysp-image-prefix="l04-pronunciation-"><div class="ysp-image-gallery-head"><span>Pronunciation Spotlight — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: pronunciation --></div><div class="tpn" id="t6"><div id="t6c"></div><!-- YSP_IMAGE_GALLERY_START: d01 --><section class="ysp-image-gallery" data-ysp-gallery="d01" data-ysp-image-dir="assets/dialogues" data-ysp-image-prefix="l04-d01-"><div class="ysp-image-gallery-head"><span>Dialogue #1 — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: d01 --><!-- YSP_IMAGE_GALLERY_START: d02 --><section class="ysp-image-gallery" data-ysp-gallery="d02" data-ysp-image-dir="assets/dialogues" data-ysp-image-prefix="l04-d02-"><div class="ysp-image-gallery-head"><span>Dialogue #2 — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: d02 --><!-- YSP_IMAGE_GALLERY_START: d03 --><section class="ysp-image-gallery" data-ysp-gallery="d03" data-ysp-image-dir="assets/dialogues" data-ysp-image-prefix="l04-d03-"><div class="ysp-image-gallery-head"><span>Dialogue #3 — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: d03 --><!-- YSP_IMAGE_GALLERY_START: d04 --><section class="ysp-image-gallery" data-ysp-gallery="d04" data-ysp-image-dir="assets/dialogues" data-ysp-image-prefix="l04-d04-"><div class="ysp-image-gallery-head"><span>Dialogue #4 — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: d04 --><!-- YSP_IMAGE_GALLERY_START: d05 --><section class="ysp-image-gallery" data-ysp-gallery="d05" data-ysp-image-dir="assets/dialogues" data-ysp-image-prefix="l04-d05-"><div class="ysp-image-gallery-head"><span>Dialogue #5 — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: d05 --></div><div class="tpn" id="t7"><div id="t7c"></div><!-- YSP_IMAGE_GALLERY_START: speaking --><section class="ysp-image-gallery" data-ysp-gallery="speaking" data-ysp-image-dir="assets/speaking" data-ysp-image-prefix="l04-speaking-"><div class="ysp-image-gallery-head"><span>Speaking Questions — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: speaking --></div><div class="tpn" id="t8"><div id="t8c"></div><!-- YSP_IMAGE_GALLERY_START: culture --><section class="ysp-image-gallery" data-ysp-gallery="culture" data-ysp-image-dir="assets/culture" data-ysp-image-prefix="l04-culture-"><div class="ysp-image-gallery-head"><span>Culture Notes — 圖片版</span><small>圖片總覽</small></div><div class="ysp-image-gallery-mount"><!-- YSP_IMAGE_GALLERY_MOUNT_START --><!-- YSP_IMAGE_GALLERY_MOUNT_END --></div></section><!-- YSP_IMAGE_GALLERY_END: culture --></div><div class="tpn" id="t9"></div>
+<div class="footer"><span style="color:var(--c-accent);font-weight:600">YSP LEARN &amp; SHINE</span><br>Travel English — L04 Hotel Check-In & Room Requests<br><span style="font-size:.63rem">Learn with Purpose. Shine with Confidence.</span></div>
+<script id="lesson-data" type="application/json">{
+  "meta": {
+    "course_id": "travel-en",
+    "course_name": "Travel English",
+    "course_folder": "travel",
+    "unit": 1,
+    "lesson": 4,
+    "lesson_code": "L04",
+    "title_en": "Hotel Check-In & Room Requests",
+    "title_zh": "旅館入住與房間需求",
+    "cefr": "A1",
+    "html_path": "lessons/travel/u1-l4.html",
+    "image_prefix": "l04",
+    "status": "generated",
+    "source_note": "Originally generated by ChatGPT as mislabeled L02; relabeled to L04 (Hotel Check-In, per official curriculum) and fully corrected by Claude under YSP v3.9, 2026-07-26. Updated 2026-08-07: Previously Learned now includes real Travel L03 (On the Airplane) data; no longer a placeholder for L03."
+  },
+  "categories": [
+    "Check-In",
+    "Room Types",
+    "Hotel Services",
+    "Room Problems",
+    "Check-Out"
+  ],
+  "core": [
+    {
+      "en": "hotel",
+      "zh": "旅館／飯店",
+      "pr": "/hoʊˈtel/",
+      "cat": 0,
+      "m1": "A hotel is a place where travelers stay for one or more nights.",
+      "m2": "You can book a room, check in, and ask staff for help.",
+      "e1": "Our hotel is near the train station.",
+      "e2": "I booked a hotel for two nights.",
+      "p1": "I have a reservation at this _______.",
+      "p2": "Is the _______ close to downtown?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"24\" y=\"14\" width=\"32\" height=\"52\" rx=\"6\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"58\" r=\"3\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "reservation",
+      "zh": "預訂",
+      "pr": "/ˌrezərˈveɪʃən/",
+      "cat": 0,
+      "m1": "A reservation is a booking made before you arrive.",
+      "m2": "Hotels often ask for the name on your reservation.",
+      "e1": "I have a reservation under Chen.",
+      "e2": "Can you find my reservation, please?",
+      "p1": "I have a _______ for tonight.",
+      "p2": "The _______ is under my family name.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"22\" y=\"14\" width=\"36\" height=\"52\" rx=\"4\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><path d=\"M30 30h20M30 40h20M30 50h12\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "check in",
+      "zh": "辦理入住",
+      "pr": "/tʃek ɪn/",
+      "cat": 0,
+      "m1": "To check in means to register when you arrive at a hotel.",
+      "m2": "You usually show ID and receive your room key.",
+      "e1": "I would like to check in, please.",
+      "e2": "What time can we check in?",
+      "p1": "Can I _______ early?",
+      "p2": "I am here to _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><circle cx=\"30\" cy=\"36\" r=\"12\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><path d=\"M42 36h22M56 36v8M62 36v6\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "passport",
+      "zh": "護照",
+      "pr": "/ˈpæspɔːrt/",
+      "cat": 0,
+      "m1": "A passport is an official ID for international travel.",
+      "m2": "Hotels may ask to see your passport at check-in.",
+      "e1": "Here is my passport.",
+      "e2": "Do you need my passport number?",
+      "p1": "May I see your _______?",
+      "p2": "I left my _______ in my bag.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"22\" y=\"14\" width=\"36\" height=\"52\" rx=\"4\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><path d=\"M30 30h20M30 40h20M30 50h12\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "room key",
+      "zh": "房卡／鑰匙",
+      "pr": "/ruːm kiː/",
+      "cat": 0,
+      "m1": "A room key opens your hotel room door.",
+      "m2": "Many hotels use key cards instead of metal keys.",
+      "e1": "Here is your room key.",
+      "e2": "I lost my room key.",
+      "p1": "Could I get another _______?",
+      "p2": "My _______ does not work.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><circle cx=\"30\" cy=\"36\" r=\"12\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><path d=\"M42 36h22M56 36v8M62 36v6\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "single room",
+      "zh": "單人房",
+      "pr": "/ˈsɪŋɡəl ruːm/",
+      "cat": 1,
+      "m1": "A single room is usually for one guest.",
+      "m2": "It may have one single bed or one small bed.",
+      "e1": "I booked a single room.",
+      "e2": "Do you have a single room available?",
+      "p1": "I need a _______ for one night.",
+      "p2": "Is this a _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"36\" width=\"48\" height=\"20\" rx=\"4\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><rect x=\"20\" y=\"28\" width=\"16\" height=\"8\" rx=\"2\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "double room",
+      "zh": "雙人房",
+      "pr": "/ˈdʌbəl ruːm/",
+      "cat": 1,
+      "m1": "A double room is usually for two guests.",
+      "m2": "It may have one double bed or two beds, depending on the hotel.",
+      "e1": "We need a double room.",
+      "e2": "Is breakfast included with the double room?",
+      "p1": "Do you have a _______ available?",
+      "p2": "The _______ is for two people.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"36\" width=\"48\" height=\"20\" rx=\"4\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><rect x=\"20\" y=\"28\" width=\"16\" height=\"8\" rx=\"2\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "bed",
+      "zh": "床",
+      "pr": "/bed/",
+      "cat": 1,
+      "m1": "A bed is where you sleep in a hotel room.",
+      "m2": "You can ask about one bed or two beds.",
+      "e1": "Does the room have two beds?",
+      "e2": "The bed is very comfortable.",
+      "p1": "Does this room have one _______?",
+      "p2": "We need two _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"36\" width=\"48\" height=\"20\" rx=\"4\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><rect x=\"20\" y=\"28\" width=\"16\" height=\"8\" rx=\"2\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "bathroom",
+      "zh": "浴室",
+      "pr": "/ˈbæθruːm/",
+      "cat": 1,
+      "m1": "A bathroom is the place where you wash and use the toilet.",
+      "m2": "Hotel rooms usually have a private bathroom.",
+      "e1": "Is there a private bathroom?",
+      "e2": "The bathroom is very clean.",
+      "p1": "Does the room have a _______?",
+      "p2": "The _______ light is not working.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"20\" y=\"16\" width=\"40\" height=\"48\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"52\" cy=\"40\" r=\"3\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "Wi-Fi",
+      "zh": "無線網路",
+      "pr": "/ˈwaɪ faɪ/",
+      "cat": 2,
+      "m1": "Wi-Fi is wireless internet service.",
+      "m2": "Hotels often give guests a Wi-Fi name and password.",
+      "e1": "What is the Wi-Fi password?",
+      "e2": "The Wi-Fi is not working in my room.",
+      "p1": "Could I have the _______ password?",
+      "p2": "Is _______ free?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><path d=\"M18 50Q40 28 62 50\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"3\"/><path d=\"M28 42Q40 32 52 42\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"3\"/><circle cx=\"40\" cy=\"54\" r=\"5\" fill=\"#8BA888\"/></svg>"
+    },
+    {
+      "en": "breakfast",
+      "zh": "早餐",
+      "pr": "/ˈbrekfəst/",
+      "cat": 2,
+      "m1": "Breakfast is the morning meal.",
+      "m2": "Some hotels include breakfast in the room price.",
+      "e1": "Is breakfast included?",
+      "e2": "Breakfast starts at seven o'clock.",
+      "p1": "What time is _______?",
+      "p2": "Is _______ included with the room?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><circle cx=\"40\" cy=\"26\" r=\"8\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><path d=\"M20 58c4-14 36-14 40 0\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "elevator",
+      "zh": "電梯",
+      "pr": "/ˈeləveɪtər/",
+      "cat": 2,
+      "m1": "An elevator moves people between floors.",
+      "m2": "In some countries, people may also say lift.",
+      "e1": "Where is the elevator?",
+      "e2": "Take the elevator to the fourth floor.",
+      "p1": "Is there an _______?",
+      "p2": "The _______ is next to the lobby.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"20\" y=\"16\" width=\"40\" height=\"48\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"52\" cy=\"40\" r=\"3\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "towel",
+      "zh": "毛巾",
+      "pr": "/ˈtaʊəl/",
+      "cat": 3,
+      "m1": "A towel is used to dry your body or hands.",
+      "m2": "You can ask housekeeping for extra towels.",
+      "e1": "Could I have an extra towel?",
+      "e2": "There are no towels in my room.",
+      "p1": "I need one more _______.",
+      "p2": "Could you bring clean _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><circle cx=\"40\" cy=\"26\" r=\"8\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><path d=\"M20 58c4-14 36-14 40 0\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    },
+    {
+      "en": "air conditioning",
+      "zh": "冷氣",
+      "pr": "/ˈer kəndɪʃənɪŋ/",
+      "cat": 3,
+      "m1": "Air conditioning cools the room.",
+      "m2": "You can tell staff if it is not working.",
+      "e1": "The air conditioning is not working.",
+      "e2": "Could you check the air conditioning?",
+      "p1": "The _______ is too loud.",
+      "p2": "Does this room have _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"20\" y=\"16\" width=\"40\" height=\"48\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"52\" cy=\"40\" r=\"3\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "check out",
+      "zh": "退房",
+      "pr": "/tʃek aʊt/",
+      "cat": 4,
+      "m1": "To check out means to leave the hotel and finish your stay.",
+      "m2": "Hotels usually have a set check-out time.",
+      "e1": "What time is check-out?",
+      "e2": "I would like to check out, please.",
+      "p1": "Can I _______ late?",
+      "p2": "What time do we need to _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><circle cx=\"30\" cy=\"36\" r=\"12\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><path d=\"M42 36h22M56 36v8M62 36v6\" stroke=\"#C8956C\" stroke-width=\"2\"/></svg>"
+    }
+  ],
+  "extended": [
+    {
+      "en": "front desk",
+      "zh": "櫃台",
+      "pr": "/frʌnt desk/",
+      "cat": 0,
+      "m": "The place where guests check in and ask for help.",
+      "ex": "Please go to the front desk."
+    },
+    {
+      "en": "receptionist",
+      "zh": "接待人員",
+      "pr": "/rɪˈsepʃənɪst/",
+      "cat": 0,
+      "m": "A person who helps guests at the front desk.",
+      "ex": "The receptionist gave me my room key."
+    },
+    {
+      "en": "booking confirmation",
+      "zh": "訂房確認",
+      "pr": "/ˈbʊkɪŋ ˌkɑːnfərˈmeɪʃən/",
+      "cat": 0,
+      "m": "A message or document that proves your booking.",
+      "ex": "Can I see your booking confirmation?"
+    },
+    {
+      "en": "ID",
+      "zh": "身分證件",
+      "pr": "/ˌaɪ ˈdiː/",
+      "cat": 0,
+      "m": "A document that shows who you are.",
+      "ex": "Please show one piece of ID."
+    },
+    {
+      "en": "guest",
+      "zh": "房客／客人",
+      "pr": "/ɡest/",
+      "cat": 0,
+      "m": "A person staying at a hotel.",
+      "ex": "Hotel guests can use the gym."
+    },
+    {
+      "en": "vacancy",
+      "zh": "空房",
+      "pr": "/ˈveɪkənsi/",
+      "cat": 1,
+      "m": "An available room in a hotel.",
+      "ex": "Do you have any vacancies tonight?"
+    },
+    {
+      "en": "fully booked",
+      "zh": "客滿",
+      "pr": "/ˈfʊli bʊkt/",
+      "cat": 1,
+      "m": "Having no rooms available.",
+      "ex": "The hotel is fully booked."
+    },
+    {
+      "en": "non-smoking room",
+      "zh": "禁菸房",
+      "pr": "/nɑːn ˈsmoʊkɪŋ ruːm/",
+      "cat": 1,
+      "m": "A room where smoking is not allowed.",
+      "ex": "I would like a non-smoking room."
+    },
+    {
+      "en": "queen bed",
+      "zh": "加大雙人床",
+      "pr": "/kwiːn bed/",
+      "cat": 1,
+      "m": "A medium-large bed for one or two people.",
+      "ex": "The room has one queen bed."
+    },
+    {
+      "en": "floor",
+      "zh": "樓層",
+      "pr": "/flɔːr/",
+      "cat": 1,
+      "m": "A level of a building.",
+      "ex": "Your room is on the fifth floor."
+    },
+    {
+      "en": "lobby",
+      "zh": "大廳",
+      "pr": "/ˈlɑːbi/",
+      "cat": 2,
+      "m": "The main entrance area of a hotel.",
+      "ex": "Let's meet in the lobby."
+    },
+    {
+      "en": "housekeeping",
+      "zh": "房務／清潔服務",
+      "pr": "/ˈhaʊskiːpɪŋ/",
+      "cat": 2,
+      "m": "Hotel staff who clean rooms and bring supplies.",
+      "ex": "Could you send housekeeping, please?"
+    },
+    {
+      "en": "wake-up call",
+      "zh": "晨喚服務",
+      "pr": "/ˈweɪk ʌp kɔːl/",
+      "cat": 2,
+      "m": "A phone call from the hotel to wake you up.",
+      "ex": "I need a wake-up call at six."
+    },
+    {
+      "en": "airport shuttle",
+      "zh": "機場接駁車",
+      "pr": "/ˈerpɔːrt ˈʃʌtəl/",
+      "cat": 2,
+      "m": "A bus or van between the hotel and airport.",
+      "ex": "Does the hotel have an airport shuttle?"
+    },
+    {
+      "en": "luggage storage",
+      "zh": "行李寄放",
+      "pr": "/ˈlʌɡɪdʒ ˈstɔːrɪdʒ/",
+      "cat": 2,
+      "m": "A service for keeping your bags before or after your stay.",
+      "ex": "Do you offer luggage storage?"
+    },
+    {
+      "en": "pillow",
+      "zh": "枕頭",
+      "pr": "/ˈpɪloʊ/",
+      "cat": 3,
+      "m": "Something soft for your head when you sleep.",
+      "ex": "Could I have one more pillow?"
+    },
+    {
+      "en": "blanket",
+      "zh": "毯子",
+      "pr": "/ˈblæŋkɪt/",
+      "cat": 3,
+      "m": "A warm cover used on a bed.",
+      "ex": "I need an extra blanket."
+    },
+    {
+      "en": "hair dryer",
+      "zh": "吹風機",
+      "pr": "/ˈher ˌdraɪər/",
+      "cat": 3,
+      "m": "A tool used to dry hair.",
+      "ex": "Is there a hair dryer in the room?"
+    },
+    {
+      "en": "shower",
+      "zh": "淋浴",
+      "pr": "/ˈʃaʊər/",
+      "cat": 3,
+      "m": "A place or device for washing with falling water.",
+      "ex": "The shower has no hot water."
+    },
+    {
+      "en": "heating",
+      "zh": "暖氣",
+      "pr": "/ˈhiːtɪŋ/",
+      "cat": 3,
+      "m": "A system that warms a room.",
+      "ex": "The heating is not working."
+    },
+    {
+      "en": "receipt",
+      "zh": "收據",
+      "pr": "/rɪˈsiːt/",
+      "cat": 4,
+      "m": "A document that shows what you paid.",
+      "ex": "Could I have a receipt, please?"
+    },
+    {
+      "en": "deposit",
+      "zh": "押金",
+      "pr": "/dɪˈpɑːzɪt/",
+      "cat": 4,
+      "m": "Money held temporarily and returned later if there is no problem.",
+      "ex": "The hotel needs a deposit."
+    },
+    {
+      "en": "credit card",
+      "zh": "信用卡",
+      "pr": "/ˈkredɪt kɑːrd/",
+      "cat": 4,
+      "m": "A card used to pay later through a bank account.",
+      "ex": "Can I pay by credit card?"
+    },
+    {
+      "en": "cash",
+      "zh": "現金",
+      "pr": "/kæʃ/",
+      "cat": 4,
+      "m": "Money in bills or coins.",
+      "ex": "Do you accept cash?"
+    },
+    {
+      "en": "late check-out",
+      "zh": "延遲退房",
+      "pr": "/leɪt tʃek aʊt/",
+      "cat": 4,
+      "m": "Leaving the hotel later than the normal check-out time.",
+      "ex": "Is late check-out available?"
+    },
+    {
+      "en": "early check-in",
+      "zh": "提前入住",
+      "pr": "/ˈɜːrli tʃek ɪn/",
+      "cat": 0,
+      "m": "Checking in before the normal check-in time.",
+      "ex": "Can I request early check-in?"
+    },
+    {
+      "en": "room number",
+      "zh": "房號",
+      "pr": "/ruːm ˈnʌmbər/",
+      "cat": 1,
+      "m": "The number of your hotel room.",
+      "ex": "What is my room number?"
+    },
+    {
+      "en": "city map",
+      "zh": "城市地圖",
+      "pr": "/ˈsɪti mæp/",
+      "cat": 2,
+      "m": "A map that shows streets and places in a city.",
+      "ex": "Do you have a city map?"
+    },
+    {
+      "en": "safe",
+      "zh": "保險箱",
+      "pr": "/seɪf/",
+      "cat": 3,
+      "m": "A small locked box for valuable items.",
+      "ex": "Is there a safe in the room?"
+    },
+    {
+      "en": "emergency exit",
+      "zh": "緊急出口",
+      "pr": "/ɪˈmɜːrdʒənsi ˈeɡzɪt/",
+      "cat": 4,
+      "m": "A door or route used to leave safely in an emergency.",
+      "ex": "Please check where the emergency exit is."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "I have a reservation under Wang.",
+      "zh": "我有一個用 Wang 這個姓氏預訂的房間。",
+      "note": "Use this at the front desk when you already booked a room.",
+      "t": "core"
+    },
+    {
+      "en": "Can I check in now?",
+      "zh": "我現在可以辦理入住嗎？",
+      "note": "Use this if you arrive before or near check-in time.",
+      "t": "core"
+    },
+    {
+      "en": "What time is check-out?",
+      "zh": "退房時間是幾點？",
+      "note": "Ask this so you do not miss the hotel check-out time.",
+      "t": "core"
+    },
+    {
+      "en": "Could I have the Wi-Fi password?",
+      "zh": "可以給我 Wi-Fi 密碼嗎？",
+      "note": "Use a polite question for hotel services.",
+      "t": "core"
+    },
+    {
+      "en": "Could you store my luggage after check-out?",
+      "zh": "退房後可以幫我寄放行李嗎？",
+      "note": "Use this when your flight or train is later in the day.",
+      "t": "ext"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1,
+      "title": "Checking In with a Reservation",
+      "tz": "用訂房資料辦理入住",
+      "tag": "req",
+      "sit": "You arrive at a hotel and already have a reservation.",
+      "rA": "Guest",
+      "rB": "Receptionist",
+      "lines": [
+        [
+          "A",
+          "Hello. I have a reservation under Lin."
+        ],
+        [
+          "B",
+          "Welcome. May I see your passport, please?"
+        ],
+        [
+          "A",
+          "Sure. Here it is."
+        ],
+        [
+          "B",
+          "Thank you. You booked a double room for two nights."
+        ],
+        [
+          "A",
+          "Yes, that is correct."
+        ],
+        [
+          "B",
+          "Here is your room key. Your room number is 405."
+        ],
+        [
+          "A",
+          "Thank you. What time is check-out?"
+        ],
+        [
+          "B",
+          "Check-out is at 11 a.m."
+        ]
+      ],
+      "tp": "Try again: ask if breakfast is included.",
+      "tn": "Focus on reservation, passport, room key, room number, and check-out time."
+    },
+    {
+      "id": 2,
+      "title": "Asking for a Room without a Reservation",
+      "tz": "沒有訂房時詢問空房",
+      "tag": "req",
+      "sit": "You walk into a hotel and need a room for one night.",
+      "rA": "Traveler",
+      "rB": "Front Desk Staff",
+      "lines": [
+        [
+          "A",
+          "Hi. Do you have any vacancies tonight?"
+        ],
+        [
+          "B",
+          "Let me check. How many guests?"
+        ],
+        [
+          "A",
+          "One guest. I need a single room."
+        ],
+        [
+          "B",
+          "We have one single room available."
+        ],
+        [
+          "A",
+          "How much is it for one night?"
+        ],
+        [
+          "B",
+          "It is 120 dollars before tax."
+        ],
+        [
+          "A",
+          "Does it include Wi-Fi?"
+        ],
+        [
+          "B",
+          "Yes, Wi-Fi is included."
+        ]
+      ],
+      "tp": "Try again: ask for a non-smoking room.",
+      "tn": "This dialogue helps students ask about availability, price, room type, and included services."
+    },
+    {
+      "id": 3,
+      "title": "Asking about Wi-Fi and Breakfast",
+      "tz": "詢問 Wi-Fi 與早餐",
+      "tag": "req",
+      "sit": "You are at the front desk after checking in.",
+      "rA": "Guest",
+      "rB": "Receptionist",
+      "lines": [
+        [
+          "A",
+          "Excuse me. Could I have the Wi-Fi password?"
+        ],
+        [
+          "B",
+          "Of course. The password is printed on your room key envelope."
+        ],
+        [
+          "A",
+          "Thank you. Is breakfast included?"
+        ],
+        [
+          "B",
+          "Yes, breakfast is included."
+        ],
+        [
+          "A",
+          "What time does breakfast start?"
+        ],
+        [
+          "B",
+          "It starts at 7 a.m. in the lobby."
+        ],
+        [
+          "A",
+          "Great. Where is the elevator?"
+        ],
+        [
+          "B",
+          "It is on your left."
+        ]
+      ],
+      "tp": "Try again: ask where the breakfast room is.",
+      "tn": "Practice polite service questions with Could I / Is / What time / Where."
+    },
+    {
+      "id": 4,
+      "title": "Requesting Help with a Room Problem",
+      "tz": "房間有問題時請求協助",
+      "tag": "ch",
+      "sit": "You are in your hotel room and something is not right.",
+      "rA": "Guest",
+      "rB": "Hotel Staff",
+      "lines": [
+        [
+          "A",
+          "Hi. I have a problem with my room."
+        ],
+        [
+          "B",
+          "I'm sorry to hear that. What is the problem?"
+        ],
+        [
+          "A",
+          "The air conditioning is not working."
+        ],
+        [
+          "B",
+          "I can send someone to check it."
+        ],
+        [
+          "A",
+          "Thank you. Also, could I have an extra towel?"
+        ],
+        [
+          "B",
+          "Of course. I will ask housekeeping to bring one."
+        ],
+        [
+          "A",
+          "How long will it take?"
+        ],
+        [
+          "B",
+          "About ten minutes."
+        ]
+      ],
+      "tp": "Try again: say the shower has no hot water.",
+      "tn": "Students practice calm problem reporting and polite requests."
+    },
+    {
+      "id": 5,
+      "title": "Checking Out and Storing Luggage",
+      "tz": "退房與寄放行李",
+      "tag": "req",
+      "sit": "It is your last day at the hotel, but your flight is in the evening.",
+      "rA": "Guest",
+      "rB": "Receptionist",
+      "lines": [
+        [
+          "A",
+          "Good morning. I would like to check out."
+        ],
+        [
+          "B",
+          "Sure. What is your room number?"
+        ],
+        [
+          "A",
+          "Room 405."
+        ],
+        [
+          "B",
+          "Thank you. Would you like a receipt?"
+        ],
+        [
+          "A",
+          "Yes, please."
+        ],
+        [
+          "B",
+          "Here is your receipt."
+        ],
+        [
+          "A",
+          "Could you store my luggage until 5 p.m.?"
+        ],
+        [
+          "B",
+          "Yes, we can keep it at the front desk."
+        ]
+      ],
+      "tp": "Try again: ask for late check-out instead.",
+      "tn": "Practice check-out, receipt, luggage storage, and polite follow-up questions."
+    }
+  ],
+  "speaking": [
+    {
+      "t": 1,
+      "q": "What do you usually say first when you arrive at a hotel?",
+      "h": "Start with: Hello. I have a reservation under..."
+    },
+    {
+      "t": 1,
+      "q": "What hotel service is most important for you: Wi-Fi, breakfast, or location?",
+      "h": "I need ___ because ___."
+    },
+    {
+      "t": 2,
+      "q": "You arrive early. Ask if you can check in now.",
+      "h": "Use: Can I check in now? Is early check-in available?"
+    },
+    {
+      "t": 2,
+      "q": "Your room key does not work. Explain the problem politely.",
+      "h": "Use: My room key does not work. Could you help me?"
+    },
+    {
+      "t": 3,
+      "q": "Role play: check in, ask about breakfast, then ask for the Wi-Fi password.",
+      "h": "Try to use at least three phrases from this lesson."
+    }
+  ],
+  "culture": [
+    {
+      "slot": "warm-up",
+      "title": "Hotel Check-In Etiquette",
+      "tz": "旅館入住禮儀",
+      "photo": "📷 A hotel front desk with a guest showing ID and receiving a room key.",
+      "notes": "In many English-speaking travel situations, hotel staff expect a clear greeting, the name on the reservation, and one piece of ID. It is normal to ask about check-out time, breakfast, Wi-Fi, and luggage storage politely.",
+      "qs": [
+        "What information do you need when checking in?",
+        "What question would you ask first?",
+        "How can you sound polite at the front desk?"
+      ]
+    },
+    {
+      "slot": "closing",
+      "title": "Asking Politely for Help",
+      "tz": "禮貌地請旅館人員幫忙",
+      "photo": "📷 A guest speaking calmly with hotel staff about a room issue.",
+      "notes": "If something is wrong in your room, explain the problem calmly and use polite requests such as Could you check it? or Could I have an extra towel? Clear and polite language helps staff solve the problem faster.",
+      "qs": [
+        "What room problem might happen during a trip?",
+        "How would you ask for help?",
+        "What is better: direct complaint or polite request? Why?"
+      ]
+    }
+  ],
+  "pronunciation": {
+    "focus": "/θ/ /ð/ Review",
+    "fz": "th 音複習",
+    "words": [
+      {
+        "w": "think",
+        "ipa": "/θɪŋk/",
+        "bad": "sink",
+        "tip": "Put your tongue between your teeth, don't use /s/."
+      },
+      {
+        "w": "this",
+        "ipa": "/ðɪs/",
+        "bad": "dis",
+        "tip": "Voiced th — tongue between teeth, with your voice on."
+      },
+      {
+        "w": "three",
+        "ipa": "/θriː/",
+        "bad": "free",
+        "tip": "Tongue between teeth first, not /f/."
+      },
+      {
+        "w": "mother",
+        "ipa": "/ˈmʌðər/",
+        "bad": "mudder",
+        "tip": "Voiced th in the middle, not /d/."
+      },
+      {
+        "w": "clothes",
+        "ipa": "/kloʊðz/",
+        "bad": "close",
+        "tip": "Keep the th sound, don't skip it."
+      }
+    ],
+    "tip": "This is a review of your very first pronunciation lesson. Mandarin doesn't have this sound, so it's easy to substitute /s/, /d/, or /f/ instead — slow down and check your tongue position between your teeth.",
+    "prac": "My mother thinks these three clothes are the best."
+  },
+  "previously_learned": {
+    "lessons": [
+      {
+        "lesson_code": "Travel L01",
+        "title": "Airport Check-In",
+        "words": [
+          {
+            "en": "check in",
+            "zh": "報到"
+          },
+          {
+            "en": "counter",
+            "zh": "櫃檯"
+          },
+          {
+            "en": "boarding pass",
+            "zh": "登機證"
+          },
+          {
+            "en": "passport",
+            "zh": "護照"
+          },
+          {
+            "en": "ticket",
+            "zh": "機票"
+          },
+          {
+            "en": "ID",
+            "zh": "身分證"
+          },
+          {
+            "en": "luggage",
+            "zh": "行李"
+          },
+          {
+            "en": "suitcase",
+            "zh": "行李箱"
+          },
+          {
+            "en": "carry-on",
+            "zh": "隨身行李"
+          },
+          {
+            "en": "gate",
+            "zh": "登機門"
+          },
+          {
+            "en": "terminal",
+            "zh": "航廈"
+          },
+          {
+            "en": "departure",
+            "zh": "出發"
+          },
+          {
+            "en": "window seat",
+            "zh": "靠窗座位"
+          },
+          {
+            "en": "aisle seat",
+            "zh": "走道座位"
+          },
+          {
+            "en": "help",
+            "zh": "幫忙"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Travel L02",
+        "title": "Security & Immigration",
+        "words": [
+          {
+            "en": "security check",
+            "zh": "安檢"
+          },
+          {
+            "en": "X-ray machine",
+            "zh": "X光機"
+          },
+          {
+            "en": "metal detector",
+            "zh": "金屬探測器"
+          },
+          {
+            "en": "liquid",
+            "zh": "液體"
+          },
+          {
+            "en": "remove",
+            "zh": "拿出/脫掉"
+          },
+          {
+            "en": "immigration",
+            "zh": "入境審查"
+          },
+          {
+            "en": "customs",
+            "zh": "海關"
+          },
+          {
+            "en": "declare",
+            "zh": "申報"
+          },
+          {
+            "en": "visa",
+            "zh": "簽證"
+          },
+          {
+            "en": "passport control",
+            "zh": "護照查驗"
+          },
+          {
+            "en": "entry stamp",
+            "zh": "入境章"
+          },
+          {
+            "en": "boarding area",
+            "zh": "候機區"
+          },
+          {
+            "en": "connecting flight",
+            "zh": "轉機航班"
+          },
+          {
+            "en": "security officer",
+            "zh": "安檢人員"
+          },
+          {
+            "en": "line up",
+            "zh": "排隊"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Travel L03",
+        "title_en": "On the Airplane",
+        "words": [
+          {
+            "en": "seatbelt",
+            "zh": "安全帶"
+          },
+          {
+            "en": "tray table",
+            "zh": "餐桌板"
+          },
+          {
+            "en": "blanket",
+            "zh": "毛毯"
+          },
+          {
+            "en": "flight attendant",
+            "zh": "空服員"
+          },
+          {
+            "en": "in-flight meal",
+            "zh": "飛機餐"
+          },
+          {
+            "en": "beverage",
+            "zh": "飲料"
+          },
+          {
+            "en": "turbulence",
+            "zh": "亂流"
+          },
+          {
+            "en": "landing",
+            "zh": "降落"
+          },
+          {
+            "en": "takeoff",
+            "zh": "起飛"
+          },
+          {
+            "en": "headphones",
+            "zh": "耳機"
+          },
+          {
+            "en": "aisle",
+            "zh": "走道"
+          },
+          {
+            "en": "overhead compartment",
+            "zh": "頭頂置物櫃"
+          },
+          {
+            "en": "safety card",
+            "zh": "安全須知卡"
+          },
+          {
+            "en": "emergency exit",
+            "zh": "緊急出口"
+          },
+          {
+            "en": "call button",
+            "zh": "服務按鈕"
+          }
+        ]
+      }
+    ],
+    "placeholder_note": "Travel L03 data source unavailable. Leaving as placeholder rather than inventing prior vocabulary, per Skill §10."
+  },
+  "validation": {
+    "core_count": 15,
+    "extended_count": 30,
+    "phrases_count": 5,
+    "dialogues_count": 5,
+    "speaking_count": 5,
+    "culture_count": 2,
+    "pronunciation_words": 5
+  },
+  "pronunciation_progress": [
+    {
+      "lesson": "L01",
+      "focus": "Final Consonants",
+      "status": "done"
+    },
+    {
+      "lesson": "L02",
+      "focus": "Don't Add an Extra Vowel",
+      "status": "done"
+    },
+    {
+      "lesson": "L03",
+      "focus": "(not yet produced)",
+      "status": "unavailable"
+    },
+    {
+      "lesson": "L04",
+      "focus": "/θ/ /ð/ Review",
+      "status": "current"
+    }
+  ]
+}</script>
+<script>
+const DATA=JSON.parse(document.getElementById('lesson-data').textContent);const CATS=DATA.categories||[],V=DATA.core||[],EXT=DATA.extended||[],PHRASES=DATA.phrases||[],DIALOGUES=DATA.dialogues||[],SPEAKING=DATA.speaking||[],CULTURE=DATA.culture||[],PRON=DATA.pronunciation||{},META=DATA.meta||{};const CC=['var(--c-cat1)','var(--c-cat2)','var(--c-cat3)','var(--c-cat4)','var(--c-cat5)'];const KEY='ysp_'+(META.course_id||'course')+'_'+(META.lesson_code||'lesson')+'_fam';let fam=JSON.parse(localStorage.getItem(KEY)||'{}');let dL=1,dI=0;let ff={0:true,1:true,2:true,3:true};
+function esc(v){return String(v??'').replace(/[&<>\"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[ch]));}function T(n){document.querySelectorAll('.tpn').forEach((p,i)=>p.classList.toggle('on',i===n));document.querySelectorAll('.tb').forEach((b,i)=>b.classList.toggle('on',i===n));}function save(){localStorage.setItem(KEY,JSON.stringify(fam));}
+function sf(i,l,ev){ev.stopPropagation();if(fam[i]===l){delete fam[i];}else{fam[i]=l;}save();const c=document.querySelector('.vc[data-i="'+i+'"]');if(c){if(fam[i]){c.setAttribute('data-fam',fam[i]);}else{c.removeAttribute('data-fam');}c.querySelectorAll('.fm').forEach(b=>b.classList.remove('sel'));if(fam[i]){const b=c.querySelector('.fm[data-l="'+fam[i]+'"]');if(b)b.classList.add('sel');}}us();}
+function us(){const t=V.length;let c1=0,c2=0,c3=0,u=0;for(let i=0;i<t;i++){const f=fam[i];if(f===1)c1++;else if(f===2)c2++;else if(f===3)c3++;else u++;}const sb=document.getElementById('sb');if(sb)sb.innerHTML='<div class="stat"><div class="sn">'+t+'</div><div class="sl">Core ★</div></div><div class="stat"><div class="sn" style="color:var(--c-alert)">'+c1+'</div><div class="sl">🔴 不知道</div></div><div class="stat"><div class="sn" style="color:var(--c-accent)">'+c2+'</div><div class="sl">🟡 有印象</div></div><div class="stat"><div class="sn" style="color:var(--c-success)">'+c3+'</div><div class="sl">🟢 已經會</div></div><div class="stat"><div class="sn">'+u+'</div><div class="sl">⬜ 未評估</div></div>';const p=t>0?Math.round(c3/t*100):0;const pf=document.getElementById('pfill');if(pf)pf.style.width=p+'%';const pt=document.getElementById('ptxt');if(pt)pt.textContent=(c1+c2+c3)>0?'掌握率 '+p+'% ('+c3+'/'+t+')':'點擊 🔴🟡🟢 開始評估';}
+function r0(){document.getElementById('t0').innerHTML='<h2>📊 Learning Overview｜學習總覽</h2><div class="sbar" id="sb"></div><div class="pbar"><div class="pfill" id="pfill" style="width:0%"></div></div><p style="font-size:.7rem;color:var(--c-muted);text-align:right" id="ptxt">點擊 🔴🟡🟢 開始評估</p><div class="note">This page uses the Golden L02 interactive system: flip cards, familiarity buttons, local progress, drilling, dialogue practice, and cumulative vocabulary review.</div>';us();}
+function r1(){let h='<h2>📚 Core ('+V.length+')</h2><div class="fbar"><button class="fb on" data-f="all">全部 ('+V.length+')</button>';CATS.forEach((c,i)=>{let n=V.filter(v=>v.cat===i).length;h+='<button class="fb" data-f="'+i+'" style="border-left:3px solid '+CC[i]+'">'+esc(c)+' ('+n+')</button>';});h+='<span style="margin-left:auto;display:flex;gap:3px"><button class="fb f1" data-ff="1">🔴</button><button class="fb f2" data-ff="2">🟡</button><button class="fb f3" data-ff="3">🟢</button></span><input type="text" class="sbx" placeholder="🔍" id="cs"></div><div class="cg">';V.forEach((v,i)=>{let f=fam[i]||'';h+='<div class="vc" data-i="'+i+'" data-g="'+esc(v.cat)+'" data-en="'+esc(v.en).toLowerCase()+'" data-zh="'+esc(v.zh)+'" data-fam="'+f+'" onclick="this.classList.toggle(\'fl\')"><div class="vf"><span class="bdg">★ Core</span><div class="va" style="background:'+CC[v.cat%5]+'"></div><div class="pic">'+(v.svg||'')+'</div><div class="pr">'+esc(v.pr)+'</div><div class="ew">'+esc(v.en)+'</div><div class="fh">tap to flip →</div></div><div class="vb"><div class="va" style="background:'+CC[v.cat%5]+'"></div><div class="eb">'+esc(v.en)+'</div><div class="zb">'+esc(v.zh)+'</div><div class="dv"></div><div class="mg">📖 '+esc(v.m1)+'</div><div class="mg">📖 '+esc(v.m2)+'</div><div class="dv"></div><div class="ex">📝 '+esc(v.e1)+'</div><div class="ex">📝 '+esc(v.e2)+'</div><div class="dv"></div><div class="pl">✏ Try using this word:</div><div class="pi">1. '+esc(v.p1)+'</div><div class="pi">2. '+esc(v.p2)+'</div></div><div class="famb" onclick="event.stopPropagation()"><button class="fm f1c '+(f===1?'sel':'')+'" data-l="1" onclick="sf('+i+',1,event)">🔴 不知道</button><button class="fm f2c '+(f===2?'sel':'')+'" data-l="2" onclick="sf('+i+',2,event)">🟡 有印象</button><button class="fm f3c '+(f===3?'sel':'')+'" data-l="3" onclick="sf('+i+',3,event)">🟢 已經會</button></div></div>';});h+='</div>';document.getElementById('t1').innerHTML=h;document.querySelectorAll('.fbar .fb[data-f]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.fbar .fb[data-f]').forEach(x=>x.classList.remove('on'));b.classList.add('on');let f=b.dataset.f;document.querySelectorAll('.vc').forEach(c=>c.style.display=(f==='all'||c.dataset.g==f)?'':'none');}));document.querySelectorAll('.fb[data-ff]').forEach(b=>b.addEventListener('click',()=>{b.classList.toggle('on');let af=Array.from(document.querySelectorAll('.fb[data-ff].on')).map(x=>x.dataset.ff);document.querySelectorAll('.vc').forEach(c=>c.style.display=!af.length||af.indexOf(String(fam[c.dataset.i]))>=0?'':'none');}));document.getElementById('cs').addEventListener('input',function(){let q=this.value.toLowerCase();document.querySelectorAll('.vc').forEach(c=>c.style.display=(c.dataset.en.includes(q)||c.dataset.zh.includes(q))?'':'none');});}
+function r2(){let h='<h2>📖 Extended ('+EXT.length+')</h2><div class="fbar" id="ef"></div><div class="eg" id="eG"></div>';document.getElementById('t2').innerHTML=h;let ef='<button class="fb on" data-ef="all">全部</button>';CATS.forEach((c,i)=>ef+='<button class="fb" data-ef="'+i+'" style="border-left:3px solid '+CC[i]+'">'+esc(c)+'</button>');document.getElementById('ef').innerHTML=ef;let eg='';EXT.forEach(e=>eg+='<div class="ec" data-ec="'+esc(e.cat)+'" style="border-left-color:'+CC[(e.cat||0)%5]+'"><div class="een">'+esc(e.en)+'</div><div class="epr">'+esc(e.pr)+'</div><div class="ezh">'+esc(e.zh)+'</div><div class="emg">'+esc(e.m)+'</div><div class="eex">📝 '+esc(e.ex)+'</div></div>');document.getElementById('eG').innerHTML=eg;document.querySelectorAll('#ef .fb').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#ef .fb').forEach(x=>x.classList.remove('on'));b.classList.add('on');let f=b.dataset.ef;document.querySelectorAll('.ec').forEach(c=>c.style.display=(f==='all'||c.dataset.ec==f)?'':'none');}));}
+function ffLabel(k){return k===0?'⬜ 未評估':k===1?'🔴 不知道':k===2?'🟡 有印象':'🟢 已經會';}function pool(){return V.map((v,i)=>({v:v,i:i})).filter(x=>ff[fam[x.i]||0]);}function toggleFF(k,ev){ev.stopPropagation();ff[k]=!ff[k];dI=0;rd();}function r3(){document.getElementById('t3').innerHTML='<h2>🔁 Drilling</h2><p style="font-size:.78rem;color:var(--c-muted);margin-bottom:14px">L1 跟唸 → L2 整句跟唸 → L3 中翻英</p><div class="lt"><button class="lb on" onclick="sL(1)">L1 跟唸</button><button class="lb" onclick="sL(2)">L2 整句</button><button class="lb" onclick="sL(3)">L3 中翻英</button></div>'+'<div class="ffbar">'+[0,1,2,3].map(k=>'<button class="ff '+(ff[k]?'on':'')+'" onclick="toggleFF('+k+',event)">'+ffLabel(k)+'</button>').join('')+'</div>'+'<div class="dzone" id="dz"></div>';rd();}function sL(l){dL=l;dI=0;document.querySelectorAll('.lb').forEach((b,i)=>b.classList.toggle('on',i===l-1));rd();}function rd(){const p=pool();let c1=0,c2=0,c3=0,c0=0;p.forEach(x=>{const f=fam[x.i];if(f===1)c1++;else if(f===2)c2++;else if(f===3)c3++;else c0++;});const tallyHtml='<div class="dtally">本組 '+p.length+' 字：🔴 '+c1+' 🟡 '+c2+' 🟢 '+c3+' ⬜ '+c0+'</div>';if(p.length===0){document.getElementById('dz').innerHTML=tallyHtml+'<div class="dempty">此篩選條件下沒有單字。請調整熟悉度篩選。</div>';return;}if(dI>=p.length)dI=p.length-1;if(dI<0)dI=0;const item=p[dI],v=item.v,realIdx=item.i;let pr,w,s,a;if(dL===1){pr='🔊 老師唸 → 學生跟唸 3 次';w=v.en;s=v.pr;a=v.zh;}else if(dL===2){pr='🔊 老師唸整句 → 學生跟唸';w=v.e1;s='';a=(v.zh||'')+' — '+(v.en||'');}else{pr='看中文 → 說英文';w=v.zh;s='';a=(v.en||'')+' '+(v.pr||'');}let fsel=fam[realIdx]||'';document.getElementById('dz').innerHTML='<div class="dc" onclick="this.classList.toggle(\'sa\')"><div class="dp">'+esc(pr)+'</div><div class="dw">'+esc(w)+'</div><div class="ds">'+esc(s)+'</div><div class="da">💡 '+esc(a)+'</div><div style="font-size:.65rem;color:var(--c-muted);margin-top:8px">點擊翻牌看答案</div></div><div class="famb" onclick="event.stopPropagation()"><button class="fm f1c '+(fsel===1?'sel':'')+'" data-l="1" onclick="sf('+realIdx+',1,event);rd()">🔴 不知道</button><button class="fm f2c '+(fsel===2?'sel':'')+'" data-l="2" onclick="sf('+realIdx+',2,event);rd()">🟡 有印象</button><button class="fm f3c '+(fsel===3?'sel':'')+'" data-l="3" onclick="sf('+realIdx+',3,event);rd()">🟢 已經會</button></div>'+tallyHtml+'<div class="dn"><button class="dbtn" style="background:var(--c-divider);color:var(--c-text)" onclick="dI=Math.max(0,dI-1);rd()">← 上一個</button><span style="font-size:.78rem;color:var(--c-muted)">'+(dI+1)+' / '+p.length+'</span><button class="dbtn" style="background:var(--c-primary);color:#fff" onclick="dI=Math.min(pool().length-1,dI+1);rd()">下一個 →</button></div>';}
+function r4(){let h='<h2>💬 Phrases ('+PHRASES.length+')</h2>';PHRASES.forEach(p=>{let tg=p.t==='core'?'<div class="ptg" style="color:#1E8449">🏫 In-class</div>':'<div class="ptg" style="color:#2471A3">📖 Self-study</div>';h+='<div class="phr">'+tg+'<div class="pen">"'+esc(p.en)+'"</div><div class="pzh">'+esc(p.zh)+'</div><div class="pnt">💡 '+esc(p.note)+'</div></div>';});document.getElementById('t4c').innerHTML=h;}
+function r5(){let pw='';(PRON.words||[]).forEach(w=>pw+='<div class="wd"><b>'+esc(w.w)+'</b> '+esc(w.ipa)+'<br><span style="font-size:.7rem;color:var(--c-alert)">✗ '+esc(w.bad)+'</span> → <span style="color:var(--c-success)">✓ '+esc(w.w)+'</span><br><span style="font-size:.68rem;color:var(--c-muted)">'+esc(w.tip)+'</span></div>');document.getElementById('t5c').innerHTML='<h2>🎯 Pronunciation Spotlight</h2><div class="prc"><div style="font-size:.7rem;color:var(--c-accent);font-weight:600">🎯 PRONUNCIATION SPOTLIGHT</div><div class="fo">'+esc(PRON.focus)+'</div><div style="font-size:.8rem;color:var(--c-muted)">'+esc(PRON.fz)+'</div><div class="pw">'+pw+'</div><div class="ptip">💡 '+esc(PRON.tip)+'</div><div style="font-size:.85rem;color:var(--c-primary);font-weight:500;margin-top:6px">🗣️ '+esc(PRON.prac)+'</div></div>';}
+function r6(){let h='<h2>🎭 Dialogues ('+DIALOGUES.length+')</h2>';DIALOGUES.forEach(d=>{let tc=d.tag==='req'?'dtr':'dtc',tt=d.tag==='req'?'🏫 必練':'📖 選練',ls='';(d.lines||[]).forEach(l=>ls+='<div class="ln"><span class="wh '+(l[0]==='A'?'wa':'wb')+'">'+esc(l[0])+'</span><div class="sp">"'+esc(l[1])+'"</div></div>');h+='<div class="dlg"><div class="dh"><h3 style="margin:0;font-size:.85rem">#'+esc(d.id)+' '+esc(d.title)+'<br><span style="font-size:.73rem;color:var(--c-muted)">'+esc(d.tz)+'</span></h3><span class="dtag '+tc+'">'+tt+'</span></div><div class="si">📍 '+esc(d.sit)+'</div><div class="rl"><div class="ro ra">🧑 '+esc(d.rA)+'</div><div class="ro rb">👤 '+esc(d.rB)+'</div></div><div class="ls">'+ls+'</div><div class="tr"><b>🎯 Now you try!</b><p>'+esc(d.tp)+'</p></div><div class="tg2" onclick="var t=this.nextElementSibling;t.classList.toggle(\'show\');this.textContent=t.classList.contains(\'show\')?\'Teacher notes ▴\':\'Teacher notes ▾\'">Teacher notes ▾</div><div class="tn">📋 '+esc(d.tn)+'</div></div>';});document.getElementById('t6c').innerHTML=h;}
+function r7(){let tl={1:['Tier 1 — Warm-up','s1'],2:['Tier 2 — Guided','s2'],3:['Tier 3 — Free','s3']},h='<h2>🗣️ Speaking ('+SPEAKING.length+')</h2>';SPEAKING.forEach((s,i)=>{let x=tl[s.t]||tl[1];h+='<div class="sq"><span class="stl '+x[1]+'">'+x[0]+'</span><div class="qq">Q'+(i+1)+'. '+esc(s.q)+'</div><div class="qh">💡 '+esc(s.h)+'</div></div>';});document.getElementById('t7c').innerHTML=h;}
+function r8(){let h='<h2>🌍 Culture ('+CULTURE.length+')</h2>';CULTURE.forEach(c=>{let sl=c.slot==='warm-up'?'🌅 Warm-up（課堂開頭）':'🌇 Closing（課堂結尾）',qs='';(c.qs||[]).forEach((q,i)=>qs+='<div class="cq">Q'+(i+1)+'. '+esc(q)+'</div>');h+='<div class="cult"><div class="cs">'+sl+'</div><div class="ct">'+esc(c.title)+'</div><div style="font-size:.8rem;color:var(--c-muted);margin-bottom:6px">'+esc(c.tz)+'</div><div class="cp">'+esc(c.photo)+'</div><div class="cn">'+esc(c.notes)+'</div><h3 style="font-size:.78rem;margin:8px 0 4px">Discussion Questions</h3>'+qs+'</div>';});document.getElementById('t8c').innerHTML=h;}
+function normalizePrev(){let p=DATA.previously_learned;if(Array.isArray(p))return p;if(p&&Array.isArray(p.items))return p.items;if(p&&Array.isArray(p.lessons))return p.lessons;return [];}function wordsOf(x){if(Array.isArray(x.words))return x.words;if(Array.isArray(x.core))return x.core;if(Array.isArray(x.items))return x.items;return [];}function countWords(x){return wordsOf(x).length||x.core_count||0;}
+function r9(){let prev=normalizePrev();let prevCore=prev.reduce((a,x)=>a+countWords(x),0),after=prevCore+V.length;let h='<h2>📋 Progress Check</h2><h3>Current Lesson｜本課進度</h3><div class="sbar"><div class="stat"><div class="sn">'+V.length+'</div><div class="sl">本課 Core</div></div><div class="stat"><div class="sn">'+EXT.length+'</div><div class="sl">本課 Extended</div></div><div class="stat"><div class="sn">'+after+'</div><div class="sl">完成後累積 Core</div></div></div><h3>Previously Learned｜已學詞彙</h3>';if(!prev.length){let first=/L0?1$/i.test(META.lesson_code||'');let msg=first?((DATA.previously_learned&&DATA.previously_learned.empty_message)||'這是第一堂課，尚無已學詞彙。從 L02 開始會顯示。'):'Previously Learned data source unavailable. I will leave the section as a placeholder rather than inventing prior vocabulary.';h+='<div class="note">'+esc(msg)+'</div>';}prev.forEach((lesson,idx)=>{let ws=wordsOf(lesson);let title=(lesson.lesson_code||lesson.code||('L'+String(idx+1).padStart(2,'0')))+' '+(lesson.title_en||lesson.title||'Previously Learned');h+='<div class="pvh" onclick="this.nextElementSibling.classList.toggle(\'open\')"><span>📖 '+esc(title)+' ('+countWords(lesson)+' Core ★)</span><span>▾</span></div><div class="pvb"><div class="pvl">';ws.forEach(w=>h+='<div class="pvc"><span class="pe">'+esc(w.en||w.word||w[0])+'</span><span class="pz">'+esc(w.zh||w.meaning||w[1]||'')+'</span></div>');h+='</div></div>';});h+='<h3 style="margin-top:16px">Cumulative Vocabulary｜累積單字量</h3><div class="sbar"><div class="stat"><div class="sn">'+prevCore+'</div><div class="sl">Before this lesson</div></div><div class="stat"><div class="sn">'+V.length+'</div><div class="sl">This lesson adds</div></div><div class="stat"><div class="sn">'+after+'</div><div class="sl">After this lesson</div></div></div><h3 style="margin-top:16px">Pronunciation Progress｜發音進度</h3>';prev.forEach(l=>{if(l.pronunciation)h+='<div style="font-size:.82rem;padding:3px 0">✅ <b>'+esc(l.lesson_code||l.code||'Previous')+'</b> '+esc(l.pronunciation)+'</div>';});h+='<div style="font-size:.82rem;padding:3px 0">🔄 <b>'+esc(META.lesson_code||'Current')+'</b> '+esc(PRON.focus||'')+'</div><button class="fb" style="margin-top:12px" onclick="if(confirm(\'Reset this lesson progress?\')){localStorage.removeItem(KEY);fam={};r0();r1();r9();}">Reset Progress｜重設進度</button>';document.getElementById('t9').innerHTML=h;}
+document.addEventListener('DOMContentLoaded',function(){r0();r1();r2();r3();r4();r5();r6();r7();r8();r9();});
+</script>
+</body>
+</html>
