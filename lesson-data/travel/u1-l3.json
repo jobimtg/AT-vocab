@@ -1,0 +1,933 @@
+{
+  "meta": {
+    "course_id": "travel-en",
+    "course_name": "Travel English",
+    "course_folder": "travel",
+    "unit": 1,
+    "lesson": 3,
+    "lesson_code": "L03",
+    "title_en": "On the Airplane",
+    "title_zh": "在飛機上",
+    "cefr": "A1",
+    "html_path": "lessons/travel/u1-l3.html",
+    "image_prefix": "l03",
+    "status": "generated",
+    "source_note": "Core/Extended vocabulary sourced verbatim from Notion 'ESL Vocab Master Tracker' (approved 2026-07-26); phrases/dialogues/speaking/culture/pronunciation newly authored 2026-08-07 and built via the JSON pipeline on the v4.0 template."
+  },
+  "categories": [
+    "Seating & Comfort",
+    "In-Flight Service",
+    "Flight Experience",
+    "Cabin Features",
+    "Safety"
+  ],
+  "core": [
+    {
+      "en": "seatbelt",
+      "zh": "安全帶",
+      "pr": "/ˈsiːtbelt/",
+      "cat": 0,
+      "m1": "A seatbelt keeps you safely in your seat.",
+      "m2": "You must wear it during takeoff and landing.",
+      "e1": "Please fasten your seatbelt now.",
+      "e2": "The seatbelt sign just turned on.",
+      "p1": "Please fasten your _______ now.",
+      "p2": "The _______ sign just turned on.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "tray table",
+      "zh": "餐桌板",
+      "pr": "/treɪ ˈteɪbl/",
+      "cat": 0,
+      "m1": "A tray table folds down from the seat in front of you.",
+      "m2": "It is used for meals and drinks.",
+      "e1": "Please put your tray table up.",
+      "e2": "She placed her cup on the tray table.",
+      "p1": "Please put your _______ up.",
+      "p2": "She placed her cup on the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "blanket",
+      "zh": "毛毯",
+      "pr": "/ˈblæŋkɪt/",
+      "cat": 0,
+      "m1": "A blanket keeps you warm on the plane.",
+      "m2": "Passengers can ask a flight attendant for one.",
+      "e1": "Could I have a blanket, please?",
+      "e2": "He fell asleep under the blanket.",
+      "p1": "Could I have a _______, please?",
+      "p2": "He fell asleep under the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "flight attendant",
+      "zh": "空服員",
+      "pr": "/flaɪt əˈtendənt/",
+      "cat": 1,
+      "m1": "A flight attendant takes care of passengers during the flight.",
+      "m2": "They serve food and explain safety rules.",
+      "e1": "The flight attendant brought us water.",
+      "e2": "I asked the flight attendant for a pillow.",
+      "p1": "The _______ brought us water.",
+      "p2": "I asked the _______ for a pillow.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "in-flight meal",
+      "zh": "飛機餐",
+      "pr": "/ɪn flaɪt miːl/",
+      "cat": 1,
+      "m1": "An in-flight meal is food served during the flight.",
+      "m2": "It usually includes a main dish and a drink.",
+      "e1": "The in-flight meal was chicken or pasta.",
+      "e2": "I didn't like the in-flight meal today.",
+      "p1": "The _______ was chicken or pasta.",
+      "p2": "I didn't like the _______ today.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "beverage",
+      "zh": "飲料",
+      "pr": "/ˈbevərɪdʒ/",
+      "cat": 1,
+      "m1": "A beverage is a drink, such as juice or coffee.",
+      "m2": "Flight attendants offer beverages during the flight.",
+      "e1": "Would you like a beverage before the meal?",
+      "e2": "I chose orange juice as my beverage.",
+      "p1": "Would you like a _______ before the meal?",
+      "p2": "I chose orange juice as my _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "turbulence",
+      "zh": "亂流",
+      "pr": "/ˈtɜːrbjələns/",
+      "cat": 2,
+      "m1": "Turbulence is rough, bumpy movement during a flight.",
+      "m2": "Passengers should stay seated when it happens.",
+      "e1": "We felt some turbulence over the ocean.",
+      "e2": "Please sit down, there is turbulence ahead.",
+      "p1": "We felt some _______ over the ocean.",
+      "p2": "Please sit down, there is _______ ahead.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "landing",
+      "zh": "降落",
+      "pr": "/ˈlændɪŋ/",
+      "cat": 2,
+      "m1": "Landing is when the plane touches down on the runway.",
+      "m2": "Seatbelts must be fastened before landing.",
+      "e1": "We will begin landing in ten minutes.",
+      "e2": "The landing was smooth and quiet.",
+      "p1": "We will begin _______ in ten minutes.",
+      "p2": "The _______ was smooth and quiet.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "takeoff",
+      "zh": "起飛",
+      "pr": "/ˈteɪkɔːf/",
+      "cat": 2,
+      "m1": "Takeoff is when the plane leaves the ground.",
+      "m2": "Tray tables must be up during takeoff.",
+      "e1": "Takeoff is expected at 3 p.m.",
+      "e2": "I always feel nervous during takeoff.",
+      "p1": "_______ is expected at 3 p.m.",
+      "p2": "I always feel nervous during _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "headphones",
+      "zh": "耳機",
+      "pr": "/ˈhedfoʊnz/",
+      "cat": 3,
+      "m1": "Headphones let you listen to music or a movie.",
+      "m2": "Some airlines give them out for free.",
+      "e1": "Could I have some headphones, please?",
+      "e2": "I lost one of my headphones.",
+      "p1": "Could I have some _______, please?",
+      "p2": "I lost one of my _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "aisle",
+      "zh": "走道",
+      "pr": "/aɪl/",
+      "cat": 3,
+      "m1": "An aisle is the walking space between rows of seats.",
+      "m2": "Passengers use it to reach the restroom or exit.",
+      "e1": "I prefer an aisle seat, not a window seat.",
+      "e2": "The flight attendant walked down the aisle.",
+      "p1": "I prefer an _______ seat, not a window seat.",
+      "p2": "The flight attendant walked down the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "overhead compartment",
+      "zh": "頭頂置物櫃",
+      "pr": "/ˈoʊvərhed kəmˈpɑːrtmənt/",
+      "cat": 3,
+      "m1": "The overhead compartment stores bags above your seat.",
+      "m2": "It is closed during takeoff and landing.",
+      "e1": "Could I put my bag in the overhead compartment?",
+      "e2": "The overhead compartment was already full.",
+      "p1": "Could I put my bag in the _______?",
+      "p2": "The _______ was already full.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "safety card",
+      "zh": "安全須知卡",
+      "pr": "/ˈseɪfti kɑːrd/",
+      "cat": 4,
+      "m1": "A safety card explains what to do in an emergency.",
+      "m2": "It is kept in the seat pocket in front of you.",
+      "e1": "Please read the safety card before takeoff.",
+      "e2": "I found the safety card in the seat pocket.",
+      "p1": "Please read the _______ before takeoff.",
+      "p2": "I found the _______ in the seat pocket.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "emergency exit",
+      "zh": "緊急出口",
+      "pr": "/ɪˈmɜːrdʒənsi ˈeksɪt/",
+      "cat": 4,
+      "m1": "An emergency exit is a door used to leave the plane quickly if needed.",
+      "m2": "Passengers sitting there may be asked to help in an emergency.",
+      "e1": "The emergency exit is at the back of the plane.",
+      "e2": "She was seated next to the emergency exit.",
+      "p1": "The _______ is at the back of the plane.",
+      "p2": "She was seated next to the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "call button",
+      "zh": "服務按鈕",
+      "pr": "/kɔːl ˈbʌtn/",
+      "cat": 4,
+      "m1": "A call button lets you ask a flight attendant for help.",
+      "m2": "It is usually located above your seat.",
+      "e1": "I pressed the call button for some water.",
+      "e2": "The call button lit up above seat 12A.",
+      "p1": "I pressed the _______ for some water.",
+      "p2": "The _______ lit up above seat 12A.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    }
+  ],
+  "extended": [
+    {
+      "en": "recline",
+      "zh": "調整椅背",
+      "pr": "/rɪˈklaɪn/",
+      "cat": 0,
+      "m": "Recline means to lean the seat back.",
+      "ex": "Please recline your seat slowly to avoid bumping others."
+    },
+    {
+      "en": "window shade",
+      "zh": "遮光板",
+      "pr": "/ˈwɪndoʊ ʃeɪd/",
+      "cat": 0,
+      "m": "A window shade blocks sunlight from the window.",
+      "ex": "Could you please open the window shade?"
+    },
+    {
+      "en": "air vent",
+      "zh": "出風口",
+      "pr": "/er vent/",
+      "cat": 0,
+      "m": "An air vent controls the airflow above your seat.",
+      "ex": "I turned the air vent to cool down."
+    },
+    {
+      "en": "reading light",
+      "zh": "閱讀燈",
+      "pr": "/ˈriːdɪŋ laɪt/",
+      "cat": 0,
+      "m": "A reading light is a small light above your seat.",
+      "ex": "She turned on the reading light to read her book."
+    },
+    {
+      "en": "seat pocket",
+      "zh": "座椅置物袋",
+      "pr": "/siːt ˈpɑːkɪt/",
+      "cat": 0,
+      "m": "A seat pocket holds magazines and safety cards.",
+      "ex": "The menu is in the seat pocket in front of you."
+    },
+    {
+      "en": "footrest",
+      "zh": "腳踏墊",
+      "pr": "/ˈfʊtrest/",
+      "cat": 0,
+      "m": "A footrest supports your feet during the flight.",
+      "ex": "He rested his feet on the footrest."
+    },
+    {
+      "en": "duty-free cart",
+      "zh": "免稅推車",
+      "pr": "/ˈdjuːti friː kɑːrt/",
+      "cat": 1,
+      "m": "A duty-free cart sells tax-free items during the flight.",
+      "ex": "The duty-free cart is coming down the aisle."
+    },
+    {
+      "en": "snack",
+      "zh": "點心",
+      "pr": "/snæk/",
+      "cat": 1,
+      "m": "A snack is a small amount of food between meals.",
+      "ex": "Would you like a snack before landing?"
+    },
+    {
+      "en": "coffee",
+      "zh": "咖啡",
+      "pr": "/ˈkɔːfi/",
+      "cat": 1,
+      "m": "Coffee is a hot drink served during the flight.",
+      "ex": "Could I have a cup of coffee?"
+    },
+    {
+      "en": "tea",
+      "zh": "茶",
+      "pr": "/tiː/",
+      "cat": 1,
+      "m": "Tea is a hot drink offered as an alternative to coffee.",
+      "ex": "I'll have tea instead of coffee, thank you."
+    },
+    {
+      "en": "juice",
+      "zh": "果汁",
+      "pr": "/dʒuːs/",
+      "cat": 1,
+      "m": "Juice is a cold drink made from fruit.",
+      "ex": "Orange juice is my favorite in-flight drink."
+    },
+    {
+      "en": "meal tray",
+      "zh": "餐盤",
+      "pr": "/miːl treɪ/",
+      "cat": 1,
+      "m": "A meal tray holds your in-flight meal and drink.",
+      "ex": "The flight attendant collected the meal trays after lunch."
+    },
+    {
+      "en": "cabin pressure",
+      "zh": "機艙壓力",
+      "pr": "/ˈkæbɪn ˈpreʃər/",
+      "cat": 2,
+      "m": "Cabin pressure is the air pressure inside the plane.",
+      "ex": "Cabin pressure changes slightly during takeoff and landing."
+    },
+    {
+      "en": "altitude",
+      "zh": "高度",
+      "pr": "/ˈæltɪtuːd/",
+      "cat": 2,
+      "m": "Altitude is the height of the plane above the ground.",
+      "ex": "We are now cruising at an altitude of 35,000 feet."
+    },
+    {
+      "en": "cruising",
+      "zh": "巡航",
+      "pr": "/ˈkruːzɪŋ/",
+      "cat": 2,
+      "m": "Cruising means flying steadily at a set altitude.",
+      "ex": "The plane is now cruising above the clouds."
+    },
+    {
+      "en": "descend",
+      "zh": "下降",
+      "pr": "/dɪˈsend/",
+      "cat": 2,
+      "m": "Descend means to go down in altitude.",
+      "ex": "The plane will descend soon before landing."
+    },
+    {
+      "en": "ascend",
+      "zh": "上升",
+      "pr": "/əˈsend/",
+      "cat": 2,
+      "m": "Ascend means to go up in altitude.",
+      "ex": "The plane will ascend quickly after takeoff."
+    },
+    {
+      "en": "announcement",
+      "zh": "廣播",
+      "pr": "/əˈnaʊnsmənt/",
+      "cat": 2,
+      "m": "An announcement is a spoken message over the speaker system.",
+      "ex": "The captain made an announcement about the weather."
+    },
+    {
+      "en": "in-flight entertainment",
+      "zh": "機上娛樂系統",
+      "pr": "/ɪn flaɪt entərˈteɪnmənt/",
+      "cat": 3,
+      "m": "In-flight entertainment includes movies, music, and games on your seat screen.",
+      "ex": "The in-flight entertainment has over 100 movies."
+    },
+    {
+      "en": "remote control",
+      "zh": "遙控器",
+      "pr": "/rɪˈmoʊt kənˈtroʊl/",
+      "cat": 3,
+      "m": "A remote control operates the seat-back screen.",
+      "ex": "The remote control is attached to your armrest."
+    },
+    {
+      "en": "captain",
+      "zh": "機長",
+      "pr": "/ˈkæptɪn/",
+      "cat": 3,
+      "m": "The captain is the pilot in charge of the flight.",
+      "ex": "The captain welcomed us aboard the flight."
+    },
+    {
+      "en": "co-pilot",
+      "zh": "副機長",
+      "pr": "/koʊ ˈpaɪlət/",
+      "cat": 3,
+      "m": "The co-pilot assists the captain in flying the plane.",
+      "ex": "The co-pilot handled the radio communication."
+    },
+    {
+      "en": "cabin crew",
+      "zh": "機艙組員",
+      "pr": "/ˈkæbɪn kruː/",
+      "cat": 3,
+      "m": "The cabin crew are the flight attendants working on the plane.",
+      "ex": "The cabin crew prepared the cabin for landing."
+    },
+    {
+      "en": "life vest",
+      "zh": "救生衣",
+      "pr": "/laɪf vest/",
+      "cat": 3,
+      "m": "A life vest is safety equipment for water landings.",
+      "ex": "The life vest is located under your seat."
+    },
+    {
+      "en": "oxygen mask",
+      "zh": "氧氣罩",
+      "pr": "/ˈɑːksɪdʒən mæsk/",
+      "cat": 4,
+      "m": "An oxygen mask supplies air in an emergency.",
+      "ex": "Please put on your own oxygen mask first."
+    },
+    {
+      "en": "vegetarian meal",
+      "zh": "素食餐",
+      "pr": "/vedʒəˈteriən miːl/",
+      "cat": 4,
+      "m": "A vegetarian meal contains no meat.",
+      "ex": "I requested a vegetarian meal for this flight."
+    },
+    {
+      "en": "special meal",
+      "zh": "特殊餐點",
+      "pr": "/ˈspeʃl miːl/",
+      "cat": 4,
+      "m": "A special meal is a meal that meets a dietary need.",
+      "ex": "You can order a special meal before your flight."
+    },
+    {
+      "en": "allergy",
+      "zh": "過敏",
+      "pr": "/ˈælərdʒi/",
+      "cat": 4,
+      "m": "An allergy is a reaction to certain foods or substances.",
+      "ex": "Please tell us if you have a food allergy."
+    },
+    {
+      "en": "motion sickness",
+      "zh": "暈機",
+      "pr": "/ˈmoʊʃn ˈsɪknəs/",
+      "cat": 4,
+      "m": "Motion sickness is feeling sick from movement during travel.",
+      "ex": "She felt motion sickness during the turbulence."
+    },
+    {
+      "en": "earplugs",
+      "zh": "耳塞",
+      "pr": "/ˈɪrplʌgz/",
+      "cat": 4,
+      "m": "Earplugs block out noise so you can rest.",
+      "ex": "He wore earplugs to sleep on the long flight."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Could I have a blanket, please?",
+      "zh": "可以給我一條毯子嗎？",
+      "note": "Ask a flight attendant for extra comfort items.",
+      "t": "core"
+    },
+    {
+      "en": "Is this seat taken?",
+      "zh": "這個座位有人坐嗎？",
+      "note": "Ask before sitting in an empty seat.",
+      "t": "core"
+    },
+    {
+      "en": "What's the in-flight meal today?",
+      "zh": "今天的飛機餐是什麼？",
+      "note": "Ask about meal options during service.",
+      "t": "core"
+    },
+    {
+      "en": "Could you please fasten your seatbelt?",
+      "zh": "請您繫上安全帶。",
+      "note": "A flight attendant's instruction during turbulence or landing.",
+      "t": "ext"
+    },
+    {
+      "en": "I feel a bit airsick.",
+      "zh": "我有點暈機。",
+      "note": "Tell a flight attendant if you feel unwell.",
+      "t": "ext"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1,
+      "title": "Finding Your Seat",
+      "tz": "找到座位",
+      "tag": "req",
+      "sit": "You board the plane and look for your seat.",
+      "rA": "Passenger",
+      "rB": "Flight Attendant",
+      "lines": [
+        [
+          "A",
+          "Excuse me, where is seat 24C?"
+        ],
+        [
+          "B",
+          "It's on the right, near the aisle."
+        ],
+        [
+          "A",
+          "Thank you. Could I put my bag in the overhead compartment?"
+        ],
+        [
+          "B",
+          "Of course. Let me help you."
+        ],
+        [
+          "A",
+          "Thank you so much."
+        ],
+        [
+          "B",
+          "You're welcome. Enjoy your flight."
+        ]
+      ],
+      "tp": "Try again: ask about seat 15A instead.",
+      "tn": "Practice asking for seat directions politely."
+    },
+    {
+      "id": 2,
+      "title": "In-Flight Service",
+      "tz": "機上服務",
+      "tag": "req",
+      "sit": "The flight attendant offers drinks and meals during the flight.",
+      "rA": "Flight Attendant",
+      "rB": "Passenger",
+      "lines": [
+        [
+          "A",
+          "Would you like something to drink?"
+        ],
+        [
+          "B",
+          "Yes, coffee please."
+        ],
+        [
+          "A",
+          "Would you like the chicken or the pasta?"
+        ],
+        [
+          "B",
+          "I'll have the pasta, thank you."
+        ],
+        [
+          "A",
+          "Here is your tray table."
+        ],
+        [
+          "B",
+          "Thank you very much."
+        ],
+        [
+          "A",
+          "Enjoy your meal."
+        ],
+        [
+          "B",
+          "Thanks."
+        ]
+      ],
+      "tp": "Try again: order tea and choose the vegetarian meal.",
+      "tn": "Practice ordering food and drinks politely."
+    },
+    {
+      "id": 3,
+      "title": "Turbulence Problem",
+      "tz": "遇到亂流",
+      "tag": "ch",
+      "sit": "The plane experiences turbulence during the flight.",
+      "rA": "Flight Attendant",
+      "rB": "Passenger",
+      "lines": [
+        [
+          "A",
+          "We are experiencing some turbulence."
+        ],
+        [
+          "B",
+          "Is everything okay?"
+        ],
+        [
+          "A",
+          "Yes, please fasten your seatbelt."
+        ],
+        [
+          "B",
+          "Okay, I will."
+        ],
+        [
+          "A",
+          "Please stay in your seat for now."
+        ],
+        [
+          "B",
+          "How long will this last?"
+        ],
+        [
+          "A",
+          "Just a few minutes. Thank you for your patience."
+        ],
+        [
+          "B",
+          "No problem, thank you."
+        ]
+      ],
+      "tp": "Try again: ask if the flight attendant can bring you water after.",
+      "tn": "Problem scenario: stay calm and follow safety instructions."
+    },
+    {
+      "id": 4,
+      "title": "Asking About Landing",
+      "tz": "詢問降落時間",
+      "tag": "req",
+      "sit": "You want to know when the plane will land.",
+      "rA": "Passenger",
+      "rB": "Flight Attendant",
+      "lines": [
+        [
+          "A",
+          "Excuse me, what time will we land?"
+        ],
+        [
+          "B",
+          "We will land in about one hour."
+        ],
+        [
+          "A",
+          "Is the flight on time?"
+        ],
+        [
+          "B",
+          "Yes, we are right on schedule."
+        ],
+        [
+          "A",
+          "Great, thank you."
+        ],
+        [
+          "B",
+          "You're welcome."
+        ]
+      ],
+      "tp": "Try again: ask about a connecting flight instead.",
+      "tn": "Practice asking for time and schedule information."
+    },
+    {
+      "id": 5,
+      "title": "Requesting Headphones",
+      "tz": "索取耳機",
+      "tag": "req",
+      "sit": "You want to watch a movie but don't have headphones.",
+      "rA": "Passenger",
+      "rB": "Flight Attendant",
+      "lines": [
+        [
+          "A",
+          "Excuse me, could I have some headphones?"
+        ],
+        [
+          "B",
+          "Sure, here you are."
+        ],
+        [
+          "A",
+          "Thank you. Do you have any snacks?"
+        ],
+        [
+          "B",
+          "Yes, we have pretzels and cookies."
+        ],
+        [
+          "A",
+          "I'll take the pretzels, please."
+        ],
+        [
+          "B",
+          "Here you go. Enjoy the movie."
+        ],
+        [
+          "A",
+          "Thank you so much."
+        ],
+        [
+          "B",
+          "My pleasure."
+        ]
+      ],
+      "tp": "Try again: ask for a blanket instead of headphones.",
+      "tn": "Ask for small items politely using Could I have...?"
+    }
+  ],
+  "speaking": [
+    {
+      "t": 1,
+      "q": "What do you usually do during a long flight?",
+      "h": "I usually watch a movie or listen to music."
+    },
+    {
+      "t": 1,
+      "q": "Do you prefer the window seat or the aisle seat?",
+      "h": "I prefer the window seat because..."
+    },
+    {
+      "t": 2,
+      "q": "What should you do if there is turbulence?",
+      "h": "You should fasten your seatbelt and stay in your seat."
+    },
+    {
+      "t": 2,
+      "q": "What items can you ask a flight attendant for?",
+      "h": "You can ask for a blanket, headphones, or a drink."
+    },
+    {
+      "t": 3,
+      "q": "Describe what happens from takeoff to landing on a flight.",
+      "h": "First the plane takes off, then..."
+    }
+  ],
+  "culture": [
+    {
+      "slot": "warm-up",
+      "title": "Being Polite in the Cabin",
+      "tz": "機艙禮儀",
+      "photo": "📷 An illustrated passenger politely speaking with a flight attendant in the airplane cabin.",
+      "notes": "Passengers are expected to use polite requests (Could I..., Would you mind...) rather than direct commands when speaking with flight attendants. Staying calm and patient during delays or turbulence is also part of common in-flight etiquette.",
+      "qs": [
+        "What is a polite way to ask for something on a flight?",
+        "Why is staying calm during turbulence important?",
+        "What should you do if you are unsure about cabin rules?"
+      ]
+    },
+    {
+      "slot": "closing",
+      "title": "Every Airline Is a Little Different",
+      "tz": "每家航空公司規定略有不同",
+      "photo": "📷 An illustrated safety card and airline seat pocket showing icons for different rules.",
+      "notes": "Meal service, baggage rules, and entertainment systems can vary between airlines. Always check the safety card in your seat pocket and listen to announcements instead of assuming every flight works the same way.",
+      "qs": [
+        "Where can you find safety information on a plane?",
+        "What are two things that can differ between airlines?",
+        "Why is it useful to listen carefully to announcements?"
+      ]
+    }
+  ],
+  "pronunciation": {
+    "focus": "θ and ð Sounds",
+    "fz": "θ 與 ð 的發音",
+    "words": [
+      {
+        "w": "think",
+        "ipa": "/θɪŋk/",
+        "bad": "tink",
+        "tip": "Place your tongue lightly between your teeth; don't say a /t/ sound."
+      },
+      {
+        "w": "thirty",
+        "ipa": "/ˈθɜ:rti/",
+        "bad": "tirty",
+        "tip": "Push air out for the voiceless /θ/ before the vowel."
+      },
+      {
+        "w": "the",
+        "ipa": "/ðə/",
+        "bad": "de",
+        "tip": "Voice the sound and keep the tongue visible; don't say a /d/."
+      },
+      {
+        "w": "there",
+        "ipa": "/ðer/",
+        "bad": "dere",
+        "tip": "Feel your throat vibrate for the voiced /ð/."
+      },
+      {
+        "w": "bathroom",
+        "ipa": "/ˈbæθru:m/",
+        "bad": "bat-room",
+        "tip": "Keep the /θ/ soft in the middle of the word; don't replace it with /t/."
+      }
+    ],
+    "tip": "Chinese speakers often replace /θ/ with /t/ and /ð/ with /d/. Keep the tongue between the teeth for both.",
+    "prac": "Is there a bathroom near seat thirty? I think so."
+  },
+  "previously_learned": {
+    "lessons": [
+      {
+        "lesson_code": "Travel L01",
+        "title_en": "Airport Check-In",
+        "words": [
+          {
+            "en": "check in",
+            "zh": "報到"
+          },
+          {
+            "en": "counter",
+            "zh": "櫃檯"
+          },
+          {
+            "en": "boarding pass",
+            "zh": "登機證"
+          },
+          {
+            "en": "passport",
+            "zh": "護照"
+          },
+          {
+            "en": "ticket",
+            "zh": "機票"
+          },
+          {
+            "en": "ID",
+            "zh": "身分證"
+          },
+          {
+            "en": "luggage",
+            "zh": "行李"
+          },
+          {
+            "en": "suitcase",
+            "zh": "行李箱"
+          },
+          {
+            "en": "carry-on",
+            "zh": "隨身行李"
+          },
+          {
+            "en": "gate",
+            "zh": "登機門"
+          },
+          {
+            "en": "terminal",
+            "zh": "航廈"
+          },
+          {
+            "en": "departure",
+            "zh": "出發"
+          },
+          {
+            "en": "window seat",
+            "zh": "靠窗座位"
+          },
+          {
+            "en": "aisle seat",
+            "zh": "走道座位"
+          },
+          {
+            "en": "help",
+            "zh": "幫忙"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Travel L02",
+        "title_en": "Security & Immigration",
+        "words": [
+          {
+            "en": "security check",
+            "zh": "安檢"
+          },
+          {
+            "en": "X-ray machine",
+            "zh": "X光機"
+          },
+          {
+            "en": "metal detector",
+            "zh": "金屬探測器"
+          },
+          {
+            "en": "liquid",
+            "zh": "液體"
+          },
+          {
+            "en": "remove",
+            "zh": "拿出/脫掉"
+          },
+          {
+            "en": "immigration",
+            "zh": "入境審查"
+          },
+          {
+            "en": "customs",
+            "zh": "海關"
+          },
+          {
+            "en": "declare",
+            "zh": "申報"
+          },
+          {
+            "en": "visa",
+            "zh": "簽證"
+          },
+          {
+            "en": "passport control",
+            "zh": "護照查驗"
+          },
+          {
+            "en": "entry stamp",
+            "zh": "入境章"
+          },
+          {
+            "en": "boarding area",
+            "zh": "候機區"
+          },
+          {
+            "en": "connecting flight",
+            "zh": "轉機航班"
+          },
+          {
+            "en": "security officer",
+            "zh": "安檢人員"
+          },
+          {
+            "en": "line up",
+            "zh": "排隊"
+          }
+        ]
+      }
+    ]
+  }
+}
