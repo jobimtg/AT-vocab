@@ -1,0 +1,826 @@
+{
+  "meta": {
+    "course_id": "travel-en",
+    "course_name": "Travel English",
+    "course_folder": "travel",
+    "unit": 1,
+    "lesson": 1,
+    "lesson_code": "L01",
+    "title_en": "Airport Check-In",
+    "title_zh": "機場報到",
+    "cefr": "A1",
+    "html_path": "lessons/travel/u1-l1.html",
+    "image_prefix": "l01",
+    "status": "generated",
+    "source_note": "Content recovered verbatim from the live GitHub file lessons/travel/u1-l1.html via safe Node.js JS-literal evaluation. Only field names were remapped to the v4.0 schema (pron->pr, meaning1/2->m1/m2, ex1/2->e1/e2, pr1/2->p1/p2 for core; titleZh->tz, situationA->sit, roleA/B->rA/rB, tryPrompt->tp, teacherNotes->tn for dialogues; tier->t, hint->h, wrong->bad, etc. elsewhere). previously_learned is empty: L01 is the first lesson in the course, so there is no prior lesson to reference (per Skill SS10). EXCEPTION (confirmed by user 2026-08-07, America/Vancouver): Dialogue #1 (12 lines) and Dialogue #3 (10 lines) are kept at their original length rather than trimmed to the 6-8 line convention, since editing dialogue content is an editorial decision the user chose not to make. This is a one-off exception for this lesson, not a rule change."
+  },
+  "categories": [
+    "Check-In Counter",
+    "Documents",
+    "Luggage",
+    "Airport Places",
+    "Basic Requests"
+  ],
+  "core": [
+    {
+      "en": "check in",
+      "zh": "報到",
+      "pr": "/tʃek ɪn/",
+      "cat": 0,
+      "m1": "Check in means to go to the counter at the airport.",
+      "m2": "You show your ticket and get your seat.",
+      "e1": "I need to check in for my flight.",
+      "e2": "Please check in two hours early.",
+      "p1": "Let's go _______ for our flight.",
+      "p2": "Did you _______ online?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"30\" width=\"50\" height=\"28\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"22\" width=\"20\" height=\"8\" rx=\"2\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><circle cx=\"40\" cy=\"44\" r=\"5\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/></svg>"
+    },
+    {
+      "en": "counter",
+      "zh": "櫃檯",
+      "pr": "/ˈkaʊntər/",
+      "cat": 0,
+      "m1": "A counter is the desk where you talk to staff.",
+      "m2": "Go to the counter to get help.",
+      "e1": "Go to counter number five.",
+      "e2": "The counter is over there.",
+      "p1": "Please go to the _______ to get your ticket.",
+      "p2": "There is a long line at the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"35\" width=\"56\" height=\"20\" rx=\"2\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><rect x=\"20\" y=\"28\" width=\"12\" height=\"7\" rx=\"1\" fill=\"#C8956C\" opacity=\".4\"/><circle cx=\"52\" cy=\"30\" r=\"5\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/></svg>"
+    },
+    {
+      "en": "boarding pass",
+      "zh": "登機證",
+      "pr": "/ˈbɔːrdɪŋ pæs/",
+      "cat": 0,
+      "m1": "A boarding pass is the paper you need to get on the plane.",
+      "m2": "It shows your seat and gate number.",
+      "e1": "Here is my boarding pass.",
+      "e2": "Show your boarding pass at the gate.",
+      "p1": "You need a _______ to get on the plane.",
+      "p2": "My _______ says gate twelve.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"24\" width=\"52\" height=\"32\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><path d=\"M46 24v32\" stroke=\"#1B2A4A\" stroke-width=\"1\" stroke-dasharray=\"3 2\"/><rect x=\"20\" y=\"30\" width=\"18\" height=\"3\" rx=\"1\" fill=\"#C8956C\"/><rect x=\"20\" y=\"38\" width=\"14\" height=\"2\" rx=\"1\" fill=\"#C8956C\" opacity=\".4\"/><rect x=\"20\" y=\"44\" width=\"10\" height=\"2\" rx=\"1\" fill=\"#C8956C\" opacity=\".3\"/></svg>"
+    },
+    {
+      "en": "passport",
+      "zh": "護照",
+      "pr": "/ˈpæspɔːrt/",
+      "cat": 1,
+      "m1": "A passport is a small book with your photo.",
+      "m2": "You need it to travel to other countries.",
+      "e1": "Show your passport, please.",
+      "e2": "My passport is in my bag.",
+      "p1": "Do not forget your _______!",
+      "p2": "The officer looked at my _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"22\" y=\"14\" width=\"36\" height=\"52\" rx=\"4\" fill=\"#1B2A4A\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><circle cx=\"40\" cy=\"34\" r=\"8\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"50\" width=\"20\" height=\"3\" rx=\"1\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "ticket",
+      "zh": "機票",
+      "pr": "/ˈtɪkɪt/",
+      "cat": 1,
+      "m1": "A ticket is what you buy to take a flight.",
+      "m2": "It has your name and flight number.",
+      "e1": "I bought my ticket online.",
+      "e2": "Can I see your ticket?",
+      "p1": "How much is the _______?",
+      "p2": "I printed my _______ at home.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"26\" width=\"52\" height=\"28\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><circle cx=\"40\" cy=\"40\" r=\"6\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><rect x=\"20\" y=\"32\" width=\"14\" height=\"2\" rx=\"1\" fill=\"#C8956C\" opacity=\".4\"/><rect x=\"50\" y=\"46\" width=\"10\" height=\"2\" rx=\"1\" fill=\"#C8956C\" opacity=\".4\"/></svg>"
+    },
+    {
+      "en": "ID",
+      "zh": "身分證",
+      "pr": "/aɪ diː/",
+      "cat": 1,
+      "m1": "ID means identification, like a card with your name.",
+      "m2": "You may need to show your ID at the airport.",
+      "e1": "Do you have your ID?",
+      "e2": "Show your ID at the counter.",
+      "p1": "Please bring your _______ with you.",
+      "p2": "I left my _______ at home!",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"24\" width=\"48\" height=\"32\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><rect x=\"22\" y=\"30\" width=\"14\" height=\"14\" rx=\"2\" fill=\"#C8956C\" opacity=\".3\"/><rect x=\"42\" y=\"32\" width=\"16\" height=\"2\" rx=\"1\" fill=\"#1B2A4A\" opacity=\".3\"/><rect x=\"42\" y=\"38\" width=\"12\" height=\"2\" rx=\"1\" fill=\"#1B2A4A\" opacity=\".2\"/><rect x=\"42\" y=\"44\" width=\"14\" height=\"2\" rx=\"1\" fill=\"#1B2A4A\" opacity=\".2\"/></svg>"
+    },
+    {
+      "en": "luggage",
+      "zh": "行李",
+      "pr": "/ˈlʌɡɪdʒ/",
+      "cat": 2,
+      "m1": "Luggage means your bags and suitcases.",
+      "m2": "You bring luggage when you travel.",
+      "e1": "How many pieces of luggage?",
+      "e2": "My luggage is heavy.",
+      "p1": "Put your _______ on the scale.",
+      "p2": "I have two pieces of _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"24\" y=\"24\" width=\"32\" height=\"36\" rx=\"4\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><path d=\"M32 24v-6h16v6\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><path d=\"M30 42h20\" stroke=\"#C8956C\" stroke-width=\"1.2\"/><circle cx=\"32\" cy=\"60\" r=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1\"/><circle cx=\"48\" cy=\"60\" r=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1\"/></svg>"
+    },
+    {
+      "en": "suitcase",
+      "zh": "行李箱",
+      "pr": "/ˈsuːtkeɪs/",
+      "cat": 2,
+      "m1": "A suitcase is a big bag with wheels.",
+      "m2": "You put your clothes in a suitcase.",
+      "e1": "My suitcase is black.",
+      "e2": "I put my clothes in the suitcase.",
+      "p1": "Can you help me carry my _______?",
+      "p2": "Her _______ is very heavy.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"22\" y=\"22\" width=\"36\" height=\"38\" rx=\"4\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><path d=\"M30 22v-6h20v6\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><circle cx=\"30\" cy=\"60\" r=\"2.5\" fill=\"#1B2A4A\"/><circle cx=\"50\" cy=\"60\" r=\"2.5\" fill=\"#1B2A4A\"/><rect x=\"36\" y=\"36\" width=\"8\" height=\"10\" rx=\"1\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1\"/></svg>"
+    },
+    {
+      "en": "carry-on",
+      "zh": "隨身行李",
+      "pr": "/ˈkæri ɑːn/",
+      "cat": 2,
+      "m1": "A carry-on is a small bag you take on the plane.",
+      "m2": "You keep it under your seat or above you.",
+      "e1": "This is my carry-on bag.",
+      "e2": "Your carry-on is too big.",
+      "p1": "Is this bag small enough to be a _______?",
+      "p2": "Put your _______ in the overhead bin.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"26\" y=\"28\" width=\"28\" height=\"32\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><path d=\"M32 28v-5h16v5\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><path d=\"M32 44h16\" stroke=\"#C8956C\" stroke-width=\"1\"/></svg>"
+    },
+    {
+      "en": "gate",
+      "zh": "登機門",
+      "pr": "/ɡeɪt/",
+      "cat": 3,
+      "m1": "A gate is the door where you get on the plane.",
+      "m2": "Your boarding pass shows your gate number.",
+      "e1": "Go to gate twelve.",
+      "e2": "What gate is our flight?",
+      "p1": "Our flight is at _______ number eight.",
+      "p2": "We need to walk to _______ fifteen.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"20\" y=\"20\" width=\"40\" height=\"40\" rx=\"4\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><path d=\"M40 20v40\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><text x=\"30\" y=\"44\" text-anchor=\"middle\" font-size=\"14\" fill=\"#C8956C\" font-weight=\"700\">12</text></svg>"
+    },
+    {
+      "en": "terminal",
+      "zh": "航廈",
+      "pr": "/ˈtɜːrmɪnəl/",
+      "cat": 3,
+      "m1": "A terminal is a building at the airport.",
+      "m2": "Big airports have more than one terminal.",
+      "e1": "We are in terminal two.",
+      "e2": "Which terminal is your flight?",
+      "p1": "Go to _______ one for your flight.",
+      "p2": "The bus stops at each _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"10\" y=\"35\" width=\"60\" height=\"25\" rx=\"2\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><path d=\"M10 35l30-15 30 15\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><rect x=\"22\" y=\"42\" width=\"10\" height=\"12\" rx=\"1\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1\"/><rect x=\"48\" y=\"42\" width=\"10\" height=\"12\" rx=\"1\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1\"/></svg>"
+    },
+    {
+      "en": "departure",
+      "zh": "出發",
+      "pr": "/dɪˈpɑːrtʃər/",
+      "cat": 3,
+      "m1": "Departure means leaving a place.",
+      "m2": "The departure time is when the plane leaves.",
+      "e1": "Check the departure board.",
+      "e2": "Our departure is at three PM.",
+      "p1": "What time is our _______?",
+      "p2": "The _______ gate is on the second floor.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><path d=\"M15 50l20-18 30 5\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><path d=\"M35 32l12-4 8 14-20 6z\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><path d=\"M10 55h60\" stroke=\"#1B2A4A\" stroke-width=\"1\"/></svg>"
+    },
+    {
+      "en": "window seat",
+      "zh": "靠窗座位",
+      "pr": "/ˈwɪndoʊ siːt/",
+      "cat": 4,
+      "m1": "A window seat is next to the window on the plane.",
+      "m2": "You can see outside from a window seat.",
+      "e1": "Can I have a window seat?",
+      "e2": "I like the window seat.",
+      "p1": "I would like a _______, please.",
+      "p2": "Is there a _______ available?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"18\" y=\"22\" width=\"44\" height=\"36\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><rect x=\"24\" y=\"28\" width=\"14\" height=\"18\" rx=\"6\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/><rect x=\"44\" y=\"32\" width=\"12\" height=\"8\" rx=\"1\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1\" opacity=\".3\"/></svg>"
+    },
+    {
+      "en": "aisle seat",
+      "zh": "走道座位",
+      "pr": "/aɪl siːt/",
+      "cat": 4,
+      "m1": "An aisle seat is next to the walkway.",
+      "m2": "It is easy to get up from an aisle seat.",
+      "e1": "Can I have an aisle seat?",
+      "e2": "The aisle seat is easier.",
+      "p1": "I prefer an _______, please.",
+      "p2": "Is there an _______ on this flight?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"18\" y=\"22\" width=\"44\" height=\"36\" rx=\"3\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><rect x=\"24\" y=\"32\" width=\"12\" height=\"8\" rx=\"1\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M42 22v36\" stroke=\"#C8956C\" stroke-width=\"1.5\" stroke-dasharray=\"3 2\"/><rect x=\"48\" y=\"32\" width=\"8\" height=\"8\" rx=\"1\" fill=\"none\" stroke=\"#C8956C\" stroke-width=\"1.5\"/></svg>"
+    },
+    {
+      "en": "help",
+      "zh": "幫忙",
+      "pr": "/help/",
+      "cat": 4,
+      "m1": "Help means to do something for someone.",
+      "m2": "You can ask for help at the airport.",
+      "e1": "Can you help me, please?",
+      "e2": "I need help with my bag.",
+      "p1": "Excuse me, can you _______ me?",
+      "p2": "I need _______ finding my gate.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><circle cx=\"40\" cy=\"40\" r=\"20\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"1.5\"/><text x=\"40\" y=\"46\" text-anchor=\"middle\" font-size=\"22\" fill=\"#C8956C\" font-weight=\"700\">?</text></svg>"
+    }
+  ],
+  "extended": [
+    {
+      "en": "flight number",
+      "zh": "航班號碼",
+      "pr": "/flaɪt ˈnʌmbər/",
+      "cat": 0,
+      "m": "The number for your plane trip.",
+      "ex": "My flight number is AC305."
+    },
+    {
+      "en": "airline",
+      "zh": "航空公司",
+      "pr": "/ˈerlaɪn/",
+      "cat": 0,
+      "m": "A company that flies planes.",
+      "ex": "Which airline are you flying?"
+    },
+    {
+      "en": "delay",
+      "zh": "延誤",
+      "pr": "/dɪˈleɪ/",
+      "cat": 0,
+      "m": "When the plane is late.",
+      "ex": "There is a thirty-minute delay."
+    },
+    {
+      "en": "on time",
+      "zh": "準時",
+      "pr": "/ɑːn taɪm/",
+      "cat": 0,
+      "m": "Not late, at the right time.",
+      "ex": "Our flight is on time."
+    },
+    {
+      "en": "confirm",
+      "zh": "確認",
+      "pr": "/kənˈfɜːrm/",
+      "cat": 0,
+      "m": "To say yes, something is correct.",
+      "ex": "Please confirm your seat number."
+    },
+    {
+      "en": "reservation",
+      "zh": "預訂",
+      "pr": "/ˌrezərˈveɪʃən/",
+      "cat": 0,
+      "m": "A booking you made before.",
+      "ex": "I have a reservation for this flight."
+    },
+    {
+      "en": "visa",
+      "zh": "簽證",
+      "pr": "/ˈviːzə/",
+      "cat": 1,
+      "m": "A paper that lets you enter a country.",
+      "ex": "Do I need a visa for Japan?"
+    },
+    {
+      "en": "valid",
+      "zh": "有效的",
+      "pr": "/ˈvælɪd/",
+      "cat": 1,
+      "m": "Still OK to use, not expired.",
+      "ex": "Is your passport still valid?"
+    },
+    {
+      "en": "expire",
+      "zh": "到期",
+      "pr": "/ɪkˈspaɪər/",
+      "cat": 1,
+      "m": "When something is no longer good.",
+      "ex": "My passport will expire next year."
+    },
+    {
+      "en": "photocopy",
+      "zh": "影印本",
+      "pr": "/ˈfoʊtoʊkɑːpi/",
+      "cat": 1,
+      "m": "A copy of a paper or document.",
+      "ex": "Bring a photocopy of your passport."
+    },
+    {
+      "en": "form",
+      "zh": "表格",
+      "pr": "/fɔːrm/",
+      "cat": 1,
+      "m": "A paper with spaces to fill in.",
+      "ex": "Please fill out this form."
+    },
+    {
+      "en": "signature",
+      "zh": "簽名",
+      "pr": "/ˈsɪɡnətʃər/",
+      "cat": 1,
+      "m": "Your name written by hand.",
+      "ex": "Put your signature here."
+    },
+    {
+      "en": "overweight",
+      "zh": "超重",
+      "pr": "/ˌoʊvərˈweɪt/",
+      "cat": 2,
+      "m": "Too heavy, more than the limit.",
+      "ex": "Your bag is overweight."
+    },
+    {
+      "en": "baggage claim",
+      "zh": "行李提領區",
+      "pr": "/ˈbæɡɪdʒ kleɪm/",
+      "cat": 2,
+      "m": "The place to get your bags after landing.",
+      "ex": "Go to baggage claim on level one."
+    },
+    {
+      "en": "tag",
+      "zh": "行李牌",
+      "pr": "/tæɡ/",
+      "cat": 2,
+      "m": "A small card on your bag with your name.",
+      "ex": "Put a tag on your suitcase."
+    },
+    {
+      "en": "scale",
+      "zh": "秤",
+      "pr": "/skeɪl/",
+      "cat": 2,
+      "m": "A machine that shows how heavy something is.",
+      "ex": "Put your bag on the scale."
+    },
+    {
+      "en": "fragile",
+      "zh": "易碎的",
+      "pr": "/ˈfrædʒəl/",
+      "cat": 2,
+      "m": "Easy to break.",
+      "ex": "Please be careful, this is fragile."
+    },
+    {
+      "en": "zipper",
+      "zh": "拉鏈",
+      "pr": "/ˈzɪpər/",
+      "cat": 2,
+      "m": "The part you use to open and close a bag.",
+      "ex": "The zipper on my bag is broken."
+    },
+    {
+      "en": "arrival",
+      "zh": "到達",
+      "pr": "/əˈraɪvəl/",
+      "cat": 3,
+      "m": "Coming to a place.",
+      "ex": "Check the arrival time."
+    },
+    {
+      "en": "exit",
+      "zh": "出口",
+      "pr": "/ˈeɡzɪt/",
+      "cat": 3,
+      "m": "The way out of a building.",
+      "ex": "The exit is on the left."
+    },
+    {
+      "en": "entrance",
+      "zh": "入口",
+      "pr": "/ˈentrəns/",
+      "cat": 3,
+      "m": "The way into a building.",
+      "ex": "The entrance is over there."
+    },
+    {
+      "en": "restroom",
+      "zh": "洗手間",
+      "pr": "/ˈrestruːm/",
+      "cat": 3,
+      "m": "A room with a toilet.",
+      "ex": "Where is the restroom?"
+    },
+    {
+      "en": "escalator",
+      "zh": "電扶梯",
+      "pr": "/ˈeskəleɪtər/",
+      "cat": 3,
+      "m": "Moving stairs that go up or down.",
+      "ex": "Take the escalator to level two."
+    },
+    {
+      "en": "information desk",
+      "zh": "服務台",
+      "pr": "/ˌɪnfərˈmeɪʃən desk/",
+      "cat": 3,
+      "m": "A desk where you can ask questions.",
+      "ex": "Ask at the information desk."
+    },
+    {
+      "en": "excuse me",
+      "zh": "不好意思",
+      "pr": "/ɪkˈskjuːz miː/",
+      "cat": 4,
+      "m": "A polite way to get attention.",
+      "ex": "Excuse me, where is gate ten?"
+    },
+    {
+      "en": "please",
+      "zh": "請",
+      "pr": "/pliːz/",
+      "cat": 4,
+      "m": "A polite word when you ask for something.",
+      "ex": "Can I have water, please?"
+    },
+    {
+      "en": "thank you",
+      "zh": "謝謝",
+      "pr": "/θæŋk juː/",
+      "cat": 4,
+      "m": "A polite word when someone helps you.",
+      "ex": "Thank you very much!"
+    },
+    {
+      "en": "sorry",
+      "zh": "對不起",
+      "pr": "/ˈsɑːri/",
+      "cat": 4,
+      "m": "A word you say when you make a mistake.",
+      "ex": "Sorry, where is the gate?"
+    },
+    {
+      "en": "where",
+      "zh": "哪裡",
+      "pr": "/wer/",
+      "cat": 4,
+      "m": "A question word about a place.",
+      "ex": "Where is the check-in counter?"
+    },
+    {
+      "en": "how much",
+      "zh": "多少錢",
+      "pr": "/haʊ mʌtʃ/",
+      "cat": 4,
+      "m": "A question about the price.",
+      "ex": "How much is the extra bag fee?"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Excuse me, where is the check-in counter?",
+      "zh": "不好意思，報到櫃檯在哪裡？",
+      "note": "到機場第一句話。用 'Excuse me' 開頭更有禮貌。",
+      "t": "core"
+    },
+    {
+      "en": "Can I have a window seat, please?",
+      "zh": "可以給我靠窗的座位嗎？",
+      "note": "報到時選位子的必備句型。換成 aisle seat 也可以。",
+      "t": "core"
+    },
+    {
+      "en": "How many bags can I bring?",
+      "zh": "我可以帶幾個行李？",
+      "note": "確認行李規定。也可以問 carry-on 的限制。",
+      "t": "core"
+    },
+    {
+      "en": "What gate is my flight?",
+      "zh": "我的航班在哪個登機門？",
+      "note": "拿到登機證後可以再確認一次。",
+      "t": "ext"
+    },
+    {
+      "en": "What time does the flight leave?",
+      "zh": "飛機幾點起飛？",
+      "note": "確認出發時間。也可以用 departure time。",
+      "t": "ext"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1,
+      "title": "Checking In at the Counter",
+      "tz": "在櫃檯報到",
+      "tag": "req",
+      "sit": "You arrive at the airport. You go to the check-in counter.",
+      "rA": "Traveler (You)",
+      "rB": "Staff",
+      "lines": [
+        [
+          "A",
+          "Excuse me, I want to check in."
+        ],
+        [
+          "B",
+          "Sure! Can I see your passport and ticket?"
+        ],
+        [
+          "A",
+          "Here is my passport and my ticket."
+        ],
+        [
+          "B",
+          "Thank you. Do you want a window seat or an aisle seat?"
+        ],
+        [
+          "A",
+          "A window seat, please."
+        ],
+        [
+          "B",
+          "OK. How many pieces of luggage do you have?"
+        ],
+        [
+          "A",
+          "I have one suitcase and one carry-on."
+        ],
+        [
+          "B",
+          "Please put your suitcase on the scale."
+        ],
+        [
+          "A",
+          "OK. Is it too heavy?"
+        ],
+        [
+          "B",
+          "No, it is fine. Here is your boarding pass. Your gate is twelve."
+        ],
+        [
+          "A",
+          "Thank you very much!"
+        ],
+        [
+          "B",
+          "You are welcome. Have a nice flight!"
+        ]
+      ],
+      "tp": "Try again: this time ask for an AISLE SEAT and you have TWO suitcases.",
+      "tn": "Student A 重點：確認能正確發出 check in / boarding pass / luggage。每個詞讓學生重複 2-3 次再繼續。注意 th 音 (thank) 和尾音 (seat, flight)。"
+    },
+    {
+      "id": 2,
+      "title": "Asking for Help at the Airport",
+      "tz": "在機場問路",
+      "tag": "req",
+      "sit": "You cannot find your gate. You ask a worker for help.",
+      "rA": "Traveler (You)",
+      "rB": "Airport Worker",
+      "lines": [
+        [
+          "A",
+          "Excuse me, can you help me?"
+        ],
+        [
+          "B",
+          "Of course! What do you need?"
+        ],
+        [
+          "A",
+          "I cannot find my gate. It says gate fifteen."
+        ],
+        [
+          "B",
+          "Gate fifteen is in terminal two. Go straight, then turn left."
+        ],
+        [
+          "A",
+          "Thank you! Is it far?"
+        ],
+        [
+          "B",
+          "About five minutes walking."
+        ],
+        [
+          "A",
+          "OK, thank you for your help!"
+        ],
+        [
+          "B",
+          "No problem. Have a safe trip!"
+        ]
+      ],
+      "tp": "Try again: your gate is number TWENTY and you also ask where the restroom is.",
+      "tn": "Student A 重點：'Can you help me?' 這句要練到自動反應。注意 fifteen 的 /f/ 發音。"
+    },
+    {
+      "id": 3,
+      "title": "Checking Your Luggage",
+      "tz": "託運行李",
+      "tag": "req",
+      "sit": "Your suitcase is too heavy. The staff tells you.",
+      "rA": "Traveler (You)",
+      "rB": "Staff",
+      "lines": [
+        [
+          "A",
+          "Here is my suitcase."
+        ],
+        [
+          "B",
+          "Let me put it on the scale... I am sorry, it is overweight."
+        ],
+        [
+          "A",
+          "Oh no! How much overweight?"
+        ],
+        [
+          "B",
+          "It is three kilograms over. You need to pay extra or take some things out."
+        ],
+        [
+          "A",
+          "Can I move some things to my carry-on?"
+        ],
+        [
+          "B",
+          "Yes, of course. Take your time."
+        ],
+        [
+          "A",
+          "OK, I moved some things. Can you check again?"
+        ],
+        [
+          "B",
+          "It is good now! Here is your boarding pass."
+        ],
+        [
+          "A",
+          "Thank you so much!"
+        ],
+        [
+          "B",
+          "You are welcome!"
+        ]
+      ],
+      "tp": "Try again: this time you choose to PAY the extra fee instead of moving things.",
+      "tn": "Student A 重點：overweight 是新詞，先教發音再練句子。注意 'take some things out' 的連音。"
+    },
+    {
+      "id": 4,
+      "title": "Buying Food Before the Flight",
+      "tz": "登機前買食物",
+      "tag": "ch",
+      "sit": "You are hungry before your flight. You go to a shop in the terminal.",
+      "rA": "Customer (You)",
+      "rB": "Shop Staff",
+      "lines": [
+        [
+          "A",
+          "Excuse me, how much is this sandwich?"
+        ],
+        [
+          "B",
+          "It is eight dollars."
+        ],
+        [
+          "A",
+          "OK, I will take it. And a water, please."
+        ],
+        [
+          "B",
+          "Sure. That is eleven dollars total."
+        ],
+        [
+          "A",
+          "Here you go. Thank you!"
+        ],
+        [
+          "B",
+          "Thank you! Enjoy your flight."
+        ]
+      ],
+      "tp": "Try again: you want to buy COFFEE and a COOKIE instead.",
+      "tn": "練習 how much + 數字聽力。Student A 可能對數字反應慢，可多練。"
+    },
+    {
+      "id": 5,
+      "title": "Finding Your Seat on the Plane",
+      "tz": "在飛機上找座位",
+      "tag": "ch",
+      "sit": "You get on the plane and look for your seat.",
+      "rA": "Passenger (You)",
+      "rB": "Flight Attendant",
+      "lines": [
+        [
+          "A",
+          "Excuse me, where is seat fourteen A?"
+        ],
+        [
+          "B",
+          "Go down the aisle. It is on the left side."
+        ],
+        [
+          "A",
+          "Thank you! Can I put my carry-on up here?"
+        ],
+        [
+          "B",
+          "Yes, in the overhead bin. Let me help you."
+        ],
+        [
+          "A",
+          "Thank you very much."
+        ],
+        [
+          "B",
+          "You are welcome. Please sit down and fasten your seatbelt."
+        ]
+      ],
+      "tp": "Try again: your seat is TWENTY-TWO B and the overhead bin is full.",
+      "tn": "練習數字+字母組合 (14A)。Student A 座位號碼要多練幾次。"
+    }
+  ],
+  "speaking": [
+    {
+      "t": 1,
+      "q": "Do you like to fly? Yes or no?",
+      "h": "Yes, I do. / No, I do not."
+    },
+    {
+      "t": 1,
+      "q": "Do you prefer a window seat or an aisle seat?",
+      "h": "I prefer a _____ seat because..."
+    },
+    {
+      "t": 2,
+      "q": "What do you put in your suitcase when you travel? Start with: I put...",
+      "h": "Try to say three things."
+    },
+    {
+      "t": 2,
+      "q": "What do you do at the airport before your flight? Start with: First, I...",
+      "h": "Say at least two steps."
+    },
+    {
+      "t": 3,
+      "q": "Tell me about a time you went to the airport. What happened?",
+      "h": "Try to speak for 20 seconds."
+    }
+  ],
+  "culture": [
+    {
+      "slot": "warm-up",
+      "title": "Airport Signs — Reading English Signs",
+      "tz": "機場英文標示",
+      "photo": "Photo: Airport signs showing Departures, Arrivals, Check-In, Gates, Restrooms, Exit in English.",
+      "notes": "Airports around the world use English on their signs. Even in non-English countries, you can see words like 'Gate', 'Exit', 'Check-In', and 'Departure'. Learning these words helps you travel anywhere!",
+      "qs": [
+        "Can you read English signs at Taiwan's airports?",
+        "Which airport sign word is the most useful to know?",
+        "Have you ever been lost at an airport? What happened?"
+      ]
+    },
+    {
+      "slot": "closing",
+      "title": "How to Line Up — Queuing Culture",
+      "tz": "排隊文化",
+      "photo": "Photo: People standing in a neat line at an airport check-in counter. Everyone is patient and waiting their turn.",
+      "notes": "In many countries, people line up (queue) and wait for their turn. Cutting in line is very rude. At airports, you will see lines for check-in, security, and boarding. Always wait your turn and be patient!",
+      "qs": [
+        "Do people line up in Taiwan? Is it the same as at airports?",
+        "What do you do when someone cuts in line?",
+        "Do you think airports should have faster lines for some people?"
+      ]
+    }
+  ],
+  "pronunciation": {
+    "focus": "Final Consonants — Say the Whole Word!",
+    "fz": "尾音不能省！把整個字說完整",
+    "words": [
+      {
+        "w": "seat",
+        "ipa": "/siːt/",
+        "bad": "see",
+        "tip": "Say the /t/ at the end!"
+      },
+      {
+        "w": "help",
+        "ipa": "/help/",
+        "bad": "hel",
+        "tip": "Close your lips for the /p/!"
+      },
+      {
+        "w": "check",
+        "ipa": "/tʃek/",
+        "bad": "che",
+        "tip": "Say the /k/ at the end!"
+      },
+      {
+        "w": "bag",
+        "ipa": "/bæɡ/",
+        "bad": "ba",
+        "tip": "Say the /ɡ/ at the end!"
+      },
+      {
+        "w": "flight",
+        "ipa": "/flaɪt/",
+        "bad": "fly",
+        "tip": "Add the /t/ at the end!"
+      }
+    ],
+    "tip": "中文沒有字尾子音，所以中文母語者容易把尾音省掉。seat 不是 see、help 不是 hel。練習時特別注意嘴巴要做出最後一個音！",
+    "prac": "Practice: 'I need help with my seat and my bag for this flight.'"
+  },
+  "previously_learned": {
+    "source": "This is the first lesson; there is no previously learned vocabulary.",
+    "empty_message": "這是第一堂課，尚無已學詞彙。從 L02 開始會顯示。",
+    "items": []
+  }
+}
