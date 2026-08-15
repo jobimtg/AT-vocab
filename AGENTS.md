@@ -85,6 +85,27 @@ If the same issue still fails after the second Reviewer correction attempt:
 - record the failure and evidence in Notion;
 - report the blocker for user decision.
 
+For Travel English and Canada Life image production, the current course-family image
+standards authorize a narrowly scoped hybrid fallback after stop-loss: AI illustration
+scene plus local deterministic Unicode typesetting. This fallback is available only
+after the same image-content/text-fidelity issue has failed two AI generation or
+correction attempts and stop-loss has been recorded. It is not a third AI attempt.
+The local renderer must read all source-locked titles, English, Traditional Chinese,
+dialogue, IPA, tips, labels, branding, and footer text from approved JSON. Two fresh
+full-image review passes remain mandatory before publication. Pass 1 must inspect
+every image individually at full resolution. Pass 2 starts only after pass-1 findings
+are resolved and must independently reopen every image again; sampling and contact-
+sheet-only review are not sufficient. No upload or publication may occur before the
+second pass succeeds.
+
+If the user later finds an image error after both passes were recorded as complete,
+immediately retract the affected image-style VERIFIED claim and freeze image
+publication. Report the exact miss, why both passes failed, sibling-image risk, and a
+concrete redesign of the per-image evidence/check process. Discuss and obtain the
+user's explicit decision before changing that review mechanism or reconstructing the
+affected images. After approval, implement the agreed mechanism, rerun its required
+scope, and update repository rules plus Notion with read-back.
+
 ## Validation matrix
 
 Run only the checks applicable to the task, but when a check is applicable it must actually run before claiming PASS.

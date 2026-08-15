@@ -1,8 +1,8 @@
 # YSP Canada Life & Career English Image Prompt Standard
 
-**Version:** 1.1
+**Version:** 1.2
 
-**Effective:** 2026-08-09 (America/Vancouver)
+**Effective:** 2026-08-13 (America/Vancouver)
 
 **Scope:** Canada Life & Career English lessons only
 
@@ -135,6 +135,57 @@ Use `YSP_PRONUNCIATION_IMAGE_STANDARD.md` structurally. Canada Life adds aged-pa
 - Exact 1920×1080; over 2 MB warning, over 5 MB block.
 - Validate source text, line counts, `tp`, branding, Canadian context, and style fidelity.
 - Two-failure stop-loss applies.
+
+## Stop-loss-only hybrid production fallback
+
+The `AI illustration scene + local deterministic Unicode typesetting` workflow is
+authorized for Canada Life only after the same image-content or text-fidelity problem
+has failed Reviewer verification following two AI generation/correction attempts and
+the mandatory stop-loss has been recorded. It is not a first-round shortcut, and it
+does not authorize a third AI correction attempt for the same problem.
+
+Once unlocked, the hybrid workflow is a separately identified fallback cycle:
+
+1. AI generation supplies only the hand-illustrated Canada Life scene, panorama,
+   pictograms, non-text decoration, parchment texture, and vintage editorial finish.
+2. A local program reads the approved lesson JSON and typesets every source-locked
+   text element: all titles, English, Traditional Chinese, dialogue lines, IPA,
+   incorrect/correct forms, tips, notes, hints, questions, labels, badges,
+   Situation/Characters, Key Vocabulary, `NOW YOU TRY`, branding, and footer/tagline.
+3. The renderer uses Unicode-capable fonts; source values must come directly from
+   JSON wherever available, not from manual retyping or OCR.
+4. Canada Life A/B/C illustration sizing remains binding. Text is placed first;
+   AI artwork is fitted into the declared illustration footprint without shrinking,
+   crowding, or cropping the teaching hierarchy.
+
+Hybrid output must still match the Canada Life Golden vintage illustrated system.
+A generic deterministic text-only/card template remains prohibited. Model/Practice
+pairs must retain the same scene and characters, and Practice may change only the
+`tp`-authorized text. The full final package must pass two sequential, complete visual
+review rounds. Pass 1 reopens every image individually at full resolution and checks
+magnified JSON-to-raster text/IPA, Canada Life Golden style, scene relevance,
+intrinsic crop and safe margins. Pass 2 may begin only after all pass-1 findings are
+resolved; it must independently reopen and recheck every image again from source and
+Golden references. Sampling, carrying forward pass-1 conclusions, or using a contact
+sheet instead of individual full-resolution inspection is forbidden. Upload and
+publication remain prohibited until pass 2 passes, followed by desktop/mobile gallery
+containment verification. If
+the hybrid fallback repeats the same blocking problem after two correction attempts,
+stop again and request user direction.
+
+## Post-review user-discovered error escalation
+
+If the user finds an image content, style, text, crop, pairing, or consistency error
+after both required review passes were recorded as complete, immediately retract the
+affected lesson's image-style VERIFIED status and freeze further image publication.
+Do not silently patch only the reported raster and do not claim the existing review
+mechanism is sufficient. Produce an evidence-backed miss analysis covering the exact
+file, missed rule, why pass 1 and pass 2 failed to catch it, likely sibling-image
+exposure, and the proposed new per-image evidence/check method. Discuss that redesigned
+review mechanism with the user and obtain an explicit decision before implementing it.
+Only after the mechanism is agreed may the Builder update rules/content, reconstruct
+images, rerun the newly approved review cycle across the user-approved scope, and
+synchronize the outcome to repository standards and Notion with read-back.
 
 ## Course boundary
 

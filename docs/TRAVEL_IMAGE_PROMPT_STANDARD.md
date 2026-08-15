@@ -1,8 +1,8 @@
 # YSP Travel English Image Prompt Standard
 
-**Version:** 1.0
+**Version:** 1.1
 
-**Effective:** 2026-08-09 (America/Vancouver)
+**Effective:** 2026-08-13 (America/Vancouver)
 
 **Scope:** Travel English lessons only
 
@@ -164,6 +164,58 @@ Practice rules:
 - If the user requests replacement, overwrite only the existing expected filenames.
 - Do not add variants, backup PNGs, contact sheets, or numbered alternatives inside the lesson folder.
 - Review generated text before accepting the image; AI-rendered text is not trusted automatically.
+
+### Stop-loss-only hybrid production fallback
+
+The `AI illustration scene + local deterministic Unicode typesetting` workflow is
+an authorized fallback for Travel English, but it is not a normal first-choice
+production method and must never be used to bypass the two-attempt image-generation
+review loop.
+
+It becomes available only when all of the following are true:
+
+1. The same image-content or text-fidelity problem has failed Reviewer verification
+   after two AI generation/correction attempts.
+2. The mandatory stop-loss has been recorded with concrete evidence.
+3. No third AI generation/correction attempt is made for that same problem.
+
+After those conditions are met, the Builder may start one separately identified
+hybrid fallback cycle. AI generation supplies only the illustration scene,
+non-text decorative artwork, texture, and course-specific visual atmosphere. A local
+program must typeset every source-locked text element directly from approved JSON:
+all titles, English, Traditional Chinese, dialogue lines, IPA, incorrect/correct
+forms, tips, notes, hints, questions, labels, badges, Situation/Characters, Key
+Vocabulary, `NOW YOU TRY`, branding, and footer/tagline. The local renderer must use
+Unicode-capable fonts and must not transcribe source text by hand when JSON contains
+the value.
+
+The result must remain a genuine Travel Golden-style illustrated card. A generic
+deterministic text-only/card template is still prohibited. The AI artwork and local
+layout must form one coherent composition, preserve Model/Practice pairing, and keep
+all teaching text within safe margins. The complete final package still requires
+two sequential, complete visual review passes. Review pass 1 must reopen every final
+image individually at full resolution and check content, text/IPA against JSON, style,
+scene relevance, safe margins, and intrinsic crop. Only after every image passes or
+is corrected may review pass 2 begin. Pass 2 must reopen and recheck every image again
+from the source and Golden reference; it cannot sample files, reuse pass-1 findings,
+or substitute a contact sheet for individual full-resolution inspection. Upload and
+publication remain prohibited until pass 2 is complete, followed by desktop/mobile
+gallery containment verification. If the hybrid fallback repeats the same blocking
+problem after two correction attempts, stop again and request user direction.
+
+### Post-review user-discovered error escalation
+
+If the user finds an image content, style, text, crop, pairing, or consistency error
+after both required review passes were recorded as complete, immediately retract the
+affected lesson's image-style VERIFIED status and freeze further image publication.
+Do not silently patch only the reported raster and do not claim the existing review
+mechanism is sufficient. Produce an evidence-backed miss analysis covering the exact
+file, missed rule, why pass 1 and pass 2 failed to catch it, likely sibling-image
+exposure, and the proposed new per-image evidence/check method. Discuss that redesigned
+review mechanism with the user and obtain an explicit decision before implementing it.
+Only after the mechanism is agreed may the Builder update rules/content, reconstruct
+images, rerun the newly approved review cycle across the user-approved scope, and
+synchronize the outcome to repository standards and Notion with read-back.
 
 ## 11. Release validation gate
 

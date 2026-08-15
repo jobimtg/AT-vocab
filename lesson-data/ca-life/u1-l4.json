@@ -1,0 +1,1249 @@
+{
+  "meta": {
+    "course_id": "canada-en",
+    "course_name": "Canada Life & Career English",
+    "course_folder": "ca-life",
+    "unit": 1,
+    "lesson": 4,
+    "lesson_code": "L04",
+    "title_en": "Banking & SIN Number",
+    "title_zh": "銀行與 SIN",
+    "cefr": "A2",
+    "html_path": "lessons/ca-life/u1-l4.html",
+    "image_prefix": "l04",
+    "status": "generated",
+    "source_note": "Topic, sub-themes, and pronunciation focus sourced from user-provided 'Canada_Life___Career_English_Teaching_Plan_v3_Final.html' (confirmed 2026-08-13, America/Vancouver). Vocabulary/dialogues/phrases/speaking/culture newly authored to match the plan's four sub-themes (Banking, Government ID, Forms, Digital Banking) plus a fifth category (Transactions & Fees) needed to reach the required 5-category/25-Core structure. previously_learned uses real, GitHub-verified Canada L01/L02/L03 Core vocabulary."
+  },
+  "categories": [
+    "Banking",
+    "Government ID",
+    "Forms & Documents",
+    "Digital Banking",
+    "Transactions & Fees"
+  ],
+  "core": [
+    {
+      "en": "bank account",
+      "zh": "銀行帳戶",
+      "pr": "/bæŋk əˈkaʊnt/",
+      "cat": 0,
+      "m1": "A bank account holds your money at a bank.",
+      "m2": "You need one to receive your paycheck in Canada.",
+      "e1": "I opened a bank account last week.",
+      "e2": "Please bring ID to open a bank account.",
+      "p1": "I opened a _______ last week.",
+      "p2": "Please bring ID to open a _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "deposit",
+      "zh": "存款",
+      "pr": "/dɪˈpɑːzɪt/",
+      "cat": 0,
+      "m1": "A deposit is money you put into your account.",
+      "m2": "You can deposit cash or checks at the counter.",
+      "e1": "I made a deposit this morning.",
+      "e2": "Can I deposit this check today?",
+      "p1": "I made a _______ this morning.",
+      "p2": "Can I _______ this check today?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "withdraw",
+      "zh": "提款",
+      "pr": "/wɪðˈdrɔː/",
+      "cat": 0,
+      "m1": "Withdraw means to take money out of your account.",
+      "m2": "You can withdraw cash from an ATM or the counter.",
+      "e1": "I need to withdraw some cash.",
+      "e2": "How much can I withdraw today?",
+      "p1": "I need to _______ some cash.",
+      "p2": "How much can I _______ today?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "balance",
+      "zh": "餘額",
+      "pr": "/ˈbæləns/",
+      "cat": 0,
+      "m1": "Your balance is the amount of money in your account.",
+      "m2": "You can check it online or at an ATM.",
+      "e1": "My balance is lower than I expected.",
+      "e2": "Please check your account balance.",
+      "p1": "My _______ is lower than I expected.",
+      "p2": "Please check your account _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "teller",
+      "zh": "行員",
+      "pr": "/ˈtelər/",
+      "cat": 0,
+      "m1": "A teller is a bank employee who helps with transactions.",
+      "m2": "You can ask a teller for help in person.",
+      "e1": "The teller helped me open my account.",
+      "e2": "Please ask the teller for a form.",
+      "p1": "The _______ helped me open my account.",
+      "p2": "Please ask the _______ for a form.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "SIN number",
+      "zh": "社會保險號碼",
+      "pr": "/sɪn ˈnʌmbər/",
+      "cat": 1,
+      "m1": "A SIN number is a government ID used for work and taxes in Canada.",
+      "m2": "You need one before you can start most jobs.",
+      "e1": "I applied for my SIN number last month.",
+      "e2": "Your employer will ask for your SIN number.",
+      "p1": "I applied for my _______ last month.",
+      "p2": "Your employer will ask for your _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "driver's license",
+      "zh": "駕照",
+      "pr": "/ˈdraɪvərz ˈlaɪsns/",
+      "cat": 1,
+      "m1": "A driver's license lets you legally drive in Canada.",
+      "m2": "It can also be used as photo ID.",
+      "e1": "I got my driver's license in Ontario.",
+      "e2": "Can I use my driver's license as ID?",
+      "p1": "I got my _______ in Ontario.",
+      "p2": "Can I use my _______ as ID?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "health card",
+      "zh": "健保卡",
+      "pr": "/helθ kɑːrd/",
+      "cat": 1,
+      "m1": "A health card lets you access free medical care in your province.",
+      "m2": "Always carry it to doctor visits.",
+      "e1": "Don't forget your health card at the clinic.",
+      "e2": "You need a health card to see a doctor.",
+      "p1": "Don't forget your _______ at the clinic.",
+      "p2": "You need a _______ to see a doctor.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "permanent resident card",
+      "zh": "永久居民卡",
+      "pr": "/ˈpɜːrmənənt ˈrezɪdənt kɑːrd/",
+      "cat": 1,
+      "m1": "A permanent resident card proves your immigration status in Canada.",
+      "m2": "You may need it to re-enter the country.",
+      "e1": "My permanent resident card arrived by mail.",
+      "e2": "Please renew your permanent resident card on time.",
+      "p1": "My _______ arrived by mail.",
+      "p2": "Please renew your _______ on time.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "work permit",
+      "zh": "工作許可",
+      "pr": "/wɜːrk ˈpɜːrmɪt/",
+      "cat": 1,
+      "m1": "A work permit allows you to legally work in Canada.",
+      "m2": "It usually has an expiry date.",
+      "e1": "My work permit expires next year.",
+      "e2": "Do you have a valid work permit?",
+      "p1": "My _______ expires next year.",
+      "p2": "Do you have a valid _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "application form",
+      "zh": "申請表",
+      "pr": "/æplɪˈkeɪʃn fɔːrm/",
+      "cat": 2,
+      "m1": "An application form is a document you fill out to request something.",
+      "m2": "Banks use it to open new accounts.",
+      "e1": "Please complete the application form.",
+      "e2": "I submitted my application form online.",
+      "p1": "Please complete the _______.",
+      "p2": "I submitted my _______ online.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "signature",
+      "zh": "簽名",
+      "pr": "/ˈsɪɡnətʃər/",
+      "cat": 2,
+      "m1": "A signature is your name written by hand to confirm a document.",
+      "m2": "Banks compare it to verify your identity.",
+      "e1": "Please sign your signature here.",
+      "e2": "Your signature must match your ID.",
+      "p1": "Please sign your _______ here.",
+      "p2": "Your _______ must match your ID.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "personal information",
+      "zh": "個人資料",
+      "pr": "/ˈpɜːrsənl ɪnfərˈmeɪʃn/",
+      "cat": 2,
+      "m1": "Personal information includes your name, address, and birth date.",
+      "m2": "Keep it private and secure.",
+      "e1": "This form asks for your personal information.",
+      "e2": "Please protect your personal information online.",
+      "p1": "This form asks for your _______.",
+      "p2": "Please protect your _______ online.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "ID number",
+      "zh": "身分證號",
+      "pr": "/aɪ diː ˈnʌmbər/",
+      "cat": 2,
+      "m1": "An ID number identifies you on official documents.",
+      "m2": "You will use it on many government forms.",
+      "e1": "Please write your ID number here.",
+      "e2": "I forgot my ID number.",
+      "p1": "Please write your _______ here.",
+      "p2": "I forgot my _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "submit",
+      "zh": "提交",
+      "pr": "/səbˈmɪt/",
+      "cat": 2,
+      "m1": "Submit means to officially send in a form or document.",
+      "m2": "You can submit most forms online now.",
+      "e1": "Please submit the form by Friday.",
+      "e2": "I already submitted my application.",
+      "p1": "Please _______ the form by Friday.",
+      "p2": "I already _______ my application.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "online banking",
+      "zh": "網路銀行",
+      "pr": "/ˈɒnlaɪn ˈbæŋkɪŋ/",
+      "cat": 3,
+      "m1": "Online banking lets you manage your account through a website.",
+      "m2": "You can check your balance anytime.",
+      "e1": "I use online banking every day.",
+      "e2": "Online banking is very convenient.",
+      "p1": "I use _______ every day.",
+      "p2": "_______ is very convenient.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "mobile app",
+      "zh": "手機應用程式",
+      "pr": "/ˈmoʊbaɪl æp/",
+      "cat": 3,
+      "m1": "A mobile app lets you bank from your phone.",
+      "m2": "Most Canadian banks have their own app.",
+      "e1": "I downloaded my bank's mobile app.",
+      "e2": "The mobile app shows my transactions.",
+      "p1": "I downloaded my bank's _______.",
+      "p2": "The _______ shows my transactions.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "password",
+      "zh": "密碼",
+      "pr": "/ˈpæswɜːrd/",
+      "cat": 3,
+      "m1": "A password protects your online banking account.",
+      "m2": "Never share your password with anyone.",
+      "e1": "I forgot my online banking password.",
+      "e2": "Please choose a strong password.",
+      "p1": "I forgot my online banking _______.",
+      "p2": "Please choose a strong _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "e-transfer",
+      "zh": "電子轉帳",
+      "pr": "/iː ˈtrænsfɜːr/",
+      "cat": 3,
+      "m1": "An e-transfer sends money directly to someone's bank account.",
+      "m2": "It is a common way to pay rent in Canada.",
+      "e1": "I sent the rent by e-transfer.",
+      "e2": "Can you accept an e-transfer?",
+      "p1": "I sent the rent by _______.",
+      "p2": "Can you accept an _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "login",
+      "zh": "登入",
+      "pr": "/ˈlɔːɡɪn/",
+      "cat": 3,
+      "m1": "Login means to enter your username and password to access your account.",
+      "m2": "You need it every time you use online banking.",
+      "e1": "I can't login to my account.",
+      "e2": "Please login before 5 p.m.",
+      "p1": "I can't _______ to my account.",
+      "p2": "Please _______ before 5 p.m.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "interest rate",
+      "zh": "利率",
+      "pr": "/ˈɪntrəst reɪt/",
+      "cat": 4,
+      "m1": "An interest rate is the percentage a bank pays or charges on money.",
+      "m2": "Savings accounts usually have a low interest rate.",
+      "e1": "The interest rate went up this year.",
+      "e2": "Check the interest rate before you save.",
+      "p1": "The _______ went up this year.",
+      "p2": "Check the _______ before you save.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "service fee",
+      "zh": "服務費",
+      "pr": "/ˈsɜːrvɪs fiː/",
+      "cat": 4,
+      "m1": "A service fee is money the bank charges for using an account.",
+      "m2": "Some accounts have no monthly service fee.",
+      "e1": "This account has a monthly service fee.",
+      "e2": "Ask about the service fee before opening an account.",
+      "p1": "This account has a monthly _______.",
+      "p2": "Ask about the _______ before opening an account.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "transaction",
+      "zh": "交易",
+      "pr": "/trænˈzækʃn/",
+      "cat": 4,
+      "m1": "A transaction is any action that moves money, like a deposit or payment.",
+      "m2": "You can review all your transactions online.",
+      "e1": "I don't recognize this transaction.",
+      "e2": "Every transaction appears in your statement.",
+      "p1": "I don't recognize this _______.",
+      "p2": "Every _______ appears in your statement.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "overdraft",
+      "zh": "透支",
+      "pr": "/ˈoʊvərdræft/",
+      "cat": 4,
+      "m1": "An overdraft happens when you spend more money than you have.",
+      "m2": "It usually comes with an extra fee.",
+      "e1": "I was charged for an overdraft.",
+      "e2": "Avoid an overdraft by checking your balance.",
+      "p1": "I was charged for an _______.",
+      "p2": "Avoid an _______ by checking your balance.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "receipt",
+      "zh": "收據",
+      "pr": "/rɪˈsiːt/",
+      "cat": 4,
+      "m1": "A receipt is proof of a transaction or payment.",
+      "m2": "Keep it in case you need it later.",
+      "e1": "Please keep your receipt.",
+      "e2": "I lost my deposit receipt.",
+      "p1": "Please keep your _______.",
+      "p2": "I lost my deposit _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    }
+  ],
+  "extended": [
+    {
+      "en": "savings account",
+      "zh": "儲蓄帳戶",
+      "pr": "/savings · account/",
+      "cat": 0,
+      "m": "A savings account earns interest on the money you keep in it.",
+      "ex": "I put extra money into my savings account."
+    },
+    {
+      "en": "checking account",
+      "zh": "支票／活期帳戶",
+      "pr": "/checking · account/",
+      "cat": 0,
+      "m": "A checking account is used for everyday spending and bills.",
+      "ex": "I pay rent from my checking account."
+    },
+    {
+      "en": "ATM",
+      "zh": "自動提款機",
+      "pr": "/ATM/",
+      "cat": 0,
+      "m": "An ATM is a machine that lets you withdraw or deposit cash.",
+      "ex": "There is an ATM near the entrance."
+    },
+    {
+      "en": "debit card",
+      "zh": "金融卡",
+      "pr": "/debit · card/",
+      "cat": 0,
+      "m": "A debit card takes money directly from your bank account.",
+      "ex": "I paid with my debit card."
+    },
+    {
+      "en": "credit card",
+      "zh": "信用卡",
+      "pr": "/credit · card/",
+      "cat": 0,
+      "m": "A credit card lets you borrow money to pay later.",
+      "ex": "My first credit card had a low limit."
+    },
+    {
+      "en": "branch",
+      "zh": "分行",
+      "pr": "/branch/",
+      "cat": 0,
+      "m": "A branch is a local bank office you can visit in person.",
+      "ex": "The nearest branch closes at 5 p.m."
+    },
+    {
+      "en": "passport",
+      "zh": "護照",
+      "pr": "/passport/",
+      "cat": 1,
+      "m": "A passport is an official travel and identity document.",
+      "ex": "I used my passport to open the account."
+    },
+    {
+      "en": "birth certificate",
+      "zh": "出生證明",
+      "pr": "/birth · certificate/",
+      "cat": 1,
+      "m": "A birth certificate proves your date and place of birth.",
+      "ex": "You may need your birth certificate for the SIN application."
+    },
+    {
+      "en": "proof of address",
+      "zh": "地址證明",
+      "pr": "/proof · of · address/",
+      "cat": 1,
+      "m": "Proof of address is a document that shows where you live.",
+      "ex": "A utility bill can serve as proof of address."
+    },
+    {
+      "en": "expiry date",
+      "zh": "到期日",
+      "pr": "/expiry · date/",
+      "cat": 1,
+      "m": "An expiry date is when a document is no longer valid.",
+      "ex": "Check the expiry date on your work permit."
+    },
+    {
+      "en": "renew",
+      "zh": "更新／續期",
+      "pr": "/renew/",
+      "cat": 1,
+      "m": "Renew means to extend a document before it expires.",
+      "ex": "I need to renew my health card soon."
+    },
+    {
+      "en": "application number",
+      "zh": "申請編號",
+      "pr": "/application · number/",
+      "cat": 1,
+      "m": "An application number identifies your specific request.",
+      "ex": "Keep your application number for reference."
+    },
+    {
+      "en": "checkbox",
+      "zh": "勾選框",
+      "pr": "/checkbox/",
+      "cat": 2,
+      "m": "A checkbox is a small box you mark to select an option.",
+      "ex": "Check the checkbox to agree to the terms."
+    },
+    {
+      "en": "print name",
+      "zh": "印刷體姓名",
+      "pr": "/print · name/",
+      "cat": 2,
+      "m": "Print name means writing your name clearly, not in cursive.",
+      "ex": "Please print name below your signature."
+    },
+    {
+      "en": "date of birth",
+      "zh": "出生日期",
+      "pr": "/date · of · birth/",
+      "cat": 2,
+      "m": "Date of birth is the exact day you were born.",
+      "ex": "This form asks for your date of birth."
+    },
+    {
+      "en": "witness",
+      "zh": "見證人",
+      "pr": "/witness/",
+      "cat": 2,
+      "m": "A witness confirms that a signature is real.",
+      "ex": "A witness must also sign this document."
+    },
+    {
+      "en": "mailing address",
+      "zh": "郵寄地址",
+      "pr": "/mailing · address/",
+      "cat": 2,
+      "m": "A mailing address is where you receive letters and documents.",
+      "ex": "Please update your mailing address."
+    },
+    {
+      "en": "submit online",
+      "zh": "線上提交",
+      "pr": "/submit · online/",
+      "cat": 2,
+      "m": "Submit online means to send a form through a website.",
+      "ex": "You can submit online instead of mailing it."
+    },
+    {
+      "en": "two-factor authentication",
+      "zh": "雙重驗證",
+      "pr": "/two-factor · authentication/",
+      "cat": 3,
+      "m": "Two-factor authentication adds a second security step to logins.",
+      "ex": "Enable two-factor authentication for safety."
+    },
+    {
+      "en": "notification",
+      "zh": "通知",
+      "pr": "/notification/",
+      "cat": 3,
+      "m": "A notification is an alert sent by your banking app.",
+      "ex": "I got a notification about my deposit."
+    },
+    {
+      "en": "account summary",
+      "zh": "帳戶摘要",
+      "pr": "/account · summary/",
+      "cat": 3,
+      "m": "An account summary shows recent activity and your balance.",
+      "ex": "Check your account summary every month."
+    },
+    {
+      "en": "transfer limit",
+      "zh": "轉帳限額",
+      "pr": "/transfer · limit/",
+      "cat": 3,
+      "m": "A transfer limit is the maximum amount you can send at once.",
+      "ex": "My daily transfer limit is $3,000."
+    },
+    {
+      "en": "security question",
+      "zh": "安全問題",
+      "pr": "/security · question/",
+      "cat": 3,
+      "m": "A security question helps verify your identity online.",
+      "ex": "Choose a security question you will remember."
+    },
+    {
+      "en": "log out",
+      "zh": "登出",
+      "pr": "/log · out/",
+      "cat": 3,
+      "m": "Log out means to safely exit your online banking session.",
+      "ex": "Always log out on a shared computer."
+    },
+    {
+      "en": "monthly fee",
+      "zh": "月費",
+      "pr": "/monthly · fee/",
+      "cat": 4,
+      "m": "A monthly fee is a regular charge for keeping an account.",
+      "ex": "This account has no monthly fee."
+    },
+    {
+      "en": "minimum balance",
+      "zh": "最低餘額",
+      "pr": "/minimum · balance/",
+      "cat": 4,
+      "m": "A minimum balance is the smallest amount required to avoid fees.",
+      "ex": "Keep the minimum balance to avoid charges."
+    },
+    {
+      "en": "wire transfer",
+      "zh": "電匯",
+      "pr": "/wire · transfer/",
+      "cat": 4,
+      "m": "A wire transfer sends money directly between banks, often internationally.",
+      "ex": "I sent a wire transfer to my family."
+    },
+    {
+      "en": "currency exchange",
+      "zh": "貨幣兌換",
+      "pr": "/currency · exchange/",
+      "cat": 4,
+      "m": "Currency exchange converts one country's money into another's.",
+      "ex": "I did a currency exchange at the airport."
+    },
+    {
+      "en": "statement",
+      "zh": "對帳單",
+      "pr": "/statement/",
+      "cat": 4,
+      "m": "A statement is a monthly record of your account activity.",
+      "ex": "My statement arrived by email."
+    },
+    {
+      "en": "dispute",
+      "zh": "爭議款項",
+      "pr": "/dispute/",
+      "cat": 4,
+      "m": "A dispute is a formal complaint about an incorrect charge.",
+      "ex": "I filed a dispute for the wrong charge."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "I'd like to open a bank account.",
+      "zh": "我想開一個銀行帳戶。",
+      "note": "Say this when starting a new account at the counter.",
+      "t": "core"
+    },
+    {
+      "en": "Could I get a copy of my SIN number?",
+      "zh": "我可以拿到一份我的社會保險號碼副本嗎？",
+      "note": "Ask this at a Service Canada office.",
+      "t": "core"
+    },
+    {
+      "en": "Where do I sign this form?",
+      "zh": "我要在哪裡簽這份表格？",
+      "note": "Ask when filling out paperwork.",
+      "t": "core"
+    },
+    {
+      "en": "I forgot my online banking password.",
+      "zh": "我忘記我的網路銀行密碼了。",
+      "note": "Say this when you need to reset your password.",
+      "t": "ext"
+    },
+    {
+      "en": "Is there a fee for this transaction?",
+      "zh": "這筆交易有手續費嗎？",
+      "note": "Ask before confirming a transfer or withdrawal.",
+      "t": "ext"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1,
+      "title": "Opening a Bank Account",
+      "tz": "開立銀行帳戶",
+      "tag": "req",
+      "sit": "You visit a bank to open your first Canadian account.",
+      "rA": "Newcomer",
+      "rB": "Bank Teller",
+      "lines": [
+        [
+          "A",
+          "Hi, I'd like to open a bank account."
+        ],
+        [
+          "B",
+          "Sure. Do you have your SIN number and ID?"
+        ],
+        [
+          "A",
+          "Yes, here is my SIN and my passport."
+        ],
+        [
+          "B",
+          "Great. Would you like a savings or checking account?"
+        ],
+        [
+          "A",
+          "A checking account, please."
+        ],
+        [
+          "B",
+          "Okay. Please sign this application form."
+        ]
+      ],
+      "tp": "Try again: ask for a savings account instead.",
+      "tn": "Practice starting an account-opening conversation politely."
+    },
+    {
+      "id": 2,
+      "title": "Applying for a SIN Number",
+      "tz": "申請社會保險號碼",
+      "tag": "req",
+      "sit": "You go to a Service Canada office to apply for your SIN.",
+      "rA": "Newcomer",
+      "rB": "Government Officer",
+      "lines": [
+        [
+          "A",
+          "I'd like to apply for a SIN number."
+        ],
+        [
+          "B",
+          "Do you have your work permit and passport?"
+        ],
+        [
+          "A",
+          "Yes, here they are."
+        ],
+        [
+          "B",
+          "Please fill out this application form."
+        ],
+        [
+          "A",
+          "Where do I sign it?"
+        ],
+        [
+          "B",
+          "Sign here, and print your name below."
+        ],
+        [
+          "A",
+          "Thank you."
+        ],
+        [
+          "B",
+          "Your SIN card will arrive by mail."
+        ]
+      ],
+      "tp": "Try again: ask how long the SIN application will take.",
+      "tn": "Practice applying for official documents formally."
+    },
+    {
+      "id": 3,
+      "title": "A Card Problem",
+      "tz": "銀行卡出問題",
+      "tag": "ch",
+      "sit": "Your debit card is not working at the ATM.",
+      "rA": "Customer",
+      "rB": "Bank Teller",
+      "lines": [
+        [
+          "A",
+          "Excuse me, my debit card isn't working."
+        ],
+        [
+          "B",
+          "I'm sorry about that. Let's check your account."
+        ],
+        [
+          "A",
+          "It says my card is blocked."
+        ],
+        [
+          "B",
+          "I see. There was unusual activity on your account."
+        ],
+        [
+          "A",
+          "What should I do?"
+        ],
+        [
+          "B",
+          "I can issue you a new card today."
+        ],
+        [
+          "A",
+          "How long will that take?"
+        ],
+        [
+          "B",
+          "About ten minutes. Please wait here."
+        ]
+      ],
+      "tp": "Try again: say your card was lost, not blocked.",
+      "tn": "Problem scenario: report a card issue calmly and ask for a solution."
+    },
+    {
+      "id": 4,
+      "title": "Setting Up Online Banking",
+      "tz": "設定網路銀行",
+      "tag": "req",
+      "sit": "You want to start using online banking for the first time.",
+      "rA": "Customer",
+      "rB": "Bank Teller",
+      "lines": [
+        [
+          "A",
+          "Can you help me set up online banking?"
+        ],
+        [
+          "B",
+          "Of course. Do you have the mobile app?"
+        ],
+        [
+          "A",
+          "Not yet. Can I download it now?"
+        ],
+        [
+          "B",
+          "Yes, here is the download link."
+        ],
+        [
+          "A",
+          "How do I log in the first time?"
+        ],
+        [
+          "B",
+          "Use your account number and a temporary password."
+        ]
+      ],
+      "tp": "Try again: ask about setting up e-transfer instead.",
+      "tn": "Practice asking for step-by-step help."
+    },
+    {
+      "id": 5,
+      "title": "Asking About a Fee",
+      "tz": "詢問手續費",
+      "tag": "req",
+      "sit": "You notice an unexpected fee on your account.",
+      "rA": "Customer",
+      "rB": "Bank Teller",
+      "lines": [
+        [
+          "A",
+          "I have a question about a fee on my statement."
+        ],
+        [
+          "B",
+          "Let me take a look."
+        ],
+        [
+          "A",
+          "Is there a fee for this transaction?"
+        ],
+        [
+          "B",
+          "Yes, that's a monthly service fee."
+        ],
+        [
+          "A",
+          "Can it be removed?"
+        ],
+        [
+          "B",
+          "I can explain how to avoid it next time."
+        ],
+        [
+          "A",
+          "That would be helpful, thank you."
+        ],
+        [
+          "B",
+          "You're welcome."
+        ]
+      ],
+      "tp": "Try again: ask about an overdraft fee instead.",
+      "tn": "Practice asking politely about unexpected charges."
+    }
+  ],
+  "speaking": [
+    {
+      "t": 1,
+      "q": "What documents do you need to open a bank account?",
+      "h": "You need your SIN number and photo ID."
+    },
+    {
+      "t": 1,
+      "q": "Do you prefer online banking or visiting a branch?",
+      "h": "I prefer... because..."
+    },
+    {
+      "t": 2,
+      "q": "What should you do if your debit card stops working?",
+      "h": "You should tell the bank teller and ask for a new card."
+    },
+    {
+      "t": 2,
+      "q": "Why is a SIN number important in Canada?",
+      "h": "It is important because you need it to work and pay taxes."
+    },
+    {
+      "t": 3,
+      "q": "Describe the steps to set up online banking for the first time.",
+      "h": "First you download the app, then..."
+    }
+  ],
+  "culture": [
+    {
+      "slot": "warm-up",
+      "title": "Why You Need a SIN Number",
+      "tz": "為什麼需要社會保險號碼",
+      "photo": "📷 An illustrated Service Canada office with a newcomer receiving a SIN application form.",
+      "notes": "A SIN number is required for almost every job in Canada, as well as for filing taxes and accessing government benefits. Newcomers usually apply for it soon after arrival, and it should be kept private and secure.",
+      "qs": [
+        "Why do most jobs in Canada require a SIN number?",
+        "What documents are usually needed to apply?",
+        "Why should you keep your SIN number private?"
+      ]
+    },
+    {
+      "slot": "closing",
+      "title": "Banking Fees Can Vary",
+      "tz": "銀行手續費因行而異",
+      "photo": "📷 An illustrated comparison of two different bank account statements side by side.",
+      "notes": "Not all banks charge the same fees, and some accounts are fee-free for students or newcomers. It is worth comparing a few banks and asking directly about monthly fees before opening an account.",
+      "qs": [
+        "What is one way to avoid a monthly account fee?",
+        "Why is it useful to compare banks before choosing one?",
+        "What should you do if you don't understand a fee?"
+      ]
+    }
+  ],
+  "pronunciation": {
+    "focus": "Final -s / -es Endings",
+    "fz": "字尾 -s / -es 發音",
+    "words": [
+      {
+        "w": "banks",
+        "ipa": "/bæŋks/",
+        "bad": "bank",
+        "tip": "Add a clear /s/ sound at the end; don't drop it."
+      },
+      {
+        "w": "cards",
+        "ipa": "/kɑːrdz/",
+        "bad": "card",
+        "tip": "The final sound is voiced /z/ after a voiced consonant."
+      },
+      {
+        "w": "branches",
+        "ipa": "/ˈbræntʃɪz/",
+        "bad": "branch",
+        "tip": "After 'ch', add a full extra syllable /ɪz/."
+      },
+      {
+        "w": "withdraws",
+        "ipa": "/wɪðˈdrɔːz/",
+        "bad": "withdraw",
+        "tip": "Don't forget the final /z/ sound on the verb."
+      },
+      {
+        "w": "taxes",
+        "ipa": "/ˈtæksɪz/",
+        "bad": "tax",
+        "tip": "After 'x', add the extra syllable /ɪz/, not just /s/."
+      }
+    ],
+    "tip": "Chinese speakers often drop final -s/-es sounds. Always finish the word with a clear ending sound.",
+    "prac": "She withdraws cash from two different banks and pays her taxes on time."
+  },
+  "previously_learned": {
+    "lessons": [
+      {
+        "lesson_code": "Canada L01",
+        "title_en": "Welcome to Canada",
+        "words": [
+          {
+            "en": "passport",
+            "zh": "護照"
+          },
+          {
+            "en": "customs",
+            "zh": "海關"
+          },
+          {
+            "en": "declare",
+            "zh": "申報"
+          },
+          {
+            "en": "immigration",
+            "zh": "入境檢查"
+          },
+          {
+            "en": "arrival",
+            "zh": "抵達"
+          },
+          {
+            "en": "visa",
+            "zh": "簽證"
+          },
+          {
+            "en": "work permit",
+            "zh": "工作許可"
+          },
+          {
+            "en": "employer",
+            "zh": "雇主"
+          },
+          {
+            "en": "duration",
+            "zh": "期間／期限"
+          },
+          {
+            "en": "apply",
+            "zh": "申請"
+          },
+          {
+            "en": "province",
+            "zh": "省份"
+          },
+          {
+            "en": "downtown",
+            "zh": "市中心"
+          },
+          {
+            "en": "multicultural",
+            "zh": "多元文化的"
+          },
+          {
+            "en": "bilingual",
+            "zh": "雙語的"
+          },
+          {
+            "en": "suburb",
+            "zh": "郊區"
+          },
+          {
+            "en": "introduce",
+            "zh": "介紹"
+          },
+          {
+            "en": "greeting",
+            "zh": "問候"
+          },
+          {
+            "en": "nickname",
+            "zh": "暱稱"
+          },
+          {
+            "en": "polite",
+            "zh": "有禮貌的"
+          },
+          {
+            "en": "friendly",
+            "zh": "友善的"
+          },
+          {
+            "en": "accommodation",
+            "zh": "住宿"
+          },
+          {
+            "en": "schedule",
+            "zh": "行程／時間表"
+          },
+          {
+            "en": "currency",
+            "zh": "貨幣"
+          },
+          {
+            "en": "exchange",
+            "zh": "兌換"
+          },
+          {
+            "en": "luggage",
+            "zh": "行李"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Canada L02",
+        "title_en": "Transportation in Canada",
+        "words": [
+          {
+            "en": "bus",
+            "zh": "公車"
+          },
+          {
+            "en": "train",
+            "zh": "火車"
+          },
+          {
+            "en": "bus stop",
+            "zh": "公車站"
+          },
+          {
+            "en": "station",
+            "zh": "車站"
+          },
+          {
+            "en": "route",
+            "zh": "路線"
+          },
+          {
+            "en": "fare",
+            "zh": "車費"
+          },
+          {
+            "en": "pass",
+            "zh": "票卡"
+          },
+          {
+            "en": "tap",
+            "zh": "感應刷卡"
+          },
+          {
+            "en": "transfer",
+            "zh": "轉乘"
+          },
+          {
+            "en": "zone",
+            "zh": "區段"
+          },
+          {
+            "en": "direction",
+            "zh": "方向"
+          },
+          {
+            "en": "straight",
+            "zh": "直走"
+          },
+          {
+            "en": "turn",
+            "zh": "轉彎"
+          },
+          {
+            "en": "block",
+            "zh": "街區"
+          },
+          {
+            "en": "intersection",
+            "zh": "十字路口"
+          },
+          {
+            "en": "drive",
+            "zh": "開車"
+          },
+          {
+            "en": "license",
+            "zh": "駕照"
+          },
+          {
+            "en": "parking",
+            "zh": "停車"
+          },
+          {
+            "en": "highway",
+            "zh": "高速公路"
+          },
+          {
+            "en": "speed limit",
+            "zh": "速限"
+          },
+          {
+            "en": "commute",
+            "zh": "通勤"
+          },
+          {
+            "en": "walk",
+            "zh": "步行"
+          },
+          {
+            "en": "bicycle",
+            "zh": "腳踏車"
+          },
+          {
+            "en": "ride",
+            "zh": "搭乘"
+          },
+          {
+            "en": "map",
+            "zh": "地圖"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Canada L03",
+        "title_en": "Phone Plans & Internet",
+        "words": [
+          {
+            "en": "phone plan",
+            "zh": "手機方案"
+          },
+          {
+            "en": "prepaid",
+            "zh": "預付的"
+          },
+          {
+            "en": "contract",
+            "zh": "合約"
+          },
+          {
+            "en": "carrier",
+            "zh": "電信商"
+          },
+          {
+            "en": "monthly cost",
+            "zh": "月費"
+          },
+          {
+            "en": "data",
+            "zh": "數據流量"
+          },
+          {
+            "en": "unlimited",
+            "zh": "無限的"
+          },
+          {
+            "en": "speed",
+            "zh": "速度"
+          },
+          {
+            "en": "download",
+            "zh": "下載"
+          },
+          {
+            "en": "upload",
+            "zh": "上傳"
+          },
+          {
+            "en": "router",
+            "zh": "路由器"
+          },
+          {
+            "en": "WiFi",
+            "zh": "無線網路"
+          },
+          {
+            "en": "provider",
+            "zh": "服務供應商"
+          },
+          {
+            "en": "installation",
+            "zh": "安裝"
+          },
+          {
+            "en": "password",
+            "zh": "密碼"
+          },
+          {
+            "en": "bill",
+            "zh": "帳單"
+          },
+          {
+            "en": "charge",
+            "zh": "收費"
+          },
+          {
+            "en": "overage",
+            "zh": "超額費用"
+          },
+          {
+            "en": "discount",
+            "zh": "折扣"
+          },
+          {
+            "en": "promotion",
+            "zh": "促銷優惠"
+          },
+          {
+            "en": "coverage",
+            "zh": "訊號涵蓋範圍"
+          },
+          {
+            "en": "signal",
+            "zh": "訊號"
+          },
+          {
+            "en": "network",
+            "zh": "網路"
+          },
+          {
+            "en": "tech support",
+            "zh": "技術支援"
+          },
+          {
+            "en": "troubleshoot",
+            "zh": "排除問題"
+          }
+        ]
+      }
+    ]
+  }
+}

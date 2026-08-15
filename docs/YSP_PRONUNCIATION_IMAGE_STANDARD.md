@@ -1,8 +1,8 @@
 # YSP Shared Pronunciation Image Standard
 
-**Version:** 1.0
+**Version:** 1.1
 
-**Effective:** 2026-08-09 (America/Vancouver)
+**Effective:** 2026-08-13 (America/Vancouver)
 
 **Applies to:** Travel English and Canada Life & Career English pronunciation images only
 
@@ -45,6 +45,13 @@ Choose from content density, not course identity. Never omit or paraphrase conte
 - Preserve source punctuation and Unicode IPA; never normalize without explicit user authorization.
 - Use a font that visibly supports every IPA glyph.
 - AI-rendered IPA requires magnified visual inspection.
+- After the same pronunciation text/IPA fidelity problem fails two AI
+  generation/correction attempts and stop-loss is recorded, the course standard's
+  hybrid fallback may be used. AI supplies only illustration and non-text visual
+  treatment; a local Unicode-capable renderer must typeset all titles, Chinese,
+  words, IPA, incorrect/correct forms, tips, practice text, labels, branding, and
+  footer directly from approved JSON. This is a separate fallback path, not a third
+  AI correction attempt.
 
 ## Lesson prompt block
 
@@ -62,3 +69,10 @@ Include exact filename; bilingual focus; five complete word/IPA/incorrect/correc
 - Reopen and inspect the final PNG at magnification, then verify its rendered desktop and narrow/mobile gallery bounds before release.
 - Dimensions/file-size gates pass.
 - Two-failure stop-loss applies.
+
+If the user finds a pronunciation-image error after both required review passes were
+recorded as complete, retract VERIFIED status and freeze publication. Document the
+missed glyph/content/style evidence and why both reviews missed it, assess sibling
+pronunciation images, and discuss a redesigned per-image review mechanism with the
+user. Do not reconstruct or update the review rules until the user approves the new
+mechanism; after approval, execute it and synchronize the updated standards and status.

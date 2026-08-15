@@ -1,0 +1,1355 @@
+{
+  "meta": {
+    "course_id": "canada-en",
+    "course_name": "Canada Life & Career English",
+    "course_folder": "ca-life",
+    "unit": 1,
+    "lesson": 5,
+    "lesson_code": "L05",
+    "title_en": "Finding a Place to Live",
+    "title_zh": "找房子",
+    "cefr": "A2",
+    "html_path": "lessons/ca-life/u1-l5.html",
+    "image_prefix": "l05",
+    "status": "generated",
+    "source_note": "Topic, sub-themes, and pronunciation focus sourced from user-provided 'Canada_Life___Career_English_Teaching_Plan_v3_Final.html' (confirmed 2026-08-13, America/Vancouver). Vocabulary/dialogues/phrases/speaking/culture newly authored to match the plan's four sub-themes (Housing Types, Rental Agreements, Furniture, Community) plus a fifth category (Utilities & Bills) needed to reach the required 5-category/25-Core structure. previously_learned uses real, GitHub-verified Canada L01-L03 Core vocabulary plus this session's L04 data."
+  },
+  "categories": [
+    "Housing Types",
+    "Rental Agreements",
+    "Furniture",
+    "Community",
+    "Utilities & Bills"
+  ],
+  "core": [
+    {
+      "en": "apartment",
+      "zh": "公寓",
+      "pr": "/əˈpɑːrtmənt/",
+      "cat": 0,
+      "m1": "An apartment is a rented room or unit inside a larger building.",
+      "m2": "Many newcomers start out renting an apartment.",
+      "e1": "I rented a small apartment downtown.",
+      "e2": "Is this apartment available next month?",
+      "p1": "I rented a small _______ downtown.",
+      "p2": "Is this _______ available next month?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "house",
+      "zh": "獨立屋",
+      "pr": "/haʊs/",
+      "cat": 0,
+      "m1": "A house is a standalone building, often with its own yard.",
+      "m2": "Houses usually cost more than apartments.",
+      "e1": "We are looking for a house to rent.",
+      "e2": "This house has a big backyard.",
+      "p1": "We are looking for a _______ to rent.",
+      "p2": "This _______ has a big backyard.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "condo",
+      "zh": "公寓大廈住宅",
+      "pr": "/ˈkɑːndoʊ/",
+      "cat": 0,
+      "m1": "A condo is a privately owned unit inside a shared building.",
+      "m2": "Condos often include a gym or pool.",
+      "e1": "She bought a condo near the subway.",
+      "e2": "This condo has a nice view.",
+      "p1": "She bought a _______ near the subway.",
+      "p2": "This _______ has a nice view.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "basement suite",
+      "zh": "地下室套房",
+      "pr": "/ˈbeɪsmənt swiːt/",
+      "cat": 0,
+      "m1": "A basement suite is a rental unit below the main floor of a house.",
+      "m2": "It is often cheaper than the upper floors.",
+      "e1": "We live in a basement suite.",
+      "e2": "The basement suite has its own entrance.",
+      "p1": "We live in a _______.",
+      "p2": "The _______ has its own entrance.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "roommate",
+      "zh": "室友",
+      "pr": "/ˈruːmmeɪt/",
+      "cat": 0,
+      "m1": "A roommate is someone you share a home with.",
+      "m2": "Splitting rent with a roommate saves money.",
+      "e1": "My roommate pays half the rent.",
+      "e2": "I'm looking for a roommate.",
+      "p1": "My _______ pays half the rent.",
+      "p2": "I'm looking for a _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "lease",
+      "zh": "租約",
+      "pr": "/liːs/",
+      "cat": 1,
+      "m1": "A lease is a written agreement between you and the landlord.",
+      "m2": "Read it carefully before you sign.",
+      "e1": "I signed a one-year lease.",
+      "e2": "Please review the lease before signing.",
+      "p1": "I signed a one-year _______.",
+      "p2": "Please review the _______ before signing.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "landlord",
+      "zh": "房東",
+      "pr": "/ˈlændlɔːrd/",
+      "cat": 1,
+      "m1": "A landlord is the person who owns and rents out the property.",
+      "m2": "Contact your landlord for repairs.",
+      "e1": "My landlord fixed the heater quickly.",
+      "e2": "I need to call my landlord.",
+      "p1": "My _______ fixed the heater quickly.",
+      "p2": "I need to call my _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "tenant",
+      "zh": "房客",
+      "pr": "/ˈtenənt/",
+      "cat": 1,
+      "m1": "A tenant is a person who rents and lives in a property.",
+      "m2": "Tenants have certain legal rights.",
+      "e1": "As a tenant, you must pay rent on time.",
+      "e2": "The tenant reported a leak.",
+      "p1": "As a _______, you must pay rent on time.",
+      "p2": "The _______ reported a leak.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "security deposit",
+      "zh": "押金",
+      "pr": "/sɪˈkjʊrəti dɪˈpɑːzɪt/",
+      "cat": 1,
+      "m1": "A security deposit is money paid before moving in, refunded if there is no damage.",
+      "m2": "It usually equals one month's rent.",
+      "e1": "I paid a security deposit last week.",
+      "e2": "Will I get my security deposit back?",
+      "p1": "I paid a _______ last week.",
+      "p2": "Will I get my _______ back?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "utilities",
+      "zh": "水電瓦斯等公用事業",
+      "pr": "/juːˈtɪlətiz/",
+      "cat": 1,
+      "m1": "Utilities are services like electricity, water, and gas.",
+      "m2": "Ask if utilities are included in the rent.",
+      "e1": "Are utilities included in the rent?",
+      "e2": "Utilities cost more in winter.",
+      "p1": "Are _______ included in the rent?",
+      "p2": "_______ cost more in winter.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "sofa",
+      "zh": "沙發",
+      "pr": "/ˈsoʊfə/",
+      "cat": 2,
+      "m1": "A sofa is a long, soft seat for two or more people.",
+      "m2": "We bought a used sofa for the living room.",
+      "e1": "The sofa is very comfortable.",
+      "e2": "Can you help me move the sofa?",
+      "p1": "The _______ is very comfortable.",
+      "p2": "Can you help me move the _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "bed",
+      "zh": "床",
+      "pr": "/bed/",
+      "cat": 2,
+      "m1": "A bed is furniture used for sleeping.",
+      "m2": "A new bed can be expensive.",
+      "e1": "I need to buy a bed.",
+      "e2": "This bed is too small.",
+      "p1": "I need to buy a _______.",
+      "p2": "This _______ is too small.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "table",
+      "zh": "桌子",
+      "pr": "/ˈteɪbl/",
+      "cat": 2,
+      "m1": "A table is furniture used for eating or working.",
+      "m2": "We eat dinner at this table.",
+      "e1": "The table has four chairs.",
+      "e2": "Put your books on the table.",
+      "p1": "The _______ has four chairs.",
+      "p2": "Put your books on the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "refrigerator",
+      "zh": "冰箱",
+      "pr": "/rɪˈfrɪdʒəreɪtər/",
+      "cat": 2,
+      "m1": "A refrigerator keeps food cold and fresh.",
+      "m2": "Most apartments already include a refrigerator.",
+      "e1": "The refrigerator is almost empty.",
+      "e2": "Does this apartment have a refrigerator?",
+      "p1": "The _______ is almost empty.",
+      "p2": "Does this apartment have a _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "mattress",
+      "zh": "床墊",
+      "pr": "/ˈmætrəs/",
+      "cat": 2,
+      "m1": "A mattress is the soft part of a bed you sleep on.",
+      "m2": "A good mattress helps you sleep well.",
+      "e1": "I need a new mattress.",
+      "e2": "This mattress feels too firm.",
+      "p1": "I need a new _______.",
+      "p2": "This _______ feels too firm.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "neighbor",
+      "zh": "鄰居",
+      "pr": "/ˈneɪbər/",
+      "cat": 3,
+      "m1": "A neighbor is someone who lives near you.",
+      "m2": "It's nice to know your neighbor's name.",
+      "e1": "My neighbor is very friendly.",
+      "e2": "I met my neighbor yesterday.",
+      "p1": "My _______ is very friendly.",
+      "p2": "I met my _______ yesterday.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "neighborhood",
+      "zh": "社區／鄰里",
+      "pr": "/ˈneɪbərhʊd/",
+      "cat": 3,
+      "m1": "A neighborhood is the area around where you live.",
+      "m2": "This neighborhood is quiet and safe.",
+      "e1": "I love this neighborhood.",
+      "e2": "Is this neighborhood close to the subway?",
+      "p1": "I love this _______.",
+      "p2": "Is this _______ close to the subway?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "grocery store",
+      "zh": "雜貨店／超市",
+      "pr": "/ˈɡroʊsəri stɔːr/",
+      "cat": 3,
+      "m1": "A grocery store sells food and household items.",
+      "m2": "There's a grocery store nearby.",
+      "e1": "The grocery store closes at nine.",
+      "e2": "I walked to the grocery store.",
+      "p1": "The _______ closes at nine.",
+      "p2": "I walked to the _______.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "public transit",
+      "zh": "大眾運輸",
+      "pr": "/ˈpʌblɪk ˈtrænzɪt/",
+      "cat": 3,
+      "m1": "Public transit includes buses, trains, and subways.",
+      "m2": "Good public transit makes apartment hunting easier.",
+      "e1": "Public transit is close to this building.",
+      "e2": "I take public transit to work.",
+      "p1": "_______ is close to this building.",
+      "p2": "I take _______ to work.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "school district",
+      "zh": "學區",
+      "pr": "/skuːl ˈdɪstrɪkt/",
+      "cat": 3,
+      "m1": "A school district is the area served by local schools.",
+      "m2": "Families often choose a home based on the school district.",
+      "e1": "This is a good school district.",
+      "e2": "Check the school district before renting.",
+      "p1": "This is a good _______.",
+      "p2": "Check the _______ before renting.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "electricity",
+      "zh": "電力",
+      "pr": "/ɪˌlekˈtrɪsəti/",
+      "cat": 4,
+      "m1": "Electricity powers lights and appliances in your home.",
+      "m2": "Electricity is billed separately in some units.",
+      "e1": "We pay for electricity every month.",
+      "e2": "The electricity went out last night.",
+      "p1": "We pay for _______ every month.",
+      "p2": "The _______ went out last night.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"12\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "water bill",
+      "zh": "水費帳單",
+      "pr": "/ˈwɔːtər bɪl/",
+      "cat": 4,
+      "m1": "A water bill charges you for water usage.",
+      "m2": "The water bill is included in some rentals.",
+      "e1": "I paid the water bill online.",
+      "e2": "Is the water bill high this month?",
+      "p1": "I paid the _______ online.",
+      "p2": "Is the _______ high this month?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"13\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"9\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "internet bill",
+      "zh": "網路費帳單",
+      "pr": "/ˈɪntərnet bɪl/",
+      "cat": 4,
+      "m1": "An internet bill charges for your monthly internet service.",
+      "m2": "Compare providers before choosing an internet bill plan.",
+      "e1": "The internet bill arrived today.",
+      "e2": "Can I lower my internet bill?",
+      "p1": "The _______ arrived today.",
+      "p2": "Can I lower my _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"14\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "wifi setup",
+      "zh": "無線網路設定",
+      "pr": "/ˈwaɪfaɪ ˈsetʌp/",
+      "cat": 4,
+      "m1": "Wifi setup means installing internet access in a new home.",
+      "m2": "Wifi setup usually takes a technician visit.",
+      "e1": "I scheduled my wifi setup for Monday.",
+      "e2": "The wifi setup was easy this time.",
+      "p1": "I scheduled my _______ for Monday.",
+      "p2": "The _______ was easy this time.",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"15\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"11\" fill=\"#C8956C\"/></svg>"
+    },
+    {
+      "en": "move-in date",
+      "zh": "入住日期",
+      "pr": "/muːv ɪn deɪt/",
+      "cat": 4,
+      "m1": "A move-in date is the day you officially start living somewhere.",
+      "m2": "Confirm your move-in date with the landlord.",
+      "e1": "Our move-in date is next Saturday.",
+      "e2": "What is your move-in date?",
+      "p1": "Our _______ is next Saturday.",
+      "p2": "What is your _______?",
+      "svg": "<svg viewBox=\"0 0 80 80\"><rect x=\"16\" y=\"18\" width=\"52\" height=\"44\" rx=\"9\" fill=\"none\" stroke=\"#1B2A4A\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"8\" fill=\"#C8956C\"/></svg>"
+    }
+  ],
+  "extended": [
+    {
+      "en": "studio apartment",
+      "zh": "套房",
+      "pr": "/studio · apartment/",
+      "cat": 0,
+      "m": "A studio apartment has one open room for living and sleeping.",
+      "ex": "Studio apartments are usually the cheapest option."
+    },
+    {
+      "en": "townhouse",
+      "zh": "連棟透天",
+      "pr": "/townhouse/",
+      "cat": 0,
+      "m": "A townhouse shares walls with neighboring homes but has its own entrance.",
+      "ex": "We rented a townhouse with a small yard."
+    },
+    {
+      "en": "furnished",
+      "zh": "附家具的",
+      "pr": "/furnished/",
+      "cat": 0,
+      "m": "Furnished means the unit already includes furniture.",
+      "ex": "A furnished apartment saved us money."
+    },
+    {
+      "en": "unfurnished",
+      "zh": "未附家具的",
+      "pr": "/unfurnished/",
+      "cat": 0,
+      "m": "Unfurnished means you must bring or buy your own furniture.",
+      "ex": "We chose an unfurnished apartment to save on rent."
+    },
+    {
+      "en": "sublet",
+      "zh": "轉租",
+      "pr": "/sublet/",
+      "cat": 0,
+      "m": "A sublet is when a tenant rents their unit to someone else temporarily.",
+      "ex": "She found a sublet for the summer."
+    },
+    {
+      "en": "vacancy",
+      "zh": "空房",
+      "pr": "/vacancy/",
+      "cat": 0,
+      "m": "A vacancy is an available unit for rent.",
+      "ex": "There is one vacancy left in the building."
+    },
+    {
+      "en": "co-signer",
+      "zh": "共同簽署人",
+      "pr": "/co-signer/",
+      "cat": 1,
+      "m": "A co-signer agrees to pay rent if the tenant cannot.",
+      "ex": "New immigrants sometimes need a co-signer."
+    },
+    {
+      "en": "notice period",
+      "zh": "通知期",
+      "pr": "/notice · period/",
+      "cat": 1,
+      "m": "A notice period is how far in advance you must inform your landlord before moving out.",
+      "ex": "The notice period here is one month."
+    },
+    {
+      "en": "renewal",
+      "zh": "續約",
+      "pr": "/renewal/",
+      "cat": 1,
+      "m": "A renewal extends your lease for another term.",
+      "ex": "We signed a renewal for one more year."
+    },
+    {
+      "en": "eviction",
+      "zh": "驅逐",
+      "pr": "/eviction/",
+      "cat": 1,
+      "m": "Eviction is when a landlord legally forces a tenant to leave.",
+      "ex": "Late rent can sometimes lead to eviction."
+    },
+    {
+      "en": "rental application",
+      "zh": "租屋申請表",
+      "pr": "/rental · application/",
+      "cat": 1,
+      "m": "A rental application is a form landlords use to screen tenants.",
+      "ex": "I submitted my rental application yesterday."
+    },
+    {
+      "en": "credit check",
+      "zh": "信用查核",
+      "pr": "/credit · check/",
+      "cat": 1,
+      "m": "A credit check reviews your financial history before approving a lease.",
+      "ex": "The landlord ran a credit check."
+    },
+    {
+      "en": "nightstand",
+      "zh": "床頭櫃",
+      "pr": "/nightstand/",
+      "cat": 2,
+      "m": "A nightstand is a small table beside the bed.",
+      "ex": "I put a lamp on the nightstand."
+    },
+    {
+      "en": "dresser",
+      "zh": "衣櫃五斗櫃",
+      "pr": "/dresser/",
+      "cat": 2,
+      "m": "A dresser stores folded clothes in drawers.",
+      "ex": "My clothes are in the dresser."
+    },
+    {
+      "en": "bookshelf",
+      "zh": "書架",
+      "pr": "/bookshelf/",
+      "cat": 2,
+      "m": "A bookshelf holds books and other items.",
+      "ex": "The bookshelf is almost full."
+    },
+    {
+      "en": "curtains",
+      "zh": "窗簾",
+      "pr": "/curtains/",
+      "cat": 2,
+      "m": "Curtains cover windows for privacy and light control.",
+      "ex": "We hung new curtains in the bedroom."
+    },
+    {
+      "en": "lamp",
+      "zh": "燈",
+      "pr": "/lamp/",
+      "cat": 2,
+      "m": "A lamp provides light in a room.",
+      "ex": "This lamp is too dim to read by."
+    },
+    {
+      "en": "washing machine",
+      "zh": "洗衣機",
+      "pr": "/washing · machine/",
+      "cat": 2,
+      "m": "A washing machine cleans your clothes.",
+      "ex": "The washing machine is in the basement."
+    },
+    {
+      "en": "apartment complex",
+      "zh": "公寓社區",
+      "pr": "/apartment · complex/",
+      "cat": 3,
+      "m": "An apartment complex is a group of buildings with many rental units.",
+      "ex": "The apartment complex has a shared laundry room."
+    },
+    {
+      "en": "bus route",
+      "zh": "公車路線",
+      "pr": "/bus · route/",
+      "cat": 3,
+      "m": "A bus route is the path a public bus follows.",
+      "ex": "Check the bus route before choosing a neighborhood."
+    },
+    {
+      "en": "park",
+      "zh": "公園",
+      "pr": "/park/",
+      "cat": 3,
+      "m": "A park is a public green space for relaxing or exercising.",
+      "ex": "There's a park two blocks away."
+    },
+    {
+      "en": "community center",
+      "zh": "社區中心",
+      "pr": "/community · center/",
+      "cat": 3,
+      "m": "A community center offers local programs and activities.",
+      "ex": "The community center has free classes."
+    },
+    {
+      "en": "safety",
+      "zh": "安全",
+      "pr": "/safety/",
+      "cat": 3,
+      "m": "Safety refers to how secure a neighborhood feels.",
+      "ex": "We chose this area for its safety."
+    },
+    {
+      "en": "walkability",
+      "zh": "適合步行程度",
+      "pr": "/walkability/",
+      "cat": 3,
+      "m": "Walkability describes how easy it is to walk to nearby places.",
+      "ex": "This neighborhood has great walkability."
+    },
+    {
+      "en": "heating bill",
+      "zh": "暖氣費帳單",
+      "pr": "/heating · bill/",
+      "cat": 4,
+      "m": "A heating bill charges for warming your home in winter.",
+      "ex": "The heating bill is high in January."
+    },
+    {
+      "en": "gas bill",
+      "zh": "瓦斯費帳單",
+      "pr": "/gas · bill/",
+      "cat": 4,
+      "m": "A gas bill charges for natural gas used for heating or cooking.",
+      "ex": "We split the gas bill evenly."
+    },
+    {
+      "en": "cable bill",
+      "zh": "有線電視帳單",
+      "pr": "/cable · bill/",
+      "cat": 4,
+      "m": "A cable bill charges for television service.",
+      "ex": "We canceled our cable bill and use streaming instead."
+    },
+    {
+      "en": "automatic payment",
+      "zh": "自動扣款",
+      "pr": "/automatic · payment/",
+      "cat": 4,
+      "m": "Automatic payment takes bill money from your account on a set date.",
+      "ex": "I set up automatic payment for my rent."
+    },
+    {
+      "en": "due date",
+      "zh": "繳費期限",
+      "pr": "/due · date/",
+      "cat": 4,
+      "m": "A due date is the deadline for paying a bill.",
+      "ex": "The rent due date is the first of the month."
+    },
+    {
+      "en": "late fee",
+      "zh": "逾期費",
+      "pr": "/late · fee/",
+      "cat": 4,
+      "m": "A late fee is an extra charge for paying after the due date.",
+      "ex": "I paid a late fee last month by mistake."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Is this apartment still available?",
+      "zh": "這間公寓還租得到嗎？",
+      "note": "Ask this when calling about a rental listing.",
+      "t": "core"
+    },
+    {
+      "en": "Are utilities included in the rent?",
+      "zh": "租金有包含水電費嗎？",
+      "note": "Always confirm this before signing a lease.",
+      "t": "core"
+    },
+    {
+      "en": "When is the move-in date?",
+      "zh": "入住日期是什麼時候？",
+      "note": "Ask this to plan your move.",
+      "t": "core"
+    },
+    {
+      "en": "Could you fix the heater, please?",
+      "zh": "可以請您修理暖氣嗎？",
+      "note": "Use this to politely request a repair from your landlord.",
+      "t": "ext"
+    },
+    {
+      "en": "I'd like to renew my lease.",
+      "zh": "我想續租我的租約。",
+      "note": "Say this before your lease term ends.",
+      "t": "ext"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": 1,
+      "title": "Calling About an Apartment",
+      "tz": "詢問公寓出租",
+      "tag": "req",
+      "sit": "You call a landlord about an apartment listing.",
+      "rA": "Renter",
+      "rB": "Landlord",
+      "lines": [
+        [
+          "A",
+          "Hi, is this apartment still available?"
+        ],
+        [
+          "B",
+          "Yes, it is. Would you like to see it?"
+        ],
+        [
+          "A",
+          "Yes, please. Are utilities included in the rent?"
+        ],
+        [
+          "B",
+          "No, utilities are separate."
+        ],
+        [
+          "A",
+          "When is the move-in date?"
+        ],
+        [
+          "B",
+          "You can move in next month."
+        ]
+      ],
+      "tp": "Try again: ask about a two-bedroom apartment instead.",
+      "tn": "Practice asking key rental questions on the phone."
+    },
+    {
+      "id": 2,
+      "title": "Viewing the Apartment",
+      "tz": "看房",
+      "tag": "req",
+      "sit": "You visit the apartment in person with the landlord.",
+      "rA": "Landlord",
+      "rB": "Renter",
+      "lines": [
+        [
+          "A",
+          "This is the living room and kitchen."
+        ],
+        [
+          "B",
+          "It looks nice. Is it furnished?"
+        ],
+        [
+          "A",
+          "No, it's unfurnished."
+        ],
+        [
+          "B",
+          "That's fine. How much is the security deposit?"
+        ],
+        [
+          "A",
+          "One month's rent."
+        ],
+        [
+          "B",
+          "Okay, I'd like to apply."
+        ],
+        [
+          "A",
+          "Great, here is the rental application."
+        ],
+        [
+          "B",
+          "Thank you, I'll fill it out today."
+        ]
+      ],
+      "tp": "Try again: ask if the apartment allows pets.",
+      "tn": "Practice asking follow-up questions during a viewing."
+    },
+    {
+      "id": 3,
+      "title": "A Maintenance Problem",
+      "tz": "維修問題",
+      "tag": "ch",
+      "sit": "Something in your rental unit is broken.",
+      "rA": "Tenant",
+      "rB": "Landlord",
+      "lines": [
+        [
+          "A",
+          "Hi, could you fix the heater, please?"
+        ],
+        [
+          "B",
+          "What seems to be the problem?"
+        ],
+        [
+          "A",
+          "It stopped working yesterday."
+        ],
+        [
+          "B",
+          "I'm sorry to hear that. I'll send someone tomorrow."
+        ],
+        [
+          "A",
+          "Thank you. Is there anything I should do tonight?"
+        ],
+        [
+          "B",
+          "Use extra blankets, and I'll call you with the schedule."
+        ],
+        [
+          "A",
+          "Okay, I appreciate it."
+        ],
+        [
+          "B",
+          "No problem at all."
+        ]
+      ],
+      "tp": "Try again: report a broken refrigerator instead.",
+      "tn": "Problem scenario: report an issue politely and ask for next steps."
+    },
+    {
+      "id": 4,
+      "title": "Signing the Lease",
+      "tz": "簽署租約",
+      "tag": "req",
+      "sit": "You are ready to sign your lease agreement.",
+      "rA": "Landlord",
+      "rB": "Tenant",
+      "lines": [
+        [
+          "A",
+          "Here is the lease. Please read it carefully."
+        ],
+        [
+          "B",
+          "Okay. What is the notice period?"
+        ],
+        [
+          "A",
+          "One month before moving out."
+        ],
+        [
+          "B",
+          "Understood. Where do I sign?"
+        ],
+        [
+          "A",
+          "Sign here, and print your name below."
+        ],
+        [
+          "B",
+          "Thank you."
+        ]
+      ],
+      "tp": "Try again: ask about the renewal process instead.",
+      "tn": "Practice asking about lease terms before signing."
+    },
+    {
+      "id": 5,
+      "title": "Meeting a New Neighbor",
+      "tz": "認識新鄰居",
+      "tag": "req",
+      "sit": "You meet your neighbor for the first time after moving in.",
+      "rA": "New Tenant",
+      "rB": "Neighbor",
+      "lines": [
+        [
+          "A",
+          "Hi, I just moved in. I'm your new neighbor."
+        ],
+        [
+          "B",
+          "Welcome! It's nice to meet you."
+        ],
+        [
+          "A",
+          "Is there a grocery store nearby?"
+        ],
+        [
+          "B",
+          "Yes, it's just two blocks away."
+        ],
+        [
+          "A",
+          "Great, thank you."
+        ],
+        [
+          "B",
+          "Let me know if you need anything."
+        ],
+        [
+          "A",
+          "I really appreciate that."
+        ],
+        [
+          "B",
+          "Welcome to the neighborhood!"
+        ]
+      ],
+      "tp": "Try again: ask about the nearest park instead.",
+      "tn": "Practice friendly small talk when meeting neighbors."
+    }
+  ],
+  "speaking": [
+    {
+      "t": 1,
+      "q": "What questions should you ask before renting an apartment?",
+      "h": "You should ask if utilities are included and when you can move in."
+    },
+    {
+      "t": 1,
+      "q": "Do you prefer a furnished or unfurnished apartment?",
+      "h": "I prefer... because..."
+    },
+    {
+      "t": 2,
+      "q": "What should you do if something breaks in your rental?",
+      "h": "You should contact your landlord and describe the problem."
+    },
+    {
+      "t": 2,
+      "q": "Why is it important to read a lease carefully?",
+      "h": "It's important because it explains your rights and responsibilities."
+    },
+    {
+      "t": 3,
+      "q": "Describe the steps of finding and moving into a new apartment.",
+      "h": "First you search for listings, then..."
+    }
+  ],
+  "culture": [
+    {
+      "slot": "warm-up",
+      "title": "Reading a Lease Carefully",
+      "tz": "仔細閱讀租約",
+      "photo": "📷 An illustrated tenant and landlord reviewing a lease document together at a table.",
+      "notes": "In Canada, a lease is a legal document, and tenants have specific rights. It is common and expected to ask questions before signing, and you can request time to review it at home first.",
+      "qs": [
+        "Why is it acceptable to ask questions before signing a lease?",
+        "What information does a lease usually include?",
+        "What should you do if you don't understand a clause?"
+      ]
+    },
+    {
+      "slot": "closing",
+      "title": "Neighborhoods Can Feel Very Different",
+      "tz": "每個社區的氛圍都不同",
+      "photo": "📷 An illustrated street view comparing a quiet suburban street and a busy downtown block.",
+      "notes": "Rent, safety, and walkability can vary a lot between neighborhoods, even in the same city. It's worth visiting an area at different times of day before deciding to rent there.",
+      "qs": [
+        "What factors make a neighborhood convenient for daily life?",
+        "Why might visiting at different times of day help?",
+        "What is one tradeoff between downtown and suburban living?"
+      ]
+    }
+  ],
+  "pronunciation": {
+    "focus": "/r/ vs /l/",
+    "fz": "/r/ 與 /l/ 對比發音",
+    "words": [
+      {
+        "w": "rent",
+        "ipa": "/rent/",
+        "bad": "lent",
+        "tip": "Curl your tongue back without touching the roof of your mouth."
+      },
+      {
+        "w": "landlord",
+        "ipa": "/ˈlændlɔːrd/",
+        "bad": "randrord",
+        "tip": "Keep /l/ and /r/ clearly different in the same word."
+      },
+      {
+        "w": "neighborhood",
+        "ipa": "/ˈneɪbərhʊd/",
+        "bad": "neighbolhood",
+        "tip": "Tap the tongue lightly for /r/, don't substitute /l/."
+      },
+      {
+        "w": "refrigerator",
+        "ipa": "/rɪˈfrɪdʒəreɪtər/",
+        "bad": "lefligelator",
+        "tip": "Practice each /r/ separately before saying the full word."
+      },
+      {
+        "w": "lease",
+        "ipa": "/liːs/",
+        "bad": "reese",
+        "tip": "Touch the tip of your tongue to the ridge behind your teeth for /l/."
+      }
+    ],
+    "tip": "Many Chinese speakers mix up /r/ and /l/. Practice minimal pairs like 'rent' vs 'lent' slowly.",
+    "prac": "The landlord in this neighborhood rents a furnished apartment near the refrigerator repair shop."
+  },
+  "previously_learned": {
+    "lessons": [
+      {
+        "lesson_code": "Canada L01",
+        "title_en": "Welcome to Canada",
+        "words": [
+          {
+            "en": "passport",
+            "zh": "護照"
+          },
+          {
+            "en": "customs",
+            "zh": "海關"
+          },
+          {
+            "en": "declare",
+            "zh": "申報"
+          },
+          {
+            "en": "immigration",
+            "zh": "入境檢查"
+          },
+          {
+            "en": "arrival",
+            "zh": "抵達"
+          },
+          {
+            "en": "visa",
+            "zh": "簽證"
+          },
+          {
+            "en": "work permit",
+            "zh": "工作許可"
+          },
+          {
+            "en": "employer",
+            "zh": "雇主"
+          },
+          {
+            "en": "duration",
+            "zh": "期間／期限"
+          },
+          {
+            "en": "apply",
+            "zh": "申請"
+          },
+          {
+            "en": "province",
+            "zh": "省份"
+          },
+          {
+            "en": "downtown",
+            "zh": "市中心"
+          },
+          {
+            "en": "multicultural",
+            "zh": "多元文化的"
+          },
+          {
+            "en": "bilingual",
+            "zh": "雙語的"
+          },
+          {
+            "en": "suburb",
+            "zh": "郊區"
+          },
+          {
+            "en": "introduce",
+            "zh": "介紹"
+          },
+          {
+            "en": "greeting",
+            "zh": "問候"
+          },
+          {
+            "en": "nickname",
+            "zh": "暱稱"
+          },
+          {
+            "en": "polite",
+            "zh": "有禮貌的"
+          },
+          {
+            "en": "friendly",
+            "zh": "友善的"
+          },
+          {
+            "en": "accommodation",
+            "zh": "住宿"
+          },
+          {
+            "en": "schedule",
+            "zh": "行程／時間表"
+          },
+          {
+            "en": "currency",
+            "zh": "貨幣"
+          },
+          {
+            "en": "exchange",
+            "zh": "兌換"
+          },
+          {
+            "en": "luggage",
+            "zh": "行李"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Canada L02",
+        "title_en": "Transportation in Canada",
+        "words": [
+          {
+            "en": "bus",
+            "zh": "公車"
+          },
+          {
+            "en": "train",
+            "zh": "火車"
+          },
+          {
+            "en": "bus stop",
+            "zh": "公車站"
+          },
+          {
+            "en": "station",
+            "zh": "車站"
+          },
+          {
+            "en": "route",
+            "zh": "路線"
+          },
+          {
+            "en": "fare",
+            "zh": "車費"
+          },
+          {
+            "en": "pass",
+            "zh": "票卡"
+          },
+          {
+            "en": "tap",
+            "zh": "感應刷卡"
+          },
+          {
+            "en": "transfer",
+            "zh": "轉乘"
+          },
+          {
+            "en": "zone",
+            "zh": "區段"
+          },
+          {
+            "en": "direction",
+            "zh": "方向"
+          },
+          {
+            "en": "straight",
+            "zh": "直走"
+          },
+          {
+            "en": "turn",
+            "zh": "轉彎"
+          },
+          {
+            "en": "block",
+            "zh": "街區"
+          },
+          {
+            "en": "intersection",
+            "zh": "十字路口"
+          },
+          {
+            "en": "drive",
+            "zh": "開車"
+          },
+          {
+            "en": "license",
+            "zh": "駕照"
+          },
+          {
+            "en": "parking",
+            "zh": "停車"
+          },
+          {
+            "en": "highway",
+            "zh": "高速公路"
+          },
+          {
+            "en": "speed limit",
+            "zh": "速限"
+          },
+          {
+            "en": "commute",
+            "zh": "通勤"
+          },
+          {
+            "en": "walk",
+            "zh": "步行"
+          },
+          {
+            "en": "bicycle",
+            "zh": "腳踏車"
+          },
+          {
+            "en": "ride",
+            "zh": "搭乘"
+          },
+          {
+            "en": "map",
+            "zh": "地圖"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Canada L03",
+        "title_en": "Phone Plans & Internet",
+        "words": [
+          {
+            "en": "phone plan",
+            "zh": "手機方案"
+          },
+          {
+            "en": "prepaid",
+            "zh": "預付的"
+          },
+          {
+            "en": "contract",
+            "zh": "合約"
+          },
+          {
+            "en": "carrier",
+            "zh": "電信商"
+          },
+          {
+            "en": "monthly cost",
+            "zh": "月費"
+          },
+          {
+            "en": "data",
+            "zh": "數據流量"
+          },
+          {
+            "en": "unlimited",
+            "zh": "無限的"
+          },
+          {
+            "en": "speed",
+            "zh": "速度"
+          },
+          {
+            "en": "download",
+            "zh": "下載"
+          },
+          {
+            "en": "upload",
+            "zh": "上傳"
+          },
+          {
+            "en": "router",
+            "zh": "路由器"
+          },
+          {
+            "en": "WiFi",
+            "zh": "無線網路"
+          },
+          {
+            "en": "provider",
+            "zh": "服務供應商"
+          },
+          {
+            "en": "installation",
+            "zh": "安裝"
+          },
+          {
+            "en": "password",
+            "zh": "密碼"
+          },
+          {
+            "en": "bill",
+            "zh": "帳單"
+          },
+          {
+            "en": "charge",
+            "zh": "收費"
+          },
+          {
+            "en": "overage",
+            "zh": "超額費用"
+          },
+          {
+            "en": "discount",
+            "zh": "折扣"
+          },
+          {
+            "en": "promotion",
+            "zh": "促銷優惠"
+          },
+          {
+            "en": "coverage",
+            "zh": "訊號涵蓋範圍"
+          },
+          {
+            "en": "signal",
+            "zh": "訊號"
+          },
+          {
+            "en": "network",
+            "zh": "網路"
+          },
+          {
+            "en": "tech support",
+            "zh": "技術支援"
+          },
+          {
+            "en": "troubleshoot",
+            "zh": "排除問題"
+          }
+        ]
+      },
+      {
+        "lesson_code": "Canada L04",
+        "title_en": "Banking & SIN Number",
+        "words": [
+          {
+            "en": "bank account",
+            "zh": "銀行帳戶"
+          },
+          {
+            "en": "deposit",
+            "zh": "存款"
+          },
+          {
+            "en": "withdraw",
+            "zh": "提款"
+          },
+          {
+            "en": "balance",
+            "zh": "餘額"
+          },
+          {
+            "en": "teller",
+            "zh": "行員"
+          },
+          {
+            "en": "SIN number",
+            "zh": "社會保險號碼"
+          },
+          {
+            "en": "driver's license",
+            "zh": "駕照"
+          },
+          {
+            "en": "health card",
+            "zh": "健保卡"
+          },
+          {
+            "en": "permanent resident card",
+            "zh": "永久居民卡"
+          },
+          {
+            "en": "work permit",
+            "zh": "工作許可"
+          },
+          {
+            "en": "application form",
+            "zh": "申請表"
+          },
+          {
+            "en": "signature",
+            "zh": "簽名"
+          },
+          {
+            "en": "personal information",
+            "zh": "個人資料"
+          },
+          {
+            "en": "ID number",
+            "zh": "身分證號"
+          },
+          {
+            "en": "submit",
+            "zh": "提交"
+          },
+          {
+            "en": "online banking",
+            "zh": "網路銀行"
+          },
+          {
+            "en": "mobile app",
+            "zh": "手機應用程式"
+          },
+          {
+            "en": "password",
+            "zh": "密碼"
+          },
+          {
+            "en": "e-transfer",
+            "zh": "電子轉帳"
+          },
+          {
+            "en": "login",
+            "zh": "登入"
+          },
+          {
+            "en": "interest rate",
+            "zh": "利率"
+          },
+          {
+            "en": "service fee",
+            "zh": "服務費"
+          },
+          {
+            "en": "transaction",
+            "zh": "交易"
+          },
+          {
+            "en": "overdraft",
+            "zh": "透支"
+          },
+          {
+            "en": "receipt",
+            "zh": "收據"
+          }
+        ]
+      }
+    ]
+  }
+}
